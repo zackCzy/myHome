@@ -15,6 +15,12 @@ $(function(){
 	var miniMusic=new MiniMusicBox();
 	window.musicTempArr=$.getCookies('musicMessage');
 	var musicCount=window.musicTempArr==null? 0 : window.musicTempArr.length;
+	function rotate(){
+		$(".singer_photo").addClass("rotate");
+	}
+	function noRotate(){
+		$(".singer_photo").removeClass("rotate");
+	}
 	for ( var int = 0; int < musicCount; int++) {	
 		(function(initMusicJson){
 			$("<li></li>").text(initMusicJson.songerName+"--"+initMusicJson.singername)
@@ -22,7 +28,7 @@ $(function(){
 				$("#play_music").get(0).className="pause_music";
 				$("#singer_photo").attr("src", "/myHome/load/download_singerPhoto?singerName="+initMusicJson.singername);
 				var musicId=this.getAttribute("alt");
-				miniMusic.play(initMusicJson.musicId);
+				miniMusic.play(initMusicJson.musicId,rotate);
 				$("#p_songName").html(initMusicJson.songerName);
 				$("#p_singerName").html(initMusicJson.singername);
 			}).appendTo(".list_ul");
@@ -75,7 +81,7 @@ $(function(){
 		}
 	});
 	function keySearch(evt){
-		if(evt.keyCode==undefined||(evt.keyCode!=undefinedevt.keyCode==13||evt.charCode==13)){
+		if(evt.keyCode==undefined||(evt.keyCode!=undefined&&evt.keyCode==13||evt.charCode==13)){
 			window.searchMessage.index=1;
 			if(window.searchFlag===false){
 				window.searchFlag=true;
@@ -138,10 +144,10 @@ $(function(){
 	$("#play_music").on("click", function(){
 		if(this.className=="play_music"){
 			this.className="pause_music";
-			miniMusic.play();
+			miniMusic.play(null,rotate);
 		}else{
 			this.className="play_music";
-			miniMusic.pause();
+			miniMusic.pause(noRotate);
 			clearInterval(window.songTime);
 		}
 	});
@@ -217,17 +223,19 @@ $(function(){
 		}
 		$("#play_music").get(0).className="pause_music";
 		$("#singer_photo").attr("src", "/myHome/load/download_singerPhoto?singerName="+encodeURI(encodeURI(this.getElementsByTagName("span")[7].innerHTML)));
-		miniMusic.play(this.getAttribute("alt"));
+		miniMusic.play(this.getAttribute("alt"),rotate);
 		$("#p_songName").html(this.getElementsByTagName("span")[6].innerHTML);
 		$("#p_singerName").html(this.getElementsByTagName("span")[7].innerHTML);
 	}
 	function searchMusic(index,name,method){
+		$("#lock").lock();
 		$.ajax({
 			url:"/myHome/search/search_music",
 			method : 'post',
 			data : {
 				pageIndex:index,searchName:name,pageSize:20},
 			success:function(text){
+				$("#lock").unlock();
 				var json;
 				json=JSON.parse(text);
 				if(json.length<=1){
@@ -304,17 +312,30 @@ $(function(){
 		var musicId=$parent.attr("alt");
 		var songerName=$(".search_result_songname",$parent).text();
 		var singername=$(".search_result_singername",$parent).text();
+		var _musicTempArr=$.getCookies('musicMessage');
+		var _musicCount=_musicTempArr==null? 0 : _musicTempArr.length;
 		var strJson=JSON.stringify({
 			"songerName":songerName,
 			"singername":singername,
 			"musicId":musicId
 		});
+		for ( var int = 0; int < _musicCount; int++) {	
+			if(strJson==_musicTempArr[int]){
+				strJson=null;
+				break;
+			}
+		}
+		if(strJson==null){
+			$.notice("Viki 音乐","您已经添加过改音乐了！",1500);
+			return false;
+		}
+		$.notice("Viki 音乐","音乐添加成功！",1500);
 		$.cookie('musicMessage'+(musicCount++),strJson, {expires: 7, path: '/'});
 		$("<li></li>").text(songerName+"--"+singername).attr("alt",musicId).click(function(){
 			$("#play_music").get(0).className="pause_music";
 			$("#singer_photo").attr("src", "/myHome/load/download_singerPhoto?singerName="+singername);
 			var musicId=this.getAttribute("alt");
-			miniMusic.play(musicId);
+			miniMusic.play(musicId,rotate);
 			$("#p_songName").html(songerName);
 			$("#p_singerName").html(singername);
 		}).appendTo(".list_ul");
@@ -347,11 +368,17 @@ MiniMusicBox.prototype={
 	setVolume:function(num){
 		this.playBox.volume(num);
 	},
-	play:function(url){
+	play:function(url,fn){
 		this.playBox.playMusic(url);
+		if(typeof fn =='function'){
+			fn.call(this);
+		}
 	},
-	pause:function (){
+	pause:function (fn){
 		this.playBox.pauseMusic();
+		if(typeof fn =='function'){
+			fn.call(this);
+		}
 	},
 	previous:function (){
 		

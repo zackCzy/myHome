@@ -9,6 +9,7 @@
 		<link type="text/css" rel="stylesheet" href="/myHome/CSS/MiniMusicHome.css">	
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/span.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-1.10.1.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/plugObject/notice.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/JQ_plugs.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/MiniMusicHome.js" ></script>
 		<title>Mini 音乐</title>
@@ -58,7 +59,7 @@
 				<s:if test="#session.sgin==null">			
 					<a id="headLogin" class="anav">登陆</a>|
 					<a href="/myHome/application" class="anav">注册</a>|
-					<a href="/myHome/" class="anav">Mini首页</a>	
+					<a href="/myHome/" class="anav">Viki 首页</a>	
 				</s:if>
 				<s:else>
 					<div class="user_message_left">
@@ -69,7 +70,7 @@
 							<li id="exit_login">退出</li>
 						</ul>	
 					</div>
-					<a id="miniindex" href="/myHome/" class="anav">Mini首页</a>	
+					<a id="miniindex" href="/myHome/" class="anav">Viki 首页</a>	
 				</s:else>
 			</div>
 		</div>
@@ -78,7 +79,7 @@
 		</div>
 		<div class="mini_music_component">
 			<div class="mini_music_playArea">
-				<h2 id="p_songName" class="music_song">Mini音乐</h2>
+				<h2 id="p_songName" class="music_song">Viki 音乐</h2>
 				<span id="p_singerName" class="music_singer">---</span>
 				<div class="mini_music_controll">
 					<div class="singer_photo">
