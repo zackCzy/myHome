@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.mini.domain">
+
+	<class name="UserBaseDatum"  table="user_base_datum" >
+		<cache usage="read-write" region="UserBaseDatum"/>
+		<id name="id" >
+			<generator class="foreign" >
+				<param name="property">user</param>
+			</generator>
+		</id>
+		<one-to-one name="user"  constrained="true" lazy="proxy"/>
+		<property name="name" />
+		<property name="sex" />
+		<property name="bloodGroup" column="blood_group" />
+		<property name="addr" column="address" />	
+		<property name="info" />
+		<property name="birthday" />		
+	</class>
+	
+</hibernate-mapping>

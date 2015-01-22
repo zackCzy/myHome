@@ -1,0 +1,55 @@
+<style type="text/css">
+.contentPoint {
+	width: 220px;
+	height: 130px;
+	background: #EFEFEF url(/myHome/image/contentPoint.png);
+	border: 3px solid #58CAFA;
+	border-top: 0;
+	display: none;
+	text-align: center;
+	line-height: 90px;
+	height: auto;
+	min-height:200px;
+	opacity: 0;
+	filter: alpha(opacity =             0);
+	z-index: 9889;
+	border-radius: 0 0 8px 8px;
+	text-shadow: 0 2px 3px #CFCFCF;
+	box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.05), 5px 5px 3px
+		rgba(0, 0, 0, 0.1);
+	font-size: 14px;
+	color: #898989;
+	font-weight: bold;
+	position: fixed;
+	top: 0;
+}
+</style>
+<div class="contentPoint" id="point">
+	<span
+		style="color: #FF4700; margin: 25px 0 0; line-height: 20px; height: 20px; display: block;">viki
+		提示您!</span>
+	<div id="point_cont"></div>
+</div>
+<script type="text/javascript">
+function notice(text, fun) {
+	var temp = $("#point").setCenter().css({
+		top: "0",
+		display: "block"
+	}).animate({
+		opactiy: 1,
+		height: 130
+	}, function() {
+		setTimeout(function() {
+			temp.animate({
+				opactiy: 0,
+				height: 0
+			}, function() {
+				temp.hide();
+				if (typeof fun == 'function')
+					fun();
+			});
+		}, 1000);
+	});
+	$("#point_cont").html(text);
+}
+</script>

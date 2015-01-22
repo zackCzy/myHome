@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.mini.domain">
+
+	<class name="UnitDatum" table="unit_datum" >
+		<id name="id" >
+			<generator class="native" />
+		</id>	
+		<many-to-one name="user"  column="user_id" unique="true"/>
+		<property name="workTime" column="work_time"/>
+		<property name="schoolTime" column="school_time"/>
+		<property name="schoolAddress" column="school_address"/>
+		<property name="workUnit" column="work_unit"/>
+		<property name="schoolType" column="school_type"/>
+	</class>
+</hibernate-mapping>

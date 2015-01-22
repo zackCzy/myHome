@@ -1,0 +1,148 @@
+@CHARSET "UTF-8";
+
+body {
+	background: url("/myHome/image/sginBg.png");
+}
+
+.sginHead {
+	width: 463px;
+	height: 396px;
+	background: url("/myHome/image/sginView.png");
+	display: block;
+	position: absolute;
+	right: 0px;
+	top: 70px;
+}
+
+.input {
+	width: 193px;
+	height: 26px;
+	background: #E0E0E0;
+	display: block;
+	margin: 0 0 33px 190px;
+	line-height: 26px;
+	border: 0 none;
+	padding: 0 ;
+	color:#484848;
+	letter-spacing: 1px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.checkStatus {
+	font-size: 13px;
+	color: #E4E4E4;
+	float: left;
+	cursor: pointer;
+	display: block;
+	height: 16px;
+	width: 95px;
+	display: block;
+}
+
+#weekExpiry,#monthExpiry {
+	float: left;
+	margin: 1px 10px 0 100px;
+	display: block;
+	cursor: pointer;
+	height: 16px;
+	width: 16px;
+	display: block;
+}
+*:focus{outline: none;}
+
+#sginAccount {
+	width: 103px;
+	height: 37px;
+	position: absolute;
+	top: 285px;
+	right: 70px;
+	background: url("/myHome/image/login_out.png");
+	cursor: pointer;
+}
+
+#sginAccount:hover {
+	background: url("/myHome/image/login_over.png");
+}
+
+.sginNav {
+	margin:5px 0 0 0;
+	width: 100%;
+	background: #82C138;
+	height: 50px;
+	box-shadow: 4px 3px 4px rgba(0, 0, 0, 0.05), 0 2px 5px
+		rgba(0, 0, 0, 0.5);
+		
+}
+.sginNav img{
+float: left;
+height:45px;
+}
+.sginNav ul {
+	list-style: none;
+	float: right;
+	background: #82C138;
+}
+
+.sginNav ul li {
+	width: 120px;
+	height: 22px;
+	padding: 10px;
+	text-align: center;
+	line-height: 22px;
+	float: left;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	color: #F2F8EA;
+	cursor: pointer;
+	border-left: 1px solid #DDDDDD;
+	border-bottom: 4px solid #331C13;
+	border-top: 4px solid #331C13;
+}
+.sginNav ul li a{
+	font-size: 14px;
+	font-weight: bold;
+	color: #F2F8EA;
+	cursor: pointer;
+	text-decoration: none;
+}
+.sginNav ul li:hover {
+	background: #82C138;
+	border-bottom: 4px solid #4C8DCD
+}
+
+.sginDisplay{
+	float:left;
+	margin:85px 0 0 120px;
+	width:400px;
+	height:316px;
+	background: url('/myHome/image/zhongqiu.png') 73px 88px no-repeat;
+}
+.displayImg{
+	width:400px;
+	height:316px;
+	background:url("/myHome/image/display.png");
+}
+#sginStatus{
+	position:absolute;
+	bottom:15px;
+	left:70px;
+	width:350px;
+	height:30px;
+
+	
+}
+#sginStatus span{
+	float: right;
+	margin-right: 200px;
+	margin-top: 1px;
+	color: #C7C7C7;
+	font-weight: bold;
+}
+	
+	
+	
+	
+	
+	

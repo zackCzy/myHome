@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+                
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" 
+   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+           	http://www.springframework.org/schema/context 
+          	http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+          	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">  
+	<context:annotation-config></context:annotation-config>
+<!-- 组件搜索
+
+ -->
+	<context:component-scan base-package="cn.mini.dao.impl"></context:component-scan>
+	<context:component-scan base-package="cn.mini.service.impl"></context:component-scan>
+	<context:component-scan base-package="cn.mini.struts2.action"></context:component-scan>
+	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" /><!-- org.gjt.mm.mysql.Driver -->
+		<property name="jdbcUrl"
+			value="jdbc:mysql://localhost:3306/user?useUnicode=true&amp;characterEncoding=UTF-8" />
+		<property name="user" value="root" />
+		<property name="password" value="" />
+		<!--初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
+		<property name="initialPoolSize" value="3" />
+		<!--连接池中保留的最小连接数。 -->
+		<property name="minPoolSize" value="1" />
+		<!--连接池中保留的最大连接数。Default: 15 -->
+		<property name="maxPoolSize" value="300" />
+		<!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+		<property name="maxIdleTime" value="60" />
+		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+		<property name="acquireIncrement" value="5" />
+		<!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
+		<property name="idleConnectionTestPeriod" value="60" />
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources"><!-- 放置hibernate的配置文件 -->
+			<list>
+				<value>cn/mini/domain/UserBase.hbm.xml</value>
+				<value>cn/mini/domain/UserLog.hbm.xml</value>
+				<value>cn/mini/domain/Comment.hbm.xml</value>
+				<value>cn/mini/domain/UserSpaceMusic.hbm.xml</value>
+				<value>cn/mini/domain/SearchMusic.hbm.xml</value>
+				<value>cn/mini/domain/SingerPhoto.hbm.xml</value>
+				<value>cn/mini/domain/UserPhoto.hbm.xml</value>
+				<value>cn/mini/domain/SystemMessage.hbm.xml</value>
+			  	<value>cn/mini/domain/SpaceDatum.hbm.xml</value>
+				<value>cn/mini/domain/UserBaseDails.hbm.xml</value>
+				<value>cn/mini/domain/UserBaseDatum.hbm.xml</value>
+				<value>cn/mini/domain/UnitDatum.hbm.xml</value> 
+				<value>cn/mini/domain/ReviewewComment.hbm.xml</value> 
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				 <prop key="hibernate.hbm2ddl.auto">update</prop>
+				 <prop key="hibernate.format_sql">false</prop>
+				 <prop key="hibernate.show_sql">false</prop>
+				 <prop key="hibernate.cache.use_second_level_cache">true</prop>
+				 <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+				 <prop key="hibernate.cache.use_query_cache">true</prop>
+				 <prop key="javax.persistence.validation.mode">none</prop>  
+ 				 <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+			</props>
+		</property>
+	</bean>
+
+  <!--hibernate事务管理器配置--> 
+    <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" scope="singleton"> 
+      <property name="sessionFactory" ref="sessionFactory"></property> 
+  	</bean>  
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+  			<tx:method name="get" read-only="true"/>
+  			<tx:method name="getUserLogs" read-only="true"/>
+  			<tx:method name="getUserLog" read-only="true"/>
+  			<tx:method name="findUserService" read-only="true"/>
+  			<tx:method name="sginUserService" read-only="true"/>
+  			<tx:method name="selectUserService" read-only="true"/>
+  			<tx:method name="getUserPhoto" read-only="true"/>
+  			<tx:method name="removeUserPhoto" read-only="true"/>
+  			<tx:method name="findFriends" read-only="true"/>
+  			<tx:method name="getSingerPhoto" read-only="true"/>		
+  			<tx:method name="*"/>
+  		</tx:attributes>
+	</tx:advice>
+  	<aop:config>
+  		<aop:pointcut expression="execution(* cn.mini.service.impl.*.*(..))" id="fooServiceOperation"/>
+  		<aop:advisor advice-ref="txAdvice" pointcut-ref="fooServiceOperation"/>
+  	</aop:config>
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
+		destroy-method="close"> <property name="driverClassName" value="${jdbc.driverClassName}" 
+		/> <property name="url" value="${jdbc.url}" /> <property name="username" 
+		value="${jdbc.username}" /> <property name="password" value="${jdbc.password}" 
+		/> </bean> <aop:aspectj-autoproxy /> 通过注解动态代理 PS：缺点 没遇到一个注解 就会产生一个代理类 不利于性能 
+		<aop:config> 
+			<aop:pointcut expression="execution(* JutilTest.DoWork.*(..))" id="allMethod"/>
+			 <aop:aspect ref="kingproxy"> 
+			 <aop:before method="before" 	pointcut-ref="allMethod"/> 
+			 <aop:after method="After" pointcut-ref="allMethod"/> 
+		</aop:aspect> </aop:config> -->
+
+
+</beans>

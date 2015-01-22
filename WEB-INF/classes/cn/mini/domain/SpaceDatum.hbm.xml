@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.mini.domain">
+
+	<class name="SpaceDatum" table="space_datum" >
+		<id name="id" >
+			<generator class="native" />
+		</id>	
+		<many-to-one name="user"  column="user_id" unique="true" />
+		<property name="nickName" column="nick_name" length="16"/>
+		<property name="spacePassWord" column="space_password"/>
+		<property name="visible" />
+		<property name="rank"/>
+
+	</class>
+</hibernate-mapping>

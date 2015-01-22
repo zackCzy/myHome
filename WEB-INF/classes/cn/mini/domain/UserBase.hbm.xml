@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.mini.domain">
+
+	<class name="UserBase" table="user_base" >
+		 <cache usage="read-write" region="UserBase"/>
+		<id name="id" >
+			<generator class="native" />
+		</id>
+		
+		<property name="name" column="account" length="16"/>
+		
+		<!--constrained 懒加载
+			 fetch="join"  不能喝懒加载一起使用否则懒加载失效
+			 inverse="true"  更新时 是否级联
+			 <one-to-one name="up"  cascade="delete" lazy="proxy" />
+			 <one-to-one name="userMessage"  cascade="delete" lazy="proxy" />
+		  -->	
+		<property name="password" />
+		<property name="date"/>
+		<property name="active"/>
+		<property name="email"/>
+<!-- 
+		<one-to-one name="spaceDatum"  property-ref="user" constrained="true" lazy="proxy"/>
+		<one-to-one name="userBaseDatum"  property-ref="user" constrained="true" lazy="proxy"/>
+		<one-to-one name="userBaseDails"  property-ref="user" constrained="true" lazy="proxy"/>
+		<one-to-one name="unitDatum"  property-ref="user" constrained="true" lazy="proxy"/>
+ -->
+      <one-to-one name="spaceDatums" property-ref="user" cascade="delete" />
+	  <one-to-one name="unitDatums" property-ref="user" cascade="delete" />
+	  <one-to-one name="userBaseDails" property-ref="user" cascade="delete" />
+	  <one-to-one name="userBaseDatum"  cascade="delete" lazy="proxy" />
+		<bag name="comments" cascade="delete" inverse="true" order-by="date desc">
+			 <key column="user_id"></key>
+			 <one-to-many class="Comment"/>
+		</bag>	
+		<bag name="myComments" cascade="delete" inverse="true" order-by="date desc">
+			 <key column="com_user_id"></key>
+			 <one-to-many class="Comment"/>
+		</bag>	
+		 <bag name="userLogs" cascade="delete" inverse="true" order-by="modify_date desc">
+			 <key column="user_id"></key>
+			 <one-to-many class="UserLog"/>
+		</bag>	
+		<bag name="userSpaceMusics" cascade="delete" inverse="true" order-by="id desc">
+			 <key column="user_id"></key>
+			 <one-to-many class="UserSpaceMusic" />
+		</bag>	
+		<bag name="noFriendMess" cascade="delete" inverse="true" order-by="id desc">
+			<key column="user_id"></key>
+			 <one-to-many class="SystemMessage" />
+		</bag>
+		<bag name="systemMess" cascade="delete" inverse="true" order-by="id desc">
+			<key column="user_id"></key>
+			 <one-to-many class="SystemMessage" />
+		</bag>
+		<bag name="friendMess" cascade="delete" inverse="true" order-by="id desc">
+			<key column="user_id"></key>
+			 <one-to-many class="SystemMessage" />
+		</bag>
+		<bag name="flansMess" cascade="delete" inverse="true" order-by="id desc">
+			<key column="user_id"></key>
+			 <one-to-many class="SystemMessage" />
+		</bag>
+		<set name="followUsers" table="user_user" cascade="delete"  order-by="id desc">
+			 <key column="id"></key>
+			<many-to-many class="UserBase" column="user_id" />
+		</set>
+		<set name="fansUsers" table="user_user" cascade="delete" order-by="id desc">
+			 <key column="user_id"></key>
+			<many-to-many class="UserBase" column="id" />
+		</set>
+	</class>
+</hibernate-mapping>
+
+		<!-- 
+
+		<set name="userLogs" cascade="delete" inverse="true" >
+			 <key column="user_id"></key>
+			<one-to-many class="UserLog"/>
+		</set>	
+		 <list name="userLogs" cascade="delete" inverse="true"> 
+		 	<key column="user_id"  not-null="true"/> 
+		 	<list-index column="log_col" /> 
+		 	<one-to-many class="UserLog"/> 
+		 </list>
+		 -->

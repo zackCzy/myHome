@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.mini.domain">
+
+	<class name="UserPhoto"  table="user_photo" >
+		<id name="id" >
+			<generator class="native" />
+		</id>
+		<component name="user">
+			<property name="id" column="user_id"/>
+		</component>
+		<property name="tempPhoto" column="temp_photo" />
+		<property name="bigPhoto" column="big_photo" />
+		<property name="smallPhoto" column="small_photo" />
+		<property name="position" column="postion" />
+		<property name="sourcePhoto" column="source_photo" />						
+	</class>
+	
+</hibernate-mapping>

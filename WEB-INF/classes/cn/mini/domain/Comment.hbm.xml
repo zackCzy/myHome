@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.mini.domain">
+
+	<class name="Comment" table="comment" >
+		<id name="id" >
+			<generator class="native" />
+		</id>	
+		
+		<many-to-one name="userlog" column="log_id" />
+		<many-to-one name="user" column="user_id"/>
+		<many-to-one name="comUser" column="com_user_id"/>
+		<property name="date" column="date"/>
+		<property name="content" column="content" type="text" />
+		<bag name="reviewewCom" inverse="true" cascade="delete" > 
+			<key column="comment_id"></key>
+			<one-to-many class="ReviewewComment" />
+		</bag>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+	version="2.1">
+
+	<description>JSTL 1.1 core library</description>
+	<display-name>JSTL core</display-name>
+	<tlib-version>1.1</tlib-version>
+	<short-name>m</short-name>
+	<uri>/myHome</uri>
+
+	<tag>
+		<name>sqDate</name>
+		<tag-class>cn.mini.web.tag.SqlDateTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>date</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>timeType</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>replaceStr</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>Draws</name>
+		<tag-class>cn.mini.web.tag.DrawsCodeTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>path</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

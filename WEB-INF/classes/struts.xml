@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- <package name="default" namespace="/" extends="struts-default"> 
+		<default-action-ref name="index" /> 
+		<global-results> 
+			<result name="error">/error.jsp</result> 
+		</global-results> 
+		<global-exception-mappings>
+			 <exception-mapping exception="java.lang.Exception" result="error"/> 
+		</global-exception-mappings> <action name="index"> 
+		<result type="redirectAction"> 
+			<param name="actionName">HelloWorld</param> 
+			<param name="namespace">/example</param> 
+		</result> 
+		</action> 
+	</package> 
+	<include file="example.xml"/> Add packages here <include file="struts_interceptor.xml" > -->
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.i18n.encodeing" value="UTF-8" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- <constant name="struts.ognl.allowStaticMethodAccess" value="true" />静态方法调用 
+		<constant name="struts.action.extension" value="a"></constant>设置部署名 -->
+
+	<package name="test" namespace="/test" extends="struts-default">
+		<action name="test" class="cn.mini.struts2.action.RegisterUserAction" >
+			<result >/text.jsp</result>
+		</action>
+	</package>
+
+	<package name="home" namespace="/" extends="struts-default">
+		<interceptors>	
+			<interceptor name="AutoLoginInterceptor" class="cn.mini.struts2.interceptor.AutoLoginInterceptor" />
+			<interceptor-stack name="IminiHomeStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="AutoLoginInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<action name="*" class="cn.mini.struts2.action.MainAction"
+			method="{1}">
+			<interceptor-ref name="IminiHomeStack"></interceptor-ref>
+			<result name="home">/WEB-INF/jsp/home.jsp</result>
+			<result name="translator">/WEB-INF/jsp/translator.jsp</result>
+			<result name="application">/WEB-INF/jsp/Register.jsp</result>
+			<result name="music">/WEB-INF/jsp/MiniMusicHome.jsp</result>
+			<result name="sgin">/WEB-INF/jsp/sgin.jsp</result>
+		</action>
+	</package>
+	
+	<package name="search" namespace="/search" extends="struts-default" >
+		<interceptors>	
+			<interceptor name="RefererUrl" class="cn.mini.struts2.interceptor.RefererUrIInterceptor" />
+			<interceptor-stack name="searchStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="RefererUrl" />
+			</interceptor-stack>
+		</interceptors>
+		<action name="search_*" method="{1}" class="cn.mini.struts2.action.PublicSearchAction">
+			<interceptor-ref name="searchStack" />
+		</action>
+	</package>
+	
+	<package name="user" namespace="/user" extends="struts-default">
+		<interceptors>	
+			<interceptor name="AutoLoginInterceptor" class="cn.mini.struts2.interceptor.AutoLoginInterceptor" />
+			<interceptor name="CheckLoginInterceptor" class="cn.mini.struts2.interceptor.CheckLoginInterceptor" />
+			<interceptor name="AjaxLoginInterceptor" class="cn.mini.struts2.interceptor.AjaxCheckLoginInterceptor" />
+			<interceptor-stack name="miniAccountStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="AutoLoginInterceptor" />
+				<interceptor-ref name="CheckLoginInterceptor" />
+			</interceptor-stack>
+			<interceptor-stack name="AjaxAccountStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="AutoLoginInterceptor" />
+				<interceptor-ref name="AjaxLoginInterceptor" />			
+			</interceptor-stack>
+		</interceptors>
+
+		<global-results> 
+			<result name="sgin">/WEB-INF/jsp/sgin.jsp</result>
+			<result name="my404">/WEB-INF/html/404.xhtml</result>
+			<result name="activeAccount">/WEB-INF/jsp/CheckAccount.jsp</result>
+		</global-results>
+		
+		
+		<action name="user_*" class="cn.mini.struts2.action.UserAction"
+			method="{1}">
+			<interceptor-ref name="miniAccountStack" />
+			<result name="message">/WEB-INF/jsp/message.jsp</result>
+			<result name="space">/WEB-INF/jsp/mySpace.jsp</result>
+			<result name="draft">/WEB-INF/jsp/draft.jsp</result>
+			<result name="recycled">/WEB-INF/jsp/Recycled.jsp</result>
+			<result name="spaceMusic">/WEB-INF/jsp/MyHomeMusic.jsp</result>
+			<result name="photo">/WEB-INF/jsp/UserPhoto.jsp</result>
+			<result name="spaceUserPhoto">/WEB-INF/jsp/message.jsp</result>
+			<result name="UserFriends">/WEB-INF/jsp/UserFriends.jsp</result>
+			<result name="Home">/WEB-INF/jsp/HomePage.jsp</result>
+		</action>
+		
+		<action name="space/*/*" class="cn.mini.struts2.action.SpaceAction" method="{2}">
+			<result name="success">/WEB-INF/jsp/HomePage.jsp</result>
+			<result name="diary">/WEB-INF/jsp/HomePageDiary.jsp</result>
+			<result name="authority">/WEB-INF/jsp/SpaceAuthority.jsp</result>
+		</action>
+		<action name="diary" class="cn.mini.struts2.action.SpaceAction" method="diary">
+			<result name="success">/WEB-INF/jsp/HomePageDiary.jsp</result>
+			<result name="authority">/WEB-INF/jsp/SpaceAuthority.jsp</result>
+		</action>
+		<action name="datum" class="cn.mini.struts2.action.SpaceAction" method="datum">
+			<result name="success">/WEB-INF/jsp/HomePageDatum.jsp</result>
+			<result name="authority">/WEB-INF/jsp/SpaceAuthority.jsp</result>
+		</action>
+		<action name="smallSpeak" class="cn.mini.struts2.action.SpaceAction" method="smallSpeak">
+			<result name="success">/WEB-INF/jsp/HomePageSmallSpeak.jsp</result>
+			<result name="authority">/WEB-INF/jsp/SpaceAuthority.jsp</result>
+		</action>
+		<action name="spaceChackAuthority" class="cn.mini.struts2.action.SpaceAction" method="spaceChackAuthority">
+			<result name="success" type="redirectAction">
+				<param name="actionName">space/%{#user.name}/</param>				
+			</result>
+			<result name="authority">/WEB-INF/jsp/SpaceAuthority.jsp</result>
+		</action>
+		<action name="check_*" class="cn.mini.struts2.action.UserCheckAction"
+			method="{1}">
+			<result name="mycode">/WEB-INF/jsp/code.jsp</result>
+			<result name="checkRegister">/WEB-INF/jsp/CheckAccount.jsp</result>
+			<result name="error">/WEB-INF/jsp/User_error.jsp</result>
+		</action>
+
+		<action name="function_*" class="cn.mini.struts2.action.UserFunctionAction"
+			method="{1}">
+			<interceptor-ref name="miniAccountStack" />
+			<result name="cteateDiary">/WEB-INF/jsp/MessageBoard.jsp</result>
+			<result name="modifyDiary">/WEB-INF/jsp/MessageBoard.jsp</result>
+			<result name="readDiary">/WEB-INF/jsp/readDiary.jsp</result>
+			<result name="noDiary">/WEB-INF/cueJsp/noDiary.jsp</result>
+			<!-- 
+			<result name="removeDiary" type="redirectAction">
+				<param name="actionName">user_space</param>
+				<param name="acc">%{acc}</param>
+			</result>
+			 -->
+		</action>
+		
+		<action name="comment_*" class="cn.mini.struts2.action.CommentAction"
+			method="{1}">
+			<interceptor-ref name="AjaxAccountStack" />
+		</action>
+		
+		<action name="music_*" class="cn.mini.struts2.action.MusicAction"
+			method="{1}">
+			<!-- <interceptor-ref name="miniAccountStack" />-->
+			<result name="musicList">/WEB-INF/jsp/Music.jsp</result>
+		</action>
+	</package>
+	
+	
+	<package name="load" namespace="/load"  extends="struts-default">
+		<action name="download_*" class="cn.mini.struts2.action.DownLoadAction" method="{1}">
+			<result name="singerPhoto" type="stream">
+				<param name="contentType">%{#contentType}</param>
+				<param name="inputName">stream</param>
+				<param name="contentDisposition">%{#fileName}</param>
+				<param name="allowCaching">%{#allowCaching}</param>
+			</result>		
+		</action>
+		<action name="upload_*" class="cn.mini.struts2.action.UploadAction" method="{1}">
+		</action>
+	</package>
+
+	<package name="searchSpace" namespace="/searchSpace" extends="struts-default">	
+			<action name="search_*"
+				class="cn.mini.struts2.action.SpaceSearchAction" method="{1}">
+				<result name="success">
+					/WEB-INF/jsp/SearchSpace.jsp
+				</result>
+			</action>
+	</package>
+	
+	<package name="myFriends" namespace="/friends"  extends="struts-default">
+			<interceptors>	
+				<interceptor name="AutoLoginInterceptor" class="cn.mini.struts2.interceptor.AutoLoginInterceptor" />
+				<interceptor name="AjaxLoginInterceptor" class="cn.mini.struts2.interceptor.AjaxCheckLoginInterceptor" />
+				<interceptor-stack name="AjaxAccountStack">
+					<interceptor-ref name="defaultStack" />
+					<interceptor-ref name="AutoLoginInterceptor" />
+					<interceptor-ref name="AjaxLoginInterceptor" />			
+				</interceptor-stack>
+			</interceptors>	
+		<action name="friends_*" class="cn.mini.struts2.action.U2UFriendsAction" method="{1}">
+				<interceptor-ref name="AjaxAccountStack" />
+		</action>
+	</package>
+	<package name="json" namespace="/json" extends="struts-default,json-default">
+		<action name="com_*"  class="cn.mini.struts2.action.JsonComAction" method="{1}">
+			<result type="json" >
+				<param name="root">list</param>
+			</result>
+		</action>
+		<action name="content_*"  class="cn.mini.struts2.action.JsonComAction" method="{1}">
+			<result type="json" >
+				<param name="root">logLists</param>
+			</result>
+		</action>
+	</package>
+	<package name="backStage" namespace="/backStage" extends="struts-default">	
+		<action name="stage_*" class="cn.mini.struts2.action.backStageAction" method="{1}">
+			<result name="admin">/WEB-INF/backStageJsp/admin.jsp</result>
+		</action>
+		<action name="admin_*" class="cn.mini.struts2.action.backStageAction" method="{1}">
+			<result name="removeUser">/WEB-INF/backStageJsp/admin.jsp</result>
+		</action>
+	</package>
+</struts>

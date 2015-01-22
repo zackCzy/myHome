@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.mini.domain">
+
+	<class name="SystemMessage" table="system_message" >
+		<id name="id" >
+			<generator class="native" />
+		</id>	
+		<property name="messageTitle" column="message_title" />
+		<property name="visible" column="visible"/>
+		<property name="date" column="date"/>
+		<property name="messageContent" column="message_content"/>
+		<many-to-one name="user" column="user_id" />
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.mini.domain">
+
+	<class name="UserLog" table="user_log">
+		<id name="id" >
+			<generator class="native" />
+		</id>
+		<many-to-one name="user" column="user_id" />
+		<property name="logName" column="log_name"/>
+		<property name="logContent" column="log_content" type="text"/>
+		<property name="draft" column="draft"/>
+		<property name="type" column="type"/>
+		<property name="visible" column="visible"/>
+		<property name="commentNum" column="comment_num"/>
+		<property name="visibleNum" column="visible_num"/>
+		<property name="suppot" column="suppot"/>
+		<property name="modifyDate" column="modify_date"/>
+		<property name="noHtmlLog" column="no_html_log"  type="text"/>
+		<property name="rubbish" column="rubbish"/>
+		<property name="smallSpeak" column="small_speak"/>
+		<bag name="com" inverse="true" cascade="delete"  order-by="date desc"  > 
+			<key column="log_id"></key>
+			<one-to-many class="Comment" />
+		</bag>	
+		<set name="visitors" order-by="id desc">
+			<key column="visitor_id"></key>
+			<one-to-many class="UserBase"/>
+		</set>
+	</class>
+</hibernate-mapping>

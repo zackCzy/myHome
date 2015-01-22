@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>404 错误!</title>
+		<meta http-equiv="keywords" content="enter,your,keywords,here" />
+		<meta http-equiv="description"
+			content="404,未找到,错误" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<script type="text/javascript" src="/myHome/JS/tool/span.js"></script>
+		<style type="text/css">
+body {
+	background: url("/myHome/image/bg_noise.jpg") repeat;
+}
+
+h1 {
+	margin: 75px auto 0;
+	color: #0061a5;
+	display: block;
+	font: 72px 'TeXGyreScholaBold', Arial, sans-serif;
+	position: relative;
+	text-align: center;
+	text-shadow: 2px 2px #cbcbcb;
+}
+
+h1 span.icon {
+	background: none repeat scroll 0 0 #0061a5;
+	border-radius: 50px;
+	box-shadow: 1px 2px white;
+	color: #dfdfdf;
+	display: inline-block;
+	font-size: 46px;
+	font-weight: bold;
+	height: 50px;
+	line-height: 48px;
+	margin: 0 10px 0px 0;
+	position: relative;
+	text-align: center;
+	text-shadow: 0 0;
+	top: -6px;
+	width: 50px;
+}
+
+h1 span.sub {
+	font-size: 21px;
+	font-style: italic;
+	padding: 0 10px 0;
+	position: relative;
+	top: -20px;
+}
+
+.Earth {
+	background: url("/myHome/image/planet.png");
+	width: 967px;
+	margin: 0 auto;
+	display: block;
+	height: 967px;
+	position: absolute;
+	text-shadow: 0 0;
+	-webkit-animation:gogogo 35s infinite linear ;
+	-moz-animation:gogogo 35s infinite linear ;
+	-o-animation:gogogo 35s infinite linear ;
+	-ms-animation:gogogo 35s infinite linear ;
+	animation:gogogo 35s infinite linear ;
+}
+
+.error {
+	font-size: 18px;
+	font-style: normal;
+	font-family: "微软雅黑", "华文细黑", "黑体", arial;
+	font-weight: bold;
+	margin: 20px 0;
+	display: block;
+}
+@-webkit-keyframes gogogo {
+   0%{
+       -webkit-transform: rotate(0deg);
+   }
+   50%{
+       -webkit-transform: rotate(180deg);
+   }
+   100%{
+       -webkit-transform: rotate(360deg);
+   }
+}
+@-moz-keyframes gogogo {
+   0%{
+       -moz-transform: rotate(0deg);
+   }
+   50%{
+       -moz-transform: rotate(180deg);
+   }
+   100%{
+       -moz-transform: rotate(360deg);
+   }
+}
+@-o-keyframes gogogo {
+   0%{
+       -o-transform: rotate(0deg);
+   }
+   50%{
+       -o-transform: rotate(180deg);
+   }
+   100%{
+       -o-transform: rotate(360deg);
+   }
+}
+@keyframes gogogo {
+   0%{
+       transform: rotate(0deg);
+   }
+   50%{
+       transform: rotate(180deg);
+   }
+   100%{
+       transform: rotate(360deg);
+   }
+}
+.nav {
+	display: block;
+	position: fixed;
+	top: 70px;
+	right: 30px;
+	width: 150px;
+	height: 250px;
+	text-align: center;
+	z-index: 9999;
+}
+
+.nav ul {
+	list-style: none;
+	width: 130px;
+	margin: 10px auto;
+	font: 72px 'TeXGyreScholaBold', Arial, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #0061A5;
+}
+
+.nav li {
+	margin: 8px 0 0 0;
+	height: 40px;
+	box-shadow: 4px 3px 4px #999999;
+	border-radius: 15px;
+}
+
+.nav li a,.nav li a:VISITED,.nav li a:LINK,.nav li a:ACTIVE,.nav li a:FOCUS
+	{
+	border-radius: 15px;
+	float: left;
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #0061A5;
+	background: #F3F3F3;
+}
+
+.nav li a:hover {
+	background: #7BAA13;
+	box-shadow: 4px 3px 4px #888888;
+}
+
+</style>
+	</head>
+	<body>
+		<h1>
+			<span class="icon">!</span> 404
+			<span class="sub">page not found</span>
+			<span class="error">对不起!未找到您请求的页面!</span>
+		</h1>
+		<div class="nav">
+			<ul>
+				<li>
+					<a href="/myHome" target="_parent">Mini主页</a>
+				</li>
+				<li>
+					<a href="/myHome/translator" target="_parent">Mini词典</a>
+				</li>
+				<li>
+					<a>Mini导航</a>
+				</li>
+				<li>
+					<a>Mini音乐</a>
+				</li>
+				<li>
+					<a>联系我们</a>
+				</li>
+			</ul>
+		</div>
+		<div
+			style="width: 967px; position: relative; bottom: 0px; margin: 0 auto;">
+			<div class="Earth">
+			</div>
+		</div>
+		<script type="text/javascript">
+			document.documentElement.style['overflow'] = 'hidden';
+			addEvent(window,"resize",function(){
+				var body=	document.getElementsByTagName("body")[0];	
+				var height=viewInner().height;	
+				if(height>620){
+							body.style.height=viewInner().height+"px";
+				}else{body.style.height="620px";	}
+			});
+		</script>
+	</body>
+</html>

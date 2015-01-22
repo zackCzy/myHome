@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.mini.domain">
+	<class name="UserSpaceMusic" table="user_space_music" >
+		<id name="id" >
+			<generator class="native" />
+		</id>
+		<many-to-one name="user" column="user_id" />
+		<property name="musicId" column="music_id"/>
+		<property name="sex" column="sex"/>
+		<property name="sort" column="sort"/>
+		<property name="song" column="song"/>
+		<property name="singer" column="singer"/>	
+		<property name="special" column="special"/>
+		<property name="type" column="type"/>
+		<property name="area" column="area"/>
+	</class>
+</hibernate-mapping>

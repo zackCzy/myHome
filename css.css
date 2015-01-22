@@ -1,0 +1,276 @@
+@CHARSET "UTF-8";
+body,div,img,ul,li{
+	margin:0;
+	padding:0;
+	border:0 none;
+	font:12px/1.5 "雅黑,宋体"
+}
+.gaofu_head_wrap{
+	width:100%;
+	height:38px;
+	background:#4B4948;
+	box-shadow: 0 6px 4px rgba(0, 0, 0, 0.05), 0 7px 5px rgba(0, 0, 0, 0.3);
+}
+.gaofu_head{
+	margin:0 auto;
+	width:1200px;
+	height:38px;
+	color:#E8E8E8
+}
+.gaofu_head img{
+	margin-top:11px;
+	float:left;
+	width:208px;
+	height:16px;
+	margin-left:10px;
+}
+.gaofu_head a{
+	float: right;
+	color:#E8E8E8;
+	width:80px;
+	height:38px;
+	line-height:38px;
+	text-decoration: none;
+	font-size:14px;
+	font-weight: 700;
+	text-align: center;
+	margin-right:10px;
+}
+.gaofu_head a:hover{
+	text-decoration:underline;
+}
+.gaofu_nav_wrap{
+	width:100%;
+	height:87px;
+	background: #FFFFFF;
+	z-index: 2;
+}
+.gaofu_nav{
+	margin:0 auto;
+	width:1200px;
+	height:87px;
+	color:#E8E8E8
+}
+.gaofu_nav img{
+	margin-top:21px;
+	float:left;
+	width:529px;
+	height:45px;
+}
+.gaofu_nav ul,li.gaofu_info ul{
+	list-style: none;
+	width:480px;
+	background: #FFFFFF;
+	height:87px;
+	display: block;
+	zoom:1;
+	float: right;
+}
+.gaofu_nav ul li{
+	float: left;
+	width:120px;
+	text-align: center;
+	font-size:19px;
+	font-weight:700;
+	color:#4B4948;
+	height:87px;
+	line-height:87px;
+	cursor: pointer;
+}
+.gaofu_nav_rollchart{
+	width:100%;
+	height:400px;
+	background: #f00;
+	position: relative;
+	z-index:1;
+}
+.gaofu_nav_rollchart ul{
+	list-style:none;
+	zoom:1;
+	display: block;
+}
+.gaofu_nav_rollchart ul li{
+	width:100%;
+	height:400px;
+	display: block;
+	float: left;
+}
+#select_img{
+	width:100%;
+	height:30px;
+	position:absolute;
+	bottom:20px;
+	
+}
+#select_img ul{
+	list-style:none;
+	display: block;
+	width:215px;
+	height:30px;
+	margin:0 auto;
+	zoom:1;
+}
+#select_img ul li{
+	width:19px;
+	height:19px;
+	background: #fff;
+	border-radius:19px;
+	margin:6px 15px 0 0;
+	cursor: pointer;
+}
+#select_img ul li:hover{
+	background: #EA5D52;
+}
+.gaofu_nav_rollchart img{
+	width:100%;
+	height:400px;
+}
+.gaofu_nav ul li:HOVER {
+	color:#E95C50;
+}
+li.gaofu_info{
+position: relative;
+}
+li.gaofu_info:hover ul{
+	display: block;
+}
+li.gaofu_info ul{
+	width:118px;
+	position: absolute;
+	border: 1px solid #ccc;
+	border-top:3px solid #EA5D52;
+	top:70px;
+	left:-2px;
+	background: #FFFFFF;
+	display: none;
+	z-index: 999;
+	height:0;
+}
+li.gaofu_info li{
+	height:35px;
+	width:118px;
+	background: #FFFFFF;
+	border: 1px solid #ccc;
+	border-top: 0;
+	float: none;
+	line-height:35px;
+	font-size:14px;
+	color:#565453;
+}
+li.gaofu_info li:hover{
+	background: #DCEBF9;
+}
+.gaofu_body{
+	width:100%;
+	height:300px;
+}
+.gaofu_body ul{
+	list-style:none;
+	zoom:1;
+	display: block;
+	height:330px;
+	width:1200px;
+	margin:0 auto;
+}
+.gaofu_body ul li{
+	display: block;
+	width:338px;
+	height:150px;
+	float:left;
+	border-right:2px solid #E8E8E8;
+	margin-top:50px;
+	padding-left:45px;
+	padding-right:15px;
+}
+.gaofu_body span{
+	height:93px;
+	width:93px;
+	display: block;
+	float: left;
+}
+.gaofu_body h1{
+	margin-top:20px;
+	padding:0;
+	border:0;
+	color:#4B4948;
+	width:110px;
+	float: left;
+}
+.gaofu_business_info{
+	width:150px;
+	height:150px;
+	display: block;
+	float: right;
+	text-align: center;
+}
+.gaofu_business_info a{
+	width:120px;
+	height:30px;
+	display: block; 
+	line-height:30px;
+	font-size:16px;
+	color:#4B4948;
+	font-weight:700;
+	cursor: pointer;
+}
+.gaofu_business_info a:hover{
+	color:#EA5D52;
+}
+.gaofu_foot{
+	width:100%;
+	height:500px;
+}
+.gaofu_foot h1{
+	margin:0 auto;
+	padding:0;
+	border:0;
+	width:1125px;
+	border-bottom:2px solid #EA5D52;
+	color:#EA5D52;
+}
+.gaofu_foot ul{
+	display: block;
+	width:1125px;
+	list-style: none;
+	zoom:1;
+	height:400px;
+	margin:0 auto;
+}
+.gaofu_foot ul li{
+	width:190px;
+	height:56px;
+	border:1px solid #ccc;	
+	display: block;
+	float: left;
+	margin: 20px 15px;
+	cursor: pointer;
+}
+.gaofu_foot ul li:hover{
+border:1px solid #EA5D52;	
+}
+.gaofu_foot_nav_wrap{
+	width:100%;
+	height:90px;
+	background: #4B4948;
+}
+.gaofu_foot_nav{
+	width:1105px;
+	margin:0 auto;
+	height:70px;
+	background: #4B4948;
+	padding:10px;
+}
+.gaofu_foot_nav p{
+ 	text-align: center;
+ 	height:15px;
+ 	line-height:20px;	
+ 	font-size:14px;
+ 	color:#ececec;
+ 	vertical-align:middle; 
+}
+.gaofu_foot_nav p a{
+ 	cursor: pointer;
+}
+.gaofu_foot_nav p a:hover{
+ 	text-decoration: underline;
+}

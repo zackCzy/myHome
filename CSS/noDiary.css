@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+body{
+	background:#CCCCCC;
+}
+.pointBox{
+	width:800px;
+	height:350px;
+	background:#CCCCCC url("../image/wyshi.jpg") no-repeat;
+	margin:80px auto 0;
+	border:1px solid #ececec;
+	 box-shadow: 4px 3px 4px #999999;
+	 border-radius:20px;
+}
+h2{
+  text-align:right;
+  color: #0061a5;
+  display: block;
+  font: 45px "TeXGyreScholaBold",Arial,sans-serif;
+  margin: 75px auto 0;
+  position: relative;
+  text-align: center;
+  text-shadow: 2px 2px #cbcbcb;
+ line-height: 48px;
+}
+span.icon {
+	margin-top:10px;
+    background: none repeat scroll 0 0 #0061a5;
+    border-radius: 50px;
+    box-shadow: 1px 2px white;
+    color: #dfdfdf;
+    display: inline-block;
+    font-size: 46px;
+    font-weight: bold;
+    height: 50px;
+    line-height: 48px;
+    margin: 0 10px 0 0;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 0;
+    top: 0px;
+    width: 50px;
+}
