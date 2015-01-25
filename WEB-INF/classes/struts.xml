@@ -69,6 +69,7 @@
 			<interceptor name="AutoLoginInterceptor" class="cn.mini.struts2.interceptor.AutoLoginInterceptor" />
 			<interceptor name="CheckLoginInterceptor" class="cn.mini.struts2.interceptor.CheckLoginInterceptor" />
 			<interceptor name="AjaxLoginInterceptor" class="cn.mini.struts2.interceptor.AjaxCheckLoginInterceptor" />
+			<interceptor name="RefererUrl" class="cn.mini.struts2.interceptor.RefererUrIInterceptor" />
 			<interceptor-stack name="miniAccountStack">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="AutoLoginInterceptor" />
@@ -78,6 +79,10 @@
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="AutoLoginInterceptor" />
 				<interceptor-ref name="AjaxLoginInterceptor" />			
+			</interceptor-stack>
+			<interceptor-stack name="RefererStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="RefererUrl" />
 			</interceptor-stack>
 		</interceptors>
 
@@ -154,7 +159,7 @@
 		
 		<action name="music_*" class="cn.mini.struts2.action.MusicAction"
 			method="{1}">
-			<!-- <interceptor-ref name="miniAccountStack" />-->
+			<interceptor-ref name="RefererStack" />
 			<result name="musicList">/WEB-INF/jsp/Music.jsp</result>
 		</action>
 	</package>

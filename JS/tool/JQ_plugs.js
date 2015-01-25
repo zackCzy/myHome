@@ -281,9 +281,8 @@
 		},
 		getCookie:function (name)
 		{
-		    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)","igm");
+		    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)"); 
 		    if(arr=document.cookie.match(reg)){
-		    	alert(arr);
 		        return decodeURIComponent(arr[2]);
 		    }else
 		        return null;
@@ -302,6 +301,16 @@
 	            }
 	        }
 			return reArr;
-		} 
+		},
+		removeCookie:function(name,path){
+			var exp = new Date(1970,1,1);
+		    var cval=$.getCookie(name);
+		    if(cval!=undefined){
+		    	$.cookie(name,cval, {expires: exp.toGMTString(),"path":path}); 
+		    	return true;
+		    }else{
+		    	return false;
+		    }
+		}
 	});
 })(jQuery,window);

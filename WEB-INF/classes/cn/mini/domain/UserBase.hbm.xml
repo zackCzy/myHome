@@ -32,6 +32,10 @@
 	  <one-to-one name="unitDatums" property-ref="user" cascade="delete" />
 	  <one-to-one name="userBaseDails" property-ref="user" cascade="delete" />
 	  <one-to-one name="userBaseDatum"  cascade="delete" lazy="proxy" />
+	  <bag name="vkmusics" inverse="true" cascade="delete" > 
+			<key column="viki_music_id"></key>
+			<one-to-many class="VikiMusic" />
+		</bag>
 		<bag name="comments" cascade="delete" inverse="true" order-by="date desc">
 			 <key column="user_id"></key>
 			 <one-to-many class="Comment"/>

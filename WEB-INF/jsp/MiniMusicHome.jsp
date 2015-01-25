@@ -5,8 +5,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link type="text/css" rel="stylesheet" href="/myHome/CSS/public/main.css">
-		<link type="text/css" rel="stylesheet" href="/myHome/CSS/MiniMusicHome.css">	
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/CSS/public/main.css">
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/CSS/MiniMusicHome.css">	
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/span.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-1.10.1.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/plugObject/notice.js"></script>
@@ -16,6 +16,7 @@
 	</head>
 	<body>
 		<%@include file="../memberJsp/login.html" %>
+		<input type="hidden" value="${session.id}" name="h_userId">
 		<div style="position: fixed;width:0;height:0;top: 0;background: #c0f;left:400px;">
 			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
 				codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
@@ -34,10 +35,17 @@
 			</object>	
 		</div>
 		<div class="mini_music_box">
-			<span class="list_title">临时列表
+			<span class="list_title">
+				<ul>
+					<li value="0">临时列表</li>
+					<li value="1">Viki列表</li>
+				</ul>
 				<i></i>
 			</span>
-			<ol class="list_ul">
+			<ol class="list_ul temp">
+
+			</ol>	
+			<ol class="list_ul vikiMusic">
 
 			</ol>	
 		</div>
@@ -58,24 +66,24 @@
 			<div class="user_message_area">
 				<s:if test="#session.sgin==null">			
 					<a id="headLogin" class="anav">登陆</a>|
-					<a href="/myHome/application" class="anav">注册</a>|
-					<a href="/myHome/" class="anav">Viki 首页</a>	
+					<a href="${pageContext.request.contextPath}/application" class="anav">注册</a>|
+					<a href="${pageContext.request.contextPath}" class="anav">Viki首页</a>	
 				</s:if>
 				<s:else>
 					<div class="user_message_left">
-						<img width=25px height=25px  src="/myHome/load/download_getSmallPhoto?id=${id}">
+						<img width=25px height=25px  src="${pageContext.request.contextPath}/load/download_getSmallPhoto?id=${id}">
 						<strong>${sgin}</strong>
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/user/space/${sgin}/" target="_blank">空间</a></li>
 							<li id="exit_login">退出</li>
 						</ul>	
 					</div>
-					<a id="miniindex" href="/myHome/" class="anav">Viki 首页</a>	
+					<a id="miniindex" href="${pageContext.request.contextPath}" class="anav">Viki首页</a>	
 				</s:else>
 			</div>
 		</div>
 		<div class="mini_music_bg">
-			<img src="/myHome/images/miniMusic/016.jpg" id="music_img_bg"/>
+			<img src="${pageContext.request.contextPath}/images/miniMusic/016.jpg" id="music_img_bg"/>
 		</div>
 		<div class="mini_music_component">
 			<div class="mini_music_playArea">
@@ -83,7 +91,7 @@
 				<span id="p_singerName" class="music_singer">---</span>
 				<div class="mini_music_controll">
 					<div class="singer_photo">
-						<img id="singer_photo" width=180 height=180 src="/myHome/load/download_singerPhoto?singerName=%E5%91%A8%E6%9D%B0%E4%BC%A6" />
+						<img id="singer_photo" width=180 height=180 src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%E5%91%A8%E6%9D%B0%E4%BC%A6" />
 						<span></span>
 					</div>
 				</div>
@@ -144,7 +152,7 @@
 								<li>
 									<span class="singer_li_hover"></span>
 									<span class="singer_name_n">邓紫棋</span>
-									<img src="/myHome/load/download_singerPhoto?singerName=%25E5%2590%258E%25E5%25BC%25A6"  alt="邓紫棋" src="" width=100% height=100% >
+									<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E5%2590%258E%25E5%25BC%25A6"  alt="邓紫棋" src="" width=100% height=100% >
 								</li>
 								<li><span class="singer_li_hover"></span></li>
 								<li><span class="singer_li_hover"></span></li>
