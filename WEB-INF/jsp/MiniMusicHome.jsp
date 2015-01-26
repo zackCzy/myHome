@@ -132,39 +132,44 @@
 				</div>
 			</div>
 			<div class="mini_music_content_right">
-					<div style="overflow: auto;height: 100%;width: 100%;">
-						<h2 style="float: left;">华语男歌手</h2>
-						<div class="singer_area">
-							<ul>
-								<li><span class="singer_li_hover"></span></li>
-								<li><span class="singer_li_hover"></span></li>
-								<li><span class="singer_li_hover"></span></li>
-								<li><span class="singer_li_hover"></span></li>
-								<li><span class="singer_li_hover"></span></li>
-								<li><span class="singer_li_hover"></span></li>
-								<li><span class="singer_li_hover"></span></li>
-								<li><span class="singer_li_hover"></span></li>
-							</ul>
-						</div>
-						<h2 style="float: left;">华语女歌手</h2>
-							<div class="singer_area">
-							<ul>
-								<li>
-									<span class="singer_li_hover"></span>
-									<span class="singer_name_n">邓紫棋</span>
-									<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E5%2590%258E%25E5%25BC%25A6"  alt="邓紫棋" src="" width=100% height=100% >
-								</li>
-								<li><span class="singer_li_hover"></span></li>
-								<li><span class="singer_li_hover"></span></li>
-								<li><span class="singer_li_hover"></span></li>
-								<li><span class="singer_li_hover"></span></li>
-								<li><span class="singer_li_hover"></span></li>
-								<li><span class="singer_li_hover"></span></li>
-								<li><span class="singer_li_hover"></span></li>
-							</ul>
-						</div>
+			<!--  
+				<div style="overflow: auto;height: 100%;width: 100%;">
+					<h2 style="float: left;">华语男歌手</h2>
+					<div class="singer_area">
+						<ul>
+							<li><span class="singer_li_hover"></span>
+								<span class="singer_name_n">邓紫棋</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E5%2590%258E%25E5%25BC%25A6"  alt="邓紫棋" src="" width=100% height=100% >
+							</li>
+							<li><span class="singer_li_hover"></span></li>
+							<li><span class="singer_li_hover"></span></li>
+							<li><span class="singer_li_hover"></span></li>
+							<li><span class="singer_li_hover"></span></li>
+							<li><span class="singer_li_hover"></span></li>
+							<li><span class="singer_li_hover"></span></li>
+							<li><span class="singer_li_hover"></span></li>
+						</ul>
 					</div>
+					<h2 style="float: left;">华语女歌手</h2>
+						<div class="singer_area">
+						<ul>
+							<li>
+								<span class="singer_li_hover"></span>
+								<span class="singer_name_n">邓紫棋</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E5%2590%258E%25E5%25BC%25A6"  alt="邓紫棋" src="" width=100% height=100% >
+							</li>
+							<li><span class="singer_li_hover"></span></li>
+							<li><span class="singer_li_hover"></span></li>
+							<li><span class="singer_li_hover"></span></li>
+							<li><span class="singer_li_hover"></span></li>
+							<li><span class="singer_li_hover"></span></li>
+							<li><span class="singer_li_hover"></span></li>
+							<li><span class="singer_li_hover"></span></li>
+						</ul>
+					</div>
+				</div>
 			</div>
+			-->
 		</div>
 	</body>
 </html>
