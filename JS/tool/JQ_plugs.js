@@ -119,9 +119,67 @@
 				)(this, args);
 			});
 			return this;
+		},
+		/**
+		 * <pre>创建标签</pre>
+		 * @param nodeName  欲创建的标签类型 
+		 * @param first 		创建起始数
+		 * @param num			添加数目
+		 * @param fn     	    创建中操作标签函数(op,int)
+		 * */
+		createNodes:function(nodeName,first,num,fn){
+			first=parseInt(first)>0? first:0;
+			num=num<=0? first:first+num;
+			$(this).each(function(){
+				$.myCreateNode(this,nodeName,first,num,fn);
+			});
+		},
+		/**
+		 * <pre>删除标签</pre>
+		 * @param postion 		删除位置
+		 * @param num			    删除数目
+		 * @param fn     	    	删除回调函数(node)
+		 * */
+		removeNodes:function(postion,num,fn){
+			postion=postion+1;		
+			num=num<=0? postion:postion+num;
+			$(this).each(function(){
+				$.myRemoveNode(this,postion,num,fn);
+			});
+		},
+		className:function(className){
+			$(this).each(function(){
+				this.className=className;
+			});
 		}
 	});
 	$.extend({
+		myRemoveNode:function (parentNode,postion,num,fn){
+			for ( var int = postion; int <num; int++) {		
+				 if(typeof  fn=='function') {
+					 var node=parentNode.children[postion];
+					 fn(node);
+				}	
+				 parentNode.removeChild(parentNode.children[postion]);
+			}	
+		},
+		/**
+		 * <pre>创建标签</pre>
+		 * @param parentNode 欲加入标签的父标签
+		 * @param nodeName  欲创建的标签类型 
+		 * @param first 		创建起始数
+		 * @param num			添加数目
+		 * @param fn     	    创建中操作标签函数(op,int)
+		 * */
+		myCreateNode:function (parentNode,nodeName,first,num,fn){	
+			for ( var int =first ; int <=num; int++) {
+				 var op=document.createElement(nodeName);
+				 if(typeof  fn=='function'){
+					 fn(op,int);
+				 }
+				 parentNode.appendChild(op);
+			}
+		},
 		/**
 		 * <pre>提示框</pre>
 		 * @param paramObj 

@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<link rel="stylesheet" type="text/css"
-	href="/myHome/csss/imgareaselect-default.css" />
-<script type="text/javascript" src="/myHome/scripts/jquery-1.7.2.js"></script>
-<script type="text/javascript" src="/myHome/scripts/jquery.imgareaselect.pack.js"></script>
-<script type="text/javascript" src="/myHome/scripts/jQueryRotate.js"></script>
-<script type="text/javascript" src="/myHome/JS/tool/span.js"></script>
-<script type="text/javascript" src="/myHome/JS/tool/ajaxfileupload.js"></script>
-<script type="text/javascript" src="/myHome/JS/tool/Ajax.js"></script>
+<link rel="stylesheet" type="text/css" href="/myHome/csss/imgareaselect-default.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/JS/plugObject/notice.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/JQ_plugs.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery.imgareaselect.pack.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jQueryRotate.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/ajaxfileupload.js"></script>
 <style>
 .portrait_left {
 	float: left;
@@ -217,13 +215,13 @@
 		
 		if(isUpload){
 			if(fileSize>65000){	
-				window.parent.notice("请选择小于65kb的图片");
+				$.notice("VIki提示您","请选择小于65kb的图片");
 			}else{
 				
 				ajaxFileUpload();
 			}
 		}else {
-			window.parent.notice("暂支持jpg,png,gif格式");
+			$.notice("VIki提示您","暂支持jpg,png,gif格式");
 		}
 	}
 	 function ajaxFileUpload(){
@@ -240,7 +238,7 @@
       		document.getElementById("avatar2").src=src;
           },
           error: function (data, status, e)            //相当于java中catch语句块的用法
-          	{window.parent.notice("服务器正忙，请稍后再试");}
+          	{$.notice("VIki提示您","服务器正忙，请稍后再试");}
       });    
     }	
 	$(document).ready(function() {	
@@ -308,11 +306,10 @@
 	function submit_avatar() {		
 		$('#rotation').val(value);
 		var that=document.getElementById("avatar1");
-		stateAjax({
+		$.ajax({
 			url:'/myHome/load/upload_saveUserPhoto',
 			method : 'get',
-			async : true,
-			message : {
+			data : {
 				top:document.forms['photoSize']['top'].value,
 				left:document.forms['photoSize'].left.value,
 				bottom:document.forms['photoSize'].bottom.value,
@@ -320,13 +317,13 @@
 				rotation:document.forms['photoSize'].rotation.value,
 				imgsize:parseInt(that.style.width)+","+parseInt(that.height)+","+parseInt(that.style.marginLeft)+","+parseInt(that.style.marginTop)
 			},
-			run:function(text){	
+			success:function(text){	
 				if( text=="you login has expired"){
-					window.parent.notice("您离开太久了，重新刷新下吧");
+					$.notice("VIki提示您","您离开太久了，重新刷新下吧");
 				}else if(text=="{'save':'ok'}"){
-					window.parent.notice("头像修改成功");
+					$.notice("VIki提示您","头像修改成功");
 				}else{
-					window.parent.notice("头像修改失败");
+					$.notice("VIki提示您","头像修改失败");
 				}
 			}
 		});

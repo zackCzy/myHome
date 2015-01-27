@@ -106,7 +106,6 @@
 			<result name="UserFriends">/WEB-INF/jsp/UserFriends.jsp</result>
 			<result name="Home">/WEB-INF/jsp/HomePage.jsp</result>
 		</action>
-		
 		<action name="space/*/*" class="cn.mini.struts2.action.SpaceAction" method="{2}">
 			<result name="success">/WEB-INF/jsp/HomePage.jsp</result>
 			<result name="diary">/WEB-INF/jsp/HomePageDiary.jsp</result>

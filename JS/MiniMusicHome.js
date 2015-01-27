@@ -64,7 +64,7 @@ $(function(){
 		$.ajax({
 			url:"/myHome/user/music_getVikiMusic",
 			data:{},
-			method:"GET",
+			type:"GET",
 			dataType:"JSON",
 			success:function(json){
 				for ( var int = 0; int < json.length; int++) {	
@@ -279,7 +279,7 @@ $(function(){
 		$("#lock").lock();
 		$.ajax({
 			url:"/myHome/search/search_music",
-			method : 'post',
+			type : 'post',
 			data : {
 				pageIndex:index,searchName:name,pageSize:20},
 			success:function(text){
@@ -367,7 +367,7 @@ $(function(){
 		var singerName=tempArr[1];
 		$.ajax({
 			url:"/myHome/user/music_removeVikiMusic",
-			method:"GET",
+			type:"GET",
 			data:{'id':id},
 			success:function(msg){
 				if(msg!="remove vikiMusic is error"){
@@ -417,7 +417,7 @@ $(function(){
 	function exitLogin(){
 		$.ajax({
 			url:"/myHome/exitLogin",
-			method : 'get',
+			type : 'get',
 			success:function(text){
 				if(text=="exit is ok"){
 					window.location.href=window.location.href;
@@ -516,7 +516,7 @@ $(function(){
 				"musicId":musicId,
 				"typeName":("默认")
 			},
-			method:"GET",
+			type:"GET",
 			success:function(msg){
 				if(msg!="add vikiMusic is error"){
 					$(that).attr("alt",msg);

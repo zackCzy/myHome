@@ -128,16 +128,17 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		$Base("#year").myCreateNode("li", 1970,new Date().getFullYear()-1970, function(op,int){
+		$("#userMessList li:nth-child(1)").className("personal_hover");
+		$("#year").createNodes("li", 1970,new Date().getFullYear()-1970, function(op,int){
 			 op.innerHTML=int.toString();
 		});
-		$Base("#month").myCreateNode("li",1,11,function(op,int){
+		$("#month").createNodes("li",1,11,function(op,int){
 			 op.innerHTML=int.toString();
 		});
-		$Base("#day").getPrevious().event("click", function(){		
-			that=$Base(this).getNext(true)[0];
-			var month=$Base("#month").getPrevious().innerHTML().isEmpty();
-			var year=$Base("#year").getPrevious().innerHTML().isEmpty();
+		$("#day").prev().on("click", function(){		
+			that=$(this).next(true)[0];
+			var month=$("#month").prev().text().isEmpty();
+			var year=$("#year").prev().text().isEmpty();
 			if(month=="月")month="1";
 			if(year=="年")year="1970";
 			var nowday=(month==1||month==3||month==5||month==7||month==8||month==10||month==12) ? 31:month==2 ? 28: 30;	
@@ -146,26 +147,25 @@
 			}	
 			var day=that.children.length;
 			if(day-1<nowday){
-				$Base(that).myCreateNode("li",day,nowday-day,function(op,int){
-					addEvent(op,"click",clickSelect);
-					 op.innerHTML=int.toString();
+				$(that).createNodes("li",day,nowday-day,function(op,int){
+					$(op).click(clickSelect).text(int.toString());
 				});
 			}else if(day-1!=nowday){
-				$Base(that).myRemoveNode(nowday,day-nowday-1,function(node){
-					removeEvent(node,"click",clickSelect);
+				$(that).removeNodes(nowday,day-nowday-1,function(node){
+					$(node).off("click",clickSelect);
 				});
 			}
 		});
 		//月份切换时 回位day
-		$Base("#month li").removeEvent("click", clickSelect).event("click", function(){	
-			if(this.innerHTML!=$Base(this.parentNode).getPrevious().innerHTML()){
-				$Base("#day").getPrevious().innerHTML("日");		
+		$("#month li").off("click", clickSelect).on("click", function(){	
+			if(this.innerHTML!=$(this.parentNode).prev().text()){
+				$("#day").prev().text("日");		
 			}
 			clickSelect.call(this);
 		});
 		function clickSelect() {
-			$Base(this.parentNode).getPrevious().innerHTML(this.innerHTML);
-			$Base(this.parentNode).hide();
+			$(this.parentNode).prev().text(this.innerHTML);
+			$(this.parentNode).hide();
 		}
 		function getObj(){
 			var sexValue;
@@ -178,28 +178,28 @@
 			return {
 				'ubm.name':"",
 				'ubm.sex':sexValue,
-				'ubm.birthday':$Base("#year").getPrevious().innerHTML()+"-"+$Base("#month").getPrevious().innerHTML()+"-"+$Base("#day").getPrevious().innerHTML(),
-				'ubm.bloodGroup':encodeURIComponent($Base("#blood span").innerHTML()),
-				'ubm.addr':encodeURIComponent($Base("#user_province").innerHTML()+","+$Base("#user_city").innerHTML()),
-				'ubm.info':encodeURIComponent($Base("#infoMess").get(0, true).value)
+				'ubm.birthday':$("#year").prev().text().isEmpty()+"-"+$("#month").prev().text().isEmpty()+"-"+$("#day").prev().text().isEmpty(),
+				'ubm.bloodGroup':$("#blood span").text().isEmpty(),
+				'ubm.addr':$("#user_province").text().isEmpty()+","+$("#user_city").text().isEmpty(),
+				'ubm.info':$("#infoMess").val()
 			};
 		}
-		$Base("#province").event("click", function(evt){			
+		$("#province").on("click", function(evt){			
 				var arr=City[	getEvtObj(evt).id];		
 				var node=document.getElementById("city");
 				var mynodes=node.children;
 				var n=mynodes.length;
 				for ( var i = 0; i < n; i++) {
-					removeEvent(mynodes[0], "click", clickSelect);
+					$(mynodes[0]).off("click", clickSelect);
 					node.removeChild(mynodes[0]);
 				}
 				for ( var i = 0; i < arr.length; i++) {
 					var newEL=document.createElement("li");
 					newEL.innerHTML=arr[i];
 					node.appendChild(newEL);
-					addEvent(newEL, "click", clickSelect);
+					$(newEL).click(clickSelect);
 				}
-				$Base(node).getPrevious().innerHTML(arr[0]);		
+				$(node).prev().text(arr[0]);		
 	});
 		City={
 			beijing:["东城区","西城区","崇文区","宣武区","朝阳区","海淀区","丰台区","门头沟区","房山县","大兴县","顷义县","平谷县","密云县","怀柔县","昌平县","延庆县","通县"],
