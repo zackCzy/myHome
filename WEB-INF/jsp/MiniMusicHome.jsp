@@ -51,8 +51,9 @@
 			</ol>	
 		</div>
 		<div class="minimusic_nav">
-			 <img alt="viki" src="${pageContext.request.contextPath}/image/vikilogo.png" style="float: left;"/>
-
+			 <a href="/myHome">
+			 	<img alt="viki" src="${pageContext.request.contextPath}/image/vikilogo.png" style="float: left;"/>
+			</a>
 			<div class="minimusic_search">
 				 <input type="text" stash-placeholder="Mini搜索" placeholder="Mini搜索" id="searchText">
 				 <input id="searchButton" type="button">

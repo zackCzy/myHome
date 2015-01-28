@@ -117,11 +117,11 @@ $(function(){
 		 playMusicFn(Obj.singerName,Obj.songName,Obj.musicId);
 	 });
 	 $(".list_title ul li").click(function(){
-			var value = this.getAttribute("value");
-			miniMusic.setPlayType(value==0? 2:1);
-			$(".mini_music_box ol").eq(value).fadeIn(300).css("z-index:5");
-			$(".mini_music_box ol").eq(value==1? 0:1).fadeOut(300).css("z-index:1");
-		});
+		var value = this.getAttribute("value");
+		miniMusic.setPlayType(value==0? 2:1);
+		$(".mini_music_box ol").eq(value).fadeIn(300).css("z-index:5");
+		$(".mini_music_box ol").eq(value==1? 0:1).fadeOut(300).css("z-index:1");
+	});
 	try {
 		$(".user_message_left").hover(function(){
 			$(".user_message_left ul").stop().slideDown(300);	
@@ -281,6 +281,14 @@ $(function(){
 		$("#p_singerName").text(singerName);
 	}
 	function searchMusic(index,name,method){
+		if(name.isEmpty().length<=0){
+			$.texi({
+				title:"Viki提醒您",
+				body:"请输入要搜索的内容",
+				time:3000
+			});
+			return false;
+		}
 		$("#lock").lock();
 		$.ajax({
 			url:"/myHome/search/search_music",
@@ -310,9 +318,9 @@ $(function(){
 					$(".mini_music_component").append(contentRight);
 					$(searchResults).on("scroll", resultScroll);
 					$(contentRight).css({
-							width:viewInner().width-338+"px" ,
-							height:viewInner().height-40+"px"
-						 });
+						width:viewInner().width-338+"px" ,
+						height:viewInner().height-40+"px"
+					 });
 				}
 				var parent=$(".search_result ul");
 				var rowResults,rowControll,stateIco,likeIco,appendIco,downloadIco;
