@@ -10,6 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/translator.css" />
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/span.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-1.10.1.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/plugObject/Texi.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/JQ_plugs.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/json2.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/translator.js"></script>
@@ -19,13 +20,13 @@
 		<audio id="myPlayer" src=""></audio>
 		<div class="trans_nav clearFix">
 			<ul class="blank">
-				<li></li>
-				<li></li>
+				<li onclick="noporint(this)"></li>
+				<li onclick="noporint(this)"></li>
 				<li id="tranlster">
 					<a href="#head"></a>
-				</li>
-				<li></li>
-				<li></li>
+				</li onclick="noporint(this)">
+				<li onclick="noporint(this)"></li>
+				<li onclick="noporint(this)"></li>
 			</ul>
 			<ul class="about">
 				<li>
