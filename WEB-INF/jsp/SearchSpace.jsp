@@ -8,6 +8,7 @@
 		<link type="text/css" rel="stylesheet"  href="/myHome/CSS/SearchSpace.css">
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/span.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-1.10.1.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/JQ_plugs.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/searchSpace.js"></script>
 		<title>ViKi 查询</title>
 	</head>
@@ -17,7 +18,7 @@
 			<div class="cus-sel-opt-panel">
 					<span><s:property value="#type"/></span>
 					<ul class="cus-sel-opt-ctn">
-						<li  >找人</li>
+						<li >找人</li>
 						<li >V说</li>
 						<li >博客</li>
 					</ul>
@@ -36,17 +37,19 @@
 					<div class="search_result">
 						<img src="/myHome/load/download_getSmallPhoto?id=<s:property value="id"/>" width=100px height=100px>
 						<p >
-							<a class="user_spase_name selectStrong" href="/myHome/user/space/<s:property value="name"/>/">
-								<s:property value="userBaseDatum.name"/>
-							 </a>
+							<a class="user_spase_name selectStrong" href="/myHome/user/space/<s:property value="user.name"/>/">
+								<s:property value="nickName"/>
+							</a>
 						</p>			 
-						<p><s:property value="userBaseDatum.sex"/>,<s:property value="userBaseDatum.addr.equals('请选择,请选择') ?未知: userBaseDatum.addr"/>					
-						 <a href="http://viki.linkpc.net/myHome/user/space/<s:property value="name"/>/" target="_blank">http://viki.linkpc.net/myHome/user/space/<s:property value="name"/>/</a></p>
+						<p>
+							<s:property value="userBaseDatum.sex"/>,<s:property value="userBaseDatum.addr.equals('请选择,请选择') ?未知: userBaseDatum.addr"/>					
+							<a href="http://viki.linkpc.net/myHome/user/space/<s:property value="user.name"/>/" target="_blank">http://viki.linkpc.net/myHome/user/space/<s:property value="user.name"/>/</a>
+						</p>
 						<p>
 							<font color="#FF4700"  >关注:</font>
-							<a><s:property value="followUsers.size()"/></a>
+							<a><s:property value="user.followUsers.size()"/></a>
 							<font color="#FF4700"  >粉丝:</font>
-							<a><s:property value="fansUsers.size()"/></a>
+							<a><s:property value="user.fansUsers.size()"/></a>
 						</p>
 						<p>简介：<s:property value="searchUser.userBaseDatum.info" default="无"/></p>
 					</div>

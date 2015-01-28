@@ -39,6 +39,11 @@ $.ajaxSetup({
 	}
 });
 $(function(){
+	$.texi({
+		title:"Viki提醒您",
+		body:"目前仅支持歌曲搜索播放功能，请见谅!",
+		time:3000
+	});
 	$("#music_img_bg").css({
 		height:viewInner().height+"px",
 		width:viewInner().width+"px"
