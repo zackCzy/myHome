@@ -25,9 +25,9 @@
 		<script type="text/javascript">
 			function showPossWord(evt,flag){
 				if(flag){
-					$Base("#show_possword_area").show();
+					$("#show_possword_area").show();
 				}else {
-					$Base("#show_possword_area").hide();
+					$("#show_possword_area").hide();
 				}
 				
 			}
@@ -51,9 +51,9 @@
 		<script type="text/javascript">
 			function getObj(){
 				return {
-					'spd.nickName':encodeURIComponent($Base("#nickName").value()),				
-					'spd.visible':$Base("#visible").innerHTML()=="所有人"? false:true,
-					'spd.spacePassWord':$Base("#visible").innerHTML()=="所有人"?"":$Base("#posswordSpace").value()
+					'spd.nickName':$("#nickName").val(),				
+					'spd.visible':$("#visible").text().isEmpty()=="所有人"? false:true,
+					'spd.spacePassWord':$("#visible").text().isEmpty()=="所有人"?"":$("#posswordSpace").val()
 				};
 			}
 		</script>

@@ -9,10 +9,9 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/public/main.css">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/message.css">
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/span.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/base.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/plug_Base.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/active_Base.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/Ajax.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-1.10.1.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/plugObject/notice.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/JQ_plugs.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/message.js"></script>
 	</head>
 	<body>
@@ -62,14 +61,17 @@
 				<s:if test="#userPhoto">
 					<div class="UserPhotoMess">
 						<h2>${sgin}_头像修改</h2>
-						<iframe align="top" width="790px" height="670px" src="user_photo"></iframe>
+						<s:action name="user_photo"  executeResult="true"  ></s:action>
 					</div>
+					<script type="text/javascript">
+				   		$("#userMessList li:nth-child(6)").className("personal_hover");
+					</script>
 			   </s:if>
 			   	<script type="text/javascript">
-			   	$Base(".cus-sel-opt-ctn li").event("click", clickSelect);	
+			   	$(".cus-sel-opt-ctn li").on("click", clickSelect);	
 				function clickSelect() {
-					$Base(this.parentNode).getPrevious().innerHTML(this.innerHTML);
-					$Base(this.parentNode).hide();
+					$(this.parentNode).prev().html(this.innerHTML);
+					$(this.parentNode).hide();
 				}
 				</script>
 				</form>

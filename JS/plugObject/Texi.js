@@ -64,6 +64,7 @@ Texi.prototype={
 			"border-radius":"20px",
 			overflow:"hidden",
 			position:"fixed",
+			"z-index":99,
 			id:"texi_zack_czy"
 		},
 		BT_CSS:{

@@ -38,16 +38,40 @@ $.ajaxSetup({
 		"Accept-Charset": "UTF-8"
 	}
 });
+
 $(function(){
+	
+	$.texi({
+		title:"Viki提醒您",
+		body:"目前仅支持歌曲搜索播放功能，请见谅!",
+		time:3000
+	});
 	$("#music_img_bg").css({
 		height:viewInner().height+"px",
 		width:viewInner().width+"px"
 	});	
+	$(".nav_singer").click(function(){
+		$(".mini_music_content_right").html(window.singerListHTML).find(".singer_list li").click(function(){
+			window.searchMessage.index=1;
+			if(window.searchFlag===false){
+				window.searchFlag=true;
+				window.searchMessage.flag=false;
+				searchMusic(1,$("img",this).attr("alt").isEmpty(),window.searchMessage.index);	
+			}	
+		});
+	});
+	$("#download_music").click(downloadMusic);
+	window.singerListHTML=$(".mini_music_content_right").html();
+	
 	var miniMusic=new MiniMusicBox();
 	var isSginOk=$("input[name='h_userId']").val();
 
 	//从cookie得到临时音乐列表
 	var musicTempArr=$.getCookies('musicMessage');
+	if(musicTempArr.length<=0){
+		$(".temp .list_ul_point_wrap").css("display","block");
+	}
+	$(".vikiMusic .list_ul_point_wrap").css("display","block");
 	for ( var int = 0; int <musicTempArr.length; int++) {	
 		(function(initMusicJson,i){
 			miniMusic.addCookieMusic({
@@ -59,14 +83,18 @@ $(function(){
 			JQAddDom(initMusicJson.singername,initMusicJson.songName,initMusicJson.musicId,initMusicJson.cookieId,".temp",false,i);
 		})(JSON.parse(musicTempArr[int]),int);
 	}
+	
 	//如果用户登陆 获取用户歌曲列表
 	if(isSginOk.isEmpty().length>=0){
 		$.ajax({
 			url:"/myHome/user/music_getVikiMusic",
 			data:{},
-			method:"GET",
+			type:"GET",
 			dataType:"JSON",
 			success:function(json){
+				if(json.length>=0){
+					$(".vikiMusic .list_ul_point_wrap").css("display","none");
+				}
 				for ( var int = 0; int < json.length; int++) {	
 					(function(initMusicJson,i){
 						var songName=initMusicJson[int].song;
@@ -105,18 +133,20 @@ $(function(){
 	 });
 	 $("#next_music").click(function(){
 		 var Obj=miniMusic.next();
-		 playMusicFn(Obj.singerName,Obj.songName,Obj.musicId);
+		 if(obj)
+			 playMusicFn(Obj.singerName,Obj.songName,Obj.musicId,Obj.cookieId);
 	 });
 	 $("#previous_music").click(function(){
 		 var Obj=miniMusic.previous();
-		 playMusicFn(Obj.singerName,Obj.songName,Obj.musicId);
+		 if(obj)
+			 playMusicFn(Obj.singerName,Obj.songName,Obj.musicId,Obj.cookieId);
 	 });
 	 $(".list_title ul li").click(function(){
-			var value = this.getAttribute("value");
-			miniMusic.setPlayType(value==0? 2:1);
-			$(".mini_music_box ol").eq(value).fadeIn(300).css("z-index:5");
-			$(".mini_music_box ol").eq(value==1? 0:1).fadeOut(300).css("z-index:1");
-		});
+		var value = this.getAttribute("value");
+		miniMusic.setPlayType(value==0? 2:1);
+		$(".mini_music_box ol").eq(value).fadeIn(300).css("z-index:5");
+		$(".mini_music_box ol").eq(value==1? 0:1).fadeOut(300).css("z-index:1");
+	});
 	try {
 		$(".user_message_left").hover(function(){
 			$(".user_message_left ul").stop().slideDown(300);	
@@ -127,6 +157,14 @@ $(function(){
 	} catch (e) {}
 	$("#searchText").on("keypress", keySearch);
 	$("#searchButton").on("click", keySearch);
+	$(".singer_list li").click(function(){
+		window.searchMessage.index=1;
+		if(window.searchFlag===false){
+			window.searchFlag=true;
+			window.searchMessage.flag=false;
+			searchMusic(1,$("img",this).attr("alt").isEmpty(),window.searchMessage.index);	
+		}	
+	});
 	$("#music_list").on("click",function(){	
 		var musicBox=$(".mini_music_box");
 		if(musicBox.css("display")=="none"){
@@ -274,12 +312,22 @@ $(function(){
 		miniMusic.play(musicId,rotate);
 		$("#p_songName").text(songName);
 		$("#p_singerName").text(singerName);
+		$("#download_music").attr("alt",musicId);
+		$("#like_music").attr("alt",cookieId);
 	}
 	function searchMusic(index,name,method){
+		if(name.isEmpty().length<=0){
+			$.texi({
+				title:"Viki提醒您",
+				body:"请输入要搜索的内容",
+				time:3000
+			});
+			return false;
+		}
 		$("#lock").lock();
 		$.ajax({
 			url:"/myHome/search/search_music",
-			method : 'post',
+			type : 'post',
 			data : {
 				pageIndex:index,searchName:name,pageSize:20},
 			success:function(text){
@@ -305,9 +353,9 @@ $(function(){
 					$(".mini_music_component").append(contentRight);
 					$(searchResults).on("scroll", resultScroll);
 					$(contentRight).css({
-							width:viewInner().width-338+"px" ,
-							height:viewInner().height-40+"px"
-						 });
+						width:viewInner().width-338+"px" ,
+						height:viewInner().height-40+"px"
+					});
 				}
 				var parent=$(".search_result ul");
 				var rowResults,rowControll,stateIco,likeIco,appendIco,downloadIco;
@@ -327,6 +375,8 @@ $(function(){
 				    $(appendIco).click(addMusic);
 				    downloadIco=_doc.createElement("span");
 				    downloadIco.className="song_download_ico";
+				    downloadIco.setAttribute("alt",json[i].musicId);
+				    $(downloadIco).click(downloadMusic);
 				    rowControll.appendChild(stateIco);
 				    rowControll.appendChild(likeIco);
 				    rowControll.appendChild(appendIco);
@@ -358,8 +408,13 @@ $(function(){
 				window.searchFlag=false;
 		}});
 	}
+	function downloadMusic(){
+		var musicId=this.getAttribute("alt");
+		if(musicId==null)return false;
+		window.open("http://tsmusic24.tc.qq.com/"+musicId+".mp3","_blank");
+	}
 	function removeMusic(mark){
-		$this=$(this);
+		var $this=$(this);
 		var id=$this.attr("alt");
 		var musicId=$this.parent().attr("alt");
 		var tempArr=$this.prev().text().split("--");
@@ -367,7 +422,7 @@ $(function(){
 		var singerName=tempArr[1];
 		$.ajax({
 			url:"/myHome/user/music_removeVikiMusic",
-			method:"GET",
+			type:"GET",
 			data:{'id':id},
 			success:function(msg){
 				if(msg!="remove vikiMusic is error"){
@@ -417,7 +472,7 @@ $(function(){
 	function exitLogin(){
 		$.ajax({
 			url:"/myHome/exitLogin",
-			method : 'get',
+			type : 'get',
 			success:function(text){
 				if(text=="exit is ok"){
 					window.location.href=window.location.href;
@@ -459,6 +514,7 @@ $(function(){
 			$.notice("Viki 音乐","您已经添加过该音乐了！",1500);
 			return false;
 		}
+		$(".temp .list_ul_point_wrap").css("display","none");
 		miniMusic.addCookieMusic({
 			'songName':_songName,
 			'singerName':_singername,
@@ -487,7 +543,7 @@ $(function(){
 		}).append(
 				$("<span class='music_intro'></span>").text(songName+"--"+singername)
 		).append(
-				$("<span class='removeMusic'></span>").click(removeCokieMusic).attr("alt",cookieId)
+				$("<span class='removeMusic'></span>").click((select==".temp" ? removeCokieMusic : removeMusic)).attr("alt",cookieId)
 		).appendTo(select);
 	}
 	function addVikiMusic(){
@@ -496,14 +552,6 @@ $(function(){
 			return false;
 		}
 		$("#lock").lock(0.6);
-		if(this.className.indexOf("love_ico")==-1){
-			$(this).addClass("love_ico");
-		}else{
-			removeMusic.call(this,true);
-			$(this).removeClass("love_ico");
-			$("#lock").unlock();
-			return false;
-		}
 		var that=this;
 		var $parent=$(that.parentNode.parentNode);
 		
@@ -516,7 +564,7 @@ $(function(){
 				"musicId":musicId,
 				"typeName":("默认")
 			},
-			method:"GET",
+			type:"GET",
 			success:function(msg){
 				if(msg!="add vikiMusic is error"){
 					$(that).attr("alt",msg);
@@ -526,6 +574,15 @@ $(function(){
 						'musicId':musicId,
 						'id':msg
 					});
+					if(that.className.indexOf("love_ico")==-1){
+						$(that).addClass("love_ico");
+					}else{
+						removeMusic.call(that);
+						$(that).removeClass("love_ico");
+						$("#lock").unlock();
+						return false;
+					}
+					$(".vikiMusic .list_ul_point_wrap").css("display","none");
 					JQAddDom(singername,songName,musicId,msg,".vikiMusic",false,miniMusic.getVikiMusicLength());
 				}else{
 					$.notice("Viki 音乐","音乐添加失败！",1500);
@@ -549,8 +606,12 @@ function MiniMusicBox(){
 	this.cookieListHandle=new MusicPlayList();
 	try {
 		_that.playBox=document.getElementById("Externa");
+		if(_that.playBox==null){
+			_that.playBox=document.getElementById("Externa1");
+		}
 	} catch (e) {
 		_that.playBox=document.getElementById("Externa1");
+		
 	}
 	this.setState=function(state,index,length){
 		var _index=index;//state 1代表next 2代表 prev
@@ -607,6 +668,7 @@ MiniMusicBox.prototype={
 		return position;
 	},
 	setPosition:function(num){
+		
 		this.playBox.position(num);
 	},
 	getVolume:function(num){

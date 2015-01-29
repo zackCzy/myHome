@@ -5,12 +5,19 @@
 
 //windowLoad(loaded);
 $(load);
+function noporint(){
+	$.texi({
+		title:"Viki提醒您",
+		body:"目前仅支持翻译功能，请见谅!",
+		time:3000
+	});
+}
 function load() {
 	// 个人信息事件绑定
 	$('.textA').val("");
 
 	$("#sound").on("mouseover",function(){		
-		var text=$('#searchResult').val().isEmpty();
+		var text=$('#searchResult').text().isEmpty();
 		if(text=="")return;
 		var res=$('#cut').attr("name");
 		if(res=="")return;

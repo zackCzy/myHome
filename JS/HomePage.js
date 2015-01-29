@@ -503,6 +503,10 @@ function removeLogT(that) {
 				'userId': that.getAttribute("alt")
 			},
 			success: function(text) {
+				if (text == "you login has expired") {
+					login();
+					return;
+				}
 				that.disabled = false;
 				if (text == "removeDiary is ok") {
 					var temp = $(that.parentNode.parentNode).slideUp(300, function() {
@@ -531,6 +535,10 @@ function removeClick() {
 			'id': this.getAttribute("alt")
 		},
 		success: function(text) {
+			if (text == "you login has expired") {
+				login();
+				return;
+			}
 			if (text == "remove is ok") {
 				that.disabled = false;
 				var temp = $(that.parentNode.parentNode).slideUp(300, function() {
