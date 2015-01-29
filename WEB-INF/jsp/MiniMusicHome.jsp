@@ -44,14 +44,18 @@
 				<i></i>
 			</span>
 			<ol class="list_ul temp">
-
+				<li class="list_ul_point_wrap">
+					<div class="list_ul_point"></div>
+				</li>
 			</ol>	
 			<ol class="list_ul vikiMusic">
-
+				<li class="list_ul_point_wrap">
+					<div class="list_ul_point"></div>
+				</li>
 			</ol>	
 		</div>
 		<div class="minimusic_nav">
-			 <a href="/myHome">
+			<a href="/myHome">
 			 	<img alt="viki" src="${pageContext.request.contextPath}/image/vikilogo.png" style="float: left;"/>
 			</a>
 			<div class="minimusic_search">
@@ -61,7 +65,7 @@
 			<div class="user_type_nav">
 				<ul>
 					<li>推荐</li>
-					<li>歌手</li>
+					<li class="nav_singer">歌手</li>
 					<li>电台FM</li>
 				</ul>
 			</div>
@@ -134,22 +138,42 @@
 				</div>
 			</div>
 			<div class="mini_music_content_right">
-			<!--  
-				<div style="overflow: auto;height: 100%;width: 100%;">
+				<div class="singer_list">
 					<h2 style="float: left;">华语男歌手</h2>
 					<div class="singer_area">
 						<ul>
 							<li><span class="singer_li_hover"></span>
-								<span class="singer_name_n">邓紫棋</span>
-								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E5%2590%258E%25E5%25BC%25A6"  alt="邓紫棋" src="" width=100% height=100% >
+								<span class="singer_name_n">陈奕迅</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E9%2599%2588%25E5%25A5%2595%25E8%25BF%2585"  alt="陈奕迅"  width=100% height=100% >
 							</li>
-							<li><span class="singer_li_hover"></span></li>
-							<li><span class="singer_li_hover"></span></li>
-							<li><span class="singer_li_hover"></span></li>
-							<li><span class="singer_li_hover"></span></li>
-							<li><span class="singer_li_hover"></span></li>
-							<li><span class="singer_li_hover"></span></li>
-							<li><span class="singer_li_hover"></span></li>
+							<li><span class="singer_li_hover"></span>
+								<span class="singer_name_n">阿弟仔</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E9%2598%25BF%25E5%25BC%259F%25E4%25BB%2594"  alt="阿弟"  width=100% height=100% >
+							</li>
+							<li><span class="singer_li_hover"></span>
+								<span class="singer_name_n">罗志祥</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E7%25BD%2597%25E5%25BF%2597%25E7%25A5%25A5"  alt="罗志祥"  width=100% height=100% >
+							</li>
+							<li><span class="singer_li_hover"></span>
+								<span class="singer_name_n">李玖哲</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E6%259D%258E%25E7%258E%2596%25E5%2593%25B2"  alt="李玖哲"  width=100% height=100% >
+							</li>
+							<li><span class="singer_li_hover"></span>
+								<span class="singer_name_n">柯有伦</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E6%259F%25AF%25E6%259C%2589%25E4%25BC%25A6"  alt="周杰伦"  width=100% height=100% >
+							</li>
+							<li><span class="singer_li_hover"></span>
+								<span class="singer_name_n">林俊杰</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E6%259E%2597%25E4%25BF%258A%25E6%259D%25B0"  alt="林俊杰"  width=100% height=100% >
+							</li>
+							<li><span class="singer_li_hover"></span>
+								<span class="singer_name_n">光良</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E5%2585%2589%25E8%2589%25AF"  alt="光良"  width=100% height=100% >
+							</li>
+							<li><span class="singer_li_hover"></span>
+								<span class="singer_name_n">潘玮柏</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E6%25BD%2598%25E7%258E%25AE%25E6%259F%258F"  alt="潘玮柏"  width=100% height=100% >
+							</li>
 						</ul>
 					</div>
 					<h2 style="float: left;">华语女歌手</h2>
@@ -157,21 +181,48 @@
 						<ul>
 							<li>
 								<span class="singer_li_hover"></span>
-								<span class="singer_name_n">邓紫棋</span>
-								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E5%2590%258E%25E5%25BC%25A6"  alt="邓紫棋" src="" width=100% height=100% >
+								<span class="singer_name_n">金莎</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=周杰伦"  alt="金莎" src="" width=100% height=100% >
 							</li>
-							<li><span class="singer_li_hover"></span></li>
-							<li><span class="singer_li_hover"></span></li>
-							<li><span class="singer_li_hover"></span></li>
-							<li><span class="singer_li_hover"></span></li>
-							<li><span class="singer_li_hover"></span></li>
-							<li><span class="singer_li_hover"></span></li>
-							<li><span class="singer_li_hover"></span></li>
+							<li>
+								<span class="singer_li_hover"></span>
+								<span class="singer_name_n">梁静茹</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=周杰伦"  alt="梁静茹" src="" width=100% height=100% >
+							</li>
+							<li>
+								<span class="singer_li_hover"></span>
+								<span class="singer_name_n">张惠妹</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=周杰伦"  alt="张惠妹" src="" width=100% height=100% >
+							</li>
+							<li>
+								<span class="singer_li_hover"></span>
+								<span class="singer_name_n">孙燕姿</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=周杰伦"  alt="孙燕姿" src="" width=100% height=100% >
+							</li>
+							<li>
+								<span class="singer_li_hover"></span>
+								<span class="singer_name_n">张靓颖</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=周杰伦"  alt="张靓颖" src="" width=100% height=100% >
+							</li>
+							<li>
+								<span class="singer_li_hover"></span>
+								<span class="singer_name_n">王菲</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=周杰伦"  alt="王菲" src="" width=100% height=100% >
+							</li>
+							<li>
+								<span class="singer_li_hover"></span>
+								<span class="singer_name_n">蔡依林</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=周杰伦"  alt="蔡依林" src="" width=100% height=100% >
+							</li>
+							<li>
+								<span class="singer_li_hover"></span>
+								<span class="singer_name_n">范玮琪</span>
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=周杰伦"  alt="范玮琪" src="" width=100% height=100% >
+							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
-			-->
 		</div>
 	</body>
 </html>

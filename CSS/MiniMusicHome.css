@@ -11,6 +11,13 @@ body {
 	-moz-user-select: -moz-none;
 }
 
+.singer_list {
+	overflow: auto;
+	height: 100%;
+	width: 100%;
+	min-height: 300px;
+}
+
 .pro-user-checkbox input {
 	float: left;
 	margin: 1px 3px 0 0;
@@ -97,8 +104,7 @@ body {
 }
 
 #searchButton {
-	background: url("../images/miniMusic/search_minimusic.png")
-		no-repeat;
+	background: url("../images/miniMusic/search_minimusic.png") no-repeat;
 	height: 25px;
 	width: 20px;
 	cursor: pointer;
@@ -273,8 +279,8 @@ body {
 	margin: 2% 1%;
 	height: 65px;
 	border: 2px solid rgba(0, 0, 0, 0);
-	background: url("../images/miniMusic/opacity1-939ae1.png") repeat
-		scroll left top rgba(0, 0, 0, 0);
+	background: url("../images/miniMusic/opacity1-939ae1.png") repeat scroll
+		left top rgba(0, 0, 0, 0);
 	cursor: pointer;
 	position: relative;
 }
@@ -325,43 +331,43 @@ body {
 }
 
 .song_download_ico {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -97px -125px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -97px -125px;
 }
 
 .song_download_ico:hover {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -147px -125px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -147px -125px;
 }
 
 .song_like_ico {
-	background: url("../images/miniMusic/iconList-1d9649.png")
-		no-repeat scroll 0 25px;
+	background: url("../images/miniMusic/iconList-1d9649.png") no-repeat
+		scroll 0 25px;
 }
 
 .song_like_ico:hover {
-	background: url("../images/miniMusic/iconList-1d9649.png")
-		no-repeat scroll 0 -25px;
+	background: url("../images/miniMusic/iconList-1d9649.png") no-repeat
+		scroll 0 -25px;
 }
 
 .love_ico {
-	background: url("../images/miniMusic/iconList-1d9649.png")
-		no-repeat scroll 0 -225px;
+	background: url("../images/miniMusic/iconList-1d9649.png") no-repeat
+		scroll 0 -225px;
 }
 
 .love_ico:hover {
-	background: url("../images/miniMusic/iconList-1d9649.png")
-		no-repeat scroll 0 -225px;
+	background: url("../images/miniMusic/iconList-1d9649.png") no-repeat
+		scroll 0 -225px;
 }
 
 .song_append_ico {
-	background: url("../images/miniMusic/iconList-1d9649.png")
-		no-repeat scroll 0 -375px;
+	background: url("../images/miniMusic/iconList-1d9649.png") no-repeat
+		scroll 0 -375px;
 }
 
 .song_append_ico:hover {
-	background: url("../images/miniMusic/iconList-1d9649.png")
-		no-repeat scroll 0 -425px;
+	background: url("../images/miniMusic/iconList-1d9649.png") no-repeat
+		scroll 0 -425px;
 }
 
 #search_result_state {
@@ -369,13 +375,13 @@ body {
 	width: 43px;
 	height: 49px;
 	margin: 8px 0 0 5px;
-	background: url("../images/miniMusic/iconList-1d9649.png")
-		no-repeat scroll 16px -684px;
+	background: url("../images/miniMusic/iconList-1d9649.png") no-repeat
+		scroll 16px -684px;
 }
 
 #search_result_state:hover {
-	background: url("../images/miniMusic/iconList-1d9649.png")
-		no-repeat scroll 13px -738px;
+	background: url("../images/miniMusic/iconList-1d9649.png") no-repeat
+		scroll 13px -738px;
 }
 
 .search_result_songname,.search_result_singername {
@@ -460,55 +466,55 @@ body {
 }
 
 #like_music {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -200px -50px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -200px -50px;
 }
 
 #like_music:hover {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -250px -50px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -250px -50px;
 }
 
 #download_music {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -97px -150px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -97px -150px;
 }
 
 #download_music:hover {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -147px -150px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -147px -150px;
 }
 
 #model_music {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -100px -100px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -100px -100px;
 }
 
 #model_music:hover {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -150px -100px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -150px -100px;
 }
 
 .volume_music {
 	position: relative;
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -200px 0px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -200px 0px;
 }
 
 .volume_music:hover {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -250px 0px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -250px 0px;
 }
 
 .volume_music_mute {
 	position: relative;
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll 0px -50px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll 0px -50px;
 }
 
 .volume_music_mute:hover {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll 0px -50px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll 0px -50px;
 }
 
 .volume_music:hover #volume_bar_area {
@@ -523,8 +529,8 @@ body {
 	left: 24px;
 	border-radius: 8px;
 	margin: 0;
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll 0 -200px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll 0 -200px;
 	width: 60px;
 	display: none;
 }
@@ -532,8 +538,8 @@ body {
 #volume_bar {
 	width: 100%;
 	height: 4px;
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -100px -200px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -100px -200px;
 	border-radius: 8px;
 	margin: 0;
 	position: relative;
@@ -542,8 +548,8 @@ body {
 }
 
 #volume_bar_cursor {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -198px -200px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -198px -200px;
 	margin: 0;
 	position: absolute;
 	top: -9px;
@@ -597,60 +603,60 @@ body {
 
 #previous_music {
 	margin: 2px 0 0 30px;
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll 0 -244px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll 0 -244px;
 }
 
 #previous_music:hover {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -100px -244px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -100px -244px;
 }
 
 #next_music {
 	margin: 2px 0 0 0px;
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll 15px -344px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll 15px -344px;
 }
 
 #next_music:hover {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -85px -344px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -85px -344px;
 }
 
 #music_list {
 	margin: 2px 0 0 0;
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll 25px -633px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll 25px -633px;
 }
 
 #music_list:hover {
 	margin: 2px 0 0 0;
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -75px -633px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -75px -633px;
 }
 
 .pause_music {
 	margin-left: 10px;
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll 2px -548px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll 2px -548px;
 }
 
 .pause_music:hover {
 	margin-left: 10px;
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -98px -548px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -98px -548px;
 }
 
 .play_music {
 	margin-left: 10px;
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll 2px -448px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll 2px -448px;
 }
 
 .play_music:hover {
 	margin-left: 10px;
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -98px -448px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -98px -448px;
 }
 
 .progress {
@@ -698,13 +704,13 @@ body {
 }
 
 .cursor:hover {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -252px -200px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -252px -200px;
 }
 
 .cursor {
-	background: url("../images/miniMusic/iconPlay-63bef2.png")
-		no-repeat scroll -198px -200px;
+	background: url("../images/miniMusic/iconPlay-63bef2.png") no-repeat
+		scroll -198px -200px;
 	display: block;
 	height: 16px;
 	padding: 5px 3px;
@@ -733,48 +739,85 @@ body {
 	animation: gogogo 35s infinite linear;
 }
 
-@-webkit-keyframes gogogo { 
-	0%{
-		-webkit-transform: rotate(0deg);
-	}
-	50%{
-		-webkit-transform:rotate(180deg);
-	}
-	100%{
-		-webkit-transform:rotate(360deg);
-	}
+@
+-webkit-keyframes gogogo { 0%{
+	-webkit-transform: rotate(0deg);
 }
-@-moz-keyframes gogogo {
-	 0%{
-		-moz-transform: rotate(0deg);
-	}
-	50%{
-	-moz-transform:rotate(180deg);  
-	}
-	100%{-moz-transform:rotate(360deg);  
-	}
+
+50%{
+-webkit-transform
+:rotate
+(180deg);
+
+	
 }
-@-o-keyframes gogogo { 
-	0%{
-		-o-transform: rotate(0deg);
-	}
-	50%{
-		-o-transform:rotate(180deg); 
-	}
-	100%{
-		-o-transform:rotate(360deg);
-	}
+100%{
+-webkit-transform
+:rotate
+(360deg);
+
+	
 }
-@keyframes gogogo { 
-	0%{
-		transform: rotate(0deg);
-	}
-	50%{
-		transform:rotate(180deg);   
-	}
-	100%{
-		transform:rotate(360deg);   
-	}
+}
+@
+-moz-keyframes gogogo { 0%{
+	-moz-transform: rotate(0deg);
+}
+
+50%{
+-moz-transform
+:rotate
+(180deg);
+  
+	
+}
+100%{
+-moz-transform
+:rotate
+(360deg);
+  
+	
+}
+}
+@
+-o-keyframes gogogo { 0%{
+	-o-transform: rotate(0deg);
+}
+
+50%{
+-o-transform
+:rotate
+(180deg);
+ 
+	
+}
+100%{
+-o-transform
+:rotate
+(360deg);
+
+	
+}
+}
+@
+keyframes gogogo { 0%{
+	transform: rotate(0deg);
+}
+
+50%{
+transform
+:rotate
+(180deg);
+   
+	
+}
+100%{
+transform
+:rotate
+(360deg);
+   
+	
+}
 }
 .singer_photo img {
 	border-radius: 180px;
@@ -813,8 +856,8 @@ body {
 	width: 150px;
 	height: 150px;
 	border: 2px solid rgba(0, 0, 0, 0);
-	background: url("../images/miniMusic/opacity1-939ae1.png") repeat
-		scroll left top rgba(0, 0, 0, 0);
+	background: url("../images/miniMusic/opacity1-939ae1.png") repeat scroll
+		left top rgba(0, 0, 0, 0);
 	position: relative;
 	cursor: pointer;
 	box-shadow: 0 6px 4px rgba(0, 0, 0, 0.05), 0 7px 5px rgba(0, 0, 0, 0.3);
@@ -868,6 +911,20 @@ body {
 	z-index: 959;
 	display: none;
 	overflow: hidden;
+}
+
+.list_ul_point_wrap {
+	width: 100%;
+	height: 200px;
+	display: none;
+}
+
+.list_ul_point {
+	background: url("/myHome/images/miniMusic/iconPrompt-d0988d.png");
+	width: 300px;
+	height: 203px;
+	overflow: hidden;
+	margin: 60px auto 0;
 }
 
 .list_title {
@@ -928,7 +985,7 @@ body {
 	bottom: 0;
 	left: 0;
 	z-index: 1;
-	list-style:none;
+	list-style: none;
 }
 
 .list_ul li {
@@ -946,23 +1003,28 @@ body {
 .list_ul li:hover {
 	background: #4CC1E9;
 }
-.removeMusic{
- float:right;
- width:40px;
- height:40px;
- display:block;
- margin-right:15px;
-  background: url("../images/miniMusic/iconList-1d9649.png") no-repeat scroll 15px -888px;
+
+.removeMusic {
+	float: right;
+	width: 40px;
+	height: 40px;
+	display: block;
+	margin-right: 15px;
+	background: url("../images/miniMusic/iconList-1d9649.png") no-repeat
+		scroll 15px -888px;
 }
-.removeMusic:hover{
-  background: url("../images/miniMusic/iconList-1d9649.png") no-repeat scroll 15px -938px;
+
+.removeMusic:hover {
+	background: url("../images/miniMusic/iconList-1d9649.png") no-repeat
+		scroll 15px -938px;
 }
-.music_intro{
-	float:left;
-	width:220px;
- 	height:40px;
- 	display:block;
- 	text-overflow: ellipsis;
+
+.music_intro {
+	float: left;
+	width: 220px;
+	height: 40px;
+	display: block;
+	text-overflow: ellipsis;
 	word-space: nowrap;
 	overflow: hidden;
 }

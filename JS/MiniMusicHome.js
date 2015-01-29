@@ -38,7 +38,9 @@ $.ajaxSetup({
 		"Accept-Charset": "UTF-8"
 	}
 });
+
 $(function(){
+	
 	$.texi({
 		title:"Viki提醒您",
 		body:"目前仅支持歌曲搜索播放功能，请见谅!",
@@ -48,11 +50,27 @@ $(function(){
 		height:viewInner().height+"px",
 		width:viewInner().width+"px"
 	});	
+	$(".nav_singer").click(function(){
+		$(".mini_music_content_right").html(window.singerListHTML).find(".singer_list li").click(function(){
+			window.searchMessage.index=1;
+			if(window.searchFlag===false){
+				window.searchFlag=true;
+				window.searchMessage.flag=false;
+				searchMusic(1,$("img",this).attr("alt").isEmpty(),window.searchMessage.index);	
+			}	
+		});
+	});
+	window.singerListHTML=$(".mini_music_content_right").html();
+	
 	var miniMusic=new MiniMusicBox();
 	var isSginOk=$("input[name='h_userId']").val();
 
 	//从cookie得到临时音乐列表
 	var musicTempArr=$.getCookies('musicMessage');
+	if(musicTempArr.length<=0){
+		$(".temp .list_ul_point_wrap").css("display","block");
+	}
+	$(".vikiMusic .list_ul_point_wrap").css("display","block");
 	for ( var int = 0; int <musicTempArr.length; int++) {	
 		(function(initMusicJson,i){
 			miniMusic.addCookieMusic({
@@ -64,6 +82,7 @@ $(function(){
 			JQAddDom(initMusicJson.singername,initMusicJson.songName,initMusicJson.musicId,initMusicJson.cookieId,".temp",false,i);
 		})(JSON.parse(musicTempArr[int]),int);
 	}
+	
 	//如果用户登陆 获取用户歌曲列表
 	if(isSginOk.isEmpty().length>=0){
 		$.ajax({
@@ -72,6 +91,9 @@ $(function(){
 			type:"GET",
 			dataType:"JSON",
 			success:function(json){
+				if(json.length>=0){
+					$(".vikiMusic .list_ul_point_wrap").css("display","none");
+				}
 				for ( var int = 0; int < json.length; int++) {	
 					(function(initMusicJson,i){
 						var songName=initMusicJson[int].song;
@@ -132,6 +154,14 @@ $(function(){
 	} catch (e) {}
 	$("#searchText").on("keypress", keySearch);
 	$("#searchButton").on("click", keySearch);
+	$(".singer_list li").click(function(){
+		window.searchMessage.index=1;
+		if(window.searchFlag===false){
+			window.searchFlag=true;
+			window.searchMessage.flag=false;
+			searchMusic(1,$("img",this).attr("alt").isEmpty(),window.searchMessage.index);	
+		}	
+	});
 	$("#music_list").on("click",function(){	
 		var musicBox=$(".mini_music_box");
 		if(musicBox.css("display")=="none"){
@@ -472,6 +502,7 @@ $(function(){
 			$.notice("Viki 音乐","您已经添加过该音乐了！",1500);
 			return false;
 		}
+		$(".temp .list_ul_point_wrap").css("display","none");
 		miniMusic.addCookieMusic({
 			'songName':_songName,
 			'singerName':_singername,
@@ -539,6 +570,7 @@ $(function(){
 						'musicId':musicId,
 						'id':msg
 					});
+					$(".vikiMusic .list_ul_point_wrap").css("display","none");
 					JQAddDom(singername,songName,musicId,msg,".vikiMusic",false,miniMusic.getVikiMusicLength());
 				}else{
 					$.notice("Viki 音乐","音乐添加失败！",1500);

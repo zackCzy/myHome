@@ -17,7 +17,7 @@ function load() {
 	$('.textA').val("");
 
 	$("#sound").on("mouseover",function(){		
-		var text=$('#searchResult').val().isEmpty();
+		var text=$('#searchResult').text().isEmpty();
 		if(text=="")return;
 		var res=$('#cut').attr("name");
 		if(res=="")return;
