@@ -148,7 +148,7 @@
 							</li>
 							<li><span class="singer_li_hover"></span>
 								<span class="singer_name_n">阿弟仔</span>
-								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E9%2598%25BF%25E5%25BC%259F%25E4%25BB%2594"  alt="阿弟"  width=100% height=100% >
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E9%2598%25BF%25E5%25BC%259F%25E4%25BB%2594"  alt="阿弟仔"  width=100% height=100% >
 							</li>
 							<li><span class="singer_li_hover"></span>
 								<span class="singer_name_n">罗志祥</span>
@@ -160,7 +160,7 @@
 							</li>
 							<li><span class="singer_li_hover"></span>
 								<span class="singer_name_n">柯有伦</span>
-								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E6%259F%25AF%25E6%259C%2589%25E4%25BC%25A6"  alt="周杰伦"  width=100% height=100% >
+								<img src="${pageContext.request.contextPath}/load/download_singerPhoto?singerName=%25E6%259F%25AF%25E6%259C%2589%25E4%25BC%25A6"  alt="柯有伦"  width=100% height=100% >
 							</li>
 							<li><span class="singer_li_hover"></span>
 								<span class="singer_name_n">林俊杰</span>

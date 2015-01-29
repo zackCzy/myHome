@@ -60,6 +60,7 @@ $(function(){
 			}	
 		});
 	});
+	$("#download_music").click(downloadMusic);
 	window.singerListHTML=$(".mini_music_content_right").html();
 	
 	var miniMusic=new MiniMusicBox();
@@ -132,11 +133,13 @@ $(function(){
 	 });
 	 $("#next_music").click(function(){
 		 var Obj=miniMusic.next();
-		 playMusicFn(Obj.singerName,Obj.songName,Obj.musicId);
+		 if(obj)
+			 playMusicFn(Obj.singerName,Obj.songName,Obj.musicId,Obj.cookieId);
 	 });
 	 $("#previous_music").click(function(){
 		 var Obj=miniMusic.previous();
-		 playMusicFn(Obj.singerName,Obj.songName,Obj.musicId);
+		 if(obj)
+			 playMusicFn(Obj.singerName,Obj.songName,Obj.musicId,Obj.cookieId);
 	 });
 	 $(".list_title ul li").click(function(){
 		var value = this.getAttribute("value");
@@ -309,6 +312,8 @@ $(function(){
 		miniMusic.play(musicId,rotate);
 		$("#p_songName").text(songName);
 		$("#p_singerName").text(singerName);
+		$("#download_music").attr("alt",musicId);
+		$("#like_music").attr("alt",cookieId);
 	}
 	function searchMusic(index,name,method){
 		if(name.isEmpty().length<=0){
@@ -350,7 +355,7 @@ $(function(){
 					$(contentRight).css({
 						width:viewInner().width-338+"px" ,
 						height:viewInner().height-40+"px"
-					 });
+					});
 				}
 				var parent=$(".search_result ul");
 				var rowResults,rowControll,stateIco,likeIco,appendIco,downloadIco;
@@ -370,6 +375,8 @@ $(function(){
 				    $(appendIco).click(addMusic);
 				    downloadIco=_doc.createElement("span");
 				    downloadIco.className="song_download_ico";
+				    downloadIco.setAttribute("alt",json[i].musicId);
+				    $(downloadIco).click(downloadMusic);
 				    rowControll.appendChild(stateIco);
 				    rowControll.appendChild(likeIco);
 				    rowControll.appendChild(appendIco);
@@ -401,8 +408,13 @@ $(function(){
 				window.searchFlag=false;
 		}});
 	}
+	function downloadMusic(){
+		var musicId=this.getAttribute("alt");
+		if(musicId==null)return false;
+		window.open("http://tsmusic24.tc.qq.com/"+musicId+".mp3","_blank");
+	}
 	function removeMusic(mark){
-		$this=$(this);
+		var $this=$(this);
 		var id=$this.attr("alt");
 		var musicId=$this.parent().attr("alt");
 		var tempArr=$this.prev().text().split("--");
@@ -531,7 +543,7 @@ $(function(){
 		}).append(
 				$("<span class='music_intro'></span>").text(songName+"--"+singername)
 		).append(
-				$("<span class='removeMusic'></span>").click(removeCokieMusic).attr("alt",cookieId)
+				$("<span class='removeMusic'></span>").click((select==".temp" ? removeCokieMusic : removeMusic)).attr("alt",cookieId)
 		).appendTo(select);
 	}
 	function addVikiMusic(){
@@ -540,14 +552,6 @@ $(function(){
 			return false;
 		}
 		$("#lock").lock(0.6);
-		if(this.className.indexOf("love_ico")==-1){
-			$(this).addClass("love_ico");
-		}else{
-			removeMusic.call(this,true);
-			$(this).removeClass("love_ico");
-			$("#lock").unlock();
-			return false;
-		}
 		var that=this;
 		var $parent=$(that.parentNode.parentNode);
 		
@@ -570,6 +574,14 @@ $(function(){
 						'musicId':musicId,
 						'id':msg
 					});
+					if(that.className.indexOf("love_ico")==-1){
+						$(that).addClass("love_ico");
+					}else{
+						removeMusic.call(that);
+						$(that).removeClass("love_ico");
+						$("#lock").unlock();
+						return false;
+					}
 					$(".vikiMusic .list_ul_point_wrap").css("display","none");
 					JQAddDom(singername,songName,musicId,msg,".vikiMusic",false,miniMusic.getVikiMusicLength());
 				}else{
@@ -594,8 +606,12 @@ function MiniMusicBox(){
 	this.cookieListHandle=new MusicPlayList();
 	try {
 		_that.playBox=document.getElementById("Externa");
+		if(_that.playBox==null){
+			_that.playBox=document.getElementById("Externa1");
+		}
 	} catch (e) {
 		_that.playBox=document.getElementById("Externa1");
+		
 	}
 	this.setState=function(state,index,length){
 		var _index=index;//state 1代表next 2代表 prev
@@ -652,6 +668,7 @@ MiniMusicBox.prototype={
 		return position;
 	},
 	setPosition:function(num){
+		
 		this.playBox.position(num);
 	},
 	getVolume:function(num){
