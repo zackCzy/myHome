@@ -40,8 +40,10 @@
 				<ul >
 					<s:iterator value="#visitors" var="visitor">
 						<li title="<s:property value="userBaseDatum.name"/>">
-							<img  width=80px height=80px src="/myHome/load/download_getSmallPhoto?id=<s:property value="id"/>" />
-							<span class="user_name"><s:property value="userBaseDatum.name"/></span>
+							<a href="${pageContext.request.contextPath}/user/space/<s:property value="name"/>/">
+								<img  width=80px height=80px src="/myHome/load/download_getSmallPhoto?id=<s:property value="id"/>" />
+								<span class="user_name"><s:property value="userBaseDatum.name"/></span>
+							</a>
 						</li>		
 					</s:iterator>
 				</ul>
@@ -57,7 +59,9 @@
 				<s:iterator value="#log.com" var="comment">	
 					<div class="smallCom">
 						<span>
-							<img  src="/myHome/load/download_getSmallPhoto?id=<s:property value="comUser.id"/>">
+							<a href="${pageContext.request.contextPath}/user/space/<s:property value="comUser.name"/>/">
+								<img  src="/myHome/load/download_getSmallPhoto?id=<s:property value="comUser.id"/>">
+							</a>
 						</span>
 						<a href="/myHome/user/space/<s:property value="comUser.name"/>/" target="_blank">
 							<s:property value="comUser.userBaseDatum.name"/>:

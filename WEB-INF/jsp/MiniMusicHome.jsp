@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/span.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-1.10.1.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/plugObject/Texi.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/plugObject/MusicBox.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/plugObject/notice.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/JQ_plugs.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/MiniMusicHome.js" ></script>

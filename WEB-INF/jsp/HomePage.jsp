@@ -88,66 +88,45 @@
 							</div>	
 						</div>
 						<s:iterator value="#dynamic" var="newLog" >
-							<s:if test="smallSpeak">
-								<div class="con_user_box">
+							<div class="con_user_box">
+								<a href="${pageContext.request.contextPath}/user/space/<s:property value="user.name"/>/">
 									<img class="user_photo" width="40" height="40" src="/myHome/load/download_getSmallPhoto?id=<s:property value="user.id"/>" />
-									<span><s:property value="modifyDate"/></span>
-									<a class="user_name" href="/myHome/user/space/<s:property value="user.name"/>/" target="_blank"><s:property value="user.userBaseDatum.name"/></a>
+								</a>
+								<span><s:property value="modifyDate"/></span>
+								<a class="user_name" href="/myHome/user/space/<s:property value="user.name"/>/" target="_blank"><s:property value="user.userBaseDatum.name"/></a>
+								<s:if test="smallSpeak">
 									<a target="_blank">
 										<div class="content_user_li">
 											<div> <s:property value="noHtmlLog" /></div>
 										</div>
 									</a>
-									<div class="comment_box">
-										<span alt=" <s:property value="id" />" class="remove_log">删除</span>
-										<span class="view_com"  alt="<s:property value="id" />">
-										评论(<b><s:property value="commentNum" default="0"/></b>)
-										</span>
-										<span>浏览(<s:property value="visibleNum" default="0"/>)</span>
-									</div>
-									<div class="comment">
-										<h5>评论：</h5>
-										<div class="commentArea" contenteditable="true"></div>
-										<input class="sendComment" type="button" value="评论" alt="<s:property value="id"/>">
-										<div class="displayComment"></div>
-										<div class="load_box">正在拼了命的,为您加载!</div>
-										<b class="cut_out">↑ 收起</b>
-									</div>		
-							</div>
-						</s:if>
-						<s:else>							
-							<div class="con_user_box">
-							<img class="user_photo" width="40" height="40" src="/myHome/load/download_getSmallPhoto?id=<s:property value="user.id"/>">
-							<span><s:property value="modifyDate"/></span>
-							<a class="user_name" href="/myHome/user/space/<s:property value="user.name"/>/" target="_blank"><s:property value="user.userBaseDatum.name"/></a>
-							<a href="/myHome/user/function_readDiary?userId=<s:property value="id" />" target="_blank">
-								<div class="content_user_li">
-									<strong class="logTitle">《<s:property value="logName" />》</strong>
-									<br>
-									<div><s:property value="noHtmlLog.substring(0,noHtmlLog.length()>350 ? 350 : noHtmlLog.length())"/></div>
-								</div>
-							</a>
-							<div class="comment_box">
-								<span alt="<s:property value="id" />" class="remove_log">删除</span>
-								<span>
-									<a target="_blank" href="/myHome/user/function_modifyDiary?userId=<s:property value="id" />">编辑</a>
-								</span>		
-								<span class="view_com"  alt="<s:property value="id" />">
+								</s:if>
+								<s:else>
+									<a href="/myHome/user/function_readDiary?userId=<s:property value="id" />" target="_blank">
+										<div class="content_user_li">
+											<strong class="logTitle">《<s:property value="logName" />》</strong>
+											<br>
+											<div><s:property value="noHtmlLog.substring(0,noHtmlLog.length()>350 ? 350 : noHtmlLog.length())"/></div>
+										</div>
+									</a>
+								</s:else>	
+								<div class="comment_box">
+									<span alt=" <s:property value="id" />" class="remove_log">删除</span>
+									<span class="view_com"  alt="<s:property value="id" />">
 									评论(<b><s:property value="commentNum" default="0"/></b>)
-								</span>
-								<span>浏览(<s:property value="visibleNum" default="0"/>)</span>
+									</span>
+									<span>浏览(<s:property value="visibleNum" default="0"/>)</span>
+								</div>
+								<div class="comment">
+									<h5>评论：</h5>
+									<div class="commentArea" contenteditable="true"></div>
+									<input class="sendComment" type="button" value="评论" alt="<s:property value="id"/>">
+									<div class="displayComment"></div>
+									<div class="load_box">正在拼了命的,为您加载!</div>
+									<b class="cut_out">↑ 收起</b>
+								</div>		
 							</div>
-							<div class="comment">
-								<h5>评论：</h5>
-								<div class="commentArea" contenteditable="true"></div>
-								<input class="sendComment" type="button" value="评论" alt="<s:property value="id"/>">
-								<div class="displayComment"></div>
-								<div class="load_box">正在拼了命的,为您加载!</div>
-								<b class="cut_out">↑ 收起</b>
-							</div>		
-						</div>	
-						</s:else>	
-							</s:iterator>
+						</s:iterator>
 					</div>
 					<div class="load_user_contenr">
 					<div class="point_load_status" >

@@ -260,6 +260,7 @@ body {
 
 .mini_music_content_right {
 	float: right;
+	overflow-x: hidden;
 }
 
 .mini_music_content_right h2 {
@@ -279,12 +280,16 @@ body {
 	height: 85%;
 	width: 98%;
 	overflow: auto;
+	min-width:400px;
+	overflow-x: hidden;
 }
 
 .search_result ul {
 	width: 100%;
 	list-style: none;
 	display: block;
+	min-width:400px;
+	overflow-x: hidden;
 }
 
 .search_result li {
@@ -292,6 +297,7 @@ body {
 	width: 96%;
 	margin: 2% 1%;
 	height: 65px;
+	min-width:355px;
 	border: 2px solid rgba(0,0,0,0);
 	background: url("../images/miniMusic/opacity1-939ae1.png") repeat scroll
 		left top ;
@@ -882,6 +888,8 @@ body {
 	width: 150px;
 	height: 150px;
 	border: 2px solid rbga(0,0,0,0);
+	*border-color:transparent;
+	border-color:transparent\0;
 	background: url("../images/miniMusic/opacity1-939ae1.png") repeat scroll
 		left top ;
 	position: relative;

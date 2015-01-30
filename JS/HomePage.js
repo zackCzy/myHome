@@ -604,7 +604,7 @@ function sendSmallSpeak(that) {
 function createUserCon(json, element) {
 	var prentEL = $(".home_content_display");
 	var flag = window.authority != 0;
-	var log_div, userPhoto, logDate, logName, logContent, content_div, linkContent, com_div, deleteLog, spanEdit,
+	var log_div, userPhoto, logDate, logName, logContent, content_div,userPhoto_a, linkContent, com_div, deleteLog, spanEdit,
 		edit, visibel, comment, cbox, cbox_h5, cbox_area, cbox_input, cbox_dis, cbox_b, loadbox;
 	var _doc = document;
 	for (var j = 0; j < json.length; j++) {
@@ -618,6 +618,10 @@ function createUserCon(json, element) {
 		userPhoto.className = "user_photo";
 		userPhoto.width = "40";
 		userPhoto.height = "40";
+		userPhoto_a=$("<a></a>");
+		userPhoto_a.href="/myHome/user/space/"+json[j].user[0].account+"/";
+		userPhoto_a.title=json[j].user[0].name;
+		$(userPhoto).appendTo(userPhoto_a);
 		//创建日期
 		logDate = _doc.createElement("span");
 		$(logDate).text(json[j].modifyDate);
