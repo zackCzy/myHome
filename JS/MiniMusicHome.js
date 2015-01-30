@@ -315,9 +315,8 @@ $(function(){
 		var scrollTop = this.scrollTop;
 		var scrollHeight =parseInt($(".search_result ul").css("height")) ;
 		if(clientHeight+scrollTop+30>=scrollHeight){
-			if(window.searchMessage.flag===false){
+			if(window.searchMessage.flag){
 				window.searchMessage.index+=1;
-				window.searchMessage.flag===true;
 				searchMusic(window.searchMessage.index,window.searchMessage.name);
 				this.scrollTop=scrollTop;
 			}
