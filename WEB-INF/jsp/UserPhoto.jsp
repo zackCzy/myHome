@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<%String path=pageContext.getRequest().getServletContext().getContextPath(); %>
+<%String path=request.getContextPath(); %>
 <link rel="stylesheet" type="text/css" href="<%=path%>/csss/imgareaselect-default.css" />
 <script type="text/javascript" src="<%=path%>/JS/plugObject/notice.js"></script>
 <script type="text/javascript" src="<%=path%>/JS/tool/JQ_plugs.js"></script>
