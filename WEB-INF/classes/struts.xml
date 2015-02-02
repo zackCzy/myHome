@@ -137,11 +137,11 @@
 		</action>
 
 		<action name="function_*" class="cn.mini.struts2.action.UserFunctionAction"
-			method="{1}">
+			method="{1}">	
 			<interceptor-ref name="miniAccountStack" />
+			<result name="readDiary">/WEB-INF/jsp/readDiary.jsp</result>
 			<result name="cteateDiary">/WEB-INF/jsp/MessageBoard.jsp</result>
 			<result name="modifyDiary">/WEB-INF/jsp/MessageBoard.jsp</result>
-			<result name="readDiary">/WEB-INF/jsp/readDiary.jsp</result>
 			<result name="noDiary">/WEB-INF/cueJsp/noDiary.jsp</result>
 			<!-- 
 			<result name="removeDiary" type="redirectAction">

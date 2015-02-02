@@ -155,7 +155,7 @@
 	 clear:both; 
 	 width: 100%; 
 	 height: 26px;
-	 background:url(' /myHome/image/top_float_bg.png') 0px -2px;
+	 background:url('${pageContext.request.contextPath}/image/top_float_bg.png') 0px -2px;
 	 margin:0;
 	 padding:0;
 	 border:0;
@@ -171,13 +171,13 @@ display:block;
 clear:both; 
 width: 159px; 
 height:30px;
-background:url(' /myHome/image/tog.png') 0 0px no-repeat;
+background:url('${pageContext.request.contextPath}/image/tog.png') 0 0px no-repeat;
 }
 .mini_nav_content{
  display:block; clear:both; width: 100%;
  height:0px;
  overflow: hidden;
- background: url("/myHome/image/slide.jpg");
+ background: url("${pageContext.request.contextPath}/image/slide.jpg");
  background-size:cover;
 }	
 .mini_nav_content_bg{
@@ -252,7 +252,7 @@ float:left;margin:7px 10px 0 15px;border:1px solid #ACACAC;box-shadow: 2px 2px 1
 			<a href="${pageContext.request.contextPath}" class="front">VIKI 首页</a>
 			<div class="headUser">
 				<div  class="account_info" style="width:25px; height:25px;">
-					<img width=25px height=25px  src="/myHome/load/download_getSmallPhoto?id=${id}">
+					<img width=25px height=25px  src="${pageContext.request.contextPath}/load/download_getSmallPhoto?id=${id}">
 				</div>
 				<div><span>${sgin}</span></div><i></i>
 				<ul id="headList">

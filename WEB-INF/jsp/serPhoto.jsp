@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%String path=pageContext.getRequest().getServletContext().getContextPath(); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -12,9 +12,9 @@
 		<script type="text/javascript"
 			src="scripts/jquery.imgareaselect.pack.js"></script>
 		<script type="text/javascript" src="scripts/jQueryRotate.js"></script>
-		<script type="text/javascript" src="/myHome/JS/tool/span.js"></script>
-		<script type="text/javascript" src="/myHome/JS/tool/ajaxfileupload.js"></script>
-		<script type="text/javascript" src="/myHome/JS/tool/Ajax.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/span.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/ajaxfileupload.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/Ajax.js"></script>
 		<style>
 .portrait_left {
 	float: left;
@@ -154,9 +154,9 @@
 		<div class="portrait_left">
 			<div id="picture"
 				style="border: 1px solid #000000; overflow: hidden; position: relative; height: auto; width: 280px; margin: 0 auto;">
-				<img id="avatar" width="280" alt="请上传头像" src="/myHome/load/download_downloadPhoto?id=${id}">
+				<img id="avatar" width="280" alt="请上传头像" src="<%=path%>/load/download_downloadPhoto?id=${id}">
 			</div>
-			<form name="photoSize" method="post" action="/myHome/load/download_uploadUserPhoto" enctype="multipart/form-data"  target="hidden_frame">
+			<form name="photoSize" method="post" action="<%=path%>/load/download_uploadUserPhoto" enctype="multipart/form-data"  target="hidden_frame">
 				<!--通过生成尺寸和旋转角度 后台获取尺寸和旋转角度再进行裁剪-->
 				<input id="id_top" type="hidden" name="top" value="90">
 				<input id="id_left" type="hidden" name="left" value="61">
@@ -186,7 +186,7 @@
 			<div class="portrait_right_bottom">
 				<div class="portrait1">
 					<div id="img_big_preview" class="img_preview">
-						<img id="avatar1" alt="头像预览" src="/myHome/load/download_downloadPhoto?id=${id}"
+						<img id="avatar1" alt="头像预览" src="<%=path%>/load/download_downloadPhoto?id=${id}"
 							style="width: 360px; height: 360px; margin-left: -117px; margin-top: -44px;">
 					</div>
 					<p>
@@ -196,7 +196,7 @@
 			</div>
 			<div class="portrait2">
 				<div id="img_small_preview" class="img_preview">
-					<img id="avatar2" alt="预览" src="/myHome/load/download_downloadPhoto?id=${id}"
+					<img id="avatar2" alt="预览" src="<%=path%>/load/download_downloadPhoto?id=${id}"
 						style="width: 98px; height: 98px; margin-left: -32px; margin-top: -12px;">
 				</div>
 				<p>
@@ -224,13 +224,13 @@
 	}
 	 function ajaxFileUpload(){
          $.ajaxFileUpload( {
-          url:'/myHome/load/download_uploadUserPhoto',            //需要链接到服务器地址
+          url:'<%=path%>/load/download_uploadUserPhoto',            //需要链接到服务器地址
           secureuri:false,
           fileElementId:'myFile',                        //文件选择框的id属性       
           dataType: 'json',
           success: function (data, status)            //相当于java中try语句块的用法
           {
-        	var src="/myHome/load/download_downloadPhoto?id="+data.id+"&ran?"+Math.random();
+        	var src="<%=path%>/load/download_downloadPhoto?id="+data.id+"&ran?"+Math.random();
         	document.getElementById("avatar").src=src;
       		document.getElementById("avatar1").src=src;
       		document.getElementById("avatar2").src=src;
@@ -305,7 +305,7 @@
 		
 		$('#rotation').val(value);
 		stateAjax({
-			url:'/myHome/load/download_saveUserPhoto',
+			url:'<%=path%>/load/download_saveUserPhoto',
 			method : 'get',
 			async : true,
 			message : {

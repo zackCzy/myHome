@@ -2,27 +2,28 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@taglib uri="/myHome" prefix="mini"%>
+<%String path=pageContext.getRequest().getServletContext().getContextPath(); %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet"  type="text/css" href="${pageContext.request.contextPath}/CSS/public/main.css">
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/myspace.css">
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/span.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/base.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/plug_Base.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/active_Base.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/Ajax.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/space.js"></script>
+		<link rel="stylesheet"  type="text/css" href="<%=path%>/CSS/public/main.css">
+		<link rel="stylesheet" type="text/css" href="<%=path%>/CSS/myspace.css">
+		<script type="text/javascript" src="<%=path%>/JS/tool/span.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/base.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/plug_Base.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/active_Base.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/Ajax.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/space.js"></script>
 		<title><s:property value="#user.userBaseDatum.name"/>的空间_Viki空间</title>
 	</head>
 	<body>
-		<!-- <%@ include file="/WEB-INF/jsp/head.jsp"%> -->
 		<div style="width:1200px;margin:0 auto; position: relative;">
-		<h1><a id="user_slef_id" rel="<s:property value="#user.id"/>" href="/myHome/user/user_space?acc=<s:property value="#user.name"/>"><span ><s:property value="#user.userBaseDatum.name"/></span>的空间</a></h1>
+		<h1><a id="user_slef_id" rel="<s:property value="#user.id"/>" href="<%=path%>/user/user_space?acc=<s:property value="#user.name"/>"><span ><s:property value="#user.userBaseDatum.name"/></span>的空间</a></h1>
 		<div class="userMessage">
-			<div class="userHead"><img style="width:160px;height:140px;margin:0px auto;display: block;" alt="用户头像" src="/myHome/load/download_getBigPhoto?id=<s:property value="#user.id"/>"></div>
-			<a class="Upload" href="/myHome/user/user_spaceUserPhoto">上传头像</a>
+			<div class="userHead"><img style="width:160px;height:140px;margin:0px auto;display: block;" alt="用户头像" src="<%=path%>/load/download_getBigPhoto?id=<s:property value="#user.id"/>"></div>
+			<a class="Upload" href="<%=path%>/user/user_spaceUserPhoto">上传头像</a>
 			<a id="username"><s:property value="#user.userBaseDatum.name"/></a>	
 			<span>性别：<s:property value="#user.userBaseDatum.sex"/></span>
 			<s:if test="#authority==1">
@@ -64,7 +65,7 @@
 						<h2>你还没有发布过内容哦！<s:a action="function_cteateDiary">发点什么吧!</s:a></h2>
 					</s:if>
 					<s:else>
-						<h2>用户很懒,目前什么都没有发布!<a href="${pageContext.request.contextPath}/user/function_cteateDiary">快去通知他吧</a></h2>
+						<h2>用户很懒,目前什么都没有发布!<a href="<%=path%>/user/function_cteateDiary">快去通知他吧</a></h2>
 					</s:else>
 				</div>
 			</s:if>
@@ -90,11 +91,11 @@
 								<div style="width:100%;height:120px;text-indent:2em;"><s:property value="noHtmlLog" escape="true"/></div>		
 							</s:else>							
 							<div class="userAction">
-								<a href="${pageContext.request.contextPath}/user/function_readDiary?userId=<s:property value="id" />">阅读全文</a>
+								<a href="<%=path%>/user/function_readDiary?userId=<s:property value="id" />">阅读全文</a>
 								<a class="mycomment">评论(<b ><s:property value="com.size()"/></b>)</a>
 								<s:if test="#authority==1">
-									<a href="${pageContext.request.contextPath}/user/function_modifyDiary?userId=<s:property value="id" />">编辑</a>
-									<a href="${pageContext.request.contextPath}/user/function_removeDiary?userId=<s:property value="id" />">删除</a>
+									<a href="<%=path%>/user/function_modifyDiary?userId=<s:property value="id" />">编辑</a>
+									<a href="<%=path%>/user/function_removeDiary?userId=<s:property value="id" />">删除</a>
 								</s:if>
 							</div>
 							
@@ -106,7 +107,7 @@
 								<div class="displayComment">
 									<s:iterator value="#log.com" var="comment">	
 										<div class="smallCom">	
-											<span><img  src="/myHome/load/download_getSmallPhoto?id=<s:property value="comUser.id"/>"></span><b><s:property value="comUser.UserBaseDatum.name"/>:</b><div ><s:property value="content" escapeHtml="false"/></div>
+											<span><img  src="<%=path%>/load/download_getSmallPhoto?id=<s:property value="comUser.id"/>"></span><b><s:property value="comUser.UserBaseDatum.name"/>:</b><div ><s:property value="content" escapeHtml="false"/></div>
 											<strong><s:property value="date"/>
 												<s:if test="#authority==1">
 													<a title='<s:property value="id"/>'>删除</a>

@@ -1,25 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
+<%String path=pageContext.getRequest().getServletContext().getContextPath(); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet"  type="text/css" href="${pageContext.request.contextPath}/CSS/public/main.css">
-		<link rel="stylesheet"  type="text/css" href="${pageContext.request.contextPath}/CSS/draftBox.css">
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/span.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-1.10.1.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/JQ_Scroll_Plub.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/plugObject/Texi.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/plugObject/notice.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/JQ_plugs.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/recycled.js"></script>
+		<link rel="stylesheet"  type="text/css" href="<%=path%>/CSS/public/main.css">
+		<link rel="stylesheet"  type="text/css" href="<%=path%>/CSS/draftBox.css">
+		<script type="text/javascript" src="<%=path%>/JS/tool/span.js"></script>
+		<script type="text/javascript" src="<%=path%>/scripts/jquery-1.10.1.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/JQ_Scroll_Plub.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/plugObject/Texi.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/plugObject/notice.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/JQ_plugs.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/recycled.js"></script>
 		<title>${sgin}_的回收站</title>
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/jsp/head.jsp"%>
 		<div class="draftBox">
-			<h2 class="draft_title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回收站&nbsp;(&nbsp;<span><s:property value="#userlogs.size()"/> </span>&nbsp;)<a href="${pageContext.request.contextPath}/user/space/${sgin}/">返回空间</a></h2>
+			<h2 class="draft_title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回收站&nbsp;(&nbsp;<span><s:property value="#userlogs.size()"/> </span>&nbsp;)<a href="<%=path%>/user/space/${sgin}/">返回空间</a></h2>
 			<hr style="width:750px;margin:20px auto 0;border:1px solid #9EC8F5;">
 			<div class="draftRow">
 				<ul>

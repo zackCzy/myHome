@@ -5,9 +5,9 @@ $(load);
 function load(){
 	try {
 		$(".smallCom").hover(function(){
-			$(this.getElementsByTagName("a")[1]).show();
+			$(this.getElementsByTagName("a")[2]).show();
 		}, function(){
-			$(this.getElementsByTagName("a")[1]).hide();
+			$(this.getElementsByTagName("a")[2]).hide();
 		});		
 	} catch (e) {}
 	$(".smallCom a").on("click", function(){

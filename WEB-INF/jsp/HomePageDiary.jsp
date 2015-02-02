@@ -5,14 +5,15 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link type="text/css" rel="stylesheet" href="/myHome/CSS/public/main.css">
-		<link type="text/css" rel="stylesheet" href="/myHome/CSS/HomePage.css">
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/span.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-1.10.1.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/plugObject/Texi.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/plugObject/notice.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/JQ_plugs.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/json2.js"></script>
+		<%String path=pageContext.getRequest().getServletContext().getContextPath(); %>
+		<link type="text/css" rel="stylesheet" href="<%=path %>/CSS/public/main.css">
+		<link type="text/css" rel="stylesheet" href="<%=path %>/CSS/HomePage.css">
+		<script type="text/javascript" src="<%=path %>/JS/tool/span.js"></script>
+		<script type="text/javascript" src="<%=path %>/scripts/jquery-1.10.1.js"></script>
+		<script type="text/javascript" src="<%=path %>/JS/plugObject/Texi.js"></script>
+		<script type="text/javascript" src="<%=path %>/JS/plugObject/notice.js"></script>
+		<script type="text/javascript" src="<%=path %>/JS/tool/JQ_plugs.js"></script>
+		<script type="text/javascript" src="<%=path %>/JS/tool/json2.js"></script>
 		<title><s:property value="#user.userBaseDatum.name"/>_的主页</title>
 	</head>
 	<body>
@@ -25,18 +26,20 @@
 		<div style="width: 1000px; margin: 0 auto;">
 			<div class="Home_page_nav">
 				<ul>
-					<li><s:a href="/myHome" >首页</s:a> </li>
+					<li>
+						<a href="<%=path %>" >首页</a> 
+					</li>
 					<s:if test="#authority==1">
-						<li ><a href="/myHome/user/space/<s:property value="#user.name"/>/">动态</a></li>
-						<li style="border-bottom: 4px solid #DC3C00;"><a href="/myHome/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
-						<li><a href="/myHome/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
+						<li ><a href="<%=path %>/user/space/<s:property value="#user.name"/>/">动态</a></li>
+						<li style="border-bottom: 4px solid #DC3C00;"><a href="<%=path %>/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
+						<li><a href="<%=path %>/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
 						<li>关系</li>
-						<li><a href="/myHome/user/user_SysMessage">消息</a></li>
+						<li><a href="<%=path %>/user/user_SysMessage">消息</a></li>
 					</s:if>
 					<s:else>
-							<li style="border-bottom: 4px solid #DC3C00;"><a href="/myHome/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
-							<li><a href="/myHome/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
-							<li ><a href="/myHome/user/space/<s:property value="#user.name"/>/datum">资料</a></li>
+							<li style="border-bottom: 4px solid #DC3C00;"><a href="<%=path %>/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
+							<li><a href="<%=path %>/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
+							<li ><a href="<%=path %>/user/space/<s:property value="#user.name"/>/datum">资料</a></li>
 					</s:else>
 				</ul>
 				<div style="float: right;height:50px;vertical-align: middle;">
@@ -53,7 +56,7 @@
 						</s:if>
 						<s:else>
 							<strong><a  href="${pageContext.request.contextPath}/user/space/${sgin}/">${sgin}</a></strong>			
-							<img width="25px" height="25px" src="/myHome/load/download_getSmallPhoto?id=${id}" >				
+							<img width="25px" height="25px" src="<%=path %>/load/download_getSmallPhoto?id=${id}" >				
 						</s:else>		
 					</div>
 				</div>
@@ -61,25 +64,25 @@
 			</div>
 			
 			<div class="mypage_img">
-				<img width=1000px height=300px; alt="bg" src="/myHome/image/1.jpg">
+				<img width=1000px height=300px; alt="bg" src="<%=path %>/image/1.jpg">
 			</div>
 			<div class="my_Info_display">
 				<div class="user_page_photo">	
 					<s:if test="#authority==1">
 						<s:a action="user_userPhoto" id="modify_user_photo" target="_blank">修改头像</s:a>
 					</s:if>		
-					<img width=180px height=180px alt="用户头像" src="/myHome/load/download_getBigPhoto?id=<s:property value="#user.id"/>"/>		
+					<img width=180px height=180px alt="用户头像" src="<%=path %>/load/download_getBigPhoto?id=<s:property value="#user.id"/>"/>		
 					<ul>		
 						<li><a href="<s:url action="user_myFollwer" />"><strong><s:property value="#user.followUsers.size()"/></strong>关注</a></li>
 						<li><a href="<s:url action="user_myFlans" />"><strong><s:property value="#user.fansUsers.size()"/></strong>粉丝</a></li>
-						<li><a href="/myHome/user/space/<s:property value="#user.name"/>/diary">
+						<li><a href="<%=path %>/user/space/<s:property value="#user.name"/>/diary">
 						<strong><s:property value="#logcount"/></strong>日记</a></li>
 					</ul>
 				</div>
 				<div class="home_user_message" >
 					<span style="font: 20px/30px 'Microsoft Yahei';color: #423009;"><s:property value="#user.userBaseDatum.name"/></span>
 					<s:if test="#authority==1">
-						<a  href="/myHome/user/user_datum" id="user_message_bt" style="float: right;" target="_blank">编辑个人资料</a>
+						<a  href="<%=path %>/user/user_datum" id="user_message_bt" style="float: right;" target="_blank">编辑个人资料</a>
 						<span style="font: 13px/30px 'Microsoft Yahei';color: #808080;">
 							<s:property value="#user.userBaseDatum.info" default="--"/>
 						</span>
@@ -94,7 +97,7 @@
 						<script type="text/javascript">
 						function addFollow(evt){
 							$.ajax({
-								url:"/myHome/friends/friends_addFirend",
+								url:"<%=path %>/friends/friends_addFirend",
 								method : 'get',
 								timeout : 5000,
 								data : {
@@ -155,10 +158,10 @@
 					</s:if>
 					<s:iterator value="#dynamic" var="newLog" >
 					<div class="con_user_box">
-						<img class="user_photo" width="40" height="40" src="/myHome/load/download_getSmallPhoto?id=<s:property value="user.id"/>">
+						<img class="user_photo" width="40" height="40" src="<%=path %>/load/download_getSmallPhoto?id=<s:property value="user.id"/>">
 						<span><s:property value="modifyDate"/></span>
-						<a class="user_name" href="/myHome/user/space/<s:property value="user.name"/>/" target="_blank"><s:property value="user.userBaseDatum.name"/></a>
-						<a href="/myHome/user/function_readDiary?userId=<s:property value="id" />" target="_blank">
+						<a class="user_name" href="<%=path %>/user/space/<s:property value="user.name"/>/" target="_blank"><s:property value="user.userBaseDatum.name"/></a>
+						<a href="<%=path %>/user/function_readDiary?logId=<s:property value="id" />" target="_blank">
 							<div class="content_user_li">
 								<strong class="logTitle">《<s:property value="logName" />》</strong>
 								<br>
@@ -169,7 +172,7 @@
 							<s:if test="#authority==1">
 								<span alt="<s:property value="id" />" class="remove_log">删除</span>
 								<span>
-									<a target="_blank" href="/myHome/user/function_modifyDiary?userId=<s:property value="id" />">编辑</a>
+									<a target="_blank" href="<%=path %>/user/function_modifyDiary?logId=<s:property value="id" />">编辑</a>
 								</span>
 							</s:if>				
 							<span class="view_com"  alt="<s:property value="id" />">

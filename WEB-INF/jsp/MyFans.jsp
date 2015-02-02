@@ -12,8 +12,8 @@
 	<ul style="width: 560px; height: 600px; margin: 30px auto 0">
 		<s:iterator value="#flans" var="flan">
 			<li>
-				<span ><img width=51px height=51px  src="/myHome/load/download_getSmallPhoto?id=<s:property value="id"/>"></span>
-				<a style="text-decoration: none;color:#3CBCE7"  class="flans_message" href="/myHome/user/space/<s:property value="name"/>/" target="_blank"><s:property value="name"/> </a>
+				<span ><img width=51px height=51px  src="${pageContext.request.contextPath}/load/download_getSmallPhoto?id=<s:property value="id"/>"></span>
+				<a style="text-decoration: none;color:#3CBCE7"  class="flans_message" href="${pageContext.request.contextPath}/user/space/<s:property value="name"/>/" target="_blank"><s:property value="name"/> </a>
 				<input type="button" class="flans_follws_bt" value="<s:property value="#title=='我的粉丝'? '加入黑名单':'取消关注'"/>" alt="<s:property value="id"/>" onclick="removeFirend(this,this.alt,this.value)">
 			</li> 
 		</s:iterator>
