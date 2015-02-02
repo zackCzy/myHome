@@ -91,7 +91,7 @@
 			</div>
 		</div>
 		<div class="mini_music_bg">
-			<img src="<%=path %>/images/miniMusic/20120320232937_Pe8XK.thumb.600_0.jpeg" id="music_img_bg"/>
+			<img src="<%=path %>/images/miniMusic/016.jpg" id="music_img_bg"/>
 		</div>
 		<div class="mini_music_component">
 			<div class="mini_music_playArea">
