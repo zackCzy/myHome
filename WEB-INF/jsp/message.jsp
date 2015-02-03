@@ -13,7 +13,7 @@
 		<link rel="stylesheet" type="text/css" href="<%=path %>/CSS/public/main.css">
 		<link rel="stylesheet" type="text/css" href="<%=path %>/CSS/message.css">
 		<script type="text/javascript">
-			BASE_PATH=<%=path %>
+			BASE_PATH="<%=path %>";
 		</script>
 		<script type="text/javascript" src="<%=path %>/JS/tool/span.js"></script>
 		<script type="text/javascript" src="<%=path %>/scripts/jquery-1.10.1.js"></script>
