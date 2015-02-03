@@ -44,19 +44,19 @@
 									<img src="<%=path %>/images/home/music2.png"  width=90% height=80%; id="music_info">
 									<span>viki music</span>
 								</li>
-								<li class="unselect"><img src="<%=path %>/images/home/music3.png"  width=90% height=80%; id="music_info">
-									<span>viki music</span>
+								<li class="unselect"><img src="<%=path %>/images/home/space.png"  width=90% height=80%; id="music_info">
+									<span>viki V说</span>
 								</li>
 								<li class="unselect">
-									<img src="<%=path %>/images/home/music.png"  width=90% height=80%; id="music_info">
-									<span>viki music</span>
+									<img src="<%=path %>/images/home/space1.png"  width=90% height=80%; id="music_info">
+									<span>viki V说</span>
 								</li>
 								<li class="unselect">
-									<img src="<%=path %>/images/home/music2.png"  width=90% height=80%; id="music_info">
-									<span>viki music</span>
+									<img src="<%=path %>/images/home/space2.png"  width=90% height=80%; id="music_info">
+									<span>viki V说</span>
 								</li>
-								<li class="unselect"><img src="<%=path %>/images/home/music3.png"  width=90% height=80%; id="music_info">
-									<span>viki music</span>
+								<li class="unselect"><img src="<%=path %>/images/home/space3.png"  width=90% height=80%; id="music_info">
+									<span>viki V说</span>
 								</li>
 							</ul>
 						</div>
