@@ -137,10 +137,9 @@ $(function(){
 					_$this.text("登录失败");
 					return false;
 				}
-				var temp=$(".user_message").html("");
 				_$this.text("登录成功");
 				var url=window.location.href;
-				window.location.href=url;
+				window.location.href=url+"?time="+new Date().getTime();
 			}
 		});
 	});

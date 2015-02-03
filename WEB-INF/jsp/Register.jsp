@@ -1,23 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	String basePath = request.getContextPath();
+	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath; 
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" type="text/css"
-			href="/myHome/CSS/public/main.css" />
-		<link rel="stylesheet" type="text/css" href="/myHome/CSS/register.css" />
-		<script type="text/javascript" src="/myHome/JS/tool/span.js"></script>
-		<script type="text/javascript" src="/myHome/JS/tool/base.js"></script>
-		<script type="text/javascript" src="/myHome/JS/tool/plug_Base.js"></script>
-		<script type="text/javascript" src="/myHome/JS/tool/active_Base.js"></script>
-		<script type="text/javascript" src="/myHome/JS/tool/Ajax.js"></script>
-		<script type="text/javascript" src="/myHome/JS/register.js"></script>
+			href="<%=path%>/CSS/public/main.css" />
+		<link rel="stylesheet" type="text/css" href="<%=path%>/CSS/register.css" />
+		<script type="text/javascript" src="<%=path%>/JS/tool/span.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/base.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/plug_Base.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/active_Base.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/Ajax.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/register.js"></script>
 		<title>Viki_注册</title>
 	</head>
 	<body>
 		<div class="register_head">
-			<a href="${pageContext.request.contextPath}" target="_parent"><img alt="" src="${pageContext.request.contextPath}/image/vikilogo.png" id="logo"> 
+			<a href="<%=path%>" target="_parent"><img alt="" src="<%=path%>/image/vikilogo.png" id="logo"> 
 			</a>
 			<h1>
 				账号注册

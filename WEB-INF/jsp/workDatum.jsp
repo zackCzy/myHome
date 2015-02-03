@@ -40,17 +40,18 @@
 			</div>	
 		</div>
 		<script type="text/javascript">
-			$Base("#workYear").myCreateNode("li",1970,new Date().getFullYear()-1970,function(op,int){
+			$("#workYear").createNodes("li",1970,new Date().getFullYear()-1970,function(op,int){
 				 op.innerHTML=int.toString();
 			});
-			$Base("#workMonth").myCreateNode("li",1,11,function(op,int){
+			$("#workMonth").createNodes("li",1,11,function(op,int){
 				 op.innerHTML=int.toString();
 			});
+			$("#userMessList li:nth-child(5)").className("personal_hover");
 			function getObj(){
 				return {
-					'udm.workUnit':encodeURIComponent($Base("#workInfo").get(0,true).value),				
-					'udm.workTime':$Base("#workYear").getPrevious().innerHTML()+"-"+$Base("#workMonth").getPrevious().innerHTML()+"-1"	
-				}
+					'udm.workUnit':$("#workInfo").val(),				
+					'udm.workTime':$("#workYear").prev().text().isEmpty()+"-"+$("#workMonth").prev().text().isEmpty()+"-1"	
+				};
 			}
 		</script>
 		

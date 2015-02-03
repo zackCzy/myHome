@@ -23,7 +23,8 @@ Texi.prototype={
 				"text-align":"center",
 				"padding-left":"10px",
 				"padding-right":"10px",
-				"border-bottom":"2px solid #8EBD21"
+				"border-bottom":"2px solid #8EBD21",
+				"cursor":"move"
 		},
 		TLTLS_B_CSS:{
 			"width":"300px",
@@ -63,6 +64,7 @@ Texi.prototype={
 			"border-radius":"20px",
 			overflow:"hidden",
 			position:"fixed",
+			"z-index":99,
 			id:"texi_zack_czy"
 		},
 		BT_CSS:{
@@ -91,7 +93,8 @@ Texi.prototype={
 					)	
 			).append(
 					$(body).css(_that.BODY_CSS).append(bt)
-			).appendTo($("body")).move(title);
+			).appendTo($("body"));
+			$(texi).move(title);
 		},
 		show:function(){
 			var that=document.getElementById(this.id),bt;
@@ -119,6 +122,7 @@ Texi.prototype={
 				"top":top,
 				"left":left
 			}).show(300,function(){
+			
 				$(this).shake(function(){
 					if(_that.time>0)
 						that.time=setTimeout(function(){

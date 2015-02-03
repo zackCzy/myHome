@@ -2,7 +2,7 @@
  * 
  */
 
-windowLoad(load);
+$(load);
 
 function load(){
 	var ul=document.getElementById("display_box");
@@ -19,121 +19,104 @@ function load(){
 		ul.appendChild(li);
 	}
 	
-	$Base("#seav_internation_music").event("click", function(){
-		stateAjax({
+	$("#seav_internation_music").click(function(){
+		$.ajax({
 			url:"/myHome/user/music_addInternationMusic",
 			method : 'post',
-			head:{"Accept-Charset":"UTF-8"},
-			async : true,
-			message : {
-				'myMusic.song':encodeURIComponent(document.getElementById("song_name").value.isEmpty()),
-				'myMusic.singer':encodeURIComponent(document.getElementById("singer_name").value.isEmpty()),
-				'myMusic.musicId':encodeURIComponent(document.getElementById("song_url").value.isEmpty())
+			data : {
+				'myMusic.song':(document.getElementById("song_name").value.isEmpty()),
+				'myMusic.singer':(document.getElementById("singer_name").value.isEmpty()),
+				'myMusic.musicId':(document.getElementById("song_url").value.isEmpty())
 			},
-			run:function(text){	
+			success:function(text){	
 				if(text=="you login has expired"){
-					notice("登录过期");
+					$.notice("Viki提醒您！","登录过期");
 				}
 				else if(text.isEmpty()==""){
-					notice("添加成功,刷新后显示");
+					$.notice("Viki提醒您！","添加成功,刷新后显示");
 				}else{
-					notice("添加成功,刷新后显示");
+					$.notice("Viki提醒您！","添加成功,刷新后显示");
 				}
 			}
 		});
 	});
-	$Base('.make_music li a').event('click', function() {
+	$('.make_music li a').on('click', function() {
 		var that=this;
-		stateAjax({
+		$.ajax({
 			url:"/myHome/user/music_removeMusic",
 			method : 'get',
-			head:{"Accept-Charset":"UTF-8"},
-			async : true,
-			message : {id:that.getAttribute("alt")},
-			run:function(text){	
+			data : {id:that.getAttribute("alt")},
+			success:function(text){	
 				if(text=="you login has expired"){
-					notice("登录过期");
+					window.location.href=window.location.href;
 				}
-				else if(text.isEmpty()==""){
-					notice("删除成功,刷新后显示");
+				else if(text.isEmpty()=="remove music is error"){
+					$.notice("Viki提醒您！","删除失败");
 				}else{
-					notice("删除成功,刷新后显示");
+					$(that.parentNode).slideUp(300,function(){
+						$(this).remove();
+					});
+					$.notice("Viki提醒您！","删除成功,刷新后显示");
 				}
 			}
 		});	
 	});
-	$Base('#mini_music_data').event('click', function() {
-		if(document.body.scrollTop){
-			document.body.scrollTop=0;
-		}else{
-			document.documentElement.scrollTop=0;
-		}
-		$Base('#lock_music').lock().active({
-			attr : 'o',target : 60,t : 30,step : 10});
-		$Base('.pick_music_box').center().show();
+	$('#mini_music_data').on('click', function() {
+		$('#lock_music').lock();
+		$('.pick_music_box').setCenter().show(300);
 	});
-	$Base('#internation_music').event('click', function() {
-		if(document.body.scrollTop){
-			document.body.scrollTop=0;
-		}else{
-			document.documentElement.scrollTop=0;
-		}
-		$Base('#lock_music').lock().active({
-			attr : 'o',target : 60,t : 30,step : 10});
-		$Base('.add_pick_music_box').center().show();
+	$('#internation_music').on('click', function() {
+		$('#lock_music').lock();
+		$('.add_pick_music_box').setCenter().show(300);
 	});
-	$Base('.pick_music_box').resizeCenter().Move(document.getElementById("box_move"));
-	$Base('.add_pick_music_box').resizeCenter().Move(document.getElementById("add_box_move"));
+	$('.pick_music_box').move(document.getElementById("box_move"));
+	$('.add_pick_music_box').move(document.getElementById("add_box_move"));
 	
-	$Base('.box_close').event('click', function() {
-		$Base('#lock_music').active({
-			attr : 'o',target : 0,t : 30,step : 10,
-			fn : function() {$Base('#lock_music').unlock();}});
-		$Base(this).getParent().getParent().hide();
+	$('.box_close').on('click', function() {
+		$('#lock_music').unlock();
+		$(this.parentNode.parentNode).hide(300);
 	});
 
-	$Base('#bt_search').event('click', function() {
+	$('#bt_search').on('click', function() {
 		search=document.getElementById("bt_search_text").value;
 		box(search,1);
 	});
-	$Base('#displayPage i').event('click', function() {
+	$('#displayPage i').on('click', function() {
 		var temp=this.innerHTML.isEmpty();
 		if(temp=="")return;	
 		if(parseInt(temp)==window.current||parseInt(temp)>window.count)return;		
 		box(search,parseInt(temp));
 	});
-	$Base('#endpage').event('click', function() {
+	$('#endpage').on('click', function() {
 		box(search,window.count);
 	});
-	$Base('#display_box strong').event('click', function() {
+	$('#display_box strong').on('click', function() {
 		if(this.innerHTML.isEmpty()!=""){
 			search=this.innerHTML.isEmpty();
 			box(search,1);
 		}
 	});
-	$Base('#display_box b').event('click', function() {
+	$('#display_box b').on('click', function() {
 		if(this.innerHTML.isEmpty()!=""){
 			search=this.innerHTML.isEmpty().slice(1);
 			box(search,1);
 		}
 	});
-	$Base('#display_box span').event('click', function() {	
+	$('#display_box span').on('click', function() {	
 		var that=this;
 		if(this.innerHTML.isEmpty()!=""){
-			stateAjax({
+			$.ajax({
 				url:"/myHome/user/music_addMusic",
 				method : 'get',
-				head:{"Accept-Charset":"UTF-8"},
-				async : true,
-				message : {id:that.getAttribute("alt")},
-				run:function(text){	
+				data : {id:that.getAttribute("alt")},
+				success:function(text){	
 					if(text=="you login has expired"){
-						notice("登录过期");
+						$.notice("Viki提醒您！","登录过期");
 					}
 					else if(text.isEmpty()==""){
-						notice("添加成功,刷新后显示");
+						$.notice("Viki提醒您！","添加成功,刷新后显示");
 					}else{
-						notice("添加成功,刷新后显示");
+						$.notice("Viki提醒您！","添加成功,刷新后显示");
 					}
 				}
 			});	
@@ -142,14 +125,12 @@ function load(){
 }
 
 function box(name,index){
-	stateAjax({
+	$.ajax({
 		url:"/myHome/user/music_searchMusic",
 		method : 'post',
-		head:{"Accept-Charset":"UTF-8"},
-		async : true,
-		message : {
+		data : {
 			pageIndex:index,searchName:name},
-		run:function(text){
+		success:function(text){
 			var json;
 			try {
 				json=JSON.parse(text);

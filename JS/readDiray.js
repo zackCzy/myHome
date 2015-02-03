@@ -1,52 +1,47 @@
 /**
  * 
  */
-windowLoad(load);
+$(load);
 function load(){
 	try {
-		$Base(".smallCom").hover(function(){
-			$Base(this.getElementsByTagName("a")[1]).show();
+		$(".smallCom").hover(function(){
+			$(this.getElementsByTagName("a")[2]).show();
 		}, function(){
-			$Base(this.getElementsByTagName("a")[1]).hide();
+			$(this.getElementsByTagName("a")[2]).hide();
 		});		
 	} catch (e) {}
-	$Base(".smallCom a").event("click", function(){
+	$(".smallCom a").on("click", function(){
 		var that=this;
 		send("/myHome/user/comment_remove",{
 			'id':this.getAttribute("rel")
 		},'remove is ok',"删除成功","删除失败",function(){			
-			var temp=$Base(that).getParent().getParent().active({
-				step:10,t:10,async:{h:0,o:0,mt:0},fn:function(){
-					temp.remove();
-					$Base("#count").innerHTML(parseInt($Base("#count").innerHTML())-1);
-				}
+			$(that.parentNode.parentNode).slideUp(350,function(){
+				this.remove();
+				$("#count").html(parseInt(this.innerHTML)-1);
 			});
 		});
 	});
-	$Base("#sendComment").event("click",sendClick);
+	$("#sendComment").on("click",sendClick);
 }
 function sendClick(){
 	var that=this;
-	if($Base(that).getPrevious().innerText().length<=0){
-		var temp=$Base(that).getPrevious().css({"border":"1px solid #ff4700"}).shake(function(){
-			temp.css({"border":"1px solid #DEDEDE"});
+	if($(that).prev().text().length<=0){
+		$(that).prev().css({"border":"1px solid #ff4700"}).shake(function(){
+			$(that).css({"border":"1px solid #DEDEDE"});
 		},1);
 		return;
 	}	
 	var date=new Date();
-	stateAjax({
+	$.ajax({
 		url:"/myHome/user/comment_save",
 		method : 'post',
-		head:{"Accept-Charset":"UTF-8"},
-		async : true,
-		message : {
-			'c.content':encodeURIComponent($Base(that).getPrevious().innerText()),
-			'id':$Base(that).get(0,true).alt
+		data : {
+			'c.content':$(that).prev().text(),
+			'id':$(that).attr("alt")
 		},
-		run:function(text){
+		success:function(text){
 			try {
 				var json=JSON.parse(text);	
-
 				var element=document.createElement('div');
 				element.setAttribute("class", 'smallCom');
 				var span=document.createElement('span');
@@ -60,95 +55,87 @@ function sendClick(){
 				bo.setAttribute("href","/myHome/user/space/"+json.name+"/");
 				element.appendChild(bo);
 				var divo=document.createElement('div');
-				divo.innerHTML=$Base(that).getPrevious().innerText();
+				divo.innerHTML=$(that).prev().text();
 				element.appendChild(divo);
 				
 				var small_strong=document.createElement('strong');
 				small_strong.innerHTML=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+'&nbsp'+date.getHours()+':'+date.getMinutes();
-				if(json.comId!=undefined){
+				if(json.commentId!=undefined){
 					var small_remove=document.createElement("a");
-					small_remove.setAttribute("alt",json.comId);
+					small_remove.setAttribute("alt",json.commentId);
 					small_remove.className="remove_com";
 					small_remove.innerHTML="删除";
-					addEvent(small_remove, "click", removeClick);
+					$(small_remove).click(removeClick);
 					small_strong.appendChild(small_remove);
 				}
 				
 				element.appendChild(small_strong);			
-				var parent=$Base(that).getNext().get(0,true);
-				
-				notice("评论成功!");
+				var parent=$(that).next().get(0);
+				$.notice("viki提醒您！","评论成功!");
 				parent.insertBefore(element,parent.firstChild);
-				var count=$Base(that).getParent().getPrevious().get(0,true).getElementsByTagName("b")[0];
-				$Base(count).innerHTML(parseInt($Base(count).innerHTML())+1);
+				var $cont=$(".userAction a:eq(1) span");
+				$cont.text(parseInt($cont.text())+1);
 			} catch (e) {
-				notice("评论失败!");
+				$.notice("viki提醒您！","评论失败!");
 			}
 			
 		}
 	});	
 }
 function send(url,obj,cond,isok,iserror,fn){
-	stateAjax({
+	$.ajax({
 		url:url,
 		method : 'post',
 		head:{"Accept-Charset":"UTF-8"},
-		async : true,
-		message : obj,
-		run:function(text){
+		data : obj,
+		success:function(text){
 			if(text=="you login has expired"){
-				notice("登录过期");
+				$.notice("viki提醒您！","登录过期");
 			}else if(text.isEmpty()==cond){	
 				if(fn)fn();
-				notice(isok);
+				$.notice("viki提醒您！",isok);
 			}else{
-				notice(iserror);
+				$.notice("viki提醒您！",iserror);
 			}
 		}
 	});	
 }
 function removeClick(){
 	var that=this;
-	stateAjax({
+	$.ajax({
 		url:"/myHome/user/comment_remove",
 		method : 'get',
-		head:{"Accept-Charset":"UTF-8"},
-		async : true,
-		message : {
-			'id':this.getAttribute("alt")
+		data : {
+			'id':that.getAttribute("alt")
 		},
-		run:function(text){
+		success:function(text){
 			if(text=="remove is ok"){
-				notice("删除评论成功!");
-				var temp=$Base(that).getParent().getParent().active({
-					step:10,t:10,async:{h:0,o:0,mt:0},fn:function(){		
-						var count=$Base(that).getParent().getParent().getParent().getParent().getPrevious().get(0,true).getElementsByTagName("b")[0];
-						$Base(count).innerHTML(parseInt($Base(count).innerHTML())-1);
-						temp.remove();
-					}
+				$.notice("viki提醒您！","删除评论成功!");
+				$(that.parentNode.parentNode).slideUp(350,function(){
+					var $cont=$(".userAction a:eq(1) span");
+					$cont.text(parseInt($cont.text())-1);
+					this.remove();
 				});
 			}else{
-				notice("删除评论失败!");
+				$.notice("viki提醒您！","删除评论失败!");
 			}
 		}
 	});
 }
 function removeLog(acc,evt){
-	stateAjax({
+	$.ajax({
 		url:"/myHome/user/function_removeDiary",
 		method : 'get',
-		head:{"Accept-Charset":"UTF-8"},
-		async : true,
-		message : {
+		data : {
 			'userId':evt.getAttribute("rel")
 		},
-		run:function(text){
+		success:function(text){
 			if(text=="removeDiary is ok"){
-				notice("删除日记成功，即将跳转！!",function(){
-					window.open("/myHome/user/space/"+acc+"/diary","_self");
+				$.notice("viki提醒您！","删除日记成功，即将跳转！!",300,function(){
+					window.location.href="/myHome/user/space/"+acc+"/diary";
 				});			
 			}else{
-				notice("删除日记失败!");
+				$.notice("viki提醒您！","删除日记失败!");
 			}
 		}
 	});

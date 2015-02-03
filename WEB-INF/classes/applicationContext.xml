@@ -55,7 +55,8 @@
 				<value>cn/mini/domain/UserBaseDails.hbm.xml</value>
 				<value>cn/mini/domain/UserBaseDatum.hbm.xml</value>
 				<value>cn/mini/domain/UnitDatum.hbm.xml</value> 
-				<value>cn/mini/domain/ReviewewComment.hbm.xml</value> 
+				<value>cn/mini/domain/ReviewewComment.hbm.xml</value>
+				<value>cn/mini/domain/VikiMusic.hbm.xml</value> 
 			</list>
 		</property>
 		<property name="hibernateProperties">

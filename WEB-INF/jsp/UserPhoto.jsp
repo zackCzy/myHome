@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<link rel="stylesheet" type="text/css"
-	href="/myHome/csss/imgareaselect-default.css" />
-<script type="text/javascript" src="/myHome/scripts/jquery-1.7.2.js"></script>
-<script type="text/javascript" src="/myHome/scripts/jquery.imgareaselect.pack.js"></script>
-<script type="text/javascript" src="/myHome/scripts/jQueryRotate.js"></script>
-<script type="text/javascript" src="/myHome/JS/tool/span.js"></script>
-<script type="text/javascript" src="/myHome/JS/tool/ajaxfileupload.js"></script>
-<script type="text/javascript" src="/myHome/JS/tool/Ajax.js"></script>
+<%
+	String basePath = request.getContextPath();
+	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath; 
+%>
+<link rel="stylesheet" type="text/css" href="<%=path%>/csss/imgareaselect-default.css" />
+<script type="text/javascript" src="<%=path%>/JS/plugObject/notice.js"></script>
+<script type="text/javascript" src="<%=path%>/JS/tool/JQ_plugs.js"></script>
+<script type="text/javascript" src="<%=path%>/scripts/jquery.imgareaselect.pack.js"></script>
+<script type="text/javascript" src="<%=path%>/scripts/jQueryRotate.js"></script>
+<script type="text/javascript" src="<%=path%>/JS/tool/ajaxfileupload.js"></script>
 <style>
 .portrait_left {
 	float: left;
@@ -27,7 +29,7 @@
 }
 
 .revolve_left {
-	background: url("/myHome/images/setup.gif") repeat scroll -128px -55px
+	background: url("${pageContext.request.contextPath}/images/setup.gif") repeat scroll -128px -55px
 		rgba(0, 0, 0, 0);
 	float: left;
 	height: 22px;
@@ -62,7 +64,7 @@
 }
 
 .revolve_right {
-	background: url("/myHome/images/setup.gif") repeat scroll -128px -77px
+	background: url("${pageContext.request.contextPath}/images/setup.gif") repeat scroll -128px -77px
 		rgba(0, 0, 0, 0);
 	float: left;
 	height: 22px;
@@ -133,7 +135,7 @@
     display: block;
     float: right;
     text-align:center;
-    background: url("/myHome/images/secondary.gif") repeat scroll -194px -96px rgba(0, 0, 0, 0);
+    background: url("${pageContext.request.contextPath}/images/secondary.gif") repeat scroll -194px -96px rgba(0, 0, 0, 0);
 	height: 28px;
 	line-height: 28px;
 	color: #FFFFFF;
@@ -148,9 +150,9 @@
 		<div class="portrait_left">
 			<div id="picture"
 				style="border: 1px solid #000000; overflow: hidden; position: relative; height: auto; width: 280px; margin: 0 auto;">
-				<img id="avatar" width="280" alt="请上传头像" src="/myHome/load/download_getPhoto?id=${id}">
+				<img id="avatar" width="280" alt="请上传头像" src="<%=path%>/load/download_getPhoto?id=${id}">
 			</div>
-			<form name="photoSize" method="post" action="/myHome/load/download_uploadUserPhoto" enctype="multipart/form-data"  target="hidden_frame">
+			<form name="photoSize" method="post" action="<%=path%>/load/download_uploadUserPhoto" enctype="multipart/form-data"  target="hidden_frame">
 				<!--通过生成尺寸和旋转角度 后台获取尺寸和旋转角度再进行裁剪-->
 				<input id="id_top" type="hidden" name="top" value="90">
 				<input id="id_left" type="hidden" name="left" value="61">
@@ -180,7 +182,7 @@
 			<div class="portrait_right_bottom">
 				<div class="portrait1">
 					<div id="img_big_preview" class="img_preview">				
-						<img id="avatar1" alt="头像预览" src="/myHome/load/download_getPhoto?id=${id}"
+						<img id="avatar1" alt="头像预览" src="<%=path%>/load/download_getPhoto?id=${id}"
 							style="width: <s:property value="#photo[0]+'px'"/>; height: <s:property value="#photo[1]+'px'"/>; margin-left:<s:property value="#photo[2]+'px'"/>; margin-top:<s:property value="#photo[3]+'px'"/>;">					
 					</div>
 					<p>
@@ -190,7 +192,7 @@
 			</div>
 			<div class="portrait2">
 				<div id="img_small_preview" class="img_preview">
-					<img id="avatar2" alt="预览" src="/myHome/load/download_getPhoto?id=${id}"
+					<img id="avatar2" alt="预览" src="<%=path%>/load/download_getPhoto?id=${id}"
 						style="width:  <s:property value="#photo[0]/3.7586+'px'"/>; height:<s:property value="#photo[1]/3.7586+'px'"/>; margin-left:<s:property value="#photo[2]/5+'px'"/> ; margin-top:<s:property value="#photo[3]/8+'px'"/>;">
 				</div>
 				<p>
@@ -217,30 +219,30 @@
 		
 		if(isUpload){
 			if(fileSize>65000){	
-				window.parent.notice("请选择小于65kb的图片");
+				$.notice("VIki提示您","请选择小于65kb的图片");
 			}else{
 				
 				ajaxFileUpload();
 			}
 		}else {
-			window.parent.notice("暂支持jpg,png,gif格式");
+			$.notice("VIki提示您","暂支持jpg,png,gif格式");
 		}
 	}
 	 function ajaxFileUpload(){
          $.ajaxFileUpload( {
-          url:'/myHome/load/upload_uploadUserPhoto',            //需要链接到服务器地址
+          url:'<%=path%>/load/upload_uploadUserPhoto',            //需要链接到服务器地址
           secureuri:false,
           fileElementId:'myFile',                        //文件选择框的id属性       
           dataType: 'json',
           success: function (data, status)            //相当于java中try语句块的用法
           {
-        	var src="/myHome/load/download_downLoadPhoto?id="+data.id+"&ran?"+Math.random();
+        	var src="<%=path%>/load/download_downLoadPhoto?id="+data.id+"&ran?"+Math.random();
         	document.getElementById("avatar").src=src;
       		document.getElementById("avatar1").src=src;
       		document.getElementById("avatar2").src=src;
           },
           error: function (data, status, e)            //相当于java中catch语句块的用法
-          	{window.parent.notice("服务器正忙，请稍后再试");}
+          	{$.notice("VIki提示您","服务器正忙，请稍后再试");}
       });    
     }	
 	$(document).ready(function() {	
@@ -308,11 +310,10 @@
 	function submit_avatar() {		
 		$('#rotation').val(value);
 		var that=document.getElementById("avatar1");
-		stateAjax({
-			url:'/myHome/load/upload_saveUserPhoto',
+		$.ajax({
+			url:'<%=path%>/load/upload_saveUserPhoto',
 			method : 'get',
-			async : true,
-			message : {
+			data : {
 				top:document.forms['photoSize']['top'].value,
 				left:document.forms['photoSize'].left.value,
 				bottom:document.forms['photoSize'].bottom.value,
@@ -320,13 +321,13 @@
 				rotation:document.forms['photoSize'].rotation.value,
 				imgsize:parseInt(that.style.width)+","+parseInt(that.height)+","+parseInt(that.style.marginLeft)+","+parseInt(that.style.marginTop)
 			},
-			run:function(text){	
+			success:function(text){	
 				if( text=="you login has expired"){
-					window.parent.notice("您离开太久了，重新刷新下吧");
+					$.notice("VIki提示您","您离开太久了，重新刷新下吧");
 				}else if(text=="{'save':'ok'}"){
-					window.parent.notice("头像修改成功");
+					$.notice("VIki提示您","头像修改成功");
 				}else{
-					window.parent.notice("头像修改失败");
+					$.notice("VIki提示您","头像修改失败");
 				}
 			}
 		});

@@ -1,35 +1,31 @@
 /**
  * 
  */
-windowLoad(load);
-
-function load(){
-
-	$Base(".delectDraft").event("click",function(){	
-		send.call(this,"/myHome/user/function_removeDraft",'删除失败');
+$(function(){
+	$(".delectDraft").click(function(){	
+		send.call(this,"/myHome/user/function_removeDraft",'草稿删除失败');
 	});
-}
+});
 
 function send(url,information){
 	var that=this;
-	stateAjax({
+	$.ajax({
 		url:url,
 		method : 'get',
-		async : true,
-		message : {userId:this.getAttribute("title")},
-		run:function(text){
+		data : {userId:this.getAttribute("title")},
+		success:function(text){
 			if(text.isEmpty()=='removeDraft user log ok'){			
-				var temps=$Base(that).getParent().active({
-					step:10,t:30,async:{h:0},
-					fn:function (){
-						temps.hide();
-						$Base(".draft_title span").innerHTML($Base(".draft_title span").innerHTML()-1);
-						notice("删除成功");
+				$(that.parentNode).animate({
+					height:0},function (){
+						$(".draft_title span").html(parseInt($(this).text()-1));
+						$.notice("vik提醒您！","草稿删除成功");
+						$(this).remove();
 					}	
-				});
-			}else{notice(information);}
+				);
+			}else{
+				$.notice("vik提醒您！",information);
+			}
 		}
 	});	
-
 }
 

@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta http-equiv="refresh" content="5;url='/myHome/'">
+		<meta http-equiv="refresh" content="5;url='${pageContext.request.contextPath}/'">
 		<title>viki_验证账号</title>
 	</head>
 	<style type="text/css">
@@ -14,7 +14,7 @@ body,h1{
 	padding: 0;
 }
 body{
-	background: url("/myHome/image/sginBg.png");
+	background: url("${pageContext.request.contextPath}/image/sginBg.png");
 }
 .register_check {
 	width: 800px;
@@ -38,11 +38,11 @@ h1,a{
 </style>
 	<body>
 		<div class="register_check">
-			<div style="font-family: '微软雅黑','宋体';border-bottom:4px solid #FF4700;font-size:18px;font-weight:bold; color:#787878;width:100%;height:56px;background: url('/myHome/image/tog_contact_bg.gif');line-height:56px;text-indent: 20px">
+			<div style="font-family: '微软雅黑','宋体';border-bottom:4px solid #FF4700;font-size:18px;font-weight:bold; color:#787878;width:100%;height:56px;background: url('${pageContext.request.contextPath}/image/tog_contact_bg.gif');line-height:56px;text-indent: 20px">
 				viki_系统通知
 			</div>
 			<h1>${state}</h1>
-			<a href="/myHome/">如页面没有跳转，点击此链接返回主页</a>
+			<a href="${pageContext.request.contextPath}/">如页面没有跳转，点击此链接返回主页</a>
 		</div>
 	</body>
 </html>

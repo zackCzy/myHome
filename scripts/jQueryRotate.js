@@ -74,7 +74,7 @@
 
           this._img = this._rootObj = this._eventObj = img;
           this._handleRotation(parameters);
-        };
+        }
       } else {
         return function(img,parameters) {
           this._img = img;
@@ -95,7 +95,7 @@
             // TODO: Remove jQuery dependency
             jQuery(this._img).bind("load", function(){ self._Loader(); });
           }
-        };
+        }
       }
     })();
 
@@ -198,7 +198,7 @@
             while (parameters = this._onLoadDelegate.shift()) {
               this._handleRotation(parameters, true);	
             }
-          };
+          }
           else return function () {
             this._rootObj.setAttribute('id',this._img.getAttribute('id'));
             this._rootObj.className=this._img.className;
@@ -291,13 +291,13 @@
           this._container.style.top = this._rotationCenterY - this._imgHeight/2 + "px";
           this._container.style.left = this._rotationCenterX - this._imgWidth/2 + "px";
 
-        };
+        }
           else if (supportedCSS)
           return function(angle){
             this._angle = angle;
             this._img.style[supportedCSS]="rotate("+(angle%360)+"deg)";
             this._img.style[supportedCSSOrigin]=this._parameters.center.join(" ");
-          };
+          }
           else 
             return function(angle)
           {
@@ -314,10 +314,10 @@
             this._cnv.translate(-this._rotationCenterX,-this._rotationCenterY);		// move image to its center, so we can rotate around its center
             this._cnv.scale(this._aspectW,this._aspectH); // SCALE - if needed ;)
             this._cnv.drawImage(this._img, 0, 0);							// First - we draw image
-          };
+          }
 
       })()
-      };
+      }
 
       if (IE)
       {

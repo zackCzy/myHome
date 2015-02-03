@@ -1,5 +1,114 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/JQ_Scroll_Plub.js"></script>
+<style type="text/css">
+.music {
+	float: right;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	z-index: 10;
+	font-family: "微软雅黑", "华文细黑", "黑体", arial;
+	font-size: 13px;
+	font-style: normal;
+	margin: 0px 30px 0 0;
+	-moz-user-select: -moz-none;
+	border-right:1px solid #74797E;
+	border-left:1px solid #74797E;
+	border-bottom:4px solid #E1E1E1;
+	background: #48525E;
+}
+
+.music strong {
+	height: 55px;
+	display: block;
+	text-align: center;
+	cursor: pointer;
+	line-height: 50px;
+	color: #fcfcfc;
+	font-size:25px;
+	
+}
+.music:hover{
+	border-bottom:4px solid #DC3C00;
+}
+.music:hover strong {
+	color: #9ED034;	
+}
+
+.music span,.music a,.music b {
+	height: 20px;
+	line-height: 20px;
+	margin: 0;
+}
+.musicDisplay {
+	position: absolute;
+	width: 300px;
+	height: 0px;
+	background: url("/myHome/image/trans.png");
+	left: -170px;
+	top: -150px;
+	box-shadow: 4px 3px 2px rgba(0, 0, 0, 0.03), 3px 2px 1px
+		rgba(0, 0, 0, 0.4);
+	overflow: hidden;
+	z-index: 1;
+	border: 1px solid #1B1E23;
+	border-radius: 0 0 10px 10px;
+}
+.playList {
+	width: 280px;
+	margin: 3px auto;
+}
+
+.playList a,.playList b {
+	float: right;
+	color: #5CAAE6;
+}
+
+.playList a:LINK {
+	float: right;
+	color: #5CAAE6;
+}
+#head_play_List {
+	float: left;
+	width: 277px;
+	height:270px;
+	list-style: none;
+	cursor: pointer;
+	text-indent: 1em;
+	color: #FBFBFB;
+	scrollbar-arrow-color: #A9C50B;
+	scrollbar-base-color: #A9C50B;
+	scrollbar-dark-shadow-color: #A9C50B;
+	scrollbar-face-color: #A9C50B;
+	position: absolute;
+	top: 0;
+	left: 6px;
+}
+
+#head_list_display {
+	width: 290px;
+	margin: 10px 0 0 4px;
+	overflow: hidden;
+	height: 270px;
+	position: relative;
+}
+
+#head_play_List li {
+	width: 260px;
+	height: 30px;
+	margin: 4px 0;
+	border-bottom: 1px dashed #474747;
+	line-height: 30px;
+	text-align: left;
+	padding: 0;
+}
+
+#head_play_List li:hover {
+	background: #5CAAE6;
+}
+
+</style>
 <div class="music">
 	<strong id="mini">M</strong>
 	<div class="musicDisplay">
@@ -31,65 +140,11 @@
 		<div id="head_list_display">
 			<ul id="head_play_List" onselectstart="return false";>
 			</ul>
-			<i id="scrollBar"> <i id="scrollBox"
-				style="border-radius: 5px;cursor: pointer; height: 10px; width: 5px; float: left; background-color: #82C138;top: 0px; left: 0px; position: absolute;"></i>
-			</i>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
-	function stopScroll(event) {
-		stopEvent(event);
-	}
 	function musicBox() {return <s:property value="#user.id"/>;}	
-	$("#scrollBox").on("mousedown", click);
-	function click(e) {
-		var that = this;
-		var diffY = e.clientY - this.offsetTop;
-		function stop() {// 松开按键 停止默认行为
-			removeEvent(document, 'mousemove', move);
-			removeEvent(document, 'mouseup', stop);
-			if (typeof that.releaseCapture != 'undefined') {
-				that.releaseCapture();
-			}
-		}
-		function move(e) { // 鼠标移动
-			var top = e.clientY - diffY;
-			// alert(top);
-			if (top < 0)
-				top = 0;
-			else if (top > 260 - that.offsetHeight)
-				top = 260 - that.offsetHeight;
-	
-			that.style['top'] = top + "px";
-			$Base("#head_play_List")
-			.css({'top' : -(top*	(document.getElementById("head_play_List").children.length*37+6)/ 270)+ "px"});	
-			if (typeof that.setCapture != 'undefined') {
-				that.setCapture();
-			}
-		}
-		$(document).on('mousemove', move);
-		$(document).on('mouseup', stop);
-	}
-	if(navigator.userAgent.indexOf("MSIE")>0||navigator.userAgent.indexOf("Chrome")>0)
-		this.onmousewheel = scrollF;
-	else
-		this.addEventListener("DOMMouseScroll",scrollF ,false);
-
-	function scrollF(event){
-		var evt=window.event || event;
-		var that=$("#scrollBox");
-		var top=parseInt(that.css("top"))+(event.wheelDelta ?  -(event.wheelDelta/40)*3:event.detail*3);
-		var height=that.get(0).offsetHeight;
-		if (top < 0)
-			top = 0;
-		else if (top > 260 -height){
-			top = 260 -height;
-		}
-		that.css({'top' :top+"px"});
-		$("#head_play_List")
-		.css({'top' : -(top*	(document.getElementById("head_play_List").children.length*37+6)/ 270)+ "px"});	
-	}
 	function createMusicBox(json) {
 		var li;
 		var ul = document.getElementById("head_play_List");
@@ -99,13 +154,7 @@
 			li.setAttribute("alt", int);
 			ul.appendChild(li);
 		}
-		var height = document.getElementById("head_play_List").children.length*(37+6);
-		if(height>270){
-			$("#scrollBar").css({display:"block"});
-		}
-		$("#scrollBox").css({
-			height :260* 260 / height + "px"
-		});
+		$(ul).addScroll();
 	}
 	$("#head_play_List").on(
 		"click",
@@ -127,22 +176,12 @@
 		$('.musicDisplay').css({top:"60px"}).stop(true).animate({	
 				height : 500
 		},500);
-		if(navigator.userAgent.indexOf("MSIE")>0||navigator.userAgent.indexOf("Chrome")>0){
-			document.onmousewheel = function()
-			{return false;};
-		}
-		else{document.addEventListener("DOMMouseScroll",stopScroll ,false);
-		}
 	}).on("mouseleave",function() {
-		var temp = $('.musicDisplay').stop(true).animate({
+		$('.musicDisplay').stop(true).animate({
 				height: 0
-			},function(){
-				 temp.css({top:"-150px"});
-				 if(navigator.userAgent.indexOf("MSIE")>0||navigator.userAgent.indexOf("Chrome")>0)
-				 {document.onmousewheel = function(){return true;};}
-				 else{document.removeEventListener("DOMMouseScroll",stopScroll ,false);}
-			}
-		);
+			},500,function(){
+				 $(this).css({top:"-150px"});
+		});
 	});
 
 </script>

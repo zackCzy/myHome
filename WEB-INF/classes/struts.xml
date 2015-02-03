@@ -69,6 +69,7 @@
 			<interceptor name="AutoLoginInterceptor" class="cn.mini.struts2.interceptor.AutoLoginInterceptor" />
 			<interceptor name="CheckLoginInterceptor" class="cn.mini.struts2.interceptor.CheckLoginInterceptor" />
 			<interceptor name="AjaxLoginInterceptor" class="cn.mini.struts2.interceptor.AjaxCheckLoginInterceptor" />
+			<interceptor name="RefererUrl" class="cn.mini.struts2.interceptor.RefererUrIInterceptor" />
 			<interceptor-stack name="miniAccountStack">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="AutoLoginInterceptor" />
@@ -78,6 +79,10 @@
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="AutoLoginInterceptor" />
 				<interceptor-ref name="AjaxLoginInterceptor" />			
+			</interceptor-stack>
+			<interceptor-stack name="RefererStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="RefererUrl" />
 			</interceptor-stack>
 		</interceptors>
 
@@ -101,7 +106,6 @@
 			<result name="UserFriends">/WEB-INF/jsp/UserFriends.jsp</result>
 			<result name="Home">/WEB-INF/jsp/HomePage.jsp</result>
 		</action>
-		
 		<action name="space/*/*" class="cn.mini.struts2.action.SpaceAction" method="{2}">
 			<result name="success">/WEB-INF/jsp/HomePage.jsp</result>
 			<result name="diary">/WEB-INF/jsp/HomePageDiary.jsp</result>
@@ -133,11 +137,12 @@
 		</action>
 
 		<action name="function_*" class="cn.mini.struts2.action.UserFunctionAction"
-			method="{1}">
+			method="{1}">	
 			<interceptor-ref name="miniAccountStack" />
+			<result name="readDiary">/WEB-INF/jsp/readDiary.jsp</result>
 			<result name="cteateDiary">/WEB-INF/jsp/MessageBoard.jsp</result>
 			<result name="modifyDiary">/WEB-INF/jsp/MessageBoard.jsp</result>
-			<result name="readDiary">/WEB-INF/jsp/readDiary.jsp</result>
+			<result name="noDiary">/WEB-INF/cueJsp/noDiary.jsp</result>
 			<!-- 
 			<result name="removeDiary" type="redirectAction">
 				<param name="actionName">user_space</param>
@@ -153,7 +158,7 @@
 		
 		<action name="music_*" class="cn.mini.struts2.action.MusicAction"
 			method="{1}">
-			<interceptor-ref name="miniAccountStack" />
+			<interceptor-ref name="RefererStack" />
 			<result name="musicList">/WEB-INF/jsp/Music.jsp</result>
 		</action>
 	</package>
@@ -207,5 +212,12 @@
 			</result>
 		</action>
 	</package>
-
+	<package name="backStage" namespace="/backStage" extends="struts-default">	
+		<action name="stage_*" class="cn.mini.struts2.action.backStageAction" method="{1}">
+			<result name="admin">/WEB-INF/backStageJsp/admin.jsp</result>
+		</action>
+		<action name="admin_*" class="cn.mini.struts2.action.backStageAction" method="{1}">
+			<result name="removeUser">/WEB-INF/backStageJsp/admin.jsp</result>
+		</action>
+	</package>
 </struts>

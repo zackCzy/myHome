@@ -12,16 +12,20 @@ body{
     background-repeat: repeat-x;
      font: 12px/1.125 Arial,Helvetica,sans-serif;
 }
+.select_red{
+	color:#ff4700;
+}
 .display_stand{
 	width:1000px;
-	height:500px;;
+	height:auto;
+	min-height:500px;
 	background: #FFFFFF;
 	margin: 20px auto;
 }
 .search_message_area{
 	width:1000px;
 	height:50px;
-	margin:20px auto;
+	margin:80px auto 20px;
 }
 .search_message_area input[type='text']{
 	width:450px;
@@ -88,6 +92,7 @@ body{
 	float: left;
 	border-right:1px solid #DCDCDC;
 	background: #FFFFFF;
+	min-height:500px;
 }
 .search_display_list h3{
 	margin:20px auto 0;
@@ -101,7 +106,8 @@ body{
 }
 .search_result{
 	width:654px;
-	height:130px;
+	height:auto;
+	min-height:130px;
 	margin:10px auto;
 	border-bottom:2px solid #CCCCCC;
 	cursor: default;
@@ -126,6 +132,19 @@ body{
     color: #423009;
     margin:0 0 10px;
     font-size:14px;
+}
+.search_result p.nowarp{
+	float: right;
+	width:534px;
+	overflow: hidden;
+	text-overflow:clip;
+    white-space: normal ;
+    height:20px;
+    color: #423009;
+    margin:0 0 10px;
+    font-size:14px;
+    height:auto;
+    letter-spacing:-0.3pt;
 }
 .search_result p a{
 	color:#0078B6;

@@ -124,49 +124,45 @@
 </div>
 <div id="lock"></div>
 <script type="text/javascript">
-	// 进行登录	
-	$Base('#headLogin').event('click', function() {
-		$Base('#userText').empty();
-		$Base('#passwordText').empty();
-		$Base('#lock').lock().active({
-			attr : 'o',target : 30,t : 30,step : 10});
-		$Base('#loginUi').center().show();
+function login(){
+	$('#userText').val("");
+	$('#passwordText').val("");
+	$('#loginUi').setCenter().show(300);
+	$('#lock').lock(0.8,300);
+}
+$(function(){
+	$('#headLogin').click(login);
+	$('#loginUi').move($("#loginMove").get(0));
+	$("#cancelLogin").click(function() {
+		$('#lock').unlock();
+		$('#loginUi').hide(300);
 	});
-	// 浏览器大小被改变
-	$Base('#loginUi').resizeCenter(function() {
-		$Base('#lock').css({
-			'height' : (viewInner().height+getScroll().top + 'px'),
-			'width' : (viewInner().width +getScroll().left+ 'px')
-		});
-	}).Move(document.getElementById("loginMove"));
-	// 取消登陆
-	$Base('#loginUi #cancelLogin').event("click", function() {
-		$Base('#lock').active({
-			attr : 'o',target : 0,t : 30,step : 10,
-			fn : function() {$Base('#lock').unlock();}});
-		$Base('#loginUi').hide();
-	});
-	$Base("#sendlLogin").event("click",function() {
-		var that=this;
-		var temp=$Base(".point").css({background : "url(${pageContext.request.contextPath}/image/pointAlert.png) no-repeat 35px 10px",color:"#A9C50B"}).innerHTML("正在登录……");
-		if(!that.time){
-			that.time=setTimeout(function(){
-				stateAjax({url : "${pageContext.request.contextPath}/user/check_login",
-				method : 'post',async : true,message : {'user.name' : document.forms['sgin'].userText.value,
-				'user.password' : document.forms['sgin'].passwordText.value},
-				run : function(text) {
-					if (text.isEmpty()!="sgin is error") {
-						document.forms['sgin'].passwordText.value=text;
-						$Base(".point").css({background : "url(${pageContext.request.contextPath}/image/pointYes.png) no-repeat 35px 10px",color:"#A9C50B"}).innerHTML("登录成功……");
-						setTimeout(function(){document.forms['sgin'].submit();}, 500);
-					} else {
-						temp.css({background : "url(${pageContext.request.contextPath}/image/pointError.png) no-repeat 35px 10px",color:"#FF5350"}).innerHTML("用户名、密码不正确!");
-						setTimeout(function(){temp.css({background : ""}).innerHTML("");}, 1000);
-					}
-					that.time=null;
+	$("#sendlLogin").click(function() {
+		var that=this;	
+		var _$this=$(this);	
+		var $point=$(".point").css({background : "url(${pageContext.request.contextPath}/image/pointAlert.png) no-repeat 35px 10px",color:"#A9C50B"}).html("正在登录……");
+		$.ajax({
+			url: "${pageContext.request.contextPath}/user/check_login",
+			type:"POST",
+			data:{
+				"user.name": $("#userText").val(),
+				"user.password" : $("#passwordText").val()
+			},
+			error:function(){
+				$point.css({background : "url(${pageContext.request.contextPath}/image/pointError.png) no-repeat 35px 10px",color:"#FF5350"}).html("用户名、密码不正确!");
+				setTimeout(function(){$point.css({background : ""}).html("");}, 1000);
+			},
+			success:function(meg){
+				if (meg.isEmpty()!="sgin is error") {
+					document.forms['sgin'].passwordText.value=meg;
+					$point.css({background : "url(${pageContext.request.contextPath}/image/pointYes.png) no-repeat 35px 10px",color:"#A9C50B"}).html("登录成功……");
+					setTimeout(function(){document.forms['sgin'].submit();}, 500);
+				} else {
+					$point.css({background : "url(${pageContext.request.contextPath}/image/pointError.png) no-repeat 35px 10px",color:"#FF5350"}).html("用户名、密码不正确!");
+					setTimeout(function(){$point.css({background : ""}).html("");}, 1000);
 				}
-				});
-			},500);
-		}
+			}
+		});
 	});
+});
 </script>

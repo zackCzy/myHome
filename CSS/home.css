@@ -91,11 +91,6 @@ body{
 }
 .viki_index_nav li a:hover {
 	color: #9ED034;
-	border-top:8px solid #FA7B00;
-	border-bottom:18px solid #FA7B00;
-	border-left:3px solid #FA7B00;
-	border-right:3px solid #FA7B00;
-	backgournd:#1F343E;
 }
 
 .viki_info {

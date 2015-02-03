@@ -1,35 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%
+	String basePath = request.getContextPath();
+	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath; 
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Mini词典</title>
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/public/main.css" />
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/translator.css" />
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/span.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/base.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/plug_Base.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/active_Base.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/translator.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/Ajax.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/json2.js"></script>
-
+		<link rel="stylesheet" type="text/css" href="<%=path%>/CSS/public/main.css" />
+		<link rel="stylesheet" type="text/css" href="<%=path%>/CSS/translator.css" />
+		<script type="text/javascript" src="<%=path%>/JS/tool/span.js"></script>
+		<script type="text/javascript" src="<%=path%>/scripts/jquery-1.10.1.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/plugObject/Texi.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/JQ_plugs.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/tool/json2.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/translator.js"></script>
 	</head>
 	<body>
-
 		<%@ include file="/WEB-INF/jsp/head.jsp"%>
 		<audio id="myPlayer" src=""></audio>
-		<div id=nav class="clearFix">
+		<div class="trans_nav clearFix">
 			<ul class="blank">
-				<li></li>
-				<li></li>
+				<li onclick="noporint(this)"></li>
+				<li onclick="noporint(this)"></li>
 				<li id="tranlster">
 					<a href="#head"></a>
-				</li>
-				<li></li>
-				<li></li>
+				</li onclick="noporint(this)">
+				<li onclick="noporint(this)"></li>
+				<li onclick="noporint(this)"></li>
 			</ul>
 			<ul class="about">
 				<li>
@@ -140,17 +140,19 @@
 				</ul>
 			</div>
 			<div class="textAreas" style="position: absolute; left: 45px;">
+				<div contenteditable="true" id='searchText' class="textarea">&nbsp;&nbsp;</div>
+				<!-- 
 				<textarea rows="1" cols="20"
 					style='overflow: scroll; overflow-x: hidden; overflow-y: hidden;'
 					class="textA" id='searchText'></textarea>
-				<div class="textSound">
-
-				</div>
-			</div>
-			<div class="textAreas" style="position: absolute; right: 45px;">
-				<textarea rows="1" cols="20" readonly="readonly"
+									<textarea rows="1" cols="20" readonly="readonly"
 					style='overflow: scroll; overflow-y: hidden;; overflow-x: hidden'
 					class="textA" id="searchResult"></textarea>
+				 -->
+				<div class="textSound"></div>
+			</div>
+			<div class="textAreas" style="position: absolute; right: 45px;">
+				<div contenteditable="true" class="textarea" readonly="readonly" id="searchResult">&nbsp;&nbsp;</div>
 				<div class="textSound">
 					<span id="sreachState">正在查询……</span>
 					<input type="button" id='sound' />

@@ -169,6 +169,7 @@
 	</div>
 </div>
 	<script type="text/javascript">
+		$("#userMessList li:nth-child(2)").className("personal_hover");
 		function getObj(){
 			var chra="";
 			for ( var i = 0; i < document.forms['myform'].char.length; i++) {
@@ -177,15 +178,15 @@
 				}
 			}
 			return {
-				'uda.figure':encodeURIComponent($Base("#figure").innerHTML()),
-				'uda.maritalStatus':encodeURIComponent($Base("#maritalStatus").innerHTML()),
-				'uda.smokHabits':encodeURIComponent($Base("#smokHabits").innerHTML()),
-				'uda.drinkHabits':encodeURIComponent($Base("#drinkHabits").innerHTML()),
-				'uda.sleepHabits':encodeURIComponent($Base("#sleepHabits").innerHTML()),
-				'uda.voc':encodeURIComponent($Base("#voc").innerHTML()),
-				'uda.motto':encodeURIComponent($Base("#Motto").get(0,true).value),
-				'uda.personality':encodeURIComponent(chra),
-				'uda.education':encodeURIComponent($Base("#education").innerHTML())		
+				'uda.figure':$("#figure").text().isEmpty(),
+				'uda.maritalStatus':$("#maritalStatus").text().isEmpty(),
+				'uda.smokHabits':$("#smokHabits").text().isEmpty(),
+				'uda.drinkHabits':$("#drinkHabits").text().isEmpty(),
+				'uda.sleepHabits':$("#sleepHabits").text().isEmpty(),
+				'uda.voc':$("#voc").text().isEmpty(),
+				'uda.motto':$("#Motto").val(),
+				'uda.personality':chra,
+				'uda.education':$("#education").text().isEmpty()		
 			};
 		}
 	</script>

@@ -1,25 +1,34 @@
 /**
  * 
  */
-windowLoad(function(){
-	$Base(".cus-sel-opt-panel span").event("click", function(evt){	
-		var temp=$Base(this).getNext();		
+$(function(){
+	
+	$(".cus-sel-opt-panel span").on("click", function(evt){	
+		var temp=$(this).next();		
 		if(temp.css("display")=="none"){
-			$Base(".cus-sel-opt-panel ul").hide();
-			temp.show();
+			$(".cus-sel-opt-panel ul").slideUp(300);
+			temp.slideDown(300);
 		}else{
-			$Base(this).getNext().hide();
+			temp.slideUp(300);
 		}
 	});
-	$Base(".cus-sel-opt-ctn li").event("click", clickSelect);	
-	$Base("#search_bt").event("click", function(){
-		var type=$Base(".cus-sel-opt-panel span").innerHTML();
-		type=type=="找人"? "user":type=="V说"? "smallSpeak":type=="博客"? "log":"";
-		document.forms['searchSpace'].action+=type;
+	$(".cus-sel-opt-ctn li").on("click", clickSelect);	
+	$("#search_bt").on("click", function(){
+		var _type=$(".cus-sel-opt-panel span").text().isEmpty();
+		_type=_type=="找人"? "user":_type=="V说"? "smallSpeak":_type=="博客"? "log":"";
+		document.forms['searchSpace'].action+=_type;
 		document.forms['searchSpace'].submit();
 	});
+	try {
+		var searchName=document.getElementsByName("searchName")[0].value;
+		var shtml=$(".selectStrong").html().replace(searchName,'<b class="select_red">'+searchName+'</b>');
+		$(".selectStrong").html(shtml);
+	} catch (e) {
+		// TODO: handle exception
+	}
+	
 });
 function clickSelect() {
-	$Base(this.parentNode).getPrevious().innerHTML(this.innerHTML);
-	$Base(this.parentNode).hide();
+	$(this.parentNode).prev().html(this.innerHTML);
+	$(this.parentNode).hide(300);
 }
