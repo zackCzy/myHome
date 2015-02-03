@@ -223,13 +223,6 @@ line-height:95px;
 float:left;margin:7px 10px 0 15px;border:1px solid #ACACAC;box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.05), 3px 3px 2px rgba(0, 0, 0, 0.1);
 }
 </style>
-<%-- 全局通知 
-<div class="contentPoint" id="point">
-	<span
-		style="color: #FF4700; margin: 25px 0 0; line-height: 20px; height: 20px; display: block;">Viki您!</span>
-	<div id="point_cont"></div>
-</div>
---%>
 <div class="head clearFix">
 	<div class="headLeft">
 		<a href="${pageContext.request.contextPath}" target="_parent"><img

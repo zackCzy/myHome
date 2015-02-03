@@ -41,12 +41,10 @@ $.ajaxSetup({
 });
 function exitLogin(){
 	$.ajax({
-		url:"/myHome/exitLogin",
+		url:"/myHome/exit",
 		type : 'get',
 		success:function(text){
-			if(text=="exit is ok"){
-				window.location.href=window.location.href;
-			}
+			window.location.href=window.location.href;
 		}
 	});
 };

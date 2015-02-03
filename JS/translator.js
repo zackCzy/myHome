@@ -76,22 +76,7 @@ function load() {
 		}).parent().css({
 			height : "222px"
 		});
-	});
-	// 自动调节文本域大小
-	$('.textA').on('keydown',
-	function() {
-		var str = this.value.split("\n");
-		if(str.length>15)return;
-		if (str.length > 7) {
-			this.style.height = str.length * 28 + 'px';
-		} else {
-			this.style.height = 180 + 'px';
-		}
-		var h= parseInt(getStyle(this,'height'));
-		this.parentNode.style.height =h+ 42+ 'px';
-		document.getElementById("search").style.height=h+420+"px";
-	});
-	
+	});	
 	$('#tranlster').on('click', function() {
 		$('.trans_nav').css("display","none");
 		$('#search').css("display","block").animate({
@@ -122,7 +107,7 @@ function load() {
 
 function trans() {
 
-	var lang = DOL(document.getElementById('cut').value);
+	var lang = dol(document.getElementById('cut').value);
 	var str =$('#searchText').text().isEmpty();
 	if(str=="")return;
 	var state=$('#sreachState').show(300);
@@ -152,7 +137,7 @@ function trans() {
 		}
 	});
 }
-function DOL(value) {
+function dol(value) {
 	return value=="自动检测" ? {src : "AUTO",res : "AUTO"}:value=="多→英" ? {src : "AUTO",res : "en"}:value=="多→汉" ? {src : "AUTO",res : "zh-CN"}:
 		value=="多→日" ? {src : "AUTO",res : "ja"}: value=="多→韩" ? {src : "AUTO",res : "ko"} :
 			value=="多→俄" ? {src : "AUTO",res : "ru"} :value=="多→法" ? {src : "AUTO",res : "fr"}:
