@@ -3,7 +3,9 @@
 body {
 	background: url("/myHome/image/sginBg.png");
 	-moz-user-select: -moz-none;
-	onselectstart="return false";
+	onselectstart
+	="return
+	false";
 }
 
 .pick_music_box,.add_pick_music_box {
@@ -124,29 +126,13 @@ body {
 .add_pick_music_box table input {
 	width: 250px;
 	height: 20px;
-	line-height: 20px;
+	line-height: 30px;
 	padding: 5px 10px;
 	font-size: 15px;
 	border: 1px solid #DCDCDC;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-	-webkit-transition: border linear .2s,box-shadow linear .2s;
-	-moz-transition: border linear .2s,box-shadow linear .2s;
-	-o-transition: border linear .2s,box-shadow linear .2s;
-	transition: border linear .2s,box-shadow linear .2s;
-	
 }
 .add_pick_music_box table input:hover{
-	border-color: rgba(82,168,236,0.8);
-	*border: 1px solid #2781B9;
-	border: 1px solid #2781B9\0;
-}
-.add_pick_music_box table input:focus{
-	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(82,168,236,0.6);
-	border-color: rgba(82,168,236,0.8);
-	*border: 1px solid #2781B9;
-	border: 1px solid #2781B9\0;
+	border: 1px solid #2781B9;
 }
 .add_pick_music_box table {
 	font-size: 14px;
@@ -209,7 +195,7 @@ body {
 .home_music_box {
 	width: 800px;
 	height: auto;
-	margin: 100px auto;
+	margin: 40px auto;
 	background: #293133;
 	border: 1px solid #321C13;
 	box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.05), 10px 10px 6px
@@ -282,23 +268,16 @@ body {
 	margin: 0 auto;
 	display: block;
 }
-.make_music ol {
-	padding:0;
-	border:0 none;
-	width: 670px;
-	margin: 0 auto 40px;
-	font-size: 15px;
-	color:#CDCDCD;
-	font-weight: bold;
-}
+
 .make_music ul {
 	list-style: none;
-	width: 750px;
-	margin: 0 auto;
+	width: 730px;
+	margin: 0 auto 40px;;
 }
 
 .make_music li {
-	width: 100%;
+	width: 730px;
+	border-bottom: 1px dashed #BFBFBF;
 	height: 35px;
 	line-height: 35px;
 	cursor: pointer;

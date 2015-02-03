@@ -10,7 +10,7 @@ body {
 	width: 750px;
 	padding: 40px 50px;
 	height: 600px;
-	margin: 100px auto 0;
+	margin: 50px auto;
 	background: #EFEFEF url(/myHome/image/draft_bg.png);
 	border: 1px solid #E1E1E1;
 	box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.05), 5px 5px 3px rgba(0, 0, 0, 0.1);
@@ -48,7 +48,7 @@ body {
 }
 .draftRow ul{
  	list-style: none;
- 	width:98%;
+ 	width:100%;
 }
 .draftRow li{
  	list-style: none;

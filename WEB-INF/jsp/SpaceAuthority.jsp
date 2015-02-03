@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	String basePath = request.getContextPath();
-	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath; 
-%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -18,7 +15,7 @@ body,h1,input,a,div{
 }
 
 body {
-	background: url("${pageContext.request.contextPath}/image/sginBg.png");
+	background: url("/myHome/image/sginBg.png");
 }
 
 .register_check {
@@ -116,21 +113,21 @@ a:hover {
 	<body>
 		<div class="register_check">
 			<div
-				style="margin: 0 0 10px; font-family: '微软雅黑', '宋体'; border-bottom: 4px solid #FF4700; font-size: 18px; font-weight: bold; color: #787878; width: 100%; height: 54px; background: url('${pageContext.request.contextPath}/image/tog_contact_bg.gif'); line-height: 56px; text-indent: 20px">
+				style="margin: 0 0 10px; font-family: '微软雅黑', '宋体'; border-bottom: 4px solid #FF4700; font-size: 18px; font-weight: bold; color: #787878; width: 100%; height: 54px; background: url('/myHome/image/tog_contact_bg.gif'); line-height: 56px; text-indent: 20px">
 				空间_访问受限
 			</div>
 			<s:if test="!errors.passwordError[0].equals('')">
-				<div id="error_possword" style="color: #FF4700;background: url('${pageContext.request.contextPath}/image/reg_error.png') no-repeat;">
+				<div id="error_possword" style="color: #FF4700;background: url('/myHome/image/reg_error.png') no-repeat;">
 					<s:property value="errors.passwordError[0]" />
 				</div>
 			</s:if>
 			<s:else>
-				<div id="inut_possword" style="color: #47B642;background: url('${pageContext.request.contextPath}/image/reg_info.png') no-repeat;">
+				<div id="inut_possword" style="color: #47B642;background: url('/myHome/image/reg_info.png') no-repeat;">
 					请输入密码
 				</div>
 			</s:else>
 
-			<img src="${pageContext.request.contextPath}/load/download_getBigPhoto?id=1" />
+			<img src="/myHome/load/download_getBigPhoto?id=1" />
 			<s:form action="/user/space/%{#user.name}/spaceChackAuthority">
 				<s:a>
 					<s:property value="#user.userBaseDatum.name" />

@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%String path=request.getContextPath(); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -21,13 +20,13 @@
 		</div>
 			<ul class="display_info">
 				<li class="unselect" >
-					<img src="<%=path %>/images/home/header-bg.jpg"  width=100% height=100%; style="position: fixed;top:0;left:0">
+					<img src="/myHome/images/home/header-bg.jpg"  width=100% height=100%; style="position: fixed;top:0;left:0">
 					<div  class="viki_info unselect" id="viki_info">
-						<img class="unselect" height=100% width=40% style="float: left;" src="<%=path %>/images/home/about-divice.png">
-						<img class="unselect" height=80% width=40% style="float: right;margin:5% 2% 0;" src="<%=path %>/images/home/info.png">
+						<img class="unselect" height=100% width=40% style="float: left;" src="/myHome/images/home/about-divice.png">
+						<img class="unselect" height=80% width=40% style="float: right;margin:5% 2% 0;" src="/myHome/images/home/info.png">
 					</div>
 				</li>
-				<li style="background: url('<%=path %>/image/bg_noise.jpg');height:1800px;text-align: center;border-bottom:8px solid #333;" id="music_display">
+				<li style="background: url('/myHome/image/bg_noise.jpg');height:1800px;text-align: center;border-bottom:8px solid #333;" id="music_display">
 					<div style="width:100%;height:34px;padding:3px;">
 			 			<span style="cursor:pointer;border:1px solid #787878;margin:0px auto; font-size:17px;font-weight: 700;line-height:30px;display: block;background: #88AF31;border-radius:25px;width:250px;height:30px;text-align: center;'">VIKI Space info </span>
 			 		</div>
@@ -37,26 +36,26 @@
 						<div style="width:1022px;height:300px;margin:0 auto;overflow: hidden;" class="unselect">
 							<ul id="music_display_ul" class="unselect">
 								<li class="unselect">
-									<img src="<%=path %>/images/home/music.png"  width=90% height=80%; id="music_info">
-									<span>viki music</span>
+									<img src="/myHome/images/home/music.png"  width=90% height=80%; id="music_info">
+									<span>viki 首页</span>
 								</li>
 								<li class="unselect">
-									<img src="<%=path %>/images/home/music2.png"  width=90% height=80%; id="music_info">
-									<span>viki music</span>
+									<img src="/myHome/images/home/music2.png"  width=90% height=80%; id="music_info">
+									<span>viki 首页</span>
 								</li>
-								<li class="unselect"><img src="<%=path %>/images/home/music3.png"  width=90% height=80%; id="music_info">
-									<span>viki music</span>
-								</li>
-								<li class="unselect">
-									<img src="<%=path %>/images/home/music.png"  width=90% height=80%; id="music_info">
-									<span>viki music</span>
+								<li class="unselect"><img src="/myHome/images/home/music3.png"  width=90% height=80%; id="music_info">
+									<span>viki 首页</span>
 								</li>
 								<li class="unselect">
-									<img src="<%=path %>/images/home/music2.png"  width=90% height=80%; id="music_info">
-									<span>viki music</span>
+									<img src="/myHome/images/home/music.png"  width=90% height=80%; id="music_info">
+									<span>viki 首页</span>
 								</li>
-								<li class="unselect"><img src="<%=path %>/images/home/music3.png"  width=90% height=80%; id="music_info">
-									<span>viki music</span>
+								<li class="unselect">
+									<img src="/myHome/images/home/music2.png"  width=90% height=80%; id="music_info">
+									<span>viki 首页</span>
+								</li>
+								<li class="unselect"><img src="/myHome/images/home/music3.png"  width=90% height=80%; id="music_info">
+									<span>viki 首页</span>
 								</li>
 							</ul>
 						</div>
@@ -67,7 +66,7 @@
 						ViKi 微空间简介
 						</h3>
 						<p>VIKI 微空间 是一个为用户提供一个自我自主空间的网站。我们希望能够为每一位用户提供一个能够自我学习，自主交流、媒体娱乐、网络社交的综合性个人主页。</p>
-						<img src="<%=path %>/images/home/slide-1.png" style="float: right;">
+						<img src="/myHome/images/home/slide-1.png" style="float: right;">
 					</div>
 					<div class="divice-fea-left-grid" style="height:150px;">
 						<h3>
@@ -92,7 +91,7 @@
 						ViKi 翻译
 						</h3>
 						<p>使用VIKI 翻译你能在这进行外语翻译的学习，VIKI翻译支持15种国内外语种 可以进行准确的发音，与翻译。借助谷歌API让翻译更加精准。</p>
-						<img src="<%=path %>/images/home/slide-2.png" style="float: right;">
+						<img src="/myHome/images/home/slide-2.png" style="float: right;">
 					</div>
 					<div class="divice-fea-left-grid">
 						<h3>
@@ -114,19 +113,19 @@
 						<p>VIKI provides a set of blog, micro blog one of personal space system for you, in this you can share feelings with friends, friends, writing diary interaction.</p>
 					</div>
 				</li>
-				<li class="unselect" style="overflow:hidden; width:100%;height:100%;background: url('<%=path %>/images/miniMusic/p1756682152-2.jpg') no-repeat fixed 50% 0 rgb(255, 255,255);">		
+				<li class="unselect" style="overflow:hidden; width:100%;height:100%;background: url('/myHome/images/miniMusic/p1756682152-2.jpg') no-repeat fixed 50% 0 rgb(255, 255,255);">		
 					
 			</ul>
 
 		<div class="display_info_bg" style="z-index: 5" >
 			<div style="margin:38px 60px;;width:150px; height:45px;float: left;" class="unselect">
-				<img src="<%=path %>/image/vikilogo.png" alt="viki"  class="unselect">
+				<img src="/myHome/image/vikilogo.png" alt="viki"  class="unselect">
 			</div>				
 			<ul class="viki_index_nav unselect" >
 				<li style="background: #9ED034;color: #E3FFFF" id="info" class="unselect">简介</li>
-				<li id="music" class="unselect"><a href="<%=path %>/music">Music</a></li>
-				<li id="transtror" class="unselect"><a href="<%=path %>/translator">翻译</a></li>
-				<li id="space" class="unselect"><a  href="<%=path %>/user/space/${sgin==null? 'null':sgin}/">V说</a></li>			
+				<li id="music" class="unselect"><a href="/myHome/music">Music</a></li>
+				<li id="transtror" class="unselect"><a href="/myHome/translator">翻译</a></li>
+				<li id="space" class="unselect"><a  href="/myHome/user/space/${sgin==null? 'null':sgin}/">V说</a></li>			
 			</ul>		
 		</div>
 	

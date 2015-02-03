@@ -2,13 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style type="text/css">
-.head {
+#head {
 	font-family: "微软雅黑", "华文细黑", "黑体", arial;
 	font-weight: normal;
 	font-style: normal;
 	width: 100%;
 	height: 40px;
-	min-width:1000px;
 	background: #FEFEFE
 		url(${pageContext.request.contextPath}/image/head.png) repeat-x;
 	position: fixed;
@@ -18,23 +17,21 @@
 	-moz-user-select: -moz-none;
 }
 
-.head .headLeft {
-	margin: -6px 0 0 15px;
+#head .headLeft {
+	margin: -5px 0 0 15px;
 	float: left;
 	cursor: pointer;
-	height:41px;
-	overflow:hidden;
 }
-.head .headLeft a{
+#head .headLeft a{
 	margin: 6px 0 0 ;
 	display: block;
 }
-.head .headUser,.head .headLogin {
+#head .headUser,#head .headLogin {
 	text-align: center;
 	color: #333;
 }
 
-.head  .headUser {
+#head  .headUser {
 	width: 160px;
 	list-style: none;
 	height: 40px;
@@ -45,12 +42,12 @@
 	z-index: 989;
 }
 
-.head  .headUser:hover {
+#head  .headUser:hover {
 	background: url(${pageContext.request.contextPath}/image/smallLabel.png)
 		no-repeat 20px 32px;
 }
 
-.head  .headUser div{
+#head  .headUser div{
 	display: block;
 	height: 40px;
 	color: #F22E00;
@@ -68,18 +65,33 @@
 .headUser i {
 	display: block;
 	float: left;
-	width: 9px;
+	width: 22px;
 	height: 40px;
-	margin-left:15px;
 	background: url(${pageContext.request.contextPath}/image/arrow.png)
-		no-repeat 0px 18px;
-	-webkit-transition:0.3s -webkit-transform ease-out; 
-	-moz-transition:0.3s -moz-transform ease-out; 
-	-o-transition:0.3s -o-transform ease-out; 
-	-ms-transition:0.3s -ms-transform ease-out; 
-	transition:0.3s transform ease-out; 
+		no-repeat 10px 18px;
 }
-.head .headUser ul {
+
+.weatherPanel {
+	width: 0px;
+	height: 0px;
+	background: #ccc;
+}
+
+.weatherPanel span {
+	display: block;
+	width: 600px;
+	height: 20px;
+	background: #00f;
+}
+
+.wedtherHover {
+	width: 230px;
+	height: 40px;
+	background: #f1c;
+	line-height: 50px;
+}
+
+#head .headUser ul {
 	list-style: none;
 	width: 134px;
 	position: absolute;
@@ -93,11 +105,13 @@
 	background: #fafafa;
 	overflow: hidden;
 	display: none;
-	height: auto;
+	height: 0;
+	opacity: 0;
+	filter: alpha(opacity =         0);
 	z-index: 989;
 }
 
-.head .headUser ul li {
+#head .headUser ul li {
 	line-height: 40px;
 	width: 110px;
 	margin: 9px auto;
@@ -120,7 +134,7 @@
 	text-decoration: none;
 }
 
-.head .headLogin {
+#head .headLogin {
 	width: 170px;
 	height: 40px;
 	float: right;
@@ -150,34 +164,147 @@
 	text-decoration: underline;
 }
 
+.contentPoint {
+	width: 220px;
+	height: 130px;
+	background: #EFEFEF
+		url(${pageContext.request.contextPath}/image/contentPoint.png);
+	border: 3px solid #58CAFA;
+	border-top: 0;
+	position: absolute;
+	display: none;
+	text-align: center;
+	line-height: 90px;
+	height: 0;
+	opacity: 0;
+	filter: alpha(opacity =     0);
+	z-index: 9889;
+	border-radius: 0 0 8px 8px;
+	text-shadow: 0 2px 3px #CFCFCF;
+	box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.05), 5px 5px 3px
+		rgba(0, 0, 0, 0.1);
+	font-size: 14px;
+	color: #898989;
+	font-weight: bold;
+}
+
+.music {
+	float: right;
+	width: 120px;
+	height: 39px;
+	position: relative;
+	z-index: 10;
+}
+
+.music strong {
+	height: 27px;
+	display: block;
+	text-align: center;
+	cursor: pointer;
+	background: #E4E4E4;
+	border-radius: 25px;
+	margin: 6px 0;
+	line-height: 27px;
+}
+
+.musicDisplay {
+	position: absolute;
+	width: 300px;
+	height: 0px;
+	background: url("/myHome/image/trans.png");
+	left: -170px;
+	top: -50px;
+	box-shadow: 4px 3px 2px rgba(0, 0, 0, 0.03), 3px 2px 1px
+		rgba(0, 0, 0, 0.4);
+	overflow: hidden;
+	z-index: 1;
+	border: 1px solid #1B1E23;
+	border-radius: 0 0 10px 10px;
+}
+
+#scrollBar {
+	display: none;
+	height: 260px;
+	width: 5px;
+	float: right;
+	background: #1C1E24;
+	margin-top: 10px;
+	position: relative;
+	border-radius: 5px;
+}
+
+.musicDisplay ul {
+	float: left;
+	width: 260px;
+	line-height: 30px;
+	list-style: none;
+	cursor: pointer;
+	text-indent: 1em;
+	color: #FBFBFB;
+	margin: 10px 10px 0 0;
+	scrollbar-arrow-color: #A9C50B;
+	scrollbar-base-color: #A9C50B;
+	scrollbar-dark-shadow-color: #A9C50B;
+	scrollbar-face-color: #A9C50B;
+	position: absolute;
+	top: 0;
+	left:6px;
+}
+
+#head_list_display {
+	width: 290px;
+	margin: 10px 0 0 4px;
+	overflow: hidden;
+	height: 270px;
+	position: relative;
+}
+
+.musicDisplay li {
+	width: 260px;
+	height: 30px;
+	margin: 6px 0;
+	border-bottom: 1px dashed #474747;
+}
+
+.musicDisplay li:hover{
+	background: #5CAAE6;
+}
+
+.playList {
+	width: 280px;
+	margin: 3px auto;
+}
+
+.playList a,.playList b {
+	float: right;
+	color: #5CAAE6;
+}
+
+.playList a:LINK {
+	float: right;
+	color: #5CAAE6;
+}
 .mini_nav{
-	 display:block; 
-	 clear:both; 
-	 width: 100%; 
-	 height: 26px;
-	 background:url('${pageContext.request.contextPath}/image/top_float_bg.png') 0px -2px;
-	 margin:0;
-	 padding:0;
-	 border:0;
+	 display:block; clear:both; width: 100%; height: 30px;background:url(' /myHome/image/top_float_bg.png');
 }
 .mini_nav_bt{
 cursor:pointer; 
 color:#FBFBFB;
 font-size:13px; 
 text-align:center; 
-line-height: 18px;
+line-height: 25px;
 margin:0 auto; 
 display:block; 
 clear:both; 
 width: 159px; 
 height:30px;
-background:url('${pageContext.request.contextPath}/image/tog.png') 0 0px no-repeat;
+background:url(' /myHome/image/tog.png') 0 5px no-repeat;
 }
 .mini_nav_content{
- display:block; clear:both; width: 100%;
- height:0px;
+display:block; clear:both; width: 100%;
+ height:39px;
  overflow: hidden;
- background: url("${pageContext.request.contextPath}/image/slide.jpg");
+ background: url("/myHome/image/slide.jpg");
  background-size:cover;
 }	
 .mini_nav_content_bg{
@@ -223,12 +350,26 @@ line-height:95px;
 float:left;margin:7px 10px 0 15px;border:1px solid #ACACAC;box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.05), 3px 3px 2px rgba(0, 0, 0, 0.1);
 }
 </style>
-<div class="head clearFix">
+<%-- 全局通知 --%>
+<div class="contentPoint" id="point">
+	<span
+		style="color: #FF4700; margin: 25px 0 0; line-height: 20px; height: 20px; display: block;">Viki您!</span>
+	<div id="point_cont"></div>
+</div>
+<div id="lock"></div>
+<div id="head" class="clearFix">
 	<div class="headLeft">
 		<a href="${pageContext.request.contextPath}" target="_parent"><img
 				alt="viki" src="${pageContext.request.contextPath}/image/vikilogo.png"
 				id="logo"> </a>
 	</div>
+	
+		<!--  
+			<div class="headLeft">
+		<iframe name="weather_inc" style="margin:10px 0;" frameborder="0" allowtransparency="true" src="http://tianqi.xixik.com/cframe/1" width="280" height="40" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+			</div>
+		-->
+	
 	<c:choose>
 		<c:when test="${sgin==null}">
 			<div class="headLogin" style="width: 270px">
@@ -245,7 +386,7 @@ float:left;margin:7px 10px 0 15px;border:1px solid #ACACAC;box-shadow: 2px 2px 1
 			<a href="${pageContext.request.contextPath}" class="front">VIKI 首页</a>
 			<div class="headUser">
 				<div  class="account_info" style="width:25px; height:25px;">
-					<img width=25px height=25px  src="${pageContext.request.contextPath}/load/download_getSmallPhoto?id=${id}">
+					<img width=25px height=25px  src="/myHome/load/download_getSmallPhoto?id=${id}">
 				</div>
 				<div><span>${sgin}</span></div><i></i>
 				<ul id="headList">
@@ -257,45 +398,43 @@ float:left;margin:7px 10px 0 15px;border:1px solid #ACACAC;box-shadow: 2px 2px 1
 					</li>
 				</ul>
 			</div>
-			<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/head.js"></script>
+			<script type="text/javascript" src="/myHome/JS/tool/head.js"></script>
 		</c:otherwise>
 	</c:choose>
-	<div class="mini_nav_content" >
-		<div class="mini_nav_content_bg" >
-			<ul>
-				<li><a href="${pageContext.request.contextPath}">首 页</a><span>|</span></li>
-				<li><a href="${pageContext.request.contextPath}/translator">词 典</a><span>|</span></li>
-				<li ><a href="${pageContext.request.contextPath}/music">音 乐</a><span>|</span></li>
-				<li><a  href="${pageContext.request.contextPath}/user/space/${sgin==null? 'null':sgin}/">空 间</a><span>|</span></li>
-				<li><a>Mini_论坛</a></li>
-			</ul>
-			<h3 style="width:100%;height:79px; text-align: center;line-height:79px;color:#DCDCDC">欢迎访问Vi k i , Vi k i专志为您提供优质的服务!</h2>
-		</div>
-	</div>
-	<div class="mini_nav">
-		<div class="mini_nav_bt" >viki 导航</div>
+</div>
+<div class="mini_nav_content" >
+	<div class="mini_nav_content_bg" >
+		<ul>
+			<li><a href="/myHome/">首 页</a><span>|</span></li>
+			<li><a href="/myHome/translator">词 典</a><span>|</span></li>
+			<li ><a href="/myHome/music">音 乐</a><span>|</span></li>
+			<li><a  href="/myHome/user/space/${sgin==null? 'null':sgin}/">空 间</a><span>|</span></li>
+			<li><a>Mini_论坛</a></li>
+		</ul>
+		<h3 style="width:100%;height:79px; text-align: center;line-height:79px;color:#DCDCDC">欢迎访问Vi k i , Vi k i专志为您提供优质的服务!</h2>
 	</div>
 </div>
-
+<div class="mini_nav">
+	<div class="mini_nav_bt" >viki 导航</div>
+</div>
 <script type="text/javascript">
-	function musicBox() {
-		return ${session.id};
-	}	
-	$(".mini_nav .mini_nav_bt").click(function(){
-		var $this=$(this);
-		var text=$this.text().isEmpty();
-		var con=$(".mini_nav_content");
-		if(text=="close"){
-			$this.text("viki 导航");
-			con.animate({
-				height:0
-			},350);
-		}else{
-			$this.text("close");
-			con.animate({
-				height:318
-			},350);
-		}
-	});
+				function musicBox() {
+					return ${session.id};
+				}	
+				$Base(".mini_nav_bt").tabEvent(function(){
+					this.innerHTML="close";
+					$Base(".mini_nav_content").active({
+						step:10,t:10,async:{
+							h:318
+						}
+					});
+				},function(){
+					this.innerHTML="viki 导航";
+					$Base(".mini_nav_content").active({
+						step:10,t:10,async:{
+							h:39
+						}
+					});
+				});
 </script>
 

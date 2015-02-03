@@ -12,6 +12,11 @@
 			</generator>
 		</id>
 		<one-to-one name="user"  constrained="true" lazy="proxy"/>
+
+	<!-- 
+
+	 -->
+
 		<property name="name" />
 		<property name="sex" />
 		<property name="bloodGroup" column="blood_group" />

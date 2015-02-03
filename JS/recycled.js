@@ -1,39 +1,37 @@
 /**
  * 
  */
-
-$(function(){
-	$(".delectDraft").click(function(){
+windowLoad(load);
+function load(){
+	$Base(".delectDraft").event("click",function(){
 		send.call(this,"/myHome/user/function_removeRubbish",'删除失败','removeRubbish user log ok',true);
 	});
-	$(".recovery").click(function(){
+	$Base(".recovery").event("click",function(){
 		send.call(this,"/myHome/user/function_recoveryRubbish",'回收失败','recoveryRubbish user log ok',false);
 	});
-	$(".draftRow").addScroll();
-});
+}
 
 function send(url,information,point,type){
 	var that=this;
-	$.ajax({
+	stateAjax({
 		url:url,
 		method : 'get',
-		data : {userId:this.getAttribute("title")},
-		success:function(text){
+		async : true,
+		message : {userId:this.getAttribute("title")},
+		run:function(text){
 			if(text.isEmpty()==point){			
-				$(that.parentNode).animate({
-					height:0
-					},350,function (){
-						$(".draft_title span").html(parseInt($(this).text())-1);
-						$(this).remove();
-						if(type)
-							$.notice("viki提醒您","删除成功",2000);
-						else
-							$.notice("viki提醒您","回收成功",2000);
+				var temps=$Base(that).getParent().active({
+					step:10,t:30,async:{h:0},
+					fn:function (){
+						temps.hide();
+						$Base(".draft_title span").innerHTML($Base(".draft_title span").innerHTML()-1);
+						if(type){notice("删除成功");}
+						else {
+							notice("回收成功");
+						}
+					}	
 				});
-			}else{
-				$.notice(information);
-				
-			}
+			}else{notice(information);}
 		}
 	});	
 }

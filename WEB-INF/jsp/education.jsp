@@ -49,15 +49,14 @@
 			</div>							
 		</div>
 		<script type="text/javascript">
-			$("#stuYear").createNodes("li",1970,new Date().getFullYear()-1970,function(op,int){
+			$Base("#stuYear").myCreateNode("li",1970,new Date().getFullYear()-1970,function(op,int){
 				 op.innerHTML=int.toString();
 			});
-			$("#userMessList li:nth-child(4)").className("personal_hover");
 			function getObj(){
 				return {
-					'udm.schoolType':$("#schoolType").text().isEmpty(),
-					'udm.schoolAddress':$("#schoolName").val(),
-					'udm.schoolTime':$("#stuYear").prev().text().isEmpty()+"-1"+"-1"		
+					'udm.schoolType':encodeURIComponent($Base("#schoolType").innerHTML()),
+					'udm.schoolAddress':encodeURIComponent($Base("#schoolName").value()),
+					'udm.schoolTime':$Base("#stuYear").getPrevious().innerHTML()+"-1"+"-1"		
 				};
 			}
 		</script>

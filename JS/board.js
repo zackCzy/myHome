@@ -2,62 +2,62 @@
  * 
  */
 
-$(load);
+windowLoad(load);
 function load(){
 	
-	$("body").on("click", function(evt){
+	$Base("body").event("click", function(evt){
 		var node=getEvtObj(evt);
 		if(node.className.indexOf('pointPanel')==-1){
-			$(".colorPanel").hide(300);
+			$Base(".colorPanel").hide();
 		}	
 		try {
 			if(node.parentNode.className.indexOf('select')==-1){
-				$(".select ul").hide(300);
+				$Base(".select ul").hide();
 			}
 		} catch (e) {	}	
 	});
 	
 	
-	$("#backcolor").append($(".colorPanel").clone(true));
-	$(".select span").on("click", function(evt){	
-		var temp=$(this).next();		
+	$Base("#backcolor").appendChild($Base(".colorPanel").cloneNode(true));
+	$Base(".select span").event("click", function(evt){	
+		var temp=$Base(this).getNext();		
 		if(temp.css("display")=="none"){
-			$(".select ul").hide(300);
-			$(".colorPanel").hide(300);
-			temp.show(300);
+			$Base(".select ul").hide();
+			$Base(".colorPanel").hide();
+			temp.show();
 		}else{
-			$(this).next().hide(300);
+			$Base(this).getNext().hide();
 		}
 	});	
-	$(".select").hover(function(){
+	$Base(".select").hover(function(){
 		this.style.border="1px solid #02ABE3";
 	}, function(){
 		this.style.border="1px solid #CCCCCC";
 	});
 	
-	$(".pointPanel").on("click", function(evt){	
-		var temp=$(this).next();	
+	$Base(".pointPanel").event("click", function(evt){	
+		var temp=$Base(this).getNext();	
 		if(temp.css("display")=="none"){
-			$(".select ul").hide(300);
-			$(".colorPanel").hide(300);
-			temp.show(300);
-			$(".colorStatu").css({
+			$Base(".select ul").hide();
+			$Base(".colorPanel").hide();
+			temp.show();
+			$Base(".colorStatu").css({
 				background:""
 			});
 		}else{
-			temp.hide(300);
+			temp.hide();
 		}
 	});	
 
-	$(".trimColor").on("click", function(){
+	$Base(".trimColor").event("click", function(){
 		window.iframeDocument.execCommand(this.parentNode.parentNode.id,false, "#FFFFFF");
-		$(".colorStatu").css({
+		$Base(".colorStatu").css({
 			background:"#ffffff"
 		});
-		$(".colorPanel").hide(300);
+		$Base(".colorPanel").hide();
 	});
 	
-	$(".select ul li").on("click", clickSelect);
+	$Base(".select ul li").event("click", clickSelect);
 		
 	window.iframe = document.createElement("iframe");
 	window.iframe.style.width = "903px";
@@ -85,15 +85,15 @@ function load(){
 	window.iframeDocument.close();
 
 	
-	$(".smallBox").tabEvent(function(evt){	
+	$Base(".smallBox").tabEvent(function(evt){	
 		window.iframeDocument.execCommand(this.getAttribute("title"),false,0);
-		$(this).css({
+		$Base(this).css({
 			background: '#ffffff',
 			border:'1px solid #ECECEC'
 		});	
 	},function(evt){
 		window.iframeDocument.execCommand(this.getAttribute("title"),false,0);
-		$(this).css({
+		$Base(this).css({
 			background: '',
 			border:'1px solid #f6f6f6'
 		});	
@@ -105,59 +105,59 @@ function load(){
 //	$Base(document.forms['createText'].saveDraft).event("click", function(){	
 //		sendDiary.call(this,true);
 //	});
-	$(".colorPanel ul li").on("mouseover", function(evt){
-		var that=this;
-		$(".colorStatu").css({background:that.style.background});
-	}).on("click", function(){
-		var that=this;
-		window.iframeDocument.execCommand(that.parentNode.parentNode.parentNode.id, false,that.getAttribute("title"));
-		$(".colorPanel").hide(300);
+	$Base(".colorPanel ul li").event("mouseover", function(evt){
+		$Base(".colorStatu").css({background:this.style.background});
+	}).event("click", function(){
+		window.iframeDocument.execCommand(this.parentNode.parentNode.parentNode.id, false,this.getAttribute("title"));
+		$Base(".colorPanel").hide();
 	});
 
 }
 
 function sendDiary(draft,evt,url_u){
-	if($(window.iframeDocument.getElementsByTagName("body")[0]).text().isEmpty().length<=0){			
-		$.notice("viki提醒您！","文章内容不能为空");
+	if($Base(window.iframeDocument.getElementsByTagName("body")[0]).innerText().isEmpty().length<=0){			
+		notice("文章内容不能为空");
 		return
 	}
-	$.ajax({
+	stateAjax({
 		url:"/myHome/user/function_"+url_u,
 		method : 'post',
-		data : {
-			'userlog.logName':$("#title").val(),
-			'userlog.logContent':$(window.iframeDocument.getElementsByTagName("body")[0]).html(),
-			'userlog.visible':($("#visible").text().isEmpty()=="所有人可见"),
-			'userlog.type':$("#type").val(),
-			token:$("#token").val(),
+		head:{"Accept-Charset":"UTF-8"},
+		async : true,
+		message : {
+			'userlog.logName':encodeURIComponent( $Base("#title").get(0,true).value),
+			'userlog.logContent':encodeURIComponent($Base(window.iframeDocument.getElementsByTagName("body")[0]).innerHTML()),
+			'userlog.visible':($Base("#visible").innerHTML()=="所有人可见"),
+			'userlog.type':encodeURIComponent($Base("#type").get(0,true).value),
+			token:$Base("#token").get(0,true).value,
 			'userlog.id':document.getElementById("token").getAttribute("title"),
-			'userlog.noHtmlLog':$(window.iframeDocument.getElementsByTagName("body")[0]).text()
+			'userlog.noHtmlLog':$Base(window.iframeDocument.getElementsByTagName("body")[0]).innerText()
 		},
-		success:function(text){
+		run:function(text){
 			if(text.isEmpty()=='save user log ok'){			
-				$.notice("Viki提醒您",draft ? '草稿保存成功' :"发布成功,即将跳转！",1500,function(){						
+				notice(draft ? '草稿保存成功' :"发布成功,即将跳转！",function(){						
 					if(draft){
-						 window.location.href="/myHome/user/user_draft";
+						 window.location.assign("/myHome/user/user_draft");
 					}else{
-						window.location.href="/myHome/user/space/"+evt.getAttribute("alt")+"/diary";
+						 window.location.assign("/myHome/user/space/"+evt.getAttribute("alt")+"/diary");
 					}
 				});
 			}else{
-				$.notice("Viki提醒您","发布失败");
+				notice("发布失败");
 			}
 		}
 	});	
 }
 function clickSelect() {
-	$(this.parentNode).prev().html(this.innerHTML);
+	$Base(this.parentNode).getPrevious().innerHTML(this.innerHTML);
 	try {
 		window.iframeDocument.execCommand(this.parentNode.parentNode.id, false,this.getAttribute("title"));
 	} catch (e) {}
 	
-	$B(this.parentNode).hide(300);
+	$Base(this.parentNode).hide();
 }
 function box(){
-	var bodyH=$(window.iframeDocument.getElementsByTagName("body")[0]).css("height");
+	var bodyH=$Base(window.iframeDocument.getElementsByTagName("body")[0]).css("height");
 	if(parseInt(bodyH)>480){
 		window.iframe.style.height=bodyH;
 	}

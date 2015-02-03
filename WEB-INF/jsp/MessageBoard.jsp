@@ -1,22 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
-<%
-	String basePath = request.getContextPath();
-	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath; 
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>${title}_Viki空间</title>
-		<link rel="stylesheet"  type="text/css" href="<%=path %>/CSS/public/main.css">
-		<link rel="stylesheet"  type="text/css" href="<%=path %>/CSS/board.css">
-		<script type="text/javascript" src="<%=path %>/JS/tool/span.js"></script>
-		<script type="text/javascript" src="<%=path %>/scripts/jquery-1.10.1.js"></script>
-		<script type="text/javascript" src="<%=path %>/JS/tool/JQ_plugs.js"></script>
-		<script type="text/javascript" src="<%=path %>/JS/plugObject/notice.js"></script>
-		<script type="text/javascript" src="<%=path %>/JS/board.js"></script>
+		<link rel="stylesheet"  type="text/css" href="${pageContext.request.contextPath}/CSS/public/main.css">
+		<link rel="stylesheet"  type="text/css" href="${pageContext.request.contextPath}/CSS/board.css">
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/span.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/base.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/plug_Base.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/active_Base.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/Ajax.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/board.js"></script>
 	</head>
 	<body>
 	

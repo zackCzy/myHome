@@ -8,11 +8,11 @@ body {
 }
 
 
-.trans_nav {
+#nav {
 	width: 772px;
 	height: 200px;
 	background: url("/myHome/image/nav.png") no-repeat;
-	margin: 80px auto 0;
+	margin: 0px auto;
 	display: block;
 	position: relative;
 	color: #999;
@@ -24,14 +24,14 @@ body {
 	letter-spacing: 0.2em;
 }
 
-.trans_nav ul {
+#nav ul {
 	list-style: none;
 	height: 50px;
 	width: 600px;
 	display: block;
 }
 
-.trans_nav ul li {
+#nav ul li {
 	float: left;
 	height: 30px;
 	width: 95px;
@@ -48,7 +48,7 @@ body {
 	z-index: 1;
 }
 
-.trans_nav .nav_button {
+#nav .nav_button {
 	width: 130px;
 	height: 159px;
 	background: url("/myHome/image/nav_over.png") no-repeat;
@@ -61,7 +61,7 @@ body {
 	overflow: hidden;
 }
 
-.trans_nav .nav_button .block {
+#nav .nav_button .block {
 	margin: 7px 0 0 1px;
 	position: absolute;
 	left: 0px;
@@ -69,12 +69,12 @@ body {
 	text-align: center;
 }
 
-.trans_nav .nav_button ul li {
+#nav .nav_button ul li {
 	color: #333;
 	font-weight: bold;
 }
 
-.trans_nav .blank {
+#nav .blank {
 	z-index: 4;
 	position: absolute;
 	top: 55px;
@@ -85,10 +85,10 @@ body {
 	filter:alpha(opacity=0);
 	
 }
-.trans_nav .blank li {
+#nav .blank li {
 	height: 80px;
 }
-.trans_nav .blank li a{
+#nav .blank li a{
 	width:95px;
 	height: 80px;
 	display: block;
@@ -107,7 +107,7 @@ body {
 .textAreas {
 	float:left;
 	width: 44%;
-	height: auto;
+	height: 222px;
 	background: url("/myHome/image/trans.png");
 	margin-top:20px;
 	box-shadow: 7px 6px 7px rgba(0, 0, 0, 0.05), 3px 5px 8px rgba(0, 0, 0, 0.5);
@@ -129,12 +129,11 @@ border: 1px solid #409DFE;
 .return:hover{
 	background:url(/myHome/image/return_hover.png) no-repeat;
 }
-#search .textarea {	
+#search textarea {	
 	font-size: 20px;
 	color: #ECECEC;
 	letter-spacing: 0.1em;
-	height:auto;
-	min-height: 180px;
+	height: 180px;
 	border:0;	
 	resize: none;
 	background: url("/myHome/image/trans.png");
@@ -142,7 +141,6 @@ border: 1px solid #409DFE;
 	z-index: 1;
 	font-weight: bold;
 	padding: 10px 3% 0;
-	font-size:17px;
 }
 *:focus {outline: none;}
 
@@ -221,7 +219,7 @@ border: 1px solid #409DFE;
 .language {
 	list-style: none;
 	width: 300px;
-	height: 141px;
+	height: 0px;
 	border: 3px solid #20ABFA;
 	background: #FFFFFF;
 	position: absolute;
@@ -229,6 +227,8 @@ border: 1px solid #409DFE;
 	top: 50px;
 	display: none;
 	overflow: hidden;
+	opacity: 0;
+	filter: alpha(opacity = 0);
 	border-radius:7px;
 	box-shadow: 4px 3px 4px rgba(0, 0, 0, 0.05), 0 2px 5px rgba(0, 0, 0, 0.5);
 }
