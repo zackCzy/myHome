@@ -22,8 +22,8 @@
 		-->
 		<s:if test="#commentMessage!=null"> 
 			<li>
-				<a class="read_comment" href="/myHome/user/user_commentMessage">
-					<span style="background: url('/myHome/image/user_message.png');"></span>
+				<a class="read_comment" href="${pageContext.request.contextPath}/user/user_commentMessage">
+					<span style="background: url('${pageContext.request.contextPath}/image/user_message.png');"></span>
 					<em><s:property
 							value="#commentMessage.date" /> </em>
 					<div class="point_title">
@@ -42,8 +42,8 @@
 		<s:set  value="#systemMessage.size()"  var="scount"/>
 		<s:if test="#systemMessage!=null&&!#systemMessage.visible">
 			<li>
-				<a class="read_comment" href="/myHome/user/user_myFlans">
-					<span style="background: url('/myHome/image/systemMin.png');"></span>
+				<a class="read_comment" href="${pageContext.request.contextPath}/user/user_myFlans">
+					<span style="background: url('${pageContext.request.contextPath}/image/systemMin.png');"></span>
 					<em><s:property
 							value="#systemMessage.date" /> </em>
 					<div class="point_title">

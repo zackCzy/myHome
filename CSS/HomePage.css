@@ -268,16 +268,62 @@ h4{
 .user_page_photo li a:hover {
 	color: #6C6351;
 }
-
-.home_content_display {
-	width: 984px;
+.home_content_display_wrap{
 	border-top: 4px solid #5094DB;
+	width: 984px;
+	position: relative;
+	height: auto;
+	background:#fff;
+	padding: 25px 8px 30px;
+	margin-bottom:40px;
+}
+.home_content_display {
+	border-top:4px solid #4CC1E9;
+	width: 670px;
 	height: auto;
 	background: #FCFCFC;
-	padding: 25px 8px 30px;
-	float: left;
+	float:left;
+	box-shadow: 0 6px 4px rgba(0, 0, 0, 0.05), 0 7px 5px rgba(0, 0, 0, 0.3);
 }
-
+.home_list_display{
+	height: auto;
+	width: 300px;
+	background: #FCFCFC;
+	position:absolute;
+	right:0px;
+}
+.logList_right{
+	border:1px solid #ececec;
+	border-top:4px solid #4CC1E9;
+	width:250px;
+	height:200px;
+	padding:0 10px;
+	margin-bottom:15px;
+	border-radius:0 0 10px 10px ;
+	box-shadow: 0 6px 4px rgba(0, 0, 0, 0.05), 0 7px 5px rgba(0, 0, 0, 0.3);
+}
+.logList_right h5{
+	magrin:0;
+	border:0;
+	padding:0;
+	height:40px;
+	line-height:50px;
+	font-size:17px;
+	margin:0;
+}
+.logList_right ul{
+	list-style: none;
+	zoom:1;
+	width:100%;
+	margin:0;
+	padding:0
+}
+.logList_right li{
+	width:100%;
+	height:30px;
+	line-height:40px;
+	border-bottom:1px solid #ececec;
+}
 .user_page_photo li strong {
 	width: 60px;
 	height: 40px;
@@ -446,11 +492,10 @@ h4{
 
 .load_user_contenr {
 	display: block;
-	width: 1000px;
+	width: 100%;
 	height: 100px;
 	clear: both;
 	background: #FFFFFF;
-	margin-bottom: 100px;
 }
 
 .load_user_contenr span {
@@ -833,7 +878,6 @@ h4{
 	text-align: left;
 }
 .small_speak_info {
-	float: right;
 	width: 250px;
 	height: 200px;
 	font-size: 15px;

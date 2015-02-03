@@ -151,8 +151,8 @@
 				</div>
 			</div>
 		
-				
-				<div class="home_content_display">
+			<div class="home_content_display_wrap">
+				<div class="home_list_display">
 					<s:if test="#authority==1">
 						<ul class="diray_list_ul" id="diray_list_ul">
 							<li style="border-right: 7px solid #10D65B"><s:a action="function_cteateDiary" target="_blank">写日记</s:a></li>
@@ -162,6 +162,8 @@
 							<li style="border-right: 7px solid #10D65B"><a>建议</a></li>
 						</ul>	
 					</s:if>
+				</div>
+				<div class="home_content_display">
 					<s:iterator value="#dynamic" var="newLog" >
 					<div class="con_user_box">
 						<img class="user_photo" width="40" height="40" src="<%=path %>/load/download_getSmallPhoto?id=<s:property value="user.id"/>">
@@ -208,11 +210,12 @@
 					</s:if>
 				</div>
 				<div class="load_user_contenr">
-				<div class="point_load_status" >
-					<span >正在努力加载</span>	
+					<div class="point_load_status" >
+						<span >正在努力加载</span>	
+					</div>
 				</div>
 			</div>
-			<script type="text/javascript" src="${pageContext.request.contextPath}/JS/HomePage.js"></script>
 		</div>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/HomePage.js"></script>
 	</body>
 </html>

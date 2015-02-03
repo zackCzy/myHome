@@ -17,7 +17,7 @@
 	<body>
 		<div class="Home_page_nav" style="margin:30px auto 0;">
 				<ul>
-					<li><s:a href="<%=path%>" >首页</s:a> </li>
+					<li><a href="<%=path%>" >首页</a> </li>
 					<li ><a href="<%=path%>/user/space/<s:property value="#user.name"/>/">动态</a></li>
 					<li><a href="<%=path%>/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
 					<li><a href="<%=path%>/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
