@@ -218,6 +218,8 @@ h4{
 	position: absolute;
 	left: 50px;
 	top: -120px;
+	*border:1px solid #787878;
+	border:1px solid #787878\0;
 }
 
 .user_page_photo:hover #modify_user_photo {

@@ -90,7 +90,9 @@
 				var clientHeightM = $(body).innerHeight();
 				var barHeight = that.offsetHeight;
 				var fullBody = body.get(0);
+				$(window).on("mousemove",stopEvent);
 				function stop() {
+					$(window).off("mousemove",stopEvent);
 					$(that).off('mousemove', move);
 					$(that).off('mouseup', stop);
 					//防止IE拖出窗口
@@ -243,17 +245,18 @@
 					).appendTo($("#" + _id));
 					//阻止默认行为 添加滚轮事件
 					$("#" + _id).css(tempStyle).hover(function() { //阻止放行document滚动条默认行为
-						if (navigator.userAgent.indexOf("MSIE") > 0 || navigator.userAgent.indexOf("Chrome") > 0)
-							document.onmousewheel = function() {
+						if (navigator.userAgent.indexOf("MSIE") > 0 || navigator.userAgent.indexOf("Chrome") > 0){
+							window.onmousewheel=document.onmousewheel= function() {
 								return false;
 							};
-						else
+						}else{
 							document.addEventListener("DOMMouseScroll", stopEvent, false);
-					}, function() {
+						}
+					},function() {
 						if (navigator.userAgent.indexOf("MSIE") > 0 || navigator.userAgent.indexOf("Chrome") > 0)
-							document.onmousewheel = function() {
+							window.onmousewheel=document.onmousewheel=function() {
 								return true;
-							};
+							}
 						else
 							document.removeEventListener("DOMMouseScroll", stopEvent, false);
 					}).scrollTop(0).mousewheel(scrollF);

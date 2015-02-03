@@ -16,6 +16,7 @@
 	font-size: 13px;
 	z-index: 9888;
 	-moz-user-select: -moz-none;
+	user-select: -moz-none;
 }
 
 .head .headLeft {
