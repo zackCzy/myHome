@@ -83,10 +83,10 @@ function load(){
 	$Base("#register_previous").event("click", function(){
 		var that=this;
 		if(that.value=="完善信息"){
-			window.open("/myHome/user/user_dails", "_self");
+			window.location.href=BASE_PATH+"/user/user_dails";
 			return;
 		}else if(that.value=="重新注册"){
-			window.open("/myHome/application", "_self");
+			window.location.href=BASE_PATH+"/application";
 			return;
 		}
 		 if($Base(".user_base_dails").css("display")=="none"){
@@ -130,7 +130,7 @@ function load(){
 		var that=this;
 		
 		if(that.value=="返回首页"){
-			window.open("/myHome/home/", "_self");
+			window.location.href=BASE_PATH;
 			return;
 		}
 		if($Base(".mini_rules").css("display")=="block"){
@@ -195,7 +195,7 @@ function load(){
 			});
 			var province=$Base("#user_province").innerHTML()+","+$Base("#user_city").innerHTML();
 			stateAjax({
-				url : "/myHome/user/check_register",
+				url : BASE_PATH+"/user/check_register",
 				method : 'post',
 				async : true,
 				message : {
@@ -221,7 +221,7 @@ function load(){
 						$Base("#statusMss").innerHTML("注册失败");
 						$Base("#userMss").innerHTML("很抱歉！服务器繁忙，请稍后再试！");
 						$Base("#pointMss").innerHTML("注册网站会员，您将拥有更高的权限和专属特权");	
-						$Base(".register_state").css({background:" url('/myHome/image/no.png') 130px 70px no-repeat"});
+						$Base(".register_state").css({background:" url('"+BASE_PATH+"/image/no.png') 130px 70px no-repeat"});
 						$Base("#register_next").value("返回首页");
 						$Base("#register_previous").show().value("重新注册");
 					}
@@ -241,10 +241,10 @@ function load(){
 		}
 	});
 	$Base("#user_code_img").event("click", function(){
-		this.src="/myHome/user/check_mycode?ran"+Math.random();
+		this.src=BASE_PATH+"/user/check_mycode?ran"+Math.random();
 		$Base("#user_code").get(0, true).flag=false;
 		$Base(this).getNext().setAttribute("alt","true");
-	}).get(0, true).src="/myHome/user/check_mycode";
+	}).get(0, true).src=BASE_PATH+"/user/check_mycode";
 	
 	$Base(".mini_user_base_datum input").empty();
 	$Base("#user_account").event("blur", function(){
@@ -264,10 +264,10 @@ function load(){
 		}
 		var temp1=$Base("#poss_point_info2");
 		if(this.isOk==""){			
-			temp1.innerHTML(this.isOk).css({"background":"url('/myHome/image/pointYes.png') 2px 7px no-repeat"});
+			temp1.innerHTML(this.isOk).css({"background":"url('"+BASE_PATH+"/image/pointYes.png') 2px 7px no-repeat"});
 			this.alt="true";
 		}else{
-			temp1.innerHTML(this.isOk).css({"background":"url('/myHome/image/reg_error.png')  no-repeat"});
+			temp1.innerHTML(this.isOk).css({"background":"url('"+BASE_PATH+"/image/reg_error.png')  no-repeat"});
 			this.alt="false";
 		}	
 		temp1.show();
@@ -279,10 +279,10 @@ function load(){
 	$Base("#user_possword_fixwrod").event("blur", function(){
 		var str=checkPassWordFix(this.value);
 		if(str==""){
-			$Base(this).getNext().show().css({"background":"url('/myHome/image/pointYes.png') 2px 7px no-repeat"}).innerHTML("");
+			$Base(this).getNext().show().css({"background":"url('"+BASE_PATH+"/image/pointYes.png') 2px 7px no-repeat"}).innerHTML("");
 			this.alt="true";
 		}else{
-			$Base(this).getNext().show().css({"background":"url('/myHome/image/reg_error.png')  no-repeat"}).innerHTML(str);
+			$Base(this).getNext().show().css({"background":"url('"+BASE_PATH+"/image/reg_error.png')  no-repeat"}).innerHTML(str);
 			this.alt="false";
 		}	
 	});
@@ -341,7 +341,7 @@ function load(){
 }
 function checkAccount(value){
 	var that=this;
-	var temp=$Base(this).getNext().show().css({"background":"url('/myHome/image/loading2.gif') 2px 7px no-repeat"}).innerHTML("");
+	var temp=$Base(this).getNext().show().css({"background":"url('"+BASE_PATH+"/image/loading2.gif') 2px 7px no-repeat"}).innerHTML("");
 	var str= value.length>13? Point.USER_LENGTH_ERROR:
 							  new RegExp("([^0-9A-Za-z]+)", "igm").test(value) ? Point.USER_UNLAWFUL_ERROR: 
 							  value.replace(new RegExp('\\s*', "img"), "") == "" ? Point.USER_EMPTY_ERROR: 
@@ -349,11 +349,11 @@ function checkAccount(value){
 							  new RegExp("([A-Za-z]+[0-9]+)|([0-9]+[A-Za-z])", "igm").test(value) ? "" : 
 							  Point.USER_ACCOUNT_ERROR;
 	if(str!=""){
-		temp.show().css({"background":"url('/myHome/image/reg_error.png')  no-repeat"}).innerHTML(str).setAttribute("alt","false");
+		temp.show().css({"background":"url('"+BASE_PATH+"/image/reg_error.png')  no-repeat"}).innerHTML(str).setAttribute("alt","false");
 		return;
 	}
 	stateAjax({
-		url : "/myHome/user/check_account",
+		url : BASE_PATH+"/user/check_account",
 		method : 'get',
 		async : true,
 		message : {name: value},
@@ -362,11 +362,11 @@ function checkAccount(value){
 				str = Point.USER_ACCOUNT_EXEISTS;
 			}
 			if(str==""){
-				temp.show().css({"background":"url('/myHome/image/pointYes.png') 2px 7px no-repeat"}).innerHTML("");
+				temp.show().css({"background":"url('"+BASE_PATH+"/image/pointYes.png') 2px 7px no-repeat"}).innerHTML("");
 				that.alt="true";
 			}else{
 				that.alt="false";
-				temp.show().css({"background":"url('/myHome/image/reg_error.png')  no-repeat"}).innerHTML(str).setAttribute("alt","false");
+				temp.show().css({"background":"url('"+BASE_PATH+"/image/reg_error.png')  no-repeat"}).innerHTML(str).setAttribute("alt","false");
 			}	
 		}
 	});
@@ -447,16 +447,16 @@ function grade(value){
 
 function checkEmail(value){
 	var that=this;
-	var temp=$Base(this).getNext().show().css({"background":"url('/myHome/image/loading2.gif') 2px 7px no-repeat"}).innerHTML("");
+	var temp=$Base(this).getNext().show().css({"background":"url('"+BASE_PATH+"/image/loading2.gif') 2px 7px no-repeat"}).innerHTML("");
 	var str=value == "" ? Point.USER_EMAIL_NULL: 
 								!new RegExp("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*").test(value)? Point.USER_EMAIL_ERROR:"";
 	if(str!=""){
-		temp.show().css({"background":"url('/myHome/image/reg_error.png')  no-repeat"}).innerHTML(str);
+		temp.show().css({"background":"url('"+BASE_PATH+"/image/reg_error.png')  no-repeat"}).innerHTML(str);
 		that.alt="false";
 		return;
 	}
 	stateAjax({
-		url : "/myHome/user/check_email",
+		url : BASE_PATH+"/user/check_email",
 		method : 'get',
 		async : true,
 		message : {email: value},
@@ -465,10 +465,10 @@ function checkEmail(value){
 				str = Point.USER_EMAIL_EXEISTS;
 			}
 			if(str==""){
-				temp.show().css({"background":"url('/myHome/image/pointYes.png') 2px 7px no-repeat"}).innerHTML("");
+				temp.show().css({"background":"url('"+BASE_PATH+"/image/pointYes.png') 2px 7px no-repeat"}).innerHTML("");
 				that.alt="true";
 			}else{
-				temp.show().css({"background":"url('/myHome/image/reg_error.png')  no-repeat"}).innerHTML(str);
+				temp.show().css({"background":"url('"+BASE_PATH+"/image/reg_error.png')  no-repeat"}).innerHTML(str);
 				that.alt="false";
 			}	
 		}
@@ -476,15 +476,15 @@ function checkEmail(value){
 }
 function checkCode(value) {
 	var that=this;
-	var temp=$Base(this).getNext().getNext().show().css({"background":"url('/myHome/image/loading2.gif') 2px 7px no-repeat"}).innerHTML("");
+	var temp=$Base(this).getNext().getNext().show().css({"background":"url('"+BASE_PATH+"/image/loading2.gif') 2px 7px no-repeat"}).innerHTML("");
 	var str=value==""? Point.CODE_POINT_INPUT : "";
 	if(str!=""){
-		temp.show().css({"background":"url('/myHome/image/reg_error.png')  no-repeat"}).innerHTML(str).setAttribute("alt","false");
+		temp.show().css({"background":"url('"+BASE_PATH+"/image/reg_error.png')  no-repeat"}).innerHTML(str).setAttribute("alt","false");
 		that.alt="false";
 		return;
 	}
 		stateAjax({
-			url : "/myHome/user/check_code",
+			url : BASE_PATH+"/user/check_code",
 			method : 'get',
 			async : true,
 			message : {
@@ -495,10 +495,10 @@ function checkCode(value) {
 					str = Point.CODE_ERROR;
 				}
 				if(str==""){
-					temp.show().css({"background":"url('/myHome/image/pointYes.png') 2px 7px no-repeat"}).innerHTML("");
+					temp.show().css({"background":"url('"+BASE_PATH+"/image/pointYes.png') 2px 7px no-repeat"}).innerHTML("");
 					that.alt="true";
 				}else{
-					temp.show().css({"background":"url('/myHome/image/reg_error.png')  no-repeat"}).innerHTML(str);
+					temp.show().css({"background":"url('"+BASE_PATH+"/image/reg_error.png')  no-repeat"}).innerHTML(str);
 					that.alt="false";
 				}	
 			}

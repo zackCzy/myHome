@@ -9,7 +9,7 @@ function load() {
 	$Base("body").css({height:viewInner().height+130+'px'});
 	try {
 		$Base("#add_friend").event("click", function(){
-			send("/myHome/friends/friends_addFirend",{addUserId:document.getElementById("user_slef_id").rel},
+			send(BASE_PATH+"/friends/friends_addFirend",{addUserId:document.getElementById("user_slef_id").rel},
 				"{'add':'ok'}","关注成功","关注失败"
 			);
 		});
@@ -24,7 +24,7 @@ function load() {
 	
 	$Base(".smallCom a").event("click", function(){
 		var that=this;
-		send("/myHome/user/comment_remove",{
+		send(BASE_PATH+"/user/comment_remove",{
 			'id':this.getAttribute("title")
 		},'remove is ok',"删除成功","删除失败",function(){			
 			var temp=$Base(that).getParent().getParent().active({
@@ -43,7 +43,7 @@ function load() {
 			notice("评论内容不能为空");
 			return;
 		}
-		send("/myHome/user/comment_save",{
+		send(BASE_PATH+"/user/comment_save",{
 			'c.content':encodeURIComponent($Base(that).getPrevious().innerText()),
 			'id':$Base(that).getPrevious().getPrevious().getPrevious().value()
 		},'save is ok',"评论成功","评论失败",function(){
@@ -53,7 +53,7 @@ function load() {
 			element.setAttribute("class", 'smallCom');
 			var span=document.createElement('span');
 			var img=document.createElement('img');
-			img.src="/myHome/load/download_getSmallPhoto?id="+$Base('#space_user_id').value();
+			img.src=BASE_PATH+"/load/download_getSmallPhoto?id="+$Base('#space_user_id').value();
 			span.appendChild(img);
 			element.appendChild(span);
 			var bo=document.createElement('b');			

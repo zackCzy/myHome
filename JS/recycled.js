@@ -4,10 +4,10 @@
 
 $(function(){
 	$(".delectDraft").click(function(){
-		send.call(this,"/myHome/user/function_removeRubbish",'删除失败','removeRubbish user log ok',true);
+		send.call(this,BASE_PATH+"/user/function_removeRubbish",'删除失败','removeRubbish user log ok',true);
 	});
 	$(".recovery").click(function(){
-		send.call(this,"/myHome/user/function_recoveryRubbish",'回收失败','recoveryRubbish user log ok',false);
+		send.call(this,BASE_PATH+"/user/function_recoveryRubbish",'回收失败','recoveryRubbish user log ok',false);
 	});
 	$(".draftRow").addScroll();
 });

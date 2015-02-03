@@ -21,7 +21,7 @@ function load(){
 	
 	$("#seav_internation_music").click(function(){
 		$.ajax({
-			url:"/myHome/user/music_addInternationMusic",
+			url:BASE_PATH+"/user/music_addInternationMusic",
 			method : 'post',
 			data : {
 				'myMusic.song':(document.getElementById("song_name").value.isEmpty()),
@@ -43,7 +43,7 @@ function load(){
 	$('.make_music li a').on('click', function() {
 		var that=this;
 		$.ajax({
-			url:"/myHome/user/music_removeMusic",
+			url:BASE_PATH+"/user/music_removeMusic",
 			method : 'get',
 			data : {id:that.getAttribute("alt")},
 			success:function(text){	
@@ -106,7 +106,7 @@ function load(){
 		var that=this;
 		if(this.innerHTML.isEmpty()!=""){
 			$.ajax({
-				url:"/myHome/user/music_addMusic",
+				url:BASE_PATH+"/user/music_addMusic",
 				method : 'get',
 				data : {id:that.getAttribute("alt")},
 				success:function(text){	
@@ -126,7 +126,7 @@ function load(){
 
 function box(name,index){
 	$.ajax({
-		url:"/myHome/user/music_searchMusic",
+		url:BASE_PATH+"/user/music_searchMusic",
 		method : 'post',
 		data : {
 			pageIndex:index,searchName:name},

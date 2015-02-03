@@ -113,7 +113,7 @@ function trans() {
 	var state=$('#sreachState').show(300);
 	$.ajax({
 		method : 'post',
-		url :'/myHome/select_word.service',
+		url :BASE_PATH+'/select_word.service',
 		accept:{
 				"Accept-Charset":"UTF-8"
 		},

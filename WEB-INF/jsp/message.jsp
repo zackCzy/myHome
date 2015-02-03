@@ -3,7 +3,7 @@
 <%@taglib uri="/struts-tags"  prefix="s" %>
 <%
 	String basePath = request.getContextPath();
-	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath+"/myHome/"; 
+	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath; 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,6 +12,9 @@
 		<title>Viki-个人设置</title>
 		<link rel="stylesheet" type="text/css" href="<%=path %>/CSS/public/main.css">
 		<link rel="stylesheet" type="text/css" href="<%=path %>/CSS/message.css">
+		<script type="text/javascript">
+			BASE_PATH=<%=path %>
+		</script>
 		<script type="text/javascript" src="<%=path %>/JS/tool/span.js"></script>
 		<script type="text/javascript" src="<%=path %>/scripts/jquery-1.10.1.js"></script>
 		<script type="text/javascript" src="<%=path %>/JS/plugObject/notice.js"></script>

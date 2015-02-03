@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%
 	String basePath = request.getContextPath();
-	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath+"/myHome/"; 
+	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath; 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,6 +11,9 @@
 		<link rel="stylesheet" type="text/css"
 			href="<%=path%>/CSS/public/main.css" />
 		<link rel="stylesheet" type="text/css" href="<%=path%>/CSS/register.css" />
+		<script type="text/javascript">
+			BASE_PATH=<%=path %>
+		</script>
 		<script type="text/javascript" src="<%=path%>/JS/tool/span.js"></script>
 		<script type="text/javascript" src="<%=path%>/JS/tool/base.js"></script>
 		<script type="text/javascript" src="<%=path%>/JS/tool/plug_Base.js"></script>

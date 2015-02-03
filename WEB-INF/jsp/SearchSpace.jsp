@@ -3,7 +3,7 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%
 	String basePath = request.getContextPath();
-	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath+"/myHome/"; 
+	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath; 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

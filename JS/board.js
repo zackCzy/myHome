@@ -75,8 +75,8 @@ function load(){
 	//window.iframeDocument.designMode = "on";
 	window.iframeDocument.open();
 	window.iframeDocument.write('<html xmlns="http://www.w3.org/1999/xhtml"><head>'+	
-			'<script type="text/javascript" src="/myHome/JS/tool/span.js"></script>'+		
-			'<script type="text/javascript" src="/myHome/JS/tool/box.js"></script>'+
+			'<script type="text/javascript" src="'+BASE_PATH+'/JS/tool/span.js"></script>'+		
+			'<script type="text/javascript" src="'+BASE_PATH+'/JS/tool/box.js"></script>'+
 			'</head>'+
 			'<body  contenteditable="true" spellcheck="true" style="background:#FFFFFF; overflow:hidden; height:auto;width:100%;word-break : break-all;padding:0;border:0;">'+
 			document.getElementById("textarea").value+'</body></html>'
@@ -115,7 +115,7 @@ function sendDiary(draft,evt,url_u){
 		return
 	}
 	$.ajax({
-		url:"/myHome/user/function_"+url_u,
+		url:BASE_PATH+"/user/function_"+url_u,
 		method : 'post',
 		data : {
 			'userlog.logName':$("#title").val(),
@@ -130,9 +130,9 @@ function sendDiary(draft,evt,url_u){
 			if(text.isEmpty()=='save user log ok'){			
 				$.notice("Viki提醒您",draft ? '草稿保存成功' :"发布成功,即将跳转！",1500,function(){						
 					if(draft){
-						 window.location.href="/myHome/user/user_draft";
+						 window.location.href=BASE_PATH+"/user/user_draft";
 					}else{
-						window.location.href="/myHome/user/space/"+evt.getAttribute("alt")+"/diary";
+						window.location.href=BASE_PATH+"/user/space/"+evt.getAttribute("alt")+"/diary";
 					}
 				});
 			}else{

@@ -41,7 +41,7 @@ $.ajaxSetup({
 });
 function exitLogin(){
 	$.ajax({
-		url:"/myHome/exit",
+		url:BASE_PATH+"/exit",
 		type : 'get',
 		success:function(text){
 			window.location.href=window.location.href;
@@ -124,7 +124,7 @@ $(function(){
 	//如果用户登陆 获取用户歌曲列表
 	if(isSginOk.isEmpty().length>0){
 		$.ajax({
-			url:"/myHome/user/music_getVikiMusic",
+			url:BASE_PATH+"/user/music_getVikiMusic",
 			data:{},
 			type:"GET",
 			dataType:"JSON",
@@ -333,7 +333,7 @@ $(function(){
 	function playMusicFn(singerName,songName,musicId,cookieId){
 		window.playStatu=1;
 		document.getElementById("play_music").className="pause_music";
-		$("#singer_photo").attr("src", "/myHome/load/download_singerPhoto?singerName="+encodeURI(encodeURI(singerName)));
+		$("#singer_photo").attr("src", BASE_PATH+"/load/download_singerPhoto?singerName="+encodeURI(encodeURI(singerName)));
 		miniMusic.play(musicId,rotate);
 		$("#p_songName").text(songName);
 		$("#p_singerName").text(singerName);
@@ -352,7 +352,7 @@ $(function(){
 		window.searchMessage.flag=false;
 		$("#lock").lock();
 		$.ajax({
-			url:"/myHome/search/search_music",
+			url:BASE_PATH+"/search/search_music",
 			type : 'post',
 			data : {
 				pageIndex:index,searchName:name,pageSize:20},
@@ -452,7 +452,7 @@ $(function(){
 		var songName=tempArr[0];
 		var singerName=tempArr[1];
 		$.ajax({
-			url:"/myHome/user/music_removeVikiMusic",
+			url:BASE_PATH+"/user/music_removeVikiMusic",
 			type:"GET",
 			data:{'id':id},
 			success:function(msg){
@@ -486,7 +486,7 @@ $(function(){
 		var songName=tempArr[0];
 		var singerName=tempArr[1];
 		var id=cookieId;
-		if($.removeCookie(cookieId,"/myHome/music")){
+		if($.removeCookie(cookieId,BASE_PATH+"/music")){
 			miniMusic.removeCookieMusic({
 				'songName':songName,
 				'singerName':singerName,
@@ -537,7 +537,7 @@ $(function(){
 			'musicId':_musicId,
 			'id':_cookieId
 		});
-		$.cookie(_cookieId,strJson, {expires: 7, path: '/myHome/music'});
+		$.cookie(_cookieId,strJson, {expires: 7, path: BASE_PATH+'/music'});
 		JQAddDom(_singername,_songName,_musicId,_cookieId,".temp",true,miniMusic.getCookieMusicLength());
 	};
 	
@@ -550,7 +550,7 @@ $(function(){
 				return false;
 			}
 			$("#play_music").get(0).className="pause_music";
-			$("#singer_photo").attr("src", "/myHome/load/download_singerPhoto?singerName="+singername);
+			$("#singer_photo").attr("src", BASE_PATH+"/load/download_singerPhoto?singerName="+singername);
 			var musicId=this.getAttribute("alt");
 			miniMusic.play(musicId,rotate);
 			miniMusic.setIndex(index);
@@ -575,7 +575,7 @@ $(function(){
 		var songName=$(".search_result_songname",$parent).text();
 		var singername=$(".search_result_singername",$parent).text();
 		$.ajax({
-			url:"/myHome/user/music_addVikiMusic",
+			url:BASE_PATH+"/user/music_addVikiMusic",
 			data:{
 				"musicId":musicId,
 				"typeName":("默认")

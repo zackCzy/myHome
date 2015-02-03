@@ -12,7 +12,7 @@ function load(){
 	} catch (e) {}
 	$(".smallCom a").on("click", function(){
 		var that=this;
-		send("/myHome/user/comment_remove",{
+		send(BASE_PATH+"/user/comment_remove",{
 			'id':this.getAttribute("rel")
 		},'remove is ok',"删除成功","删除失败",function(){			
 			$(that.parentNode.parentNode).slideUp(350,function(){
@@ -33,7 +33,7 @@ function sendClick(){
 	}	
 	var date=new Date();
 	$.ajax({
-		url:"/myHome/user/comment_save",
+		url:BASE_PATH+"/user/comment_save",
 		method : 'post',
 		data : {
 			'c.content':$(that).prev().text(),
@@ -46,13 +46,13 @@ function sendClick(){
 				element.setAttribute("class", 'smallCom');
 				var span=document.createElement('span');
 				var img=document.createElement('img');
-				img.src="/myHome/load/download_getSmallPhoto?id="+json.id;
+				img.src=BASE_PATH+"/load/download_getSmallPhoto?id="+json.id;
 				span.appendChild(img);
 				element.appendChild(span);
 				var bo=document.createElement('a');			
 				bo.innerHTML=json.spaceName+":";
 				bo.setAttribute("target","blank");
-				bo.setAttribute("href","/myHome/user/space/"+json.name+"/");
+				bo.setAttribute("href",BASE_PATH+"/user/space/"+json.name+"/");
 				element.appendChild(bo);
 				var divo=document.createElement('div');
 				divo.innerHTML=$(that).prev().text();
@@ -103,7 +103,7 @@ function send(url,obj,cond,isok,iserror,fn){
 function removeClick(){
 	var that=this;
 	$.ajax({
-		url:"/myHome/user/comment_remove",
+		url:BASE_PATH+"/user/comment_remove",
 		method : 'get',
 		data : {
 			'id':that.getAttribute("alt")
@@ -124,7 +124,7 @@ function removeClick(){
 }
 function removeLog(acc,evt){
 	$.ajax({
-		url:"/myHome/user/function_removeDiary",
+		url:BASE_PATH+"/user/function_removeDiary",
 		method : 'get',
 		data : {
 			'userId':evt.getAttribute("rel")
@@ -132,7 +132,7 @@ function removeLog(acc,evt){
 		success:function(text){
 			if(text=="removeDiary is ok"){
 				$.notice("viki提醒您！","删除日记成功，即将跳转！!",300,function(){
-					window.location.href="/myHome/user/space/"+acc+"/diary";
+					window.location.href=BASE_PATH+"/user/space/"+acc+"/diary";
 				});			
 			}else{
 				$.notice("viki提醒您！","删除日记失败!");

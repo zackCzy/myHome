@@ -3,7 +3,7 @@
  */
 $(function(){
 	$(".delectDraft").click(function(){	
-		send.call(this,"/myHome/user/function_removeDraft",'草稿删除失败');
+		send.call(this,BASE_PATH+"/user/function_removeDraft",'草稿删除失败');
 	});
 });
 
