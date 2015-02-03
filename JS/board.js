@@ -98,13 +98,6 @@ function load(){
 			border:'1px solid #f6f6f6'
 		});	
 	});
-
-//	$Base(document.forms['createText'].save).event("click", function(){	
-//		sendDiary.call(this,false);
-//	});
-//	$Base(document.forms['createText'].saveDraft).event("click", function(){	
-//		sendDiary.call(this,true);
-//	});
 	$(".colorPanel ul li").on("mouseover", function(evt){
 		var that=this;
 		$(".colorStatu").css({background:that.style.background});

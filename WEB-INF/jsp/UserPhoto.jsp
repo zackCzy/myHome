@@ -3,7 +3,7 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%
 	String basePath = request.getContextPath();
-	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath; 
+	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath+"/myHome"; 
 %>
 <link rel="stylesheet" type="text/css" href="<%=path%>/csss/imgareaselect-default.css" />
 <script type="text/javascript" src="<%=path%>/JS/plugObject/notice.js"></script>
