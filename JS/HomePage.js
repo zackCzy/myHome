@@ -33,6 +33,7 @@ $(function() {
 	try {
 		$(".sendComment").on("click", sendClick);
 	} catch (e) {}
+	var home_list_displayHeight=$(".home_list_display").height();
 	$(window).scroll(function() {
 		var clientHeight = document.documentElement.scrollTop == 0 ? document.body.clientHeight : document.documentElement.clientHeight;
 		var scrollTop = document.documentElement.scrollTop == 0 ? document.body.scrollTop : document.documentElement.scrollTop;
@@ -49,7 +50,18 @@ $(function() {
 				marginTop: "0"
 			});
 		}
-
+		if(scrollTop+home_list_displayHeight-300>$(".home_content_display_wrap").height()){
+			
+		}else if( scrollTop>523){
+			$(".home_list_display").css({
+				top:scrollTop-400
+			});
+		}else{
+			$(".home_list_display").css({
+				position:"absolute",
+				top:"25px"
+			});
+		}
 		if (scrollTop > clientHeight * 2) {
 			$("#returnHead").stop(true).animate({
 				right: "50px"
@@ -76,7 +88,7 @@ $(function() {
 	function ajax() {
 		$.ajax({
 			url: BASE_PATH+"/json/content_getContent",
-			method: 'get',
+			type: 'get',
 			dataType: "json",
 			contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 			data: {
@@ -115,7 +127,7 @@ function comClick() {
 		var _JQ_load_box = $(".load_box", that).stop(true).show(200);
 		$.ajax({
 			url: BASE_PATH+"/json/com_com",
-			method: 'get',
+			type: 'get',
 			contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 			data: {
 				logId: _logId
@@ -283,7 +295,7 @@ function sendReplyCom(type) {
 	var date = new Date();
 	$.ajax({
 		url: BASE_PATH+"/user/comment_saveReviewewComment",
-		method: 'post',
+		type: 'post',
 		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 		data: {
 			'rc.content': $(that).prev().text().isEmpty(),
@@ -384,7 +396,7 @@ function sendClick() {
 	var date = new Date();
 	$.ajax({
 		url: BASE_PATH+"/user/comment_save",
-		method: 'post',
+		type: 'post',
 		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 		data: {
 			'c.content':replyTextE.text().isEmpty(),
@@ -496,7 +508,7 @@ function removeLogT(that) {
 		that.disabled = true;
 		$.ajax({
 			url: BASE_PATH+"/user/function_removeDiary",
-			method: 'get',
+			type: 'get',
 			timeout:5000,
 			contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 			data: {
@@ -528,7 +540,7 @@ function removeClick() {
 	that.disabled = true;
 	$.ajax({
 		url: BASE_PATH+"/user/comment_remove",
-		method: 'get',
+		type: 'get',
 		timeout:5000,
 		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 		data: {
@@ -571,7 +583,7 @@ function sendSmallSpeak(that) {
 	that.disabled = true;
 	$.ajax({
 		url: BASE_PATH+"/user/function_saveSpeak",
-		method: 'post',
+		type: 'post',
 		timeout:5000,
 		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 		data: {

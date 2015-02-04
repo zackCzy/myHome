@@ -91,9 +91,9 @@
 					<div class="logList_right">
 						<h5>最新发布</h5>
 						<ul>
-							<li>1</li>
-							<li>2</li>
-							<li>3</li>
+							<s:iterator value="#newhostLogs" var="newLog" >					
+								<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
+							</s:iterator>
 						</ul>
 					</div>
 					<div class="logList_right">
@@ -146,6 +146,11 @@
 							</s:else>	
 							<div class="comment_box">
 								<span alt=" <s:property value="id" />" class="remove_log">删除</span>
+								<s:if test="user.id==#session.id">
+									<span>
+										<a target="_blank" href="<%=path %>/user/function_modifyDiary?logId=<s:property value="id" />">编辑</a>
+									</span>
+								</s:if>
 								<span class="view_com"  alt="<s:property value="id" />">
 								评论(<b><s:property value="commentNum" default="0"/></b>)
 								</span>

@@ -35,7 +35,7 @@
 				<a >浏览(<span><s:property value="#visitors.size()" /></span>)</a>
 				<a href="#com">评论(<span id=count><s:property value="#log.com.size()"/></span>)</a>
 				<s:if test="#authority==1">
-					<a href="<%=path%>/user/function_modifyDiary?userId=<s:property value="userId" />">编辑</a>
+					<a href="<%=path%>/user/function_modifyDiary?logId=<s:property value="logId" />">编辑</a>
 					<a rel="<s:property value="userId" />"  onclick="removeLog('<s:property value="#logUser.name"/>',this)" >删除</a>
 				</s:if>
 			</div>

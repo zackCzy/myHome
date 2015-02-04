@@ -19,14 +19,14 @@ function load(){
 	
 	
 	$("#backcolor").append($(".colorPanel").clone(true));
-	$(".select span").on("click", function(evt){	
-		var temp=$(this).next();		
+	$(".select").on("click", function(evt){	
+		var temp=$("ul",this);		
 		if(temp.css("display")=="none"){
 			$(".select ul").hide(300);
 			$(".colorPanel").hide(300);
 			temp.show(300);
 		}else{
-			$(this).next().hide(300);
+			temp.hide(300);
 		}
 	});	
 	$(".select").hover(function(){
@@ -147,7 +147,7 @@ function clickSelect() {
 		window.iframeDocument.execCommand(this.parentNode.parentNode.id, false,this.getAttribute("title"));
 	} catch (e) {}
 	
-	$B(this.parentNode).hide(300);
+	$(this.parentNode).hide(300);
 }
 function box(){
 	var bodyH=$(window.iframeDocument.getElementsByTagName("body")[0]).css("height");

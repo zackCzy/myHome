@@ -143,20 +143,21 @@
 				</div>
 			</div>
 			<div class="home_content_display_wrap">
-				<div class="home_list_display">
-					<div class="logList_right">
-						<s:if test="#authority==1">
-							<div class="small_speak_info">
-								<span ><a href="<%=path %>/user/space/<s:property value="#user.name"/>/smallSpeak"><s:property value="#speakCount"/></a>条微说</span>		
-								<hr/>
-								<img src="<%=path %>/load/download_getBigPhoto?id=<s:property value="#user.id"/>"/>
-								<strong><s:property value="#user.userBaseDatum.name"/></strong>
-								<strong>今日微说：</strong>
-								<strong><s:property value="#speakDateCount"/>条</strong>
-							</div>
-						</s:if>
+				<s:if test="#authority==1">
+					<div class="home_list_display">
+						<div class="logList_right">
+								<div class="small_speak_info">
+									<span ><a href="<%=path %>/user/space/<s:property value="#user.name"/>/smallSpeak"><s:property value="#speakCount"/></a>条微说</span>		
+									<hr/>
+									<img src="<%=path %>/load/download_getBigPhoto?id=<s:property value="#user.id"/>"/>
+									<strong><s:property value="#user.userBaseDatum.name"/></strong>
+									<strong>今日微说：</strong>
+									<strong><s:property value="#speakDateCount"/>条</strong>
+								</div>
+							
+						</div>
 					</div>
-				</div>
+				</s:if>
 				<div class="home_content_display">
 					<s:if test="#authority==1">
 						<div id="addContent" style="float: left;">
@@ -194,7 +195,7 @@
 								<div class="load_box">正在拼了命的,为您加载!</div>
 								<b class="cut_out">↑ 收起</b>
 							</div>		
-					</div>
+						</div>
 					</s:iterator>
 					<s:if test="#speakCount==0">
 						<div class="userNotice">
@@ -209,7 +210,7 @@
 				</div>
 				<div class="load_user_contenr">
 					<div class="point_load_status" >
-							<span >正在努力加载</span>	
+						<span >正在努力加载</span>	
 					</div>
 				</div>
 			</div>		

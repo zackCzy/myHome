@@ -57,11 +57,11 @@
 						<s:if test="#session.sgin==null">
 							<div class="login_area">
 								<a id="headLogin">登录</a>&nbsp;|
-								<a href="${pageContext.request.contextPath}/application" target="_blank" >注册</a>
+								<a href="<%=path %>/application" target="_blank" >注册</a>
 							</div>
 						</s:if>
 						<s:else>
-							<strong><a  href="${pageContext.request.contextPath}/user/space/${sgin}/">${sgin}</a></strong>			
+							<strong><a  href="<%=path %>/user/space/${sgin}/">${sgin}</a></strong>			
 							<img width="25px" height="25px" src="<%=path %>/load/download_getSmallPhoto?id=${id}" >				
 						</s:else>		
 					</div>
@@ -125,7 +125,7 @@
 						};
 						function removeFollow(evt){			
 						    $.ajax({
-								url:"${pageContext.request.contextPath}/friends/friends_removeFollow",
+								url:"<%=path %>/friends/friends_removeFollow",
 								method : 'get',
 								timeout : 5000,
 								data : {removeUserid:evt.rel},
@@ -159,9 +159,34 @@
 							<li style="border-right: 7px solid #FE2C45"><s:a action="user_draft" target="_blank">草稿箱</s:a></li>
 							<li style="border-right: 7px solid #087BBC"><s:a action="user_recycled" target="_blank">回收站</s:a></li>
 							<li style="border-right: 7px solid #23C3FF"><s:a action="user_datum" target="_blank">设置</s:a></li>
-							<li style="border-right: 7px solid #10D65B"><a>建议</a></li>
 						</ul>	
 					</s:if>
+					<s:else>
+						<div class="logList_right">
+							<h5>最新发布</h5>
+							<ul>
+								<s:iterator value="#newhostLogs" var="newLog" >					
+									<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
+								</s:iterator>
+							</ul>
+						</div>
+						<div class="logList_right">
+							<h5>热门博文</h5>
+							<ul>
+								<s:iterator value="#hostLogs" var="newLog" >					
+									<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
+								</s:iterator>
+							</ul>
+						</div>
+						<div class="logList_right">
+							<h5>评论最多</h5>
+							<ul>
+								<s:iterator value="#conhostLogs" var="newLog" >					
+									<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
+								</s:iterator>
+							</ul>
+						</div>
+					</s:else>
 				</div>
 				<div class="home_content_display">
 					<s:iterator value="#dynamic" var="newLog" >
@@ -189,22 +214,22 @@
 							<span>浏览(<s:property value="visibleNum" default="0"/>)</span>
 						</div>
 						<div class="comment">
-										<h5>评论：</h5>
-										<div class="commentArea" contenteditable="true"></div>
-										<input class="sendComment" type="button" value="评论" alt="<s:property value="id"/>">
-										<div class="displayComment"></div>
-										<div class="load_box">正在拼了命的,为您加载!</div>
-										<b class="cut_out">↑ 收起</b>
-									</div>		
-						</div>	
+							<h5>评论：</h5>
+							<div class="commentArea" contenteditable="true"></div>
+							<input class="sendComment" type="button" value="评论" alt="<s:property value="id"/>">
+							<div class="displayComment"></div>
+							<div class="load_box">正在拼了命的,为您加载!</div>
+							<b class="cut_out">↑ 收起</b>
+						</div>		
+					</div>	
 					</s:iterator>				
-					<s:if test="(#type==1&&#logcount==0)">				
+					<s:if test="#dynamic.size()==0">				
 						<div class="userNotice">
 							<s:if  test="#authority==1">
 								<h2>你还没有发布过内容哦！<s:a action="function_cteateDiary">发点什么吧!</s:a></h2>
 							</s:if>
 							<s:else>
-								<h2>用户很懒,什么都没有写!<a href="${pageContext.request.contextPath}/user/function_cteateDiary">快去通知他吧</a></h2>
+								<h2>用户很懒,什么都没有写!<a href="<%=path %>/user/function_cteateDiary">快去通知他吧</a></h2>
 							</s:else>
 						</div>
 					</s:if>
@@ -216,6 +241,6 @@
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/HomePage.js"></script>
+		<script type="text/javascript" src="<%=path %>/JS/HomePage.js"></script>
 	</body>
 </html>
