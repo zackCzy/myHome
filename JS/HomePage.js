@@ -657,7 +657,7 @@ function createUserCon(json, element) {
 		linkContent = _doc.createElement("a");
 		linkContent.appendChild(logContent);
 		if (json[j]["smallSpeak"] == "false") {
-			linkContent.setAttribute("href", BASE_PATH+"/user/function_readDiary?userId=" + json[j].id);
+			linkContent.setAttribute("href", BASE_PATH+"/user/function_r_readDiary?userId=" + json[j].id);
 		}
 		linkContent.setAttribute("target", "_blank");
 

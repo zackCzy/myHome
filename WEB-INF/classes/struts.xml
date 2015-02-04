@@ -123,12 +123,14 @@
 			<result name="success">/WEB-INF/jsp/HomePageSmallSpeak.jsp</result>
 			<result name="authority">/WEB-INF/jsp/SpaceAuthority.jsp</result>
 		</action>
+		
 		<action name="spaceChackAuthority" class="cn.mini.struts2.action.SpaceAction" method="spaceChackAuthority">
 			<result name="success" type="redirectAction">
 				<param name="actionName">space/%{#user.name}/</param>				
 			</result>
 			<result name="authority">/WEB-INF/jsp/SpaceAuthority.jsp</result>
 		</action>
+		
 		<action name="check_*" class="cn.mini.struts2.action.UserCheckAction"
 			method="{1}">
 			<result name="mycode">/WEB-INF/jsp/code.jsp</result>
@@ -136,13 +138,10 @@
 			<result name="error">/WEB-INF/jsp/User_error.jsp</result>
 		</action>
 
-		<action name="function_*" class="cn.mini.struts2.action.UserFunctionAction"
-			method="{1}">	
-			<interceptor-ref name="miniAccountStack" />
+		<action name="function_r_*" class="cn.mini.struts2.action.UserFunctionAction"
+			method="{1}">
 			<result name="readDiary">/WEB-INF/jsp/readDiary.jsp</result>
-			<result name="cteateDiary">/WEB-INF/jsp/MessageBoard.jsp</result>
-			<result name="modifyDiary">/WEB-INF/jsp/MessageBoard.jsp</result>
-			<result name="noDiary">/WEB-INF/cueJsp/noDiary.jsp</result>
+			<result name="noDiary">/WEB-INF/cueJsp/noDiary.jsp</result>	
 			<!-- 
 			<result name="removeDiary" type="redirectAction">
 				<param name="actionName">user_space</param>
@@ -150,6 +149,21 @@
 			</result>
 			 -->
 		</action>
+		<action name="function_*" class="cn.mini.struts2.action.UserFunctionAction"
+			method="{1}">
+			<interceptor-ref name="miniAccountStack" />
+			<result name="readDiary">/WEB-INF/jsp/readDiary.jsp</result>
+			<result name="noDiary">/WEB-INF/cueJsp/noDiary.jsp</result>	
+			<result name="cteateDiary">/WEB-INF/jsp/MessageBoard.jsp</result>
+			<result name="modifyDiary">/WEB-INF/jsp/MessageBoard.jsp</result>
+			<!-- 
+			<result name="removeDiary" type="redirectAction">
+				<param name="actionName">user_space</param>
+				<param name="acc">%{acc}</param>
+			</result>
+			 -->
+		</action>
+		
 		
 		<action name="comment_*" class="cn.mini.struts2.action.CommentAction"
 			method="{1}">

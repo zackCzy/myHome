@@ -7,7 +7,7 @@
 						<h5>最新发布</h5>
 						<ul>
 							<s:iterator value="#newhostLogs" var="newLog" >					
-								<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
+								<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
 							</s:iterator>
 						</ul>
 					</div>
@@ -15,7 +15,7 @@
 						<h5>热门博文</h5>
 						<ul>
 							<s:iterator value="#hostLogs" var="newLog" >					
-								<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
+								<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
 							</s:iterator>
 						</ul>
 					</div>
@@ -23,7 +23,7 @@
 						<h5>评论最多</h5>
 						<ul>
 							<s:iterator value="#conhostLogs" var="newLog" >					
-								<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
+								<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
 							</s:iterator>
 						</ul>
 					</div>
@@ -53,7 +53,7 @@
 								</a>
 							</s:if>
 							<s:else>
-								<a href="<%=path %>/user/function_readDiary?logId=<s:property value="id" />" target="_blank">
+								<a href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id" />" target="_blank">
 									<div class="content_user_li">
 										<strong class="logTitle">《<s:property value="logName" />》</strong>
 										<br>

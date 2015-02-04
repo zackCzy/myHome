@@ -40,6 +40,10 @@ function sendClick(){
 			'id':$(that).attr("alt")
 		},
 		success:function(text){
+			if(text=="you login has expired"){
+				$("#headLogin").trigger("click");
+				return false;
+			}
 			try {
 				var json=JSON.parse(text);	
 				var element=document.createElement('div');

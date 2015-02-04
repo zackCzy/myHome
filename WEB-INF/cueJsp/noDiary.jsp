@@ -9,6 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/noDiary.css">
 		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/span.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-1.10.1.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/JS/tool/JQ_plugs.js"></script>
 		<title>Viki 提示</title>
 	</head>
 	<body>

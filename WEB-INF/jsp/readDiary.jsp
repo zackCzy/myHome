@@ -69,14 +69,14 @@
 		
 
 		<div class="comment">
-			<h5>评论：</h5>
+			<h5 style="height:40px;line-height:10px">评论：</h5>
 			<div id="commentArea" contenteditable="true"></div>
 			<input type="button"  value="评论" id="sendComment" alt="<s:property value="#logid"/>">
 			<div class="displayComment">
 				<s:iterator value="#log.com" var="comment">	
 					<div class="smallCom">
 						<span>
-							<a href="<%=path%>/user/space/<s:property value="comUser.name"/>/">
+							<a target="_blank" href="<%=path%>/user/space/<s:property value="comUser.name"/>/">
 								<img  src="<%=path%>/load/download_getSmallPhoto?id=<s:property value="comUser.id"/>">
 							</a>
 						</span>
