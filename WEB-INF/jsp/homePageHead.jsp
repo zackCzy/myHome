@@ -97,42 +97,40 @@
 						</span>
 						<a  id="user_message_bt" style="float: right;" rel="<s:property value="#user.id"/>" onclick="removeFollow(this)">加入黑名单</a>
 						<script type="text/javascript">
-						function addFollow(evt){
-							stateAjax({
-								url:"/myHome/friends/friends_addFirend",
-								method : 'get',
-								async : true,
-								message : {
-									'addUserId':evt.rel
-								},
-								run:function(text){
-								    if(text=="you login has expired"){
-								    	login();
-								    }else if(text=="{'add':'ok'}"){
-										notice("关注成功");
-									}else{
-										notice("关注失败");
+							function addFollow(evt){
+								$.ajax({
+									url:"/myHome/friends/friends_addFirend",
+									type : 'get',
+									data : {
+										'addUserId':evt.rel
+									},
+									success:function(text){
+									    if(text=="you login has expired"){
+									    	login();
+									    }else if(text=="{'add':'ok'}"){
+											$.notice("Viki提醒您","关注成功");
+										}else{
+											$.notice("Viki提醒您","关注失败");
+										}
 									}
-								}
-							});
-						};
-						function removeFollow(evt){			
-						    stateAjax({
-								url:"${pageContext.request.contextPath}/friends/friends_removeFollow",
-								method : 'get',
-								async : true,
-								message : {removeUserid:evt.rel},
-								run:function(text){
-									if("you login has expired"){
-								    	login();
-								    }else if(text=="remove is ok"){
-										notice("成功加入黑名单");
-									}else{
-										notice("加入黑名单失败");
+								});
+							};
+							function removeFollow(evt){			
+							    $.ajax({
+									url:"<%=path%>/friends/friends_removeFollow",
+									type : 'get',
+									data : {removeUserid:evt.rel},
+									success:function(text){
+										if("you login has expired"){
+									    	login();
+									    }else if(text=="remove is ok"){
+											$.notice("Viki提醒您","成功加入黑名单");
+										}else{
+											$.notice("Viki提醒您","加入黑名单失败");
+										}
 									}
-								}
-							});
-						}
+								});
+							}
 						</script>
 					</s:else>
 					<span style="font: 13px/30px 'Microsoft Yahei';color: #6C6351;">
