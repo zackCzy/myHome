@@ -81,6 +81,23 @@
 								<a rel='<s:property value="id"/>' class="remove_com">删除</a>
 							</s:if>
 						</strong>
+						<s:iterator value="reviewewCom" var="comm">	
+							<div class="reply">
+								<span class="userPhoto">
+									<img src='<%=path %>/load/download_getSmallPhoto?id=<s:property value='comUser.id'/>'>
+								</span>
+								<a><s:property value='comUser.spaceDatums.name'/> 回复 <s:property value='user.spaceDatums.name'/></a>
+								<div><s:property value='content'/></div>
+								<strong>
+									<span><s:property value='date'/></span>
+									<span style="background: url('<%=path %>/image/reply_ico.png') no-repeat scroll 0% 0% transparent; width: 19px; height: 17px; margin-top: 5px;" title="回复" alt="user.id"></span>
+								</strong>
+								<div class="small_reply_area" >
+									<div class="small_reply_input" contenteditable="true" "></div>
+									<input class="small_reply_bt" type="button" value="评论" alt="id">
+								</div>
+							</div>
+						</s:iterator>
 					</div>
 				</s:iterator>
 			</div>
