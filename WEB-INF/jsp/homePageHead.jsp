@@ -83,11 +83,58 @@
 				</div>
 				<div class="home_user_message" >
 					<span style="font: 20px/30px 'Microsoft Yahei';color: #423009;"><s:property value="#user.userBaseDatum.name"/></span>
-					<a  href="<%=path%>/user/user_datum" id="user_message_bt" style="float: right;" target="_blank">编辑个人资料</a>
-					<span style="font: 13px/30px 'Microsoft Yahei';color: #808080;">
-						<s:property value="#user.userBaseDatum.info" default="--"/>
-					</span>
-					<a  id="user_message_bt" style="float: right;">查看今日</a>	
+					<s:if test="#authority==1">
+						<a  href="/myHome/user/user_datum" id="user_message_bt" style="float: right;" target="_blank">编辑个人资料</a>
+						<span style="font: 13px/30px 'Microsoft Yahei';color: #808080;">
+							<s:property value="#user.userBaseDatum.info" default="--"/>
+						</span>
+						<a  id="user_message_bt" style="float: right;">查看今日</a>
+					</s:if>
+					<s:else>
+						<a   id="user_message_bt" style="float: right;" target="_blank" onclick="addFollow(this)" rel="<s:property value="#user.id"/>">添加好友关注</a>
+						<span style="font: 13px/30px 'Microsoft Yahei';color: #808080;">
+							<s:property value="#user.userBaseDatum.info" default="--"/>
+						</span>
+						<a  id="user_message_bt" style="float: right;" rel="<s:property value="#user.id"/>" onclick="removeFollow(this)">加入黑名单</a>
+						<script type="text/javascript">
+						function addFollow(evt){
+							stateAjax({
+								url:"/myHome/friends/friends_addFirend",
+								method : 'get',
+								async : true,
+								message : {
+									'addUserId':evt.rel
+								},
+								run:function(text){
+								    if(text=="you login has expired"){
+								    	login();
+								    }else if(text=="{'add':'ok'}"){
+										notice("关注成功");
+									}else{
+										notice("关注失败");
+									}
+								}
+							});
+						};
+						function removeFollow(evt){			
+						    stateAjax({
+								url:"${pageContext.request.contextPath}/friends/friends_removeFollow",
+								method : 'get',
+								async : true,
+								message : {removeUserid:evt.rel},
+								run:function(text){
+									if("you login has expired"){
+								    	login();
+								    }else if(text=="remove is ok"){
+										notice("成功加入黑名单");
+									}else{
+										notice("加入黑名单失败");
+									}
+								}
+							});
+						}
+						</script>
+					</s:else>
 					<span style="font: 13px/30px 'Microsoft Yahei';color: #6C6351;">
 						<s:property value="#user.userBaseDatum.addr.equals('请选择,请选择') ?未知: #user.userBaseDatum.addr"/>
 					</span>		
