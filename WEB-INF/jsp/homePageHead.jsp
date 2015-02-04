@@ -99,7 +99,7 @@
 						<script type="text/javascript">
 							function addFollow(evt){
 								$.ajax({
-									url:"/myHome/friends/friends_addFirend",
+									url:"<%=path%>friends/friends_addFirend",
 									type : 'get',
 									data : {
 										'addUserId':evt.rel
@@ -121,7 +121,7 @@
 									type : 'get',
 									data : {removeUserid:evt.rel},
 									success:function(text){
-										if("you login has expired"){
+										if(text=="you login has expired"){
 									    	login();
 									    }else if(text=="remove is ok"){
 											$.notice("Viki提醒您","成功加入黑名单");

@@ -546,15 +546,14 @@ h4{
 	width: 50px;
 	height: 53px;
 	position: fixed;
-	right: 50px;
+	right: -100px;
+	bottom:20px;
 	background: #FFFFFF url("/myHome/image/return_Head_One.png") no-repeat;
 	box-shadow: 3px 6px 4px rgba(0, 0, 0, 0.05), 4px 7px 5px
 		rgba(0, 0, 0, 0.3);
-	display: none;
+	display: block;
 	cursor: pointer;
 	border-radius: 8px;
-	opacity: 0;
-	filter: alpha(opacity =                                           0);
 	background: #FFFFFF url("/myHome/image/return_Head_One.png") no-repeat;
 }
 
