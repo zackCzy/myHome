@@ -9,7 +9,7 @@
 	<ul style="width: 560px; height: 600px; margin: 30px auto 0">
 		<s:iterator value="#communMessage" var="comMess">
 				<li style="height:100px;">
-					<a class="read_comment" href="${pageContext.request.contextPath}/user/function_readDiary?userId=<s:property value="userlog.id"/>">
+					<a class="read_comment" href="${pageContext.request.contextPath}/user/function_readDiary?logId=<s:property value="userlog.id"/>">
 						<span><img width=51px height=51px  src="${pageContext.request.contextPath}/load/download_getSmallPhoto?id=<s:property value="comUser.id"/>"></span>
 						<div class="point_title" style="width:450px;">	
 								<s:property value="comUser.userBaseDatum.name" />私信了你：

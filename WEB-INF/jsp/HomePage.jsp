@@ -146,7 +146,7 @@
 							</s:else>	
 							<div class="comment_box">
 								<span alt=" <s:property value="id" />" class="remove_log">删除</span>
-								<s:if test="user.id==#session.id">
+								<s:if test="user.id==#session.id&&!smallSpeak">
 									<span>
 										<a target="_blank" href="<%=path %>/user/function_modifyDiary?logId=<s:property value="id" />">编辑</a>
 									</span>

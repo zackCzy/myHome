@@ -10,7 +10,7 @@
 		<s:iterator value="#commentMessage" var="comMess">
 			<s:if test="(userlog.visible&&!userlog.draft&&!userlog.rubbish)">
 				<li style="height:100px;">
-					<a class="read_comment" href="${pageContext.request.contextPath}/user/function_readDiary?userId=<s:property value="userlog.id"/>">
+					<a class="read_comment" href="${pageContext.request.contextPath}/user/function_readDiary?logId=<s:property value="userlog.id"/>">
 						<span><img width=51px height=51px  src="${pageContext.request.contextPath}/load/download_getSmallPhoto?id=<s:property value="()comUser.id!=#user.id) ? comUser.id:user.id"/>"></span>
 						<div class="point_title" style="width:450px;">	
 							<s:if test="(comUser.id!=#user.id)">
