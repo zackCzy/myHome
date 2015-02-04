@@ -17,7 +17,7 @@ function send(url,information,point,type){
 	$.ajax({
 		url:url,
 		method : 'get',
-		data : {userId:this.getAttribute("title")},
+		data : {logId:this.getAttribute("title")},
 		success:function(text){
 			if(text.isEmpty()==point){			
 				$(that.parentNode).animate({

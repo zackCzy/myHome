@@ -11,8 +11,8 @@ function send(url,information){
 	var that=this;
 	$.ajax({
 		url:url,
-		method : 'get',
-		data : {userId:this.getAttribute("title")},
+		type : 'get',
+		data : {logId:this.getAttribute("title")},
 		success:function(text){
 			if(text.isEmpty()=='removeDraft user log ok'){			
 				$(that.parentNode).animate({

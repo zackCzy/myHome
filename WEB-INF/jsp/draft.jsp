@@ -30,7 +30,7 @@
 					<ul>
 						<s:iterator value="#userlogs" var="log">	
 							<li><b><s:property value="logName" default="未命名"/></b>
-							<a class="recovery" href="<%=path %>/user/function_modifyDiary?userId=<s:property value="id" />">编辑</a>
+							<a class="recovery" href="<%=path %>/user/function_modifyDiary?logId=<s:property value="id" />">编辑</a>
 							<a class="delectDraft" title="<s:property value="id" />">删除</a><span><s:property value="modifyDate.getMonth()+1"/>
 							-<s:property value="modifyDate.getDate()"/> 
 							<s:property value='modifyDate.getHours()<10? "0" +modifyDate.getHours():modifyDate.getHours()'/>:

@@ -86,7 +86,7 @@
 								<span class="userPhoto">
 									<img src='<%=path %>/load/download_getSmallPhoto?id=<s:property value='comUser.id'/>'>
 								</span>
-								<a><s:property value='comUser.spaceDatums.name'/> 回复 <s:property value='user.spaceDatums.name'/></a>
+								<a href="<%=path%>/user/space/<s:property value="comUser.name"/>/" target="_blank"><s:property value='comUser.spaceDatums.nickName'/> 回复 <s:property value='user.spaceDatums.nickName'/></a>
 								<div><s:property value='content'/></div>
 								<strong>
 									<span><s:property value='date'/></span>
