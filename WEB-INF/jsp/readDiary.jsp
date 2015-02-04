@@ -23,7 +23,7 @@
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/jsp/head.jsp"%> 
-		<h1><a title="返回<s:property value="#logUser.userBaseDatum.name"/>的空间" href="<%=path%>/user/space/<s:property value="#logUser.name"/>/"><s:property value="#logUser.userBaseDatum.name"/>的空间</a></h1>
+		<h1 class="space_name"><a title="返回<s:property value="#logUser.userBaseDatum.name"/>的空间" href="<%=path%>/user/space/<s:property value="#logUser.name"/>/"><s:property value="#logUser.userBaseDatum.name"/>的空间</a></h1>
 		<div class="readArea" >
 			<h2 style=" font-size: 20px;color: #454545;word-break: break-all;word-wrap: break-word;margin-bottom: 5px;height:30px;">
 			<s:property value="#log.logName"/>

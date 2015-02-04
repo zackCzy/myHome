@@ -1,13 +1,17 @@
 @CHARSET "UTF-8";
-
-body {
+body,ul,li,ol,h1,h2,h3,h4,h5,h6,p,img{
+	margin:0;
+	padding:0;
+	border:0;
+}
+body{
 	background: url("/myHome/image/bg_noise.jpg");
 	font-family: "微软雅黑", "宋体";
 	font-size: 14px;
 	
 }
 
-h1 {
+.space_name {
 	font-family: tahoma, helvetica, microsoft yahei, arial;
 	font-size: 50px;
 	font-weight: normal;
@@ -18,7 +22,7 @@ h1 {
 	width: 800px;
 }
 
-h1 a {
+.space_name a {
 	color: #3fa7cb;
 	text-decoration: none;
 }
