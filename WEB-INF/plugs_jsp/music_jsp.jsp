@@ -143,6 +143,7 @@
 		</div>
 	</div>
 </div>
+
 <script type="text/javascript">
 	function musicBox() {return <s:property value="#user.id"/>;}	
 	function createMusicBox(json) {
@@ -155,6 +156,9 @@
 			ul.appendChild(li);
 		}
 		$(ul).addScroll();
+		if(window.isMusic){
+			$("#head_play_List:eq(0)").trigger("click");
+		}
 	}
 	$("#head_play_List").on(
 		"click",

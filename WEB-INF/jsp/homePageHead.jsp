@@ -137,4 +137,10 @@
 						<s:property value="#user.userBaseDatum.addr.equals('请选择,请选择') ?未知: #user.userBaseDatum.addr"/>
 					</span>		
 				</div>
-			</div>
+			</div>		
+<%-- 判断是否设置自动播放歌曲 --%>
+<s:if test="#user.spaceDatums.isMusic">
+		<script type="text/javascript">
+				window.isMusic=true;
+		</script>
+</s:if>

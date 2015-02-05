@@ -12,7 +12,7 @@
 		<property name="nickName" column="nick_name" length="16"/>
 		<property name="spacePassWord" column="space_password"/>
 		<property name="visible" />
+		<property name="isMusic" />
 		<property name="rank"/>
-
 	</class>
 </hibernate-mapping>
