@@ -240,7 +240,6 @@ float:left;margin:7px 10px 0 15px;border:1px solid #ACACAC;box-shadow: 2px 2px 1
 				<a href="${pageContext.request.contextPath}/application">注册</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 				<a href="${pageContext.request.contextPath}">ViKi 首页</a>
 			</div>
-			<%@ include file="/WEB-INF/jsp/login.jsp"%>
 		</c:when>
 		<c:otherwise>
 			<a href="${pageContext.request.contextPath}" class="front">VIKI 首页</a>
@@ -277,7 +276,9 @@ float:left;margin:7px 10px 0 15px;border:1px solid #ACACAC;box-shadow: 2px 2px 1
 		<div class="mini_nav_bt" >viki 导航</div>
 	</div>
 </div>
-
+<c:if test="${sgin==null}">
+	<%@ include file="/WEB-INF/jsp/login.jsp"%>
+</c:if>
 <script type="text/javascript">
 	function musicBox() {
 		return ${session.id};

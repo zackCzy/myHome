@@ -40,7 +40,7 @@
 		            </li>
 		            <li class="cls">
 		              <p class="date">3月5日</p>
-		              <p class="intro">360全景隆重上线！</p>
+		        	      <p class="intro">360全景隆重上线！</p>
 		              <p class="version">&nbsp;</p>
 		              <div class="more">
 		                

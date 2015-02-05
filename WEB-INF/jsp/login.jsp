@@ -7,6 +7,8 @@
 		height: 365px;
 		background: url("${pageContext.request.contextPath}/image/loginUI.png") no-repeat;
 		position: absolute;
+		top: 50px;
+		left: 200px;
 		display: none;
 		z-index: 10000;
 	}
@@ -156,7 +158,8 @@ $(function(){
 				if (meg.isEmpty()!="sgin is error") {
 					document.forms['sgin'].passwordText.value=meg;
 					$point.css({background : "url(${pageContext.request.contextPath}/image/pointYes.png) no-repeat 35px 10px",color:"#A9C50B"}).html("登录成功……");
-					setTimeout(function(){document.forms['sgin'].submit();}, 500);
+					var url=window.location.href.replace(/#\S+/,"");
+					window.location.href=url;
 				} else {
 					$point.css({background : "url(${pageContext.request.contextPath}/image/pointError.png) no-repeat 35px 10px",color:"#FF5350"}).html("用户名、密码不正确!");
 					setTimeout(function(){$point.css({background : ""}).html("");}, 1000);

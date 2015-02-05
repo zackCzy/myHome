@@ -42,7 +42,7 @@
 					<a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
 				</div>
 				<a >浏览(<span><s:property value="#visitors.size()" /></span>)</a>
-				<a href="#com">评论(<span id=count><s:property value="#log.com.size()"/></span>)</a>
+				<a href="#commentArea">评论(<span id=count><s:property value="#log.com.size()"/></span>)</a>
 				<s:if test="#authority==1">
 					<a href="<%=path%>/user/function_modifyDiary?logId=<s:property value="logId" />">编辑</a>
 					<a rel="<s:property value="userId" />"  onclick="removeLog('<s:property value="#logUser.name"/>',this)" >删除</a>
@@ -68,7 +68,7 @@
 		</s:if>
 		
 
-		<div class="comment">
+		<div class="comment" id="comment">
 			<h5 style="height:40px;line-height:10px">评论：</h5>
 			<div id="commentArea" contenteditable="true"></div>
 			<input type="button"  value="评论" id="sendComment" alt="<s:property value="#logid"/>">
@@ -86,11 +86,16 @@
 						<div >
 							<s:property value="content" />
 						</div>
-						<strong><s:property value="date"/>	
+						<strong>	
+							<span class="reply_date"><s:property value="date"/></span>
+							<a href="#comment" class="replyHyperlink" rel="<s:property value='comUser.spaceDatums.nickName'/>">
+								<span  class="replyicon" title="回复" alt="<s:property value='id'/>" rel="<s:property value='user.id'/>"></span>
+							</a>
 							<s:if test="#authority==1">
 								<a rel='<s:property value="id"/>' class="remove_com">删除</a>
 							</s:if>
 						</strong>
+						 
 						<s:iterator value="reviewewCom" var="comm">	
 							<div class="reply">
 								<span class="userPhoto">
@@ -99,13 +104,11 @@
 								<a href="<%=path%>/user/space/<s:property value="comUser.name"/>/" target="_blank"><s:property value='comUser.spaceDatums.nickName'/> 回复 <s:property value='user.spaceDatums.nickName'/></a>
 								<div><s:property value='content'/></div>
 								<strong>
-									<span><s:property value='date'/></span>
-									<span style="background: url('<%=path %>/image/reply_ico.png') no-repeat scroll 0% 0% transparent; width: 19px; height: 17px; margin-top: 5px;" title="回复" alt="user.id"></span>
+									<span class="reply_date"><s:property value='date'/></span>
+									<a href="#comment" class="replyHyperlink" rel="<s:property value='comUser.spaceDatums.nickName'/>">
+										<span  class="replyicon" title="回复" alt="<s:property value='comment.id'/>" rel="<s:property value='user.id'/>"></span>
+									</a>
 								</strong>
-								<div class="small_reply_area" >
-									<div class="small_reply_input" contenteditable="true" "></div>
-									<input class="small_reply_bt" type="button" value="评论" alt="id">
-								</div>
 							</div>
 						</s:iterator>
 					</div>

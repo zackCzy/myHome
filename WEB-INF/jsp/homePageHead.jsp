@@ -97,12 +97,12 @@
 						</span>
 						<a  id="user_message_bt" style="float: right;" rel="<s:property value="#user.id"/>" onclick="removeFollow(this)">加入黑名单</a>
 						<script type="text/javascript">
-							function addFollow(evt){
+							function addFollow(event){
 								$.ajax({
-									url:"<%=path%>friends/friends_addFirend",
+									url:"<%=path%>/friends/friends_addFirend",
 									type : 'get',
 									data : {
-										'addUserId':evt.rel
+										'addUserId':event.getAttribute("rel")
 									},
 									success:function(text){
 									    if(text=="you login has expired"){
@@ -119,7 +119,7 @@
 							    $.ajax({
 									url:"<%=path%>/friends/friends_removeFollow",
 									type : 'get',
-									data : {removeUserid:evt.rel},
+									data : {removeUserid:evt.getAttribute("rel")},
 									success:function(text){
 										if(text=="you login has expired"){
 									    	login();

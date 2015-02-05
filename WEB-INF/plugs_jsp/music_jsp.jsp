@@ -45,7 +45,7 @@
 	position: absolute;
 	width: 300px;
 	height: 0px;
-	background: url("/myHome/image/trans.png");
+	background: url("${pageContext.request.contextPath}/image/trans.png");
 	left: -170px;
 	top: -150px;
 	box-shadow: 4px 3px 2px rgba(0, 0, 0, 0.03), 3px 2px 1px
@@ -119,9 +119,9 @@
 			<param value="#FFFFFF" name="bgcolor">
 			<param value="transparent" name="wmode">
 			<param name="allowScriptAccess" value="always" />
-			<param name="movie" value="/myHome/flash/MiniMusic.swf" />
+			<param name="movie" value="${pageContext.request.contextPath}/flash/MiniMusic.swf" />
 			<param value="userName=zhangwan" name="flashvars">
-			<embed src="/myHome/flash/MiniMusic.swf" quality="high"
+			<embed src="${pageContext.request.contextPath}/flash/MiniMusic.swf" quality="high"
 				pluginspage="http://www.macromedia.com/go/getflashplayer"
 				type="application/x-shockwave-flash" width="300" height="155"
 				id="Externa" flashvars="userName=zhangwan">
@@ -131,7 +131,7 @@
 			<span style="color: #fbfbfb; font-weight: bold; float: left;">
 				[ 播放列表 ]</span>
 			<s:if test="#authority==1">
-				<a href="/myHome/user/user_spaceMusic">背景音乐</a><b
+				<a href="${pageContext.request.contextPath}/user/user_spaceMusic">背景音乐</a><b
 				style="margin: 0 1px;">┆</b><a href="">设置</a>
 			</s:if>
 		</div>
