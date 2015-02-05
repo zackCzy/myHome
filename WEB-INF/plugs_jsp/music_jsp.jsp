@@ -172,6 +172,7 @@
 				}
 			}
 		});
+	
 	$('.music').on("mouseenter",function() {
 		$('.musicDisplay').css({top:"60px"}).stop(true).animate({	
 				height : 500

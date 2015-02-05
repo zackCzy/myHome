@@ -34,16 +34,16 @@ function sendReply(flag){
 function sendClick(){
 	var that=this;
 	var _input=$("#commentArea");
-	if(_input.text().isEmpty().length<=0){
-		_input.css({"border":"1px solid #ff4700"}).shake(function(){
-			$(this).css({"border":"1px solid #DEDEDE"});
-		},1);
-		return;
-	}	
 	var date=new Date();
-	var content=_input.text().isEmpty().replace(/^@(.*?):/,"");
-	content=content.replace(/$<br\/>/,"");
 	if(_input.attr("alt")=="1"){
+		var content=_input.text().isEmpty().replace(/^@(.*?):/,"");
+		content=content.replace(/$<br\/>/,"");
+		if(content.length<=0){
+			_input.css({"border":"1px solid #ff4700"}).shake(function(){
+				$(this).css({"border":"1px solid #DEDEDE"});
+			},1);
+			return;
+		}	
 		$.ajax({
 			url: BASE_PATH+"/user/comment_saveReviewewComment",
 			type: 'post',
@@ -87,6 +87,12 @@ function sendClick(){
 			}
 		});
 	}else{
+		if(_input.text().isEmpty().length<=0){
+			_input.css({"border":"1px solid #ff4700"}).shake(function(){
+				$(this).css({"border":"1px solid #DEDEDE"});
+			},1);
+			return;
+		}	
 		$.ajax({
 			url:BASE_PATH+"/user/comment_save",
 			method : 'post',
