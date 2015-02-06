@@ -44,10 +44,12 @@
 							<a class="user_spase_name selectStrong" href="<%=path%>/user/space/<s:property value="user.name"/>/">
 								<s:property value="nickName"/>
 							</a>
+							<span class="user_spase_name" style="font-size:12px">
+								[<s:property value="user.userBaseDatum.sex"/>]-<s:property value="user.userBaseDatum.addr.equals('请选择,请选择') ? '未知地点': '('+user.userBaseDatum.addr+')'"/>					
+							</Span>
 						</p>			 
 						<p>
-							<s:property value="userBaseDatum.sex"/>,<s:property value="userBaseDatum.addr.equals('请选择,请选择') ? '未知地点': userBaseDatum.addr"/>					
-							<a href="<%=path%>/user/space/<s:property value="user.name"/>/" target="_blank">${USER_PATH}/user/space/<s:property value="user.name"/>/</a>
+							<a href="<%=path%>/user/space/<s:property value="user.name"/>/" target="_blank">${USER_PATH}user/space/<s:property value="user.name"/>/</a>
 						</p>
 						<p>
 							<font color="#FF4700"  >关注:</font>
@@ -55,20 +57,25 @@
 							<font color="#FF4700"  >粉丝:</font>
 							<a><s:property value="user.fansUsers.size()"/></a>
 						</p>
-						<p>简介：<s:property value="searchUser.userBaseDatum.info" default="无"/></p>
+						<p>简介：<s:property value="user.userBaseDatum.info" default="无"/></p>
 					</div>
 				</s:iterator>
 				<s:iterator value="#smallSpeaks" var="searchUser">
 					<div class="search_result">
 						<img src="<%=path%>/load/download_getSmallPhoto?id=<s:property value="user.id"/>" width=100px height=100px>	 
-						<p>作者：<a class="user_spase_name" href="<%=path%>/user/space/<s:property value="user.name"/>/"><s:property value="user.userBaseDatum.name"/></a></p>
+						<p>作者：
+							<a class="user_spase_name" href="<%=path%>/user/space/<s:property value="user.name"/>/"><s:property value="user.userBaseDatum.name"/></a>
+							<span class="user_spase_name" style="font-size:12px">
+								[<s:property value="user.userBaseDatum.sex"/>]-<s:property value="user.userBaseDatum.addr.equals('请选择,请选择') ? '未知地点': '('+user.userBaseDatum.addr+')'"/>					
+							</Span>
+						</p>
 						<p >发布日期：
-							<a class="user_spase_name" href="<%=path%>/user/function_r_readDiary?userId=<s:property value="id"/>" style="font-size:15px;">
+							<a class="user_spase_name" href="<%=path%>/user/function_r_readDiary?logId=<s:property value="id"/>" style="font-size:15px;">
 								<s:property value="modifyDate"/>
 							</a>
 						</p>
 						<p class="nowarp">
-						 	内容：<a class="user_spase_name selectStrong" href="<%=path%>/user/function_r_readDiary?userId=<s:property value="id"/>" style="font-size:15px;">
+						 	内容：<a class="user_spase_name selectStrong" href="<%=path%>/user/function_r_readDiary?logId=<s:property value="id"/>" style="font-size:15px;">
 								<s:property value="(noHtmlLog.substring(0,noHtmlLog.length()>150 ? 150 : noHtmlLog.length()))" />
 							</a>					 	
 						</p>
@@ -77,19 +84,24 @@
 				<s:iterator value="#logs" var="searchUser">
 					<div class="search_result">
 						<img src="<%=path%>/load/download_getSmallPhoto?id=<s:property value="user.id"/>" width=100px height=100px>	 
-						<p>作者：<a class="user_spase_name" href="<%=path%>/user/space/<s:property value="user.name"/>/"><s:property value="user.userBaseDatum.name"/></a></p>
+						<p>作者：
+							<a class="user_spase_name" href="<%=path%>/user/space/<s:property value="user.name"/>/"><s:property value="user.userBaseDatum.name"/></a>
+							<span class="user_spase_name" style="font-size:12px">
+								[<s:property value="user.userBaseDatum.sex"/>]-<s:property value="user.userBaseDatum.addr.equals('请选择,请选择') ? '未知地点': '('+user.userBaseDatum.addr+')'"/>					
+							</Span>
+						</p>
 						<p >文章标题：
-							<a class="user_spase_name selectStrong" href="<%=path%>/user/function_readDiary?userId=<s:property value="id"/>" style="font-size:15px;">
+							<a class="user_spase_name selectStrong" href="<%=path%>/user/function_r_readDiary?logId=<s:property value="id"/>" style="font-size:15px;">
 								《<s:property value="logName"/>》
 							</a>
 						</p>
 						<p >修改日期：
-							<a class="user_spase_name" href="<%=path%>/user/function_readDiary?userId=<s:property value="id"/>" style="font-size:15px;">
+							<a class="user_spase_name" href="<%=path%>/user/function_r_readDiary?logId=<s:property value="id"/>" style="font-size:15px;">
 								<s:property value="modifyDate"/>
 							</a>
 						</p>
 						<p class="nowarp">
-						 	内容：<a class="user_spase_name" href="<%=path%>/user/function_readDiary?userId=<s:property value="id"/>" style="font-size:15px;">
+						 	内容：<a class="user_spase_name" href="<%=path%>/user/function_r_readDiary?logId=<s:property value="id"/>" style="font-size:15px;">
 								<s:property value="noHtmlLog.substring(0,noHtmlLog.length()>150 ? 150 : noHtmlLog.length())"/>
 							</a>					 	
 						</p>
