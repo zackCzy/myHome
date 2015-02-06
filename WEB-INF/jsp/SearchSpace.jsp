@@ -63,12 +63,12 @@
 						<img src="<%=path%>/load/download_getSmallPhoto?id=<s:property value="user.id"/>" width=100px height=100px>	 
 						<p>作者：<a class="user_spase_name" href="<%=path%>/user/space/<s:property value="user.name"/>/"><s:property value="user.userBaseDatum.name"/></a></p>
 						<p >发布日期：
-							<a class="user_spase_name" href="<%=path%>/user/function_readDiary?userId=<s:property value="id"/>" style="font-size:15px;">
+							<a class="user_spase_name" href="<%=path%>/user/function_r_readDiary?userId=<s:property value="id"/>" style="font-size:15px;">
 								<s:property value="modifyDate"/>
 							</a>
 						</p>
 						<p class="nowarp">
-						 	内容：<a class="user_spase_name selectStrong" href="<%=path%>/user/function_readDiary?userId=<s:property value="id"/>" style="font-size:15px;">
+						 	内容：<a class="user_spase_name selectStrong" href="<%=path%>/user/function_r_readDiary?userId=<s:property value="id"/>" style="font-size:15px;">
 								<s:property value="(noHtmlLog.substring(0,noHtmlLog.length()>150 ? 150 : noHtmlLog.length()))" />
 							</a>					 	
 						</p>
