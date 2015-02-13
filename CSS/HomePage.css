@@ -34,6 +34,17 @@ input[type=text],input[type=password] , textarea , button , input{font-size: 100
 		background:#48525E;
 	}
 }
+@media (max-width:400px){
+	.user_message{
+		width:100%!important;
+		height:100%!important;
+		background:#48525E!important;
+	}
+	.user_message strong{
+		width:80%!important;
+		text-align: left;
+	}
+}
 body {
 	background: #1F160D url("/myHome/image/body_bg.jpg") repeat-x;
 	overflow-x: hidden;
@@ -114,7 +125,7 @@ body {
 	padding: 5px 0 5px 15px;
 	margin: 13px;
 	background: #ECECEC;
-	float: left;
+	display: inline-block;
 }
 h4{
 	height:25px;
@@ -172,29 +183,36 @@ h4{
 }
 
 .user_message {
-	float: right;
-	width: 165px;
+	display:inline-block;
+	width: 155px;
 	height: 50px;
 	text-align: right;
 	font-size: 13px;
 	line-height: 55px;
 	color: #ffffff;
+	text-overflow: ellipsis;
+	overflow: hidden;
 
 }
 .user_message img,.user_message strong{
-	margin:15px 0 0 10px;
-	float: right;
-	display: block;
+	display:inline-block;
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+.user_message img{
+	width:25px;
+	height:49px;
+	float:left;
+	padding:12px 0;
+}
 .user_message strong{
 	width:120px;
-	margin: 0 0 0 10px;;
+	height:100%;
 	text-align: left;
+	line-height:49px;
 }
 .user_message  a,.user_message  a:ACTIVE,.user_message  a:LINK,.user_message  a:VISITED
-	{
+{
 	cursor: pointer;
 	color: #ffffff;
 	text-decoration: none;
@@ -237,6 +255,7 @@ h4{
 	display: block;
 	position: relative;
 	z-index: 0;
+	clear:both;
 }
 
 .my_Info_display {
@@ -407,7 +426,7 @@ h4{
 .home_user_message {
 	float: left;
 	width: 70%;
-	height: 100px;
+	height: 100%;
 	margin: 30px 0 0 260px;
 }
 

@@ -9,7 +9,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width-device-width,initial-scale=1.0" />
+		 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link type="text/css" rel="stylesheet" href="<%=path%>/CSS/public/main.css">
 		<link type="text/css" rel="stylesheet" href="<%=path%>/CSS/HomePage.css">
 		<script type="text/javascript">
@@ -61,8 +61,8 @@
 							</div>
 						</s:if>
 						<s:else>
+							<img src="<%=path%>/load/download_getSmallPhoto?id=${id}" >				
 							<strong><a  href="<%=path%>/user/space/${sgin}/">${sgin}</a></strong>			
-							<img width="25px" height="25px" src="<%=path%>/load/download_getSmallPhoto?id=${id}" >				
 						</s:else>		
 					</div>
 				</div>
