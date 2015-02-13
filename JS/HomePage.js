@@ -54,23 +54,24 @@ $(function() {
 		$(".sendComment").on("click", sendClick);
 	} catch (e) {}
 	var home_list_displayHeight=$(".home_list_display").height();
+	var clientWidth = document.documentElement.scrollTop == 0 ? document.body.clientWidth : document.documentElement.clientWidth;
+	if(clientWidth>=1200){
+		$(".Home_page_nav").width(1100).css("left",(clientWidth-1100)/2);
+	}else{
+		$(".Home_page_nav").width("100%").css("left",0);
+	}
+	$(window).resize(function(){
+		var clientWidth = document.documentElement.scrollTop == 0 ? document.body.clientWidth : document.documentElement.clientWidth;
+		if(clientWidth>=1200){
+			$(".Home_page_nav").width(1100).css("left",(clientWidth-1100)/2);
+		}else{
+			$(".Home_page_nav").width("100%").css("left",0);
+		}
+	});
 	$(window).scroll(function() {
 		var clientHeight = document.documentElement.scrollTop == 0 ? document.body.clientHeight : document.documentElement.clientHeight;
 		var scrollTop = document.documentElement.scrollTop == 0 ? document.body.scrollTop : document.documentElement.scrollTop;
 		var scrollHeight = document.documentElement.scrollTop == 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
-//		if (scrollTop < 29 && $(".Home_page_nav").css("position") == "fixed") {
-//			$(".Home_page_nav").css({
-//				position: "",
-//				marginTop: "30px"
-//			});
-//		} else if (scrollTop > 29) {
-//			$(".Home_page_nav").css({
-//				position: "fixed",
-//				top: "0px",
-//				marginTop: "0",
-//				left:0
-//			});
-//		}
 		if(scrollTop+home_list_displayHeight-300>$(".home_content_display_wrap").height()){
 			
 		}else if( scrollTop>523){

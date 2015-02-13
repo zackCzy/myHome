@@ -33,21 +33,23 @@
 		<!-- <div class="hint"></div>  -->
 		<div class="content">
 			<div class="Home_page_nav">
-				<ul>
-					<li><a href="<%=path%>" >首页</a> </li>
-					<s:if test="#authority==1">
-						<li style="<s:property value="#type==2? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path%>/user/space/<s:property value="#user.name"/>/">动态</a></li>
-						<li style="<s:property value="#type==1? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path%>/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
-						<li style="<s:property value="#type==4? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path%>/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
-						<li>关系</li>
-						<li><a href="<%=path%>/user/user_SysMessage">消息</a></li>
-					</s:if>
-					<s:else>
-						<li style="<s:property value="#type==1? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path %>/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
-						<li style="<s:property value="#type==4? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path %>/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
-						<li style="<s:property value="#type==3? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path %>/user/space/<s:property value="#user.name"/>/datum">资料</a></li>
-					</s:else>
-				</ul>
+				<div class="head-nav">
+					<ul>
+						<li><a href="<%=path%>" >首页</a> </li>
+						<s:if test="#authority==1">
+							<li style="<s:property value="#type==2? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path%>/user/space/<s:property value="#user.name"/>/">动态</a></li>
+							<li style="<s:property value="#type==1? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path%>/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
+							<li style="<s:property value="#type==4? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path%>/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
+							<li>关系</li>
+							<li><a href="<%=path%>/user/user_SysMessage">消息</a></li>
+						</s:if>
+						<s:else>
+							<li style="<s:property value="#type==1? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path %>/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
+							<li style="<s:property value="#type==4? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path %>/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
+							<li style="<s:property value="#type==3? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path %>/user/space/<s:property value="#user.name"/>/datum">资料</a></li>
+						</s:else>
+					</ul>
+				</div>
 				<div style="float: right;height:50px;vertical-align: middle;" class="seach-user">
 					<div class="search_user_i">
 						<input  maxlength="40" autocomplete="off" node-type="searchInput" type="text" style="margin:0;width:139px;height:15px;float: left;">
