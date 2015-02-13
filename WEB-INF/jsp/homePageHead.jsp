@@ -77,7 +77,7 @@
 			<div class="my_Info_display">
 				<div class="user_page_photo">	
 					<s:a action="user_userPhoto" id="modify_user_photo" target="_blank">修改头像</s:a>			
-					<img width=180px height=180px alt="用户头像" src="<%=path%>/load/download_getBigPhoto?id=<s:property value="#user.id"/>"/>			
+					<img alt="用户头像" src="<%=path%>/load/download_getBigPhoto?id=<s:property value="#user.id"/>"/>			
 					<ul>		
 						<li><a href="<s:url action="user_myFollwer" />"><strong><s:property value="#user.followUsers.size()"/></strong>关注</a></li>
 						<li><a href="<s:url action="user_myFlans" />"><strong><s:property value="#user.fansUsers.size()"/></strong>粉丝</a></li>
@@ -86,20 +86,15 @@
 					</ul>
 				</div>
 				<div class="home_user_message" >
-					<span style="font: 20px/30px 'Microsoft Yahei';color: #423009;"><s:property value="#user.userBaseDatum.name"/></span>
 					<s:if test="#authority==1">
-						<a  href="/myHome/user/user_datum" id="user_message_bt" style="float: right;" target="_blank">编辑个人资料</a>
-						<span style="font: 13px/30px 'Microsoft Yahei';color: #808080;">
-							<s:property value="#user.userBaseDatum.info" default="--"/>
-						</span>
-						<a  id="user_message_bt" style="float: right;">查看今日</a>
+						<div class="home_user_message_right" style="width:30%">
+							<a  href="/myHome/user/user_datum" id="user_message_bt"  target="_blank">编辑个人资料</a>
+							<a  id="user_message_bt">查看今日</a>
+						</div>
 					</s:if>
 					<s:else>
-						<a   id="user_message_bt" style="float: right;" target="_blank" onclick="addFollow(this)" rel="<s:property value="#user.id"/>">添加好友关注</a>
-						<span style="font: 13px/30px 'Microsoft Yahei';color: #808080;">
-							<s:property value="#user.userBaseDatum.info" default="--"/>
-						</span>
-						<a  id="user_message_bt" style="float: right;" rel="<s:property value="#user.id"/>" onclick="removeFollow(this)">加入黑名单</a>
+						<a  id="user_message_bt" target="_blank" onclick="addFollow(this)" rel="<s:property value="#user.id"/>">添加好友关注</a>
+						<a  id="user_message_bt" rel="<s:property value="#user.id"/>" onclick="removeFollow(this)">加入黑名单</a>
 						<script type="text/javascript">
 							function addFollow(event){
 								$.ajax({
@@ -137,9 +132,15 @@
 							}
 						</script>
 					</s:else>
-					<span style="font: 13px/30px 'Microsoft Yahei';color: #6C6351;">
-						<s:property value="#user.userBaseDatum.addr.equals('请选择,请选择') ?未知: #user.userBaseDatum.addr"/>
-					</span>		
+					<div class="home_user_message_left">
+						<span class="user-info"><s:property value="#user.userBaseDatum.name"/></span>
+						<span style="font: 13px/30px 'Microsoft Yahei';color: #808080;">
+								<s:property value="#user.userBaseDatum.info" default="--"/>
+						</span>
+						<span style="font: 13px/30px 'Microsoft Yahei';color: #6C6351;">
+							<s:property value="#user.userBaseDatum.addr.equals('请选择,请选择') ?未知: #user.userBaseDatum.addr"/>
+						</span>	
+					</div>	
 				</div>
 			</div>		
 <%-- 判断是否设置自动播放歌曲 --%>
