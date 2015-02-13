@@ -9,6 +9,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width-device-width,initial-scale=1.0" />
 		<link type="text/css" rel="stylesheet" href="<%=path%>/CSS/public/main.css">
 		<link type="text/css" rel="stylesheet" href="<%=path%>/CSS/HomePage.css">
 		<script type="text/javascript">
@@ -16,6 +17,7 @@
 		</script>
 		<script type="text/javascript" src="<%=path%>/JS/tool/span.js"></script>
 		<script type="text/javascript" src="<%=path%>/scripts/jquery-1.10.1.js"></script>
+		<script type="text/javascript" src="<%=path%>/JS/plugObject/Rollchart.js"></script>
 		<script type="text/javascript" src="<%=path%>/JS/plugObject/Texi.js"></script>
 		<script type="text/javascript" src="<%=path%>/JS/plugObject/notice.js"></script>
 		<script type="text/javascript" src="<%=path%>/JS/tool/JQ_plugs.js"></script>
@@ -28,8 +30,8 @@
 		<input type="hidden" value='<s:property value="#authority"/>' id="authority">
 		<input type="hidden" value='<s:property value="#type"/>' id="type">
 		<div id="returnHead"></div>
-		<div class="hint"></div>
-		<div style="width: 1000px; margin: 0 auto;">
+		<!-- <div class="hint"></div>  -->
+		<div class="content">
 			<div class="Home_page_nav">
 				<ul>
 					<li><a href="<%=path%>" >首页</a> </li>
@@ -68,7 +70,9 @@
 			</div>
 			
 			<div class="mypage_img">
-				<img width=1000px height=300px; alt="bg" src="<%=path%>/image/1.jpg">
+				 
+					<img width=100% height=300px; alt="bg" src="<%=path%>/image/1.jpg">
+				
 			</div>
 			<div class="my_Info_display">
 				<div class="user_page_photo">	

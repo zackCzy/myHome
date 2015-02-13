@@ -2,37 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@include file="homePageHead.jsp" %>
 			<div class="home_content_display_wrap">
-				<div class="home_list_display">
-					<div class="logList_right">
-						<h5>最新发布</h5>
-						<ul>
-							<s:iterator value="#newhostLogs" var="newLog" >					
-								<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
-							</s:iterator>
-						</ul>
-					</div>
-					<div class="logList_right">
-						<h5>热门博文</h5>
-						<ul>
-							<s:iterator value="#hostLogs" var="newLog" >					
-								<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
-							</s:iterator>
-						</ul>
-					</div>
-					<div class="logList_right">
-						<h5>评论最多</h5>
-						<ul>
-							<s:iterator value="#conhostLogs" var="newLog" >					
-								<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
-							</s:iterator>
-						</ul>
-					</div>
-				</div>
 				<div class="home_content_display">
 					<div style="float: left;" id="addContent">
-						<div style="width: 640px;height:20px; margin:15px 0 20px 15px;background: url('<%=path %>/image/iconbtn.png') no-repeat;"></div>
+						<div style="width:100%;height:20px;background: url('<%=path %>/image/iconbtn.png') no-repeat;"></div>
 						<div contenteditable="true" id="shuoshuo">&nbsp;&nbsp;</div>
-						<div style="width: 640px;height:50px; margin:0 0 20px 15px;">
+						<div style="width:100%;height:50px;">
 							<input alt="${token}" type="button" style="border-radius:15px;cursor:pointer;float:right;width:100px; height:30px;background: #5CAAE6" value="发表" onclick="sendSmallSpeak(this)">
 						</div>	
 					</div>
@@ -83,6 +57,32 @@
 							</div>		
 						</div>
 					</s:iterator>
+				</div>
+				<div class="home_list_display">
+					<div class="logList_right">
+						<h5>最新发布</h5>
+						<ul>
+							<s:iterator value="#newhostLogs" var="newLog" >					
+								<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
+							</s:iterator>
+						</ul>
+					</div>
+					<div class="logList_right">
+						<h5>热门博文</h5>
+						<ul>
+							<s:iterator value="#hostLogs" var="newLog" >					
+								<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
+							</s:iterator>
+						</ul>
+					</div>
+					<div class="logList_right">
+						<h5>评论最多</h5>
+						<ul>
+							<s:iterator value="#conhostLogs" var="newLog" >					
+								<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
+							</s:iterator>
+						</ul>
+					</div>
 				</div>
 				<div class="load_user_contenr">
 					<div class="point_load_status" >

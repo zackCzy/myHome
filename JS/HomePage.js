@@ -1,9 +1,29 @@
 /**
  *
  */
+var img1=new Image();
+img1.src=BASE_PATH+"/image/1.jpg";
+var img2=new Image();
+img2.src=BASE_PATH+"/image/2.jpg";
+var img3=new Image();
+img3.src=BASE_PATH+"/image/3.jpg";
+var images={
+	image:[
+		img1,
+		img2, 
+		img3
+	],
+	height:300,
+	width:"1000",
+	phone:true,
+	autoScale:1000
+};
+
 
 $(function() {
 	var mypage = 1;
+	var rollchart=$.Rollchart();
+	//rollchart.init(images,".mypage_img");
 	
 	$.ajaxSetup({
 		accepts: {
@@ -47,7 +67,8 @@ $(function() {
 			$(".Home_page_nav").css({
 				position: "fixed",
 				top: "0px",
-				marginTop: "0"
+				marginTop: "0",
+				left:0
 			});
 		}
 		if(scrollTop+home_list_displayHeight-300>$(".home_content_display_wrap").height()){
@@ -66,7 +87,7 @@ $(function() {
 		if (scrollTop > clientHeight * 1.3) {
 			if($return.attr("alt")!="false"){
 				$return.attr("alt","false").stop(true).animate({
-					right: "50px"
+					right: "0px"
 				}, 300);
 			}
 		} else {
