@@ -12,6 +12,7 @@ input[type=text],input[type=password] , textarea , button , input{font-size: 100
 @media (max-width:800px){
 	.home_content_display{
 		width:100%!important;
+		padding:0!important;
 	}
 	.home_list_display{
 		width:100%!important;
@@ -472,7 +473,7 @@ h4{
 .content_user_li {
 	margin: 10px 0 0;
 	float: left;
-	width: 565px;
+	width: 100%;
 	height: auto;
 	color: #808080;
 	padding: 10px 15px;
@@ -481,7 +482,6 @@ h4{
 	white-space: break-word;
 	font-size: 15px;
 	margin-bottom: 9px;
-	overflow: hidden;
 	word-break: break-all;
 }
 
