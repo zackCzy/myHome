@@ -69,12 +69,12 @@ input[type=text],input[type=password] , textarea , button , input{font-size: 100
 
 @media (max-width:400px){
 	.user_message{
-		width:100%!important;
+		width:26%!important;
 		height:100%!important;
 		background:#48525E!important;
 	}
 	.user_message strong{
-		width:80%!important;
+		width:50%!important;
 		text-align: left;
 	}
 	
@@ -228,6 +228,7 @@ h4{
 	color: #ffffff;
 	text-overflow: ellipsis;
 	overflow: hidden;
+	float:right;
 
 }
 .user_message img,.user_message strong{
@@ -298,7 +299,6 @@ h4{
 	clear:both;
 	width: 100%;
 	height: auto;
-
 	background: url("/myHome/image/contentPoint.png") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
 	display: block;
 	position: relative;
