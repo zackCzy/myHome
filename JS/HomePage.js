@@ -256,12 +256,12 @@ function comClick() {
 						//再次回复
 						reply_area_two = _doc.createElement('div');
 						reply_area_two.className = "small_reply_area";
-						reply_area_two.style.marginLeft = "55px";
-						reply_area_two.style.width = "405px";
+						//reply_area_two.style.marginLeft = "55px";
+						//reply_area_two.style.width = "405px";
 						reply_input = _doc.createElement('div');
 						reply_input.className = "small_reply_input";
 						reply_input.setAttribute("contenteditable", "true");
-						reply_input.style.width = "373px";
+						//reply_input.style.width = "373px";
 						reply_input_bt = _doc.createElement('input');
 						reply_input_bt.setAttribute("type", "button");
 						reply_input_bt.className = "small_reply_bt";
@@ -369,12 +369,12 @@ function sendReplyCom(type) {
 				//再次回复
 				var reply_area_two = document.createElement('div');
 				reply_area_two.className = "small_reply_area";
-				reply_area_two.style.marginLeft = "55px";
-				reply_area_two.style.width = "405px";
+				//reply_area_two.style.marginLeft = "55px";
+				//reply_area_two.style.width = "405px";
 				var reply_input = document.createElement('div');
 				reply_input.className = "small_reply_input";
 				reply_input.setAttribute("contenteditable", "true");
-				reply_input.style.width = "373px";
+				//reply_input.style.width = "373px";
 				var reply_input_bt = document.createElement('input');
 				reply_input_bt.setAttribute("type", "button");
 				reply_input_bt.className = "small_reply_bt";

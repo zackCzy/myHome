@@ -48,7 +48,7 @@
 						<li style="<s:property value="#type==3? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path %>/user/space/<s:property value="#user.name"/>/datum">资料</a></li>
 					</s:else>
 				</ul>
-				<div style="float: right;height:50px;vertical-align: middle;">
+				<div style="float: right;height:50px;vertical-align: middle;" class="seach-user">
 					<div class="search_user_i">
 						<input  maxlength="40" autocomplete="off" node-type="searchInput" type="text" style="margin:0;width:139px;height:15px;float: left;">
 						<span></span>
