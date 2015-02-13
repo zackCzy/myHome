@@ -516,6 +516,7 @@ h4{
 	padding-bottom: 15px;
 	opacity: 1;
 	filter: alpha(opacity =           100);
+	overflow: hidden;
 }
 
 #shuoshuo {
