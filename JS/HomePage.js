@@ -58,19 +58,19 @@ $(function() {
 		var clientHeight = document.documentElement.scrollTop == 0 ? document.body.clientHeight : document.documentElement.clientHeight;
 		var scrollTop = document.documentElement.scrollTop == 0 ? document.body.scrollTop : document.documentElement.scrollTop;
 		var scrollHeight = document.documentElement.scrollTop == 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
-		if (scrollTop < 29 && $(".Home_page_nav").css("position") == "fixed") {
-			$(".Home_page_nav").css({
-				position: "",
-				marginTop: "30px"
-			});
-		} else if (scrollTop > 29) {
-			$(".Home_page_nav").css({
-				position: "fixed",
-				top: "0px",
-				marginTop: "0",
-				left:0
-			});
-		}
+//		if (scrollTop < 29 && $(".Home_page_nav").css("position") == "fixed") {
+//			$(".Home_page_nav").css({
+//				position: "",
+//				marginTop: "30px"
+//			});
+//		} else if (scrollTop > 29) {
+//			$(".Home_page_nav").css({
+//				position: "fixed",
+//				top: "0px",
+//				marginTop: "0",
+//				left:0
+//			});
+//		}
 		if(scrollTop+home_list_displayHeight-300>$(".home_content_display_wrap").height()){
 			
 		}else if( scrollTop>523){
