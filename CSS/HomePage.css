@@ -9,108 +9,7 @@ a:hover , a:link , a:visited ,input, button{
 }
 input[type=text],input[type=password] , textarea , button , input{font-size: 100%; -webkit-appearance: none; border:none;
 }
-@media (min-width:1100px){
-	.content{
-		width:1100px!important; 
-	}
-}
-@media (max-width:920px){
-	.home_content_display_wrap{
-		padding:0!important;
-	}
-	.home_content_display{
-		width:100%!important;
-		padding:0!important;
-	}
-	.home_list_display{
-		width:100%!important;
-		position: static!important;
-		padding:0!important;
-		
-	}
-	.logList_right{
-		max-width:100%!important;
-	}
-	.music{
-		display:none!important;
-	}
-	.seach-user{
-		width:100%;
-		background:#48525E;
-	}
-}
-@media (max-width:600px){
-	.mypage_img{
-		display: none!important;
-	}
-	.user_page_photo{
-		position: static!important;
-		width:100%!important;
-		height:auto!important;
-	}
-	.user_page_photo img {
-		width:80px!important;
-		height:80px!important;
-	}
-	.home_user_message,.home_user_message_right,.home_user_message_left{
-		clear:both;
-		width:100%!important;
-		padding:0!important;
-		margin:0!important;
-		float: inherit;
-		float: none;
-	}
-	.home_user_message_right a{
-		display: inline-block!important;
-	}
-	.home_user_message{
-		padding:7px 15px 25px!important;
-	}
-	.head-nav{
-		width:150px;
-		height:49px;
-		background:url("/myHome/images/space/nav1.png") 0 6px no-repeat;
-		padding-top:49px;
-		
-	}
-	.head-nav:hover ul{
-		height:auto!important;
-	}
-	.Home_page_nav ul{
-		width:100px!important;
-		height:0!important;
-		-webkit-transition:height 0.3s ease-out;
-		-moz-transition:height 0.3s ease-out;
-		-o-transition:height 0.3s ease-out;
-		-ms-transition:height 0.3s ease-out;
-		transition:height 0.3s ease-out;
-		overflow: hidden;
-	}
-	.Home_page_nav ul li{
-		float: none;
-	}
-}
 
-@media (max-width:400px){
-	.user_message{
-		width:26%!important;
-		height:100%!important;
-		background:#48525E!important;
-	}
-	.user_message strong{
-		width:50%!important;
-		text-align: left;
-	}
-	.home_user_message a{
-		display: inline-block!important;
-	}
-	.seach-user{
-		position: fixed!important;
-		bottom:0!important;
-		overflow: hidden!important;
-	}
-	
-}
 body {
 	background: #1F160D url("/myHome/image/body_bg.jpg") repeat-x;
 	overflow-x: hidden;
@@ -533,7 +432,7 @@ h4{
 #shuoshuo {
 	width: 100%;
 	border: 1px solid #DEDEDE;
-	margin: 15px 0;
+	margin: 15px 8px;
 	display: block;
 	background: #FFFFFF;
 	overflow: auto;
@@ -732,13 +631,13 @@ h4{
 	z-index:999;
 }
 
-#user_message_bt {
+.user_message_bt {
 	width: 100px;
 	height: 20px;
 	background: #FFA00A;
 	cursor: pointer;
 	border-radius: 15px;
-	display: block;
+	display: inline-block;
 	margin-top: 10px;
 	font-size: 13px;
 	line-height: 20px;
@@ -1034,9 +933,9 @@ h4{
 }
 
 .user_space_message {
-	width: 700px;
-	height: 600px;
-	margin-left: 40px;
+	width: 100%;
+	height:auto;
+	padding: 40px;
 }
 
 .row_message_area {
@@ -1057,22 +956,26 @@ h4{
 	display: block;
 	float: left;
 	width: 15%;
-	height: 30px;
+	height: auto;
 	font-size: 14px;
 	color: #333333;
 	margin-right: 5%;
 	text-align: right;
+	word-break: break-all;
+	text-overflow: ellipsis;
 }
 
 .row_message_area strong {
 	display: block;
 	float: left;
 	width: 70%;
-	height: 30px;
+	height: auto;
 	font-size: 14px;
 	color: #6C6351;
 	margin-right: 10px;
 	text-align: left;
+	word-break: break-all;
+	text-overflow: ellipsis;
 }
 .small_speak_info {
 	width: 250px;
@@ -1183,4 +1086,132 @@ h4{
 	color: #DCDCDC;
 	border-radius: 8px;
 	cursor: pointer;
+}
+@media (min-width:1100px){
+	.content{
+		width:1100px; 
+	}
+}
+@media (max-width:920px){
+	.home_content_display_wrap{
+		padding:0;
+	}
+	.home_content_display{
+		width:100%;
+		padding:0;
+	}
+	.home_list_display{
+		width:100%;
+		position: static;
+		padding:0;
+		
+	}
+	.logList_right{
+		max-width:100%;
+	}
+	.music{
+		height:0!important;
+		width:0!important;
+		overflow: hidden!important;
+	}
+	.seach-user{
+		width:100%;
+		background:#48525E;
+	}
+}
+@media (max-width:760px){
+	#diray_list_ul {
+		float: right;
+		list-style: none;
+		width: 100%;
+		background: #FCFCFC;
+		line-height: 45px;
+		margin:0px;
+	}
+	#diray_list_ul li{
+		width: 100%;
+		border-bottom:1px solid #EEEEEE;
+	}
+	.mypage_img{
+		display: none;
+	}
+	.user_page_photo{
+		position: static;
+		width:100%;
+		height:auto;
+	}
+	.user_page_photo img {
+		width:80px;
+		height:80px;
+	}
+	#modify_user_photo{
+		top:-94px;
+		left:3px;
+		width:80px;
+		height:25px;
+	}
+	.home_user_message,.home_user_message_right,.home_user_message_left{
+		clear:both;
+		width:100%;
+		padding:0;
+		margin:0;
+		float: inherit;
+		float: none;
+	}
+	.home_user_message_right a{
+		display: inline-block;
+	}
+	.home_user_message{
+		padding:7px 15px 25px;
+	}
+	.head-nav{
+		width:100%;
+		height:49px;
+		background:url("/myHome/images/space/nav1.png") 0 6px no-repeat;
+		padding-top:49px;
+	}
+	.head-nav:hover ul{
+		height:auto;
+	}
+	.head-nav:ACTIVE ul{
+		height:auto;
+	}
+	.Home_page_nav ul{
+		width:100%;
+		height:0;
+		-webkit-transition:height 0.3s ease-out;
+		-moz-transition:height 0.3s ease-out;
+		-o-transition:height 0.3s ease-out;
+		-ms-transition:height 0.3s ease-out;
+		transition:height 0.3s ease-out;
+		overflow: hidden;
+	}
+	.Home_page_nav ul li{
+		float: none;
+		width:100%;
+	}
+	.seach-user{
+		position: fixed;
+		bottom:0;
+		overflow: hidden;
+	}
+}
+
+@media (max-width:360px){
+	.user_message{
+		width:26%;
+		height:100%;
+		background:#48525E;
+	}
+	.user_message strong{
+		width:50%;
+		text-align: left;
+	}
+	.home_user_message a{
+		display: inline-block;
+	}
+	.user_space_message{
+		padding:8px;
+	}
+	
 }

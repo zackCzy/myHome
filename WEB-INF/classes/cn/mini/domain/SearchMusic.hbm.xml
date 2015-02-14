@@ -4,6 +4,7 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="cn.mini.domain">
 	<class name="SearchMusic" table="new_music_copy" >
+		<cache usage="read-write" region="SearchMusic"/>
 		<id name="id" >
 			<generator class="native" />
 		</id>	

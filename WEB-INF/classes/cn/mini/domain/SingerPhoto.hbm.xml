@@ -5,6 +5,7 @@
 <hibernate-mapping package="cn.mini.domain">
 
 	<class name="SingerPhoto"  table="singer_photo" >
+		<cache usage="read-write" region="SingerPhoto"/>
 		<id name="id" >
 			<generator class="native" />
 		</id>	

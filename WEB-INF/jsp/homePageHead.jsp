@@ -30,7 +30,6 @@
 		<input type="hidden" value='<s:property value="#authority"/>' id="authority">
 		<input type="hidden" value='<s:property value="#type"/>' id="type">
 		<div id="returnHead"></div>
-		<!-- <div class="hint"></div>  -->
 		<div class="content">
 			<div class="Home_page_nav">
 				<div class="head-nav">
@@ -40,7 +39,7 @@
 							<li style="<s:property value="#type==2? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path%>/user/space/<s:property value="#user.name"/>/">动态</a></li>
 							<li style="<s:property value="#type==1? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path%>/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
 							<li style="<s:property value="#type==4? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path%>/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
-							<li>关系</li>
+							<li><a>关系</a></li>
 							<li><a href="<%=path%>/user/user_SysMessage">消息</a></li>
 						</s:if>
 						<s:else>
@@ -72,9 +71,7 @@
 			</div>
 			
 			<div class="mypage_img">
-				 
 					<img width=100% height=300px; alt="bg" src="<%=path%>/image/1.jpg">
-				
 			</div>
 			<div class="my_Info_display">
 				<div class="user_page_photo">	
@@ -88,15 +85,24 @@
 					</ul>
 				</div>
 				<div class="home_user_message" >
+					<div class="home_user_message_left">
+						<span class="user-info"><s:property value="#user.userBaseDatum.name"/></span>
+						<span style="font: 13px/30px 'Microsoft Yahei';color: #808080;">
+								<s:property value="#user.userBaseDatum.info" default="--"/>
+						</span>
+						<span style="font: 13px/30px 'Microsoft Yahei';color: #6C6351;">
+							<s:property value="#user.userBaseDatum.addr.equals('请选择,请选择') ?未知: #user.userBaseDatum.addr"/>
+						</span>	
+					</div>	
 					<s:if test="#authority==1">
-						<div class="home_user_message_right" style="width:30%">
-							<a  href="/myHome/user/user_datum" id="user_message_bt"  target="_blank">编辑个人资料</a>
-							<a  id="user_message_bt">查看今日</a>
+						<div class="home_user_message_right" >
+							<a  href="/myHome/user/user_datum" class="user_message_bt"  target="_blank">编辑个人资料</a>
+							<a  class="user_message_bt">查看今日</a>
 						</div>
 					</s:if>
 					<s:else>
-						<a  id="user_message_bt" target="_blank" onclick="addFollow(this)" rel="<s:property value="#user.id"/>">添加好友关注</a>
-						<a  id="user_message_bt" rel="<s:property value="#user.id"/>" onclick="removeFollow(this)">加入黑名单</a>
+						<a class="user_message_bt" target="_blank" onclick="addFollow(this)" rel="<s:property value="#user.id"/>">添加好友关注</a>
+						<a class="user_message_bt" rel="<s:property value="#user.id"/>" onclick="removeFollow(this)">加入黑名单</a>
 						<script type="text/javascript">
 							function addFollow(event){
 								$.ajax({
@@ -134,15 +140,6 @@
 							}
 						</script>
 					</s:else>
-					<div class="home_user_message_left">
-						<span class="user-info"><s:property value="#user.userBaseDatum.name"/></span>
-						<span style="font: 13px/30px 'Microsoft Yahei';color: #808080;">
-								<s:property value="#user.userBaseDatum.info" default="--"/>
-						</span>
-						<span style="font: 13px/30px 'Microsoft Yahei';color: #6C6351;">
-							<s:property value="#user.userBaseDatum.addr.equals('请选择,请选择') ?未知: #user.userBaseDatum.addr"/>
-						</span>	
-					</div>	
 				</div>
 			</div>		
 <%-- 判断是否设置自动播放歌曲 --%>

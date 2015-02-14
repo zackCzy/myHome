@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags"  prefix="s"%>
 <div class="home_content_display_wrap" style="background: #F1F1F1;">
-	<div class="home_content_display" style="background: #F1F1F1;border:0 none;">
-		<div class="user_space_message">
+	<div class="home_content_display user_space_message" style="background: #F1F1F1;border:0 none;">
 			<div style="width:100%;height:10px;"></div>
 			<div class="space_title">
 				<strong style="color:#423009;font-size:22px;display: block;line-height:30px;text-align: left;text-indent: 40px;">空间主人信息</strong>
@@ -58,5 +57,4 @@
 				<Strong><s:property value="#userBaseDatum.info" default="(^-^) 用户很懒，什么都没留下！"/></Strong>
 			</div>
 		</div>
-	</div>
 </div>

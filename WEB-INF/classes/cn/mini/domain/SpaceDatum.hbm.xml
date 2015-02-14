@@ -5,6 +5,7 @@
 <hibernate-mapping package="cn.mini.domain">
 
 	<class name="SpaceDatum" table="space_datum" >
+		 <cache usage="read-write" region="SpaceDatum"/>
 		<id name="id" >
 			<generator class="native" />
 		</id>	

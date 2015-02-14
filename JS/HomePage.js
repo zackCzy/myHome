@@ -69,21 +69,27 @@ $(function() {
 		}
 	});
 	$(window).scroll(function() {
+		var clientWidth = document.documentElement.scrollTop == 0 ? document.body.clientWidth : document.documentElement.clientWidth;
 		var clientHeight = document.documentElement.scrollTop == 0 ? document.body.clientHeight : document.documentElement.clientHeight;
 		var scrollTop = document.documentElement.scrollTop == 0 ? document.body.scrollTop : document.documentElement.scrollTop;
 		var scrollHeight = document.documentElement.scrollTop == 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
-		if(scrollTop+home_list_displayHeight-300>$(".home_content_display_wrap").height()){
-			
-		}else if( scrollTop>523){
-			$(".home_list_display").css({
-				top:scrollTop-400
-			});
-		}else{
-			$(".home_list_display").css({
-				position:"absolute",
-				top:"25px"
-			});
-		}
+//		if(scrollTop+home_list_displayHeight-300>$(".home_content_display_wrap").height()){
+//			
+//		}else if( scrollTop>523){
+//			var $list=$(".home_list_display");
+//			$list.css({
+//				position:"fixed",
+//				top:"50px",
+//				right:clientWidth>=1100 ?(clientWidth-1100)/2 :0,
+//				width:
+//			});
+//		}else{
+//			$(".home_list_display").css({
+//				position:"absolute",
+//				top:"25px",
+//				right:0
+//			});
+//		}
 		$return=$("#returnHead");
 		if (scrollTop > clientHeight * 1.3) {
 			if($return.attr("alt")!="false"){
@@ -99,7 +105,6 @@ $(function() {
 			}
 		}
 		if (clientHeight + scrollTop + 50 >= scrollHeight) {
-
 			if (!window.scrollflag) {
 				$(".point_load_status").show(200);
 				window.scrollflag = true;
