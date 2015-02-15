@@ -33,6 +33,7 @@
 		<div class="content">
 			<div class="Home_page_nav">
 				<div class="head-nav">
+					<span class="nav-box"></span>
 					<ul>
 						<li><a href="<%=path%>" >首页</a> </li>
 						<s:if test="#authority==1">
@@ -49,9 +50,9 @@
 						</s:else>
 					</ul>
 				</div>
-				<div style="float: right;height:50px;vertical-align: middle;" class="seach-user">
+				<div  class="seach-user">
 					<div class="search_user_i">
-						<input  maxlength="40" autocomplete="off" node-type="searchInput" type="text" style="margin:0;width:139px;height:15px;float: left;">
+						<input  maxlength="40" autocomplete="off" node-type="searchInput" type="text">
 						<span></span>
 					</div>
 					<div class="user_message">

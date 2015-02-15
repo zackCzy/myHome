@@ -67,11 +67,10 @@
 						</div>
 					</s:if>
 				</div>
-				<div class="load_user_contenr">
-					<div class="point_load_status" >
-						<span >正在努力加载</span>	
-					</div>
+				<div class="point_load_status" >
+					<span>稍等片刻，小V正在飞奔为您获取信息</span>	
 				</div>
+				<div style="width:100%;height:30px;"></div>
 			</div>		
 		</div>
 		<script type="text/javascript" src="<%=path %>/JS/HomePage.js"></script>
