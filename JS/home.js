@@ -3,6 +3,7 @@
  */
 
 $(function(){
+	stopScroll();
 	window.count=1;
 	var clientHeight =  parseInt($("#viki_scroll").css("height"));
 	var scrollHeight = document.documentElement.scrollHeight|| document.body.scrollHeight ;

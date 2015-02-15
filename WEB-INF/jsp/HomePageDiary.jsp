@@ -2,42 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@include file="homePageHead.jsp" %>
 			<div class="home_content_display_wrap">
-				<div class="home_list_display">
-					<s:if test="#authority==1">
-						<ul class="diray_list_ul" id="diray_list_ul">
-							<li style="border-right: 7px solid #10D65B"><s:a action="function_cteateDiary" target="_blank">写日记</s:a></li>
-							<li style="border-right: 7px solid #FE2C45"><s:a action="user_draft" target="_blank">草稿箱</s:a></li>
-							<li style="border-right: 7px solid #087BBC"><s:a action="user_recycled" target="_blank">回收站</s:a></li>
-							<li style="border-right: 7px solid #23C3FF"><s:a action="user_datum" target="_blank">设置</s:a></li>
-						</ul>	
-					</s:if>
-					<s:else>
-						<div class="logList_right">
-							<h5>最新发布</h5>
-							<ul>
-								<s:iterator value="#newhostLogs" var="newLog" >					
-									<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
-								</s:iterator>
-							</ul>
-						</div>
-						<div class="logList_right">
-							<h5>热门博文</h5>
-							<ul>
-								<s:iterator value="#hostLogs" var="newLog" >					
-									<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
-								</s:iterator>
-							</ul>
-						</div>
-						<div class="logList_right">
-							<h5>评论最多</h5>
-							<ul>
-								<s:iterator value="#conhostLogs" var="newLog" >					
-									<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
-								</s:iterator>
-							</ul>
-						</div>
-					</s:else>
-				</div>
 				<div class="home_content_display">
 					<s:iterator value="#dynamic" var="newLog" >
 					<div class="con_user_box">
@@ -83,6 +47,42 @@
 							</s:else>
 						</div>
 					</s:if>
+				</div>
+				<div class="home_list_display">
+					<s:if test="#authority==1">
+						<ul class="diray_list_ul" id="diray_list_ul">
+							<li style="border-right: 7px solid #10D65B"><s:a action="function_cteateDiary" target="_blank">写日记</s:a></li>
+							<li style="border-right: 7px solid #FE2C45"><s:a action="user_draft" target="_blank">草稿箱</s:a></li>
+							<li style="border-right: 7px solid #087BBC"><s:a action="user_recycled" target="_blank">回收站</s:a></li>
+							<li style="border-right: 7px solid #23C3FF"><s:a action="user_datum" target="_blank">设置</s:a></li>
+						</ul>	
+					</s:if>
+					<s:else>
+						<div class="logList_right">
+							<h5>最新发布</h5>
+							<ul>
+								<s:iterator value="#newhostLogs" var="newLog" >					
+									<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
+								</s:iterator>
+							</ul>
+						</div>
+						<div class="logList_right">
+							<h5>热门博文</h5>
+							<ul>
+								<s:iterator value="#hostLogs" var="newLog" >					
+									<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
+								</s:iterator>
+							</ul>
+						</div>
+						<div class="logList_right">
+							<h5>评论最多</h5>
+							<ul>
+								<s:iterator value="#conhostLogs" var="newLog" >					
+									<li><a target="_blank" title="<s:property value="logName"/>" href="<%=path %>/user/function_r_readDiary?logId=<s:property value="id"/>"><s:property value="logName"/></a></li>
+								</s:iterator>
+							</ul>
+						</div>
+					</s:else>
 				</div>
 				<div class="point_load_status" >
 					<span>稍等片刻，小V正在飞奔为您获取信息</span>	

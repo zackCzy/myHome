@@ -208,17 +208,41 @@ var toUN = {
 	};
 // #unicode转换
 var toHTML = {
-on: function(str) {
-    var a = [],
-    i = 0;
-    for (; i < str.length;) a[i] = str.charCodeAt(i++);
-    return "&#" + a.join(";&#") + ";";
-},
-un: function(str) {
-    return str.replace(/&#(x)?([^&]{1,5});?/g,
-    function(a, b, c) {
-        return String.fromCharCode(parseInt(c, b ? 16 : 10));
-    });
+	on: function(str) {
+	    var a = [],
+	    i = 0;
+	    for (; i < str.length;) a[i] = str.charCodeAt(i++);
+	    return "&#" + a.join(";&#") + ";";
+	},
+	un: function(str) {
+	    return str.replace(/&#(x)?([^&]{1,5});?/g,
+	    function(a, b, c) {
+	        return String.fromCharCode(parseInt(c, b ? 16 : 10));
+	    });
+	}
+};
+function stopScroll(){
+	try {
+		var _doc=document.documentElement||document.body;
+		_doc.oflow=document.documentElement.style.overflow;
+		_doc.style.overflow = 'hidden';
+		//禁止滚动
+		_doc.addEventListener('touchmove', move);
+	} catch (e) {}
+	
 }
+function openScroll(){
+	try {
+		var _doc=document.documentElement||document.body;
+		_doc.style.overflow = _doc.oflow;
+		_doc.removeEventListener('touchmove', move);
+	} catch (e) {}
+}
+function move(event) {
+	var e=getEvent(event);
+	e.preventDefault && e.preventDefault();
+	e.returnValue = false;
+	e.stopPropagation && e.stopPropagation();
+	return false;
 };
 

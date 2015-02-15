@@ -69,9 +69,8 @@
 			if(_time==null)_time=300;
 			$(this).each(function(){
 				$this=$(this);
-				this.overflow=_doc.documentElement.style.overflow||_doc.body.style.overflow;
 				this.lockTime=time;
-				_doc.documentElement.scrollTop ? _doc.documentElement.style.overflow="hidden" : _doc.body.style.overflow="hidden"; 
+				stopScroll();
 				$this.setFullScreen().css({
 					"display":"block",
 					"position":"fixed",
@@ -97,7 +96,7 @@
 			$(this).each(function(){
 				_this=this;
 				$this=$(this);				
-				_doc.documentElement.scrollTop ? _doc.documentElement.style.overflow=_this.overflow : _doc.body.style.overflow=_this.overflow; 
+				openScroll();
 				$this.stop(true).animate({
 					opacity:0
 				},_that.lockTime,function(){

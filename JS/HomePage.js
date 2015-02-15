@@ -527,10 +527,6 @@ function sendClick() {
 	});
 }
 
-function stopScroll(event) {
-	stopEvent(event);
-}
-
 function removeLog() {
 	var that = this;
 	var obj = {
