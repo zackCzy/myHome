@@ -52,7 +52,7 @@
 				</div>
 				<div  class="seach-user">
 					<div class="search_user_i">
-						<input  maxlength="40" autocomplete="off" node-type="searchInput" type="text">
+						<input  maxlength="40" autocomplete="off" node-type="searchInput" type="text" placeholder="请输入查询内容">
 						<span></span>
 					</div>
 					<div class="user_message">
@@ -96,10 +96,8 @@
 						</span>	
 					</div>	
 					<s:if test="#authority==1">
-						<div class="home_user_message_right" >
 							<a  href="/myHome/user/user_datum" class="user_message_bt"  target="_blank">编辑个人资料</a>
 							<a  class="user_message_bt">查看今日</a>
-						</div>
 					</s:if>
 					<s:else>
 						<a class="user_message_bt" target="_blank" onclick="addFollow(this)" rel="<s:property value="#user.id"/>">添加好友关注</a>

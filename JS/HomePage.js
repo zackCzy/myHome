@@ -53,6 +53,20 @@ $(function() {
 	try {
 		$(".sendComment").on("click", sendClick);
 	} catch (e) {}
+	try {
+		$(".nav-box").get(0).addEventListener("touchstart",function(){
+			if(this.count==undefined){
+				this.count=0;
+			}
+			var $nav=$(".head-nav ul");
+			if(this.count++%2==0)
+				$nav.slideDown(300);
+			else
+				$nav.slideUp(300);
+		});
+	} catch (e) {
+		// TODO: handle exception
+	}
 	var home_list_displayHeight=$(".home_list_display").height();
 	var clientWidth = document.documentElement.scrollTop == 0 ? document.body.clientWidth : document.documentElement.clientWidth;
 	if(clientWidth>=1200){

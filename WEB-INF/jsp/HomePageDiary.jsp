@@ -87,7 +87,7 @@
 				<div class="point_load_status" >
 					<span>稍等片刻，小V正在飞奔为您获取信息</span>	
 				</div>
-				<div style="width:100%;height:30px;"></div>
+				<div style="width:100%;height:30px;clear: both;"></div>
 			</div>
 		</div>
 		<script type="text/javascript" src="<%=path %>/JS/HomePage.js"></script>
