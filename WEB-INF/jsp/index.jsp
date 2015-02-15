@@ -7,11 +7,7 @@
 <html>
 	<head>
 		<title>Viki Home</title>
-		<meta http-equiv="pragma" content="no-cache">
-		<meta http-equiv="cache-control" content="no-cache">
-		<meta http-equiv="expires" content="0">
-		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-		<meta http-equiv="description" content="new,新闻,music,音乐,translator,翻译">
+		<%@include file="../meta/indexMeta.jsp"%>
 		<link rel="stylesheet" type="text/css" href="CSS/public/main.css" />
 		<link rel="stylesheet" type="text/css" href="CSS/home.css" />
 		<script type="text/javascript" src="JS/tool/span.js"></script>
