@@ -151,9 +151,16 @@
 window.day=0;
 function chooseOne(chk,day){
 	var obj = document.getElementsByName("autoLogo");
+	if(chk.checked){
+		chk.checked= false;
+		window.day=0;
+		return false;
+	}
 	for (i=0; i<obj.length; i++){
-		if (obj[i]!=chk) obj[i].checked = false;
-		else obj[i].checked = true;
+		if (obj[i]!=chk) 
+			obj[i].checked = false;
+		else 
+			obj[i].checked = true;
 	}
 	window.day=day;
 }
