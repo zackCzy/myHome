@@ -108,19 +108,7 @@ h4{
 	height:25px;
 }
 
-.pro-user-checkbox input {
-	float: left;
-	margin: 1px 3px 0 0;
-}
 
-
-.pro-user-checkbox {
-	clear: both;
-	color: #ECECEC;
-	display: block;
-	font: 12px/1.2em SimSun;
-	margin-left: 35px;
-}
 
 .search_user_i span {
 	background: url('/myHome/images/space/bg_line.png');
@@ -1181,9 +1169,6 @@ h4{
 	.head-nav .nav-box:hover ~ul{
 		height:auto;
 	}
-	.head-nav .nav-box:ACTIVE ~ul{
-		height:auto;
-	}
 	.Home_page_nav ul:hover{
 		height:auto;
 	}
@@ -1214,6 +1199,13 @@ h4{
 	}
 	.user_space_message{
 		padding:8px;
+	}
+	#login_view{
+		width:100%!important;
+		height:100%!important;
+		left:0!important;
+		top:0!important;
+		border-radius:0!important;
 	}
 	
 }

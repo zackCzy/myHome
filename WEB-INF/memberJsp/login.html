@@ -48,9 +48,9 @@
 	width:90%;margin:10px auto;color:#FFFFFF;
 }
 #login_view span#login_button_global {
-	width: 200px;
+	width: 72%;
 	height: 35px;
-	margin: 25px 55px;
+	margin: 25px 0 0 28%;
 	display:block;
 	background: none repeat scroll 0 0 #A9C50B;
 	cursor: pointer;
@@ -76,6 +76,7 @@
 	display: inline-block;
 	height:36px;
 	line-height:36px;
+	text-align: center;
 }
 #miniMusic_userName,#miniMusic_password {
 	width: 70%;
@@ -102,6 +103,22 @@
 	width:12px;
 	height:12px;
 	border:1px solid #ccc;
+	vertical-align: middle;
+}
+.pro-user-checkbox input {
+	margin: 1px 3px 0 0;
+	
+}
+
+
+.pro-user-checkbox {
+	clear: both;
+	color: #ECECEC;
+	display: block;
+	font: 12px/1.2em SimSun;
+	width:100%;
+	padding-left:28%;
+	line-height:28px;
 }
 </style>
 <div id="lock"></div>
@@ -109,7 +126,7 @@
 	<span id="close_login">○</span>
 	<div id="login_move">Mini登录</div>
 	<hr style="width:90%;margin:10px auto 10px;"/>
-	<div style="width:275px;height:250px;margin-left:5%">
+	<div style="width:100%;height:250px;padding:0 5%">
 		<div class="login-item">
 			<span >用户名</span>
 			<input type="text" id="miniMusic_userName">
@@ -118,13 +135,28 @@
 			<span>密码:</span>
 			<input type="password" id="miniMusic_password">
 		</div>
-		<label class="pro-user-checkbox">
-			<input class="J-user-isauto" type="checkbox" id="is_auto">7天内自动登录
-		</label>
+		<div class="pro-user-checkbox">
+			<label >
+				<input class="J-user-isauto" type="checkbox" name="autoLogo"  onClick="chooseOne(this,7)">7天内自动登录
+			</label>
+			<label >
+				<input class="J-user-isauto" type="checkbox" name="autoLogo"  onClick="chooseOne(this,30)">30天内自动登录
+			</label>
+		</div>
+		
 		<span  id="login_button_global" >登录</span>
 	</div>	
 </div> 
 <script type="text/javascript">
+window.day=0;
+function chooseOne(chk,day){
+	var obj = document.getElementsByName("autoLogo");
+	for (i=0; i<obj.length; i++){
+		if (obj[i]!=chk) obj[i].checked = false;
+		else obj[i].checked = true;
+	}
+	window.day=day;
+}
 function login(){
 	$('#miniMusic_userName').val("");
 	$('#miniMusic_password').val("");
@@ -149,7 +181,7 @@ $(function(){
 			data:{
 				"user.name": $("#miniMusic_userName").val(),
 				"user.password" : $("#miniMusic_password").val(),
-				"expiry":(document.getElementById("is_auto").checked ? 7:0)
+				"expiry":window.day
 			},
 			error:function(){
 				_$this.text("登录失败");
