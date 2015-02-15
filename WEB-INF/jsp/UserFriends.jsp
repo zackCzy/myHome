@@ -17,9 +17,9 @@
 	<body>
 		<div class="Home_page_nav" style="margin:30px auto 0;">
 				<ul>
-					<li><a href="<%=path%>" >首页</a> </li>
-					<li ><a href="<%=path%>/user/space/<s:property value="#user.name"/>/">动态</a></li>
-					<li><a href="<%=path%>/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
+					<li><a href="<%=path%>" title="V说" alt="Viki" rel="Viki">首页</a> </li>
+					<li ><a href="<%=path%>/user/space/<s:property value="#user.name"/>/" alt="最新动态" rel="最新动态">动态</a></li>
+					<li><a href="<%=path%>/user/space/<s:property value="#user.name"/>/diary" alt="日记" rel="日记">日记</a></li>
 					<li><a href="<%=path%>/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
 					<li>关系</li>
 					<li style="border-bottom: 4px solid #DC3C00;"><a href="<%=path%>/user/user_myFlans">消息</a></li>
