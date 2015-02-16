@@ -60,9 +60,9 @@ $(function() {
 			}
 			var $nav=$(".head-nav ul");
 			if(this.count++%2==0)
-				$nav.slideDown(300);
+				$nav.css("height","auto");
 			else
-				$nav.slideUp(300);
+				$nav.css("height","0");
 		});
 	} catch (e) {
 		// TODO: handle exception
