@@ -28,9 +28,10 @@
 	line-height: 0;
 	display: block;
 	text-align: center;
-	line-height: 26px;
+	line-height: 16px;
 	cursor: pointer;
 	font-weight: 700;
+	font-size:30px;
 }
 #login_view #close_login:hover {
 	color: #FF0000;
@@ -48,9 +49,10 @@
 	width:90%;margin:10px auto;color:#FFFFFF;
 }
 #login_view span#login_button_global {
-	width: 72%;
+	width: 100%;
 	height: 35px;
-	margin: 25px 0 0 28%;
+	margin: 25px 0 0 0;
+	padding:0 5%;
 	display:block;
 	background: none repeat scroll 0 0 #A9C50B;
 	cursor: pointer;
@@ -123,7 +125,7 @@
 </style>
 <div id="lock"></div>
 <div id="login_view" >
-	<span id="close_login">○</span>
+	<span id="close_login">&times;</span>
 	<div id="login_move">Mini登录</div>
 	<hr style="width:90%;margin:10px auto 10px;"/>
 	<div style="width:100%;height:250px;padding:0 5%">
@@ -151,16 +153,19 @@
 window.day=0;
 function chooseOne(chk,day){
 	var obj = document.getElementsByName("autoLogo");
-	if(chk.checked){
-		chk.checked= false;
-		window.day=0;
+	if(chk.flag){
+		chk.checked = false;
+		chk.flag=false;
 		return false;
 	}
 	for (i=0; i<obj.length; i++){
-		if (obj[i]!=chk) 
+		if (obj[i]!=chk) {
 			obj[i].checked = false;
-		else 
+			obj[i].flag=false;
+		}else {
 			obj[i].checked = true;
+			obj[i].flag=true;
+		}
 	}
 	window.day=day;
 }

@@ -1,4 +1,14 @@
 @CHARSET "UTF-8";
+html,body{height:100%; }html{font-size:14px; color:#868686; }html,body,div,form,p,img,ul,ol,li,h1,h2,h3,h4,figure , button,ul,li,dl,dt,dd,a,span,input,textarea,header,section{margin:0;padding:0;-webkit-margin-before:0;-webkit-margin-after:0; list-style: none ; font-weight: normal; -webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;}body{font:1.1rem;font-family: "微软雅黑", Arial, Verdana, serif !important; background:#fff;-webkit-text-size-adjust:none;-webkit-user-select:none;-webkit-touch-callout:none;}
+a:hover , a:link , a:visited ,input, button{
+	text-decoration: none;
+	color: #000;
+	cursor: pointer;
+}
+input[type=text],input[type=password] , textarea , button , input{font-size: 100%; -webkit-appearance: none; border:none;
+}
 
 body,img {
 	margin: 0;
@@ -18,38 +28,6 @@ body {
 	min-height: 300px;
 }
 
-.pro-user-checkbox input {
-	float: left;
-	margin: 1px 3px 0 0;
-}
-
-.pro-user-checkbox {
-	clear: both;
-	color: #ECECEC;
-	display: block;
-	font: 12px/1.2em SimSun;
-	margin-left: 35px;
-}
-
-#miniMusic_userName,#miniMusic_password {
-	width: 150px;
-	height: 20px;
-	padding: 8px 15px;
-	font-size: 14px;
-	float: left;
-	line-height: 20px;
-	margin-bottom: 25px;
-	border: 1px solid #A9C50B;
-	border-radius: 15px;
-	background: none repeat scroll 0 0 rgba(145, 105, 105, 0.86);
-	*background:#916969;
-	background:#916969\0;
-	*opacity:0.86;
-	opacity:0.86\0;
-	*filter:alpha(opacity=86);
-	filter:alpha(opacity=86)\0;
-	color: #FCFCFC;
-}
 
 .mini_music_bg {
 	width: 100%;
@@ -91,7 +69,7 @@ body {
 
 .minimusic_search {
 	float: left;
-	width: 150px;
+	width: 170px;
 	height: 25px;
 	border-radius: 15px;
 	border: 1px solid #50828A;
@@ -103,7 +81,7 @@ body {
 #searchText {
 	clear:both;
 	float: left;
-	line-height:25px;
+	line-height:23px;
 }
 
 *:focus {
@@ -147,7 +125,7 @@ body {
 }
 
 .minimusic_search input {
-	height: 25px;
+	height: 23px;
 	background: #F0F0F0;
 	width: 121px;
 }
@@ -259,7 +237,7 @@ body {
 
 .mini_music_content_right {
 	float: right;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 .mini_music_content_right h2 {
@@ -1072,4 +1050,14 @@ body {
 	text-overflow: ellipsis;
 	word-space: nowrap;
 	overflow: hidden;
+}
+#zack_texi_plug > span{
+	width:350px!important;
+	height:34px!important;
+}
+#zack_texi_plug > div{
+	width:350px!important;
+	height:74px!important;
+	background: #4A6A79!important;
+	color:#FFFFF8;
 }

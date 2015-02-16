@@ -14,15 +14,13 @@ function Texi(title,body,time,id,bt){
 }
 Texi.prototype={
 		TITLE_CSS:{
-				padding:"7px",
+				padding:"7px 10px",
 				"line-height":"35px",
 				width:"330px",
 				height:"20px",
 				background:"#E77166",
 				display:"block",
 				"text-align":"center",
-				"padding-left":"10px",
-				"padding-right":"10px",
 				"border-bottom":"2px solid #8EBD21",
 				"cursor":"move"
 		},
@@ -87,7 +85,7 @@ Texi.prototype={
 					$(title).css(_that.TITLE_CSS).append(
 						$(title_b).css(_that.TLTLS_B_CSS).html(_that.title)
 					).append(
-						$(title_close).css(_that.CLOSE_CSS).html("X").on("click",function(){
+						$(title_close).css(_that.CLOSE_CSS).html("&times;").on("click",function(){
 							$("#"+_that.id).hide(200);
 						})
 					)	

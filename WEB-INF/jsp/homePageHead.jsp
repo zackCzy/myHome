@@ -75,8 +75,10 @@
 					<img width=100% height=300px; alt="bg" src="<%=path%>/image/1.jpg">
 			</div>
 			<div class="my_Info_display">
-				<div class="user_page_photo">	
-					<s:a action="user_userPhoto" id="modify_user_photo" target="_blank">修改头像</s:a>			
+				<div class="user_page_photo">
+					<s:if test="#authority==1">	
+						<s:a action="user_userPhoto" id="modify_user_photo" target="_blank">修改头像</s:a>
+					</s:if>			
 					<img alt="用户头像" src="<%=path%>/load/download_getBigPhoto?id=<s:property value="#user.id"/>"/>			
 					<ul>		
 						<li><a href="<s:url action="user_myFollwer" />"><strong><s:property value="#user.followUsers.size()"/></strong>关注</a></li>
@@ -141,9 +143,9 @@
 					</s:else>
 				</div>
 			</div>		
-<%-- 判断是否设置自动播放歌曲 --%>
-<s:if test="#user.spaceDatums.isMusic">
-		<script type="text/javascript">
-				window.isMusic=true;
-		</script>
-</s:if>
+			<%-- 判断是否设置自动播放歌曲 --%>
+			<s:if test="#user.spaceDatums.isMusic">
+				<script type="text/javascript">
+						window.isMusic=true;
+				</script>
+			</s:if>
