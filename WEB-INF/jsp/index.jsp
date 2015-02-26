@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<title>Viki Home</title>
+		<title>Viki|Home</title>
 		<%@include file="../meta/indexMeta.jsp"%>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="CSS/public/main.css" />
@@ -37,25 +37,25 @@
 						<div style="width:1022px;height:300px;margin:0 auto;overflow: hidden;" class="unselect">
 							<ul id="music_display_ul" class="unselect">
 								<li class="unselect">
-									<img src="<%=path %>/images/home/music.png"  width=90% height=80%; id="music_info">
+									<img src="<%=path %>/images/home/music.png"  width=90% height=80%; id="music_info"  alt="Viki|音乐" rel="Viki|音乐">
 									<span>viki music</span>
 								</li>
 								<li class="unselect">
-									<img src="<%=path %>/images/home/music2.png"  width=90% height=80%; id="music_info">
+									<img src="<%=path %>/images/home/music2.png"  width=90% height=80%; id="music_info"  alt="Viki|音乐" rel="Viki|音乐">
 									<span>viki music</span>
 								</li>
-								<li class="unselect"><img src="<%=path %>/images/home/space.png"  width=90% height=80%; id="music_info">
+								<li class="unselect"><img src="<%=path %>/images/home/space.png"  width=90% height=80%; id="music_info" alt="Viki|音乐" rel="Viki|音乐">
 									<span>viki V说</span>
 								</li>
 								<li class="unselect">
-									<img src="<%=path %>/images/home/space1.png"  width=90% height=80%; id="music_info">
+									<img src="<%=path %>/images/home/space1.png"  width=90% height=80%; id="music_info" alt="Viki|空间" rel="Viki|空间">
 									<span>viki V说</span>
 								</li>
 								<li class="unselect">
-									<img src="<%=path %>/images/home/space2.png"  width=90% height=80%; id="music_info">
+									<img src="<%=path %>/images/home/space2.png"  width=90% height=80%; id="music_info" alt="Viki|空间" rel="Viki|空间">
 									<span>viki V说</span>
 								</li>
-								<li class="unselect"><img src="<%=path %>/images/home/space3.png"  width=90% height=80%; id="music_info">
+								<li class="unselect"><img src="<%=path %>/images/home/space3.png"  width=90% height=80%; id="music_info" alt="Viki|空间" rel="Viki|空间">
 									<span>viki V说</span>
 								</li>
 							</ul>
@@ -120,13 +120,13 @@
 
 		<div class="display_info_bg" style="z-index: 5" >
 			<div style="margin:38px 60px;;width:150px; height:45px;float: left;" class="unselect">
-				<img src="<%=path %>/image/vikilogo.png" alt="viki"  class="unselect">
+				<img src="<%=path %>/image/vikilogo.png" alt="viki"  class="unselect" alt="vikiLogo" rel="vikiLogo">
 			</div>				
 			<ul class="viki_index_nav unselect" >
 				<li style="background: #9ED034;color: #E3FFFF" id="info" class="unselect">简介</li>
-				<li id="music" class="unselect"><a href="<%=path %>/music">Music</a></li>
-				<li id="transtror" class="unselect"><a href="<%=path %>/translator">翻译</a></li>
-				<li id="space" class="unselect"><a  href="<%=path %>/user/space/${sgin==null? 'null':sgin}/">V说</a></li>			
+				<li id="music" class="unselect"><a href="<%=path %>/music" alt="Viki|音乐" rel="Viki|翻译">Music</a></li>
+				<li id="transtror" class="unselect"><a href="<%=path %>/translator" alt="Viki|音乐" rel="Viki|翻译">翻译</a></li>
+				<li id="space" class="unselect"><a  href="<%=path %>/user/space/${sgin==null? 'null':sgin}/" alt="Viki|空间" rel="Viki|空间">V说</a></li>			
 			</ul>		
 		</div>
 	

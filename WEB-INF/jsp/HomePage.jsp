@@ -7,7 +7,7 @@
 						<div style="width:100%;height:20px; margin:15px 0;background: url('<%=path %>/image/iconbtn.png') no-repeat;"></div>
 						<div contenteditable="true" id="shuoshuo">&nbsp;&nbsp;</div>
 						<div style="width:100%;height:50px;">
-							<input alt="${token}" type="button" style="border-radius:15px;cursor:pointer;float:right;width:100px; height:30px;background: #5CAAE6" value="发表" onclick="sendSmallSpeak(this)">
+							<input alt="${token}" type="button" class="send-shuoshuo" value="发表" onclick="sendSmallSpeak(this)">
 						</div>	
 					</div>
 					<s:iterator value="#dynamic" var="newLog" >

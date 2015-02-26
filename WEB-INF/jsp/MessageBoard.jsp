@@ -25,7 +25,7 @@
 	
 		<%@ include file="/WEB-INF/jsp/head.jsp"%>
 		<form action="#" name="createText" >
-			<input type="hidden" value="${token}" id="token" title="${logid}">
+			<input type="hidden" value="${logToken}" id="token" title="${logid}">
 			<div class="messagePanel">
 				<div class="wordTool clearFix" >
 					<div id="fontname" class="select">

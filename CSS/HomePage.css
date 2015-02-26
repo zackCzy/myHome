@@ -288,6 +288,14 @@ h4{
 .user_page_photo li a:hover {
 	color: #6C6351;
 }
+.send-shuoshuo{
+	border-radius:15px;cursor:pointer;float:right;width:100px; height:30px;background: #5CAAE6;
+	color: #e4e4e4;
+	line-height:23px;
+	font-size:13px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px
+		rgba(102, 175, 233, 0.6);
+}
 .home_content_display_wrap{
 	box-sizing:border-box;
 	border-top: 4px solid #5094DB;
@@ -333,7 +341,7 @@ h4{
 	border:0;
 	padding:0;
 	height:40px;
-	line-height:50px;
+	line-height:40px;
 	font-size:16px;
 	margin:0;
 	color:#48525E;
@@ -488,7 +496,7 @@ h4{
 	
 }
 
-.content_user_li div {
+.content_user_li > div {
 	margin: 10px 0 0;
 	text-indent: 0;
 	padding: 10px 15px;
@@ -743,10 +751,12 @@ h4{
 	display: block;
 	background: #FFFFFF;
 	overflow: hidden;
-	padding: 20px 20px;
-	line-height: 5px;
+	padding: 15px 15px;
+	line-height: 15px;
+	font-size:13px;
 	height: auto;
 	position: relative;
+	min-height:45px;
 }
 
 .sendComment {
@@ -1217,5 +1227,6 @@ h4{
 	}
 	#miniMusic_userName, #miniMusic_password{
 		background: #f7f7f7!important;
+		color:#787878!important;
 	}
 }
