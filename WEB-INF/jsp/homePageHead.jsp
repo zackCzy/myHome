@@ -81,9 +81,9 @@
 					</s:if>			
 					<img alt="用户头像" src="<%=path%>/load/download_getBigPhoto?id=<s:property value="#user.id"/>"/>			
 					<ul>		
-						<li><a href="<s:url action="user_myFollwer" />"><strong><s:property value="#user.followUsers.size()"/></strong>关注</a></li>
-						<li><a href="<s:url action="user_myFlans" />"><strong><s:property value="#user.fansUsers.size()"/></strong>粉丝</a></li>
-						<li><a href="<%=path%>/user/space/<s:property value="#user.name"/>/diary">
+						<li><a title="您有<s:property value="#user.followUsers.size()"/>个粉丝"  href="<s:url action="user_myFollwer"/>"><strong><s:property value="#user.followUsers.size()"/></strong>关注</a></li>
+						<li><a title="你关注了<s:property value="#user.followUsers.size()"/>人"  href="<s:url action="user_myFlans" />"><strong><s:property value="#user.fansUsers.size()"/></strong>粉丝</a></li>
+						<li><a title="你有<s:property value="#user.followUsers.size()"/>篇日记"  href="<%=path%>/user/space/<s:property value="#user.name"/>/diary">
 						<strong><s:property value="#logcount"/></strong>日记</a></li>
 					</ul>
 				</div>
