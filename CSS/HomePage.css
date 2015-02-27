@@ -1160,7 +1160,7 @@ h4{
 		margin:0;
 	}
 	.pageLogo{
-		display: block;
+		display: none;
 	}
 	#diray_list_ul {
 		float: right;
