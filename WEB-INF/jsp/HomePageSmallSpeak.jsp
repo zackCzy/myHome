@@ -19,13 +19,13 @@
 				</s:if>
 				<div class="home_content_display">
 					<s:if test="#authority==1">
-						<div id="addContent" style="float: left;">
-								<div style="width: 640px;height:20px; margin:15px 0 20px 15px;background: url('<%=path %>/image/iconbtn.png') no-repeat;"></div>
-								<div contenteditable="true" id="shuoshuo">&nbsp;&nbsp;</div>
-								<div style="width: 640px;height:50px; margin:0 0 20px 15px;">
-									<input alt="${speakToken}" type="button"  class="send-shuoshuo" value="发表" onclick="sendSmallSpeak(this)">
-								</div>	
-							</div>
+						<div style="float: left;" id="addContent">
+							<div style="width:100%;height:20px; margin:15px 0;background: url('<%=path %>/image/iconbtn.png') no-repeat;"></div>
+							<div contenteditable="true" id="shuoshuo">&nbsp;&nbsp;</div>
+							<div style="width:100%;height:50px;">
+								<input alt="${speakToken}" type="button" class="send-shuoshuo" value="发表" onclick="sendSmallSpeak(this)">
+							</div>	
+						</div>
 					</s:if>
 					<s:iterator value="#dynamic" var="newLog" >
 						<div class="con_user_box">

@@ -1123,6 +1123,12 @@ h4{
 		background:#48525E;
 	}
 }
+#zack_texi_plug {
+	box-sizing:content-box!important;
+}
+#zack_texi_plug *{
+	box-sizing:content-box!important;
+}
 @media (max-width:760px){
 	.user_message_bt {
 		padding:8px 0 10px;
