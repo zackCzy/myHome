@@ -33,6 +33,9 @@
 		<div class="content">
 			<div class="Home_page_nav">
 				<div class="head-nav">
+					<div class="pageLogo">
+						<img src="<%=path%>/image/vikilogo.png"/>
+					</div>
 					<span class="nav-box"></span>
 					<ul>
 						<li><a href="<%=path%>" >首页</a> </li>

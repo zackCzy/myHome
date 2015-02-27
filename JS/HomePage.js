@@ -69,7 +69,7 @@ $(function() {
 	}
 	var home_list_displayHeight=$(".home_list_display").height();
 	var clientWidth = document.documentElement.scrollTop == 0 ? document.body.clientWidth : document.documentElement.clientWidth;
-	if(clientWidth>=1200){
+	if(clientWidth>=1100){
 		$(".Home_page_nav").width(1100).css("left",(clientWidth-1100)/2);
 	}else{
 		$(".Home_page_nav").width("100%").css("left",0);
@@ -87,23 +87,7 @@ $(function() {
 		var clientHeight = document.documentElement.scrollTop == 0 ? document.body.clientHeight : document.documentElement.clientHeight;
 		var scrollTop = document.documentElement.scrollTop == 0 ? document.body.scrollTop : document.documentElement.scrollTop;
 		var scrollHeight = document.documentElement.scrollTop == 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
-//		if(scrollTop+home_list_displayHeight-300>$(".home_content_display_wrap").height()){
-//			
-//		}else if( scrollTop>523){
-//			var $list=$(".home_list_display");
-//			$list.css({
-//				position:"fixed",
-//				top:"50px",
-//				right:clientWidth>=1100 ?(clientWidth-1100)/2 :0,
-//				width:
-//			});
-//		}else{
-//			$(".home_list_display").css({
-//				position:"absolute",
-//				top:"25px",
-//				right:0
-//			});
-//		}
+
 		$return=$("#returnHead");
 		if (scrollTop > clientHeight * 1.3) {
 			if($return.attr("alt")!="false"){
