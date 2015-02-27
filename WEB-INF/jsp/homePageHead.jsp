@@ -98,7 +98,7 @@
 						</span>	
 					</div>	
 					<s:if test="#authority==1">
-							<a  href="/myHome/user/user_datum" class="user_message_bt"  target="_blank">编辑个人资料</a>
+							<a  href="<%=path %>/user/user_datum" class="user_message_bt"  target="_blank">编辑个人资料</a>
 							<a  class="user_message_bt">查看今日</a>
 					</s:if>
 					<s:else>

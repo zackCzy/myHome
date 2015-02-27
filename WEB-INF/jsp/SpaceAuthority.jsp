@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <%
 	String basePath = request.getContextPath();
 	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath; 
@@ -8,117 +9,15 @@
 <html>
 	<head>
 		<%@include file="../meta/indexMeta.jsp"%>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/SpaceAuthority.css">
 		<title>空间_访问受限</title>
 	</head>
-	<style type="text/css">
-body,h1,input,a,div{
-	margin: 0;
-	border: 0 none;
-	padding: 0;
-}
-
-body {
-	background: url("${pageContext.request.contextPath}/image/sginBg.png");
-}
-
-.register_check {
-	width: 800px;
-	height: 380px;
-	margin: 60px auto;
-	background: #FAFAFA;
-	border: 1px solid #DCDCDC;
-	box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.05), 10px 10px 6px
-		rgba(0, 0, 0, 0.3);
-}
-
-h1,a {
-	width: 50%;
-	height: 30px;
-	color: #787878;
-	text-align: left;
-	text-indent: 25px;
-	line-height: 30px;
-	font-size: 15px;
-	display: block;
-	text-decoration: none;
-	float: left;
-}
-
-a {
-	color: #423009;
-	font-size: 23px;
-	font-weight: bold;
-	margin: 0;
-	height: 50px;
-}
-
-a:hover {
-	color: #5CAAE6;
-	text-decoration: underline;
-}
-
-#space_possword {
-	width: 170px;
-	height: 20px;
-	font-size: 15px;
-	line-height: 15px;
-	border: 1px solid #DEDEDE;
-	margin: 10px 0 0 20px;
-	padding: 5px 10px;
-	line-height: 22px;
-	float: left;
-	color:#787878;
-}
-
-#space_possword:hover,#space_possword:focus {
-	border: 1px solid #5CAAE6;
-}
-
-.register_check img {
-	width: 180px;
-	height: 180px;
-	border-radius: 180px;
-	border: 2px solid #5caae6;
-	box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.05), 2px 3px 5px
-		rgba(0, 0, 0, 0.3);
-	float: left;
-	margin: 20px 0 0 30px;
-}
-
-#isOk_possword {
-	width: 150px;
-	height: 30px;
-	background: #86BFEC;
-	border-radius: 30px;
-	border:1px solid #D8D8D8;
-	margin: 20px 0 15px 35px;
-	float: left;
-	cursor: pointer;
-	float: left;
-		box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.05), 5px 5px 3px
-		rgba(0, 0, 0, 0.1);
-}
-
-#error_possword,#inut_possword{
-	text-indent: 18px;
-	font-size: 14px;
-	width: 170px;
-	height: 32px;
-	position: relative;
-	top: 154px;
-	left: 448px;
-	padding: 0 15px;
-	line-height:32px;
-	display: block;
-	float: none;
-}
-</style>
 	<body>
 		<div class="register_check">
-			<div
-				style="margin: 0 0 10px; font-family: '微软雅黑', '宋体'; border-bottom: 4px solid #FF4700; font-size: 18px; font-weight: bold; color: #787878; width: 100%; height: 54px; background: url('${pageContext.request.contextPath}/image/tog_contact_bg.gif'); line-height: 56px; text-indent: 20px">
+			<h1 class="title">
 				空间_访问受限
-			</div>
+			</h1>
 			<s:if test="!errors.passwordError[0].equals('')">
 				<div id="error_possword" style="color: #FF4700;background: url('${pageContext.request.contextPath}/image/reg_error.png') no-repeat;">
 					<s:property value="errors.passwordError[0]" />
@@ -129,25 +28,31 @@ a:hover {
 					请输入密码
 				</div>
 			</s:else>
-
-			<img src="${pageContext.request.contextPath}/load/download_getBigPhoto?id=1" />
-			<s:form action="/user/space/%{#user.name}/spaceChackAuthority">
-				<s:a>
-					<s:property value="#user.userBaseDatum.name" />
-					<hr style="width: 92%;" />
-				</s:a>
-				<h1>
-					主人设置了访问权限
-				</h1>
-				<h1>
-					您需要回答密码才能进入！
-				</h1>
-				<s:hidden name="spaceName" value="%{#user.name}" />
-				<s:password  id="space_possword" name="spacePossWord" ></s:password>
-				<s:hidden name="accessPath" value="%{#accessPath}" />
-				<br />
-				<s:submit value="确定" id="isOk_possword"></s:submit>
-			</s:form>
+			<div class="span3">
+				<div class="userPhoto">
+					<img src="${pageContext.request.contextPath}/load/download_getBigPhoto?id=1" />
+				</div>
+			</div>
+			<div class="span7">
+				<form action="user/space/<s:property value="user.name"/>/spaceChackAuthority" method="get">
+					<s:a>
+						<s:property value="#user.userBaseDatum.name" />
+					</s:a>
+					<hr style="width:100%;" />
+					<h2>
+						主人设置了访问权限
+					</h2>
+					<h2>
+						您需要回答密码才能进入！
+					</h2>
+					<s:hidden name="spaceName" value="%{#user.name}" />
+					<s:password id="space_possword" name="spacePossWord"></s:password>
+					<s:hidden name="accessPath" value="%{#accessPath}" />
+					<div class="inOk-wrap">
+						<input type="submit" value="确定" id="isOk_possword" >
+					</div>
+				</form>
+			</div>
 		</div>
 	</body>
 </html>
