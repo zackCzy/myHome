@@ -1,16 +1,1 @@
-@CHARSET "UTF-8";
-
-
-#dicky{
- width: 50px;
- height:45px;
- background: url("/myHome/images/fn/red-bird.png");
- position: absolute;
- top: 0;
-}
-.dicky_bg{
- width:100%;
- height:2500px;;
- background: url("/myHome/images/fn/48b1OOOPIC76.jpg")  no-repeat;
- background-size: cover;
-}
+@CHARSET "UTF-8";#dicky{width:50px;height:45px;background:url("/myHome/images/fn/red-bird.png");position:absolute;top:0}.dicky_bg{width:100%;height:2500px;background:url("/myHome/images/fn/48b1OOOPIC76.jpg") no-repeat;background-size:cover}
