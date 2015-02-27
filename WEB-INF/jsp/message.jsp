@@ -50,38 +50,38 @@
 			
 			<div class="message">
 				<form action="" name="myform">
-				<s:if test="#datum">
-					<%@include file="/WEB-INF/jsp/UserDatum.jsp" %>
-			   </s:if>
-			   <s:if test="#dails">
-					<%@include file="/WEB-INF/jsp/UserBaseDails.jsp" %>		
-			   </s:if>
-				<s:if test="#workDatum">
-					<%@include file="/WEB-INF/jsp/workDatum.jsp" %>
-			   </s:if>
-				<s:if test="#education">
-					<%@include file="/WEB-INF/jsp/education.jsp" %>
-			   </s:if>
-			   	<s:if test="#spaceDatum">
-					<%@include file="/WEB-INF/jsp/SpaceDatum.jsp" %>
-			   </s:if>
-				<s:if test="#userPhoto">
-					<div class="UserPhotoMess">
-						<h2>${sgin}_头像修改</h2>
-						<s:action name="user_photo"  executeResult="true"  ></s:action>
-					</div>
-					<script type="text/javascript">
-				   		$("#userMessList li:nth-child(6)").className("personal_hover");
+					<s:if test="#datum">
+						<%@include file="/WEB-INF/jsp/UserDatum.jsp" %>
+				   </s:if>
+				   <s:if test="#dails">
+						<%@include file="/WEB-INF/jsp/UserBaseDails.jsp" %>		
+				   </s:if>
+					<s:if test="#workDatum">
+						<%@include file="/WEB-INF/jsp/workDatum.jsp" %>
+				   </s:if>
+					<s:if test="#education">
+						<%@include file="/WEB-INF/jsp/education.jsp" %>
+				   </s:if>
+				   	<s:if test="#spaceDatum">
+						<%@include file="/WEB-INF/jsp/SpaceDatum.jsp" %>
+				   </s:if>
+				   	<script type="text/javascript">
+				   	$(".cus-sel-opt-ctn li").on("click", clickSelect);	
+					function clickSelect() {
+						$(this.parentNode).prev().html(this.innerHTML);
+						$(this.parentNode).hide();
+					}
 					</script>
-			   </s:if>
-			   	<script type="text/javascript">
-			   	$(".cus-sel-opt-ctn li").on("click", clickSelect);	
-				function clickSelect() {
-					$(this.parentNode).prev().html(this.innerHTML);
-					$(this.parentNode).hide();
-				}
-				</script>
 				</form>
+				<s:if test="#userPhoto">
+						<div class="UserPhotoMess">
+							<h2>${sgin}_头像修改</h2>
+							<s:action name="user_photo"  executeResult="true"  ></s:action>
+						</div>
+						<script type="text/javascript">
+					   		$("#userMessList li:nth-child(6)").className("personal_hover");
+						</script>
+			    </s:if>
 			</div>
 		</div>
 	</body>

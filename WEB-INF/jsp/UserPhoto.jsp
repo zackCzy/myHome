@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="s" uri="/struts-tags"%>
+<%@taglib uri="/struts-tags"  prefix="s" %>
 <%
 	String basePath = request.getContextPath();
 	String path = request.getScheme() + "://" + request.getServerName()
@@ -20,13 +20,13 @@
 			<img id="avatar" width="280" alt="请上传头像"
 				src="<%=path%>/load/download_getPhoto?id=${id}">
 		</div>
-		<form id="aaa1" name="photoSize" method="post" action="<%=path%>/load/download_uploadUserPhoto" enctype="multipart/form-data" target="hidden_frame">
+		<form name="photoSize" method="post" action="<%=path %>/load/download_uploadUserPhoto" enctype="multipart/form-data" target="hidden_frame">
 			<!--通过生成尺寸和旋转角度 后台获取尺寸和旋转角度再进行裁剪-->
-			<input id="id_top" type="hidden" name="top" value="90">
-			<input id="id_left" type="hidden" name="left" value="61">
-			<input id="id_right" type="hidden" name="right" value="201">
-			<input id="id_bottom" type="hidden" name="bottom" value="200">
-			<input id="rotation" type="hidden" value="0" name="rotation">
+			<input id="id_top" type="hidden" name="top" value="90" />
+			<input id="id_left" type="hidden" name="left" value="61" />
+			<input id="id_right" type="hidden" name="right" value="201" />
+			<input id="id_bottom" type="hidden" name="bottom" value="200" />
+			<input id="rotation" type="hidden" value="0" name="rotation" />
 		</form>
 		<div class="portrait_revolve">
 			<div class="revolve_left"></div>
