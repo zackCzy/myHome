@@ -1101,17 +1101,20 @@ h4{
 	display: none;
 	float: left;
 }
-.pageLogo{
+.pageLogo img{
 	width:149px;
 	height:40px;
 	display: inline-block;
 }
+#zack_texi_plug {
+	box-sizing:content-box!important;
+}
+#zack_texi_plug *{
+	box-sizing:content-box!important;
+}
 @media (min-width:1100px){
 	.content{
 		width:1100px; 
-	}
-	.pageLogo{
-		display: none;
 	}
 }
 @media (max-width:920px){
@@ -1144,12 +1147,7 @@ h4{
 		background:#48525E;
 	}
 }
-#zack_texi_plug {
-	box-sizing:content-box!important;
-}
-#zack_texi_plug *{
-	box-sizing:content-box!important;
-}
+
 @media (max-width:760px){
 	.Home_page_nav {
 		background:rgba(72,82,94,0.9);
@@ -1160,7 +1158,7 @@ h4{
 		margin:0;
 	}
 	.pageLogo{
-		display: none;
+		display: block;
 	}
 	#diray_list_ul {
 		float: right;
