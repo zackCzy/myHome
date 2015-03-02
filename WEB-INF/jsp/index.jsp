@@ -9,6 +9,7 @@
 		<title>Viki|微站|音乐|空间|翻译</title>
 		<%@include file="../meta/indexMeta.jsp"%>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="max-age=7200"/>
 		<link rel="stylesheet" type="text/css" href="CSS/public/main.css" />
 		<link rel="stylesheet" type="text/css" href="CSS/home.css" />
 		<script type="text/javascript" src="JS/tool/span.js"></script>

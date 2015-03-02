@@ -236,9 +236,9 @@ float:left;margin:7px 10px 0 15px;border:1px solid #ACACAC;box-shadow: 2px 2px 1
 				<span
 					style="color: #F22E00; font-size: 13px; border-radius: 10px; text-shadow: 0 2px 3px #CFCFCF;">
 					亲，快来登陆吧&nbsp;&nbsp;</span>
-				<a id="headLogin">登录</a>&nbsp;|&nbsp;
-				<a href="${pageContext.request.contextPath}/application">注册</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-				<a href="${pageContext.request.contextPath}">ViKi 首页</a>
+				<a id="headLogin" title="登录viki微站" rel="登录viki微站" >登录</a>&nbsp;|&nbsp;
+				<a href="${pageContext.request.contextPath}/application" title="注册Viki帐号" rel="注册Viki帐号">注册</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="${pageContext.request.contextPath}" title="viki微站" rel="viki微站">ViKi 首页</a>
 			</div>
 		</c:when>
 		<c:otherwise>
@@ -249,11 +249,11 @@ float:left;margin:7px 10px 0 15px;border:1px solid #ACACAC;box-shadow: 2px 2px 1
 				</div>
 				<div><span>${sgin}</span></div><i></i>
 				<ul id="headList">
-					<li><a href="${pageContext.request.contextPath}/user/user_datum">个人信息</a>
+					<li><a href="${pageContext.request.contextPath}/user/user_datum" title="个人信息" rel="个人信息">个人信息</a>
 					</li>
-					<li><a href="${pageContext.request.contextPath}/user/space/${sgin}/">个人空间</a>
+					<li><a href="${pageContext.request.contextPath}/user/space/${sgin}/" title="viki空间" rel="viki空间">个人空间</a>
 					</li>
-					<li><a href="${pageContext.request.contextPath}/exit">退出</a>
+					<li><a href="${pageContext.request.contextPath}/exit" title="退出登录" rel="退出登录">退出</a>
 					</li>
 				</ul>
 			</div>
@@ -263,13 +263,13 @@ float:left;margin:7px 10px 0 15px;border:1px solid #ACACAC;box-shadow: 2px 2px 1
 	<div class="mini_nav_content" >
 		<div class="mini_nav_content_bg" >
 			<ul>
-				<li><a href="${pageContext.request.contextPath}">首 页</a><span>|</span></li>
-				<li><a href="${pageContext.request.contextPath}/translator">词 典</a><span>|</span></li>
-				<li ><a href="${pageContext.request.contextPath}/music">音 乐</a><span>|</span></li>
-				<li><a  href="${pageContext.request.contextPath}/user/space/${sgin==null? 'null':sgin}/">空 间</a><span>|</span></li>
+				<li><a href="${pageContext.request.contextPath}" title="viki微站" rel="viki微站">首 页</a><span>|</span></li>
+				<li><a href="${pageContext.request.contextPath}/translator" title="viki翻译" rel="viki翻译">词 典</a><span>|</span></li>
+				<li ><a href="${pageContext.request.contextPath}/music" title="viki音乐" rel="viki音乐">音 乐</a><span>|</span></li>
+				<li><a  href="${pageContext.request.contextPath}/user/space/${sgin==null? 'null':sgin}/" title="viki空间" rel="viki空间">空 间</a><span>|</span></li>
 				<li><a>Mini_论坛</a></li>
 			</ul>
-			<h3 style="width:100%;height:79px; text-align: center;line-height:79px;color:#DCDCDC">欢迎访问Vi k i , Vi k i专志为您提供优质的服务!</h2>
+			<h3 style="width:100%;height:79px; text-align: center;line-height:79px;color:#DCDCDC">欢迎访问Viki微站 , Viki微站专志为您提供优质的服务!</h2>
 		</div>
 	</div>
 	<div class="mini_nav">
@@ -277,7 +277,7 @@ float:left;margin:7px 10px 0 15px;border:1px solid #ACACAC;box-shadow: 2px 2px 1
 	</div>
 </div>
 <c:if test="${sgin==null}">
-	<%@ include file="/WEB-INF/jsp/login.jsp"%>
+	<%@ include file="/WEB-INF/memberJsp/login.jsp"%>
 </c:if>
 <script type="text/javascript">
 	function musicBox() {

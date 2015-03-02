@@ -8,6 +8,7 @@
 <html>
 	<head>
 		<%@include file="../meta/indexMeta.jsp"%>
+		<meta http-equiv="Cache-Control" content="max-age=7200"/>
 		<title>Mini词典</title>
 		<link rel="stylesheet" type="text/css" href="<%=path%>/CSS/public/main.css" />
 		<link rel="stylesheet" type="text/css" href="<%=path%>/CSS/translator.css" />

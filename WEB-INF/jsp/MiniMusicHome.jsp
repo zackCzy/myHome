@@ -9,6 +9,7 @@
 <html>
 	<head>
 		<%@include file="../meta/indexMeta.jsp"%>
+		<meta http-equiv="Cache-Control" content="max-age=7200"/>
 		<link type="text/css" rel="stylesheet" href="<%=path %>/CSS/public/main.css">
 		<link type="text/css" rel="stylesheet" href="<%=path %>/CSS/MiniMusicHome.css">	
 		<script type="text/javascript">
