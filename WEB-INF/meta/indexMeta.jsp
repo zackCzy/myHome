@@ -2,12 +2,13 @@
 <%
 	if(request.getServerName().indexOf("vikimicro")==-1||request.getServerName().indexOf("myHome")!=-1){
 		response.setStatus(301);
-		String url="http://www.vikimicro.com"+request.getRequestURI();
-		String param=null;
-		param=request.getQueryString();
+		String url="http://www.vikimicro.com";
+		/*
+		String param=request.getQueryString();
 		if(param!=null){
 			url+="?"+param;
 		}
+		*/
 		response.setHeader( "Location",url );
 		response.setHeader( "Connection", "close" );
 	}
