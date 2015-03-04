@@ -51,9 +51,11 @@ $(function(){
 	    function getLocalData () {
 	        return ue.execCommand( "getlocaldata" );
 	    }
-	    if(LOG!=null){
-	    	setContent(LOG);
+	    var $logDiv=$("#logContentHiddent");
+	    if($("#logContentHiddent").text().isEmpty().length>0){
+	    	setContent($logDiv.html());
 	    }
+	    $logDiv=null;
 	    sendDiary=function (draft,evt,url_u){
 	    	if(!hasContent()){			
 	    		$.notice("viki提醒您！","文章内容不能为空");

@@ -15,7 +15,6 @@
 		<script type="text/javascript">
 			BASE_PATH="<%=path %>";
 			UEDITOR_HOME_URL = "/ueditor/";//从项目的根目录开始
-			LOG='<s:property value="#log.getLogContent()" escapeHtml="false"/>';
 		</script>
 		<script type="text/javascript" src="<%=path %>/JS/tool/span.js"></script>
 		<script type="text/javascript" src="<%=path %>/scripts/jquery-1.10.1.js"></script>
@@ -28,7 +27,9 @@
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/jsp/head.jsp"%>
-		
+		<div style="visibility: hidden;width:0;height:0;overflow: hidden;" id="logContentHiddent">
+			<s:property value="#log.getLogContent()" escapeHtml="false"/>
+		</div>
 		<form action="#" name="createText" >
 			<div id="context" style="width:100%;display: block;">
 				
