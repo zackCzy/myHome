@@ -1,1 +1,25 @@
-@CHARSET "UTF-8";#test{display:block;width:100px;height:100px;background-color:#f00;position:relative;left:100px;top:200px}#imgtest{width:150px;height:49px;background-color:#f00}#test1{display:block;width:500px;height:500px;background-color:#888;position:absolute;left:200px;top:50px}
+@CHARSET "UTF-8";
+#test {
+	display: block;
+	width: 100px;
+	height: 100px;
+	background-color: #f00;
+	position: relative;
+	left: 100px;
+	top: 200px;
+}
+#imgtest {
+	width: 150px;
+	height: 49px;
+	background-color: #f00;
+}
+
+#test1 {
+	display: block;
+	width: 500px;
+	height: 500px;
+	background-color: #888;
+	position: absolute;
+	left: 200px;
+	top: 50px;
+}

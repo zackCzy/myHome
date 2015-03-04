@@ -1,1 +1,104 @@
-$(load);function load(){$("body").on("click",function(a){var b=getEvtObj(a);if(b.className.indexOf("pointPanel")==-1){$(".colorPanel").hide(300)}try{if(b.parentNode.className.indexOf("select")==-1){$(".select ul").hide(300)}}catch(c){}});$("#backcolor").append($(".colorPanel").clone(true));$(".select").on("click",function(a){var b=$("ul",this);if(b.css("display")=="none"){$(".select ul").hide(300);$(".colorPanel").hide(300);b.show(300)}else{b.hide(300)}});$(".select").hover(function(){this.style.border="1px solid #02ABE3"},function(){this.style.border="1px solid #CCCCCC"});$(".pointPanel").on("click",function(a){var b=$(this).next();if(b.css("display")=="none"){$(".select ul").hide(300);$(".colorPanel").hide(300);b.show(300);$(".colorStatu").css({background:""})}else{b.hide(300)}});$(".trimColor").on("click",function(){window.iframeDocument.execCommand(this.parentNode.parentNode.id,false,"#FFFFFF");$(".colorStatu").css({background:"#ffffff"});$(".colorPanel").hide(300)});$(".select ul li").on("click",clickSelect);window.iframe=document.createElement("iframe");window.iframe.style.width="903px";window.iframe.style.height="480px";window.iframe.style.margin="10px 40px";window.iframe.frameborder="0";window.iframe.scroll="no";window.iframe.tabindex="20";document.getElementById("context").appendChild(window.iframe);window.iframeDocument=window.iframe.contentDocument||window.iframe.contentWindow.document;window.iframeDocument.open();window.iframeDocument.write('<html xmlns="http://www.w3.org/1999/xhtml"><head><script type="text/javascript" src="'+BASE_PATH+'/JS/tool/span.js"><\/script><script type="text/javascript" src="'+BASE_PATH+'/JS/tool/box.js"><\/script></head><body  contenteditable="true" spellcheck="true" style="background:#FFFFFF; overflow:hidden; height:auto;width:100%;word-break : break-all;padding:0;border:0;">'+document.getElementById("textarea").value+"</body></html>");window.iframeDocument.close();$(".smallBox").tabEvent(function(a){window.iframeDocument.execCommand(this.getAttribute("title"),false,0);$(this).css({background:"#ffffff",border:"1px solid #ECECEC"})},function(a){window.iframeDocument.execCommand(this.getAttribute("title"),false,0);$(this).css({background:"",border:"1px solid #f6f6f6"})});$(".colorPanel ul li").on("mouseover",function(a){var b=this;$(".colorStatu").css({background:b.style.background})}).on("click",function(){var a=this;window.iframeDocument.execCommand(a.parentNode.parentNode.parentNode.id,false,a.getAttribute("title"));$(".colorPanel").hide(300)})}function sendDiary(c,b,a){if($(window.iframeDocument.getElementsByTagName("body")[0]).text().isEmpty().length<=0){$.notice("viki提醒您！","文章内容不能为空");return}$.ajax({url:BASE_PATH+"/user/function_"+a,method:"post",data:{"userlog.logName":$("#title").val(),"userlog.logContent":$(window.iframeDocument.getElementsByTagName("body")[0]).html(),"userlog.visible":($("#visible").text().isEmpty()=="所有人可见"),"userlog.type":$("#type").val(),token:$("#token").val(),"userlog.id":document.getElementById("token").getAttribute("title"),"userlog.noHtmlLog":$(window.iframeDocument.getElementsByTagName("body")[0]).text()},success:function(d){if(d.isEmpty()=="save user log ok"){$.notice("Viki提醒您",c?"草稿保存成功":"发布成功,即将跳转！",1500,function(){if(c){window.location.href=BASE_PATH+"/user/user_draft"}else{window.location.href=BASE_PATH+"/user/space/"+b.getAttribute("alt")+"/diary"}})}else{$.notice("Viki提醒您","发布失败")}}})}function clickSelect(){$(this.parentNode).prev().html(this.innerHTML);try{window.iframeDocument.execCommand(this.parentNode.parentNode.id,false,this.getAttribute("title"))}catch(a){}$(this.parentNode).hide(300)}function box(){var a=$(window.iframeDocument.getElementsByTagName("body")[0]).css("height");if(parseInt(a)>480){window.iframe.style.height=a}};
+/**
+ * 
+ */
+
+$(function(){
+	 	var ue = UM.getEditor('myEditor');
+
+	    function createEditor() {
+	        enableBtn();
+	    }
+	    function getAllHtml() {
+	        return ue.getAllHtml();
+	    }
+	    function getContent() {
+	        return ue.getContent();
+	    }
+	    function getPlainTxt() {
+	        return ue.getPlainTxt();
+	    }
+	    function setContent(content,isAppendTo) {
+	    	ue.setContent(content, isAppendTo); 
+	    }
+	    function setDisabled() {
+	    	ue.setDisabled('fullscreen');
+	        disableBtn("enable");
+	    }
+
+	    function setEnabled() {
+	    	ue.setEnabled();
+	        enableBtn();
+	    }
+
+	    function getContentTxt() {
+	        //使用editor.getContentTxt()方法可以获得编辑器的纯文本内容
+	        return ue('myEditor').getContentTxt();
+	    }
+	    function hasContent() {
+	    	return ue.hasContents();
+	    }
+	    function setFocus() {
+	    	ue.focus();
+	    }
+	    function deleteEditor() {
+	        disableBtn();
+	        ue.destroy();
+	    }
+	    function insertHtml(content) {
+	        var value = prompt(content, '');
+	        ue.execCommand('insertHtml', value);
+	    }
+	    function getLocalData () {
+	        return ue.execCommand( "getlocaldata" );
+	    }
+	    if(LOG!=null){
+	    	setContent(LOG);
+	    }
+	    sendDiary=function (draft,evt,url_u){
+	    	if(!hasContent()){			
+	    		$.notice("viki提醒您！","文章内容不能为空");
+	    		return
+	    	}
+	    	$.ajax({
+	    		url:BASE_PATH+"/user/function_"+url_u,
+	    		method : 'post',
+	    		data : {
+	    			'userlog.logName':$("#title").val(),
+	    			'userlog.logContent':getContent(),
+	    			'userlog.visible':($("#visible").text().isEmpty()=="所有人可见"),
+	    			'userlog.type':$("#type").val(),
+	    			token:$("#token").val(),
+	    			'userlog.id':document.getElementById("token").getAttribute("title"),
+	    			'userlog.noHtmlLog':getPlainTxt()
+	    		},
+	    		success:function(msg){
+	    			if(msg.isEmpty()=='save user log ok'){			
+	    				$.notice("Viki提醒您",draft ? '草稿保存成功' :"发布成功,即将跳转！",1500,function(){						
+	    					if(draft){
+	    						 window.location.href=BASE_PATH+"/user/user_draft";
+	    					}else{
+	    						window.location.href=BASE_PATH+"/user/space/"+evt.getAttribute("alt")+"/diary";
+	    					}
+	    				});
+	    			}else{
+	    				$.notice("Viki提醒您"," ");
+	    			}
+	    		}
+	    	});	
+	    };
+	    $(".select").on("click", function(evt){	
+			var temp=$("ul",this);		
+			if(temp.css("display")=="none"){
+				$(".select ul").hide(300);
+				$(".colorPanel").hide(300);
+				temp.show(300);
+			}else{
+				temp.hide(300);
+			}
+		});	
+	    $(".select").hover(function(){
+			this.style.border="1px solid #02ABE3";
+		}, function(){
+			this.style.border="1px solid #CCCCCC";
+		});
+});

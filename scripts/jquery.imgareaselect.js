@@ -1,1 +1,730 @@
-(function(e){var b=Math.abs,a=Math.max,d=Math.min,c=Math.round;function f(){return e("<div/>")}e.imgAreaSelect=function(R,af){var N=e(R),u,B=f(),F=f(),at=f().add(f()).add(f()).add(f()),v=f().add(f()).add(f()).add(f()),aB=e([]),am,U,ar,aC={left:0,top:0},T,aD,p,X={left:0,top:0},g=0,an="absolute",aq,ap,ad,ac,t,q,ao,k,x,aH,ak,E,n,D,l,aF={x1:0,y1:0,x2:0,y2:0,width:0,height:0},G=document.documentElement,V=navigator.userAgent,ab,S,P,O,L,Q,J;function aa(h){return h+aC.left-X.left}function Z(h){return h+aC.top-X.top}function ay(h){return h-aC.left+X.left}function ax(h){return h-aC.top+X.top}function A(h){return h.pageX-X.left}function z(h){return h.pageY-X.top}function aw(h){var o=h||ad,i=h||ac;return{x1:c(aF.x1*o),y1:c(aF.y1*i),x2:c(aF.x2*o),y2:c(aF.y2*i),width:c(aF.x2*o)-c(aF.x1*o),height:c(aF.y2*i)-c(aF.y1*i)}}function au(i,w,h,o,aI){var aK=aI||ad,aJ=aI||ac;aF={x1:c(i/aK||0),y1:c(w/aJ||0),x2:c(h/aK||0),y2:c(o/aJ||0)};aF.width=aF.x2-aF.x1;aF.height=aF.y2-aF.y1}function m(){if(!u||!N.width()){return}aC={left:c(N.offset().left),top:c(N.offset().top)};T=N.innerWidth();aD=N.innerHeight();aC.top+=(N.outerHeight()-aD)>>1;aC.left+=(N.outerWidth()-T)>>1;q=c(af.minWidth/ad)||0;ao=c(af.minHeight/ac)||0;k=c(d(af.maxWidth/ad||1<<24,T));x=c(d(af.maxHeight/ac||1<<24,aD));if(e().jquery=="1.3.2"&&an=="fixed"&&!G.getBoundingClientRect){aC.top+=a(document.body.scrollTop,G.scrollTop);aC.left+=a(document.body.scrollLeft,G.scrollLeft)}X=/absolute|relative/.test(p.css("position"))?{left:c(p.offset().left)-p.scrollLeft(),top:c(p.offset().top)-p.scrollTop()}:an=="fixed"?{left:e(document).scrollLeft(),top:e(document).scrollTop()}:{left:0,top:0};U=aa(0);ar=Z(0);if(aF.x2>T||aF.y2>aD){aE()}}function K(h){if(!ak){return}B.css({left:aa(aF.x1),top:Z(aF.y1)}).add(F).width(L=aF.width).height(Q=aF.height);F.add(at).add(aB).css({left:0,top:0});at.width(a(L-at.outerWidth()+at.innerWidth(),0)).height(a(Q-at.outerHeight()+at.innerHeight(),0));e(v[0]).css({left:U,top:ar,width:aF.x1,height:aD});e(v[1]).css({left:U+aF.x1,top:ar,width:L,height:aF.y1});e(v[2]).css({left:U+aF.x2,top:ar,width:T-aF.x2,height:aD});e(v[3]).css({left:U+aF.x1,top:ar+aF.y2,width:L,height:aD-aF.y2});L-=aB.outerWidth();Q-=aB.outerHeight();switch(aB.length){case 8:e(aB[4]).css({left:L>>1});e(aB[5]).css({left:L,top:Q>>1});e(aB[6]).css({left:L>>1,top:Q});e(aB[7]).css({top:Q>>1});case 4:aB.slice(1,3).css({left:L});aB.slice(2,4).css({top:Q})}if(h!==false){if(e.imgAreaSelect.onKeyPress!=az){e(document).unbind(e.imgAreaSelect.keyPress,e.imgAreaSelect.onKeyPress)}if(af.keys){e(document)[e.imgAreaSelect.keyPress](e.imgAreaSelect.onKeyPress=az)}}if(aj&&at.outerWidth()-at.innerWidth()==2){at.css("margin",0);setTimeout(function(){at.css("margin","auto")},0)}}function y(h){m();K(h);E=aa(aF.x1);n=Z(aF.y1);D=aa(aF.x2);l=Z(aF.y2)}function ai(h,i){af.fadeSpeed?h.fadeOut(af.fadeSpeed,i):h.hide()}function I(i){var h=ay(A(i))-aF.x1,o=ax(z(i))-aF.y1;if(!J){m();J=true;B.one("mouseout",function(){J=false})}t="";if(af.resizable){if(o<=af.resizeMargin){t="n"}else{if(o>=aF.height-af.resizeMargin){t="s"}}if(h<=af.resizeMargin){t+="w"}else{if(h>=aF.width-af.resizeMargin){t+="e"}}}B.css("cursor",t?t+"-resize":af.movable?"move":"");if(am){am.toggle()}}function j(h){e("body").css("cursor","");if(af.autoHide||aF.width*aF.height==0){ai(B.add(v),function(){e(this).hide()})}e(document).unbind("mousemove",ag);B.mousemove(I);af.onSelectEnd(R,aw())}function aA(h){if(h.which!=1){return false}m();if(t){e("body").css("cursor",t+"-resize");E=aa(aF[/w/.test(t)?"x2":"x1"]);n=Z(aF[/n/.test(t)?"y2":"y1"]);e(document).mousemove(ag).one("mouseup",j);B.unbind("mousemove",I)}else{if(af.movable){aq=U+aF.x1-A(h);ap=ar+aF.y1-z(h);B.unbind("mousemove",I);e(document).mousemove(ae).one("mouseup",function(){af.onSelectEnd(R,aw());e(document).unbind("mousemove",ae);B.mousemove(I)})}else{N.mousedown(h)}}return false}function M(h){if(aH){if(h){D=a(U,d(U+T,E+b(l-n)*aH*(D>E||-1)));l=c(a(ar,d(ar+aD,n+b(D-E)/aH*(l>n||-1))));D=c(D)}else{l=a(ar,d(ar+aD,n+b(D-E)/aH*(l>n||-1)));D=c(a(U,d(U+T,E+b(l-n)*aH*(D>E||-1))));l=c(l)}}}function aE(){E=d(E,U+T);n=d(n,ar+aD);if(b(D-E)<q){D=E-q*(D<E||-1);if(D<U){E=U+q}else{if(D>U+T){E=U+T-q}}}if(b(l-n)<ao){l=n-ao*(l<n||-1);if(l<ar){n=ar+ao}else{if(l>ar+aD){n=ar+aD-ao}}}D=a(U,d(D,U+T));l=a(ar,d(l,ar+aD));M(b(D-E)<b(l-n)*aH);if(b(D-E)>k){D=E-k*(D<E||-1);M()}if(b(l-n)>x){l=n-x*(l<n||-1);M(true)}aF={x1:ay(d(E,D)),x2:ay(a(E,D)),y1:ax(d(n,l)),y2:ax(a(n,l)),width:b(D-E),height:b(l-n)};K();af.onSelectChange(R,aw())}function ag(h){D=/w|e|^$/.test(t)||aH?A(h):aa(aF.x2);l=/n|s|^$/.test(t)||aH?z(h):Z(aF.y2);aE();return false}function W(h,i){D=(E=h)+aF.width;l=(n=i)+aF.height;e.extend(aF,{x1:ay(E),y1:ax(n),x2:ay(D),y2:ax(l)});K();af.onSelectChange(R,aw())}function ae(h){E=a(U,d(aq+A(h),U+T-aF.width));n=a(ar,d(ap+z(h),ar+aD-aF.height));W(E,n);h.preventDefault();return false}function r(){e(document).unbind("mousemove",r);m();D=E;l=n;aE();t="";if(!v.is(":visible")){B.add(v).hide().fadeIn(af.fadeSpeed||0)}ak=true;e(document).unbind("mouseup",Y).mousemove(ag).one("mouseup",j);B.unbind("mousemove",I);af.onSelectStart(R,aw())}function Y(){e(document).unbind("mousemove",r).unbind("mouseup",Y);ai(B.add(v));au(ay(E),ax(n),ay(E),ax(n));if(!(this instanceof e.imgAreaSelect)){af.onSelectChange(R,aw());af.onSelectEnd(R,aw())}}function aG(h){if(h.which!=1||v.is(":animated")){return false}m();aq=E=A(h);ap=n=z(h);e(document).mousemove(r).mouseup(Y);return false}function al(){y(false)}function s(){u=true;ah(af=e.extend({classPrefix:"imgareaselect",movable:true,parent:"body",resizable:true,resizeMargin:10,onInit:function(){},onSelectStart:function(){},onSelectChange:function(){},onSelectEnd:function(){}},af));B.add(v).css({visibility:""});if(af.show){ak=true;m();K();B.add(v).hide().fadeIn(af.fadeSpeed||0)}setTimeout(function(){af.onInit(R,aw())},0)}var az=function(w){var h=af.keys,aI,o,i=w.keyCode;aI=!isNaN(h.alt)&&(w.altKey||w.originalEvent.altKey)?h.alt:!isNaN(h.ctrl)&&w.ctrlKey?h.ctrl:!isNaN(h.shift)&&w.shiftKey?h.shift:!isNaN(h.arrows)?h.arrows:10;if(h.arrows=="resize"||(h.shift=="resize"&&w.shiftKey)||(h.ctrl=="resize"&&w.ctrlKey)||(h.alt=="resize"&&(w.altKey||w.originalEvent.altKey))){switch(i){case 37:aI=-aI;case 39:o=a(E,D);E=d(E,D);D=a(o+aI,E);M();break;case 38:aI=-aI;case 40:o=a(n,l);n=d(n,l);l=a(o+aI,n);M(true);break;default:return}aE()}else{E=d(E,D);n=d(n,l);switch(i){case 37:W(a(E-aI,U),n);break;case 38:W(E,a(n-aI,ar));break;case 39:W(E+d(aI,T-ay(D)),n);break;case 40:W(E,n+d(aI,aD-ax(l)));break;default:return}}return false};function H(h,o){for(var i in o){if(af[i]!==undefined){h.css(o[i],af[i])}}}function ah(h){if(h.parent){(p=e(h.parent)).append(B.add(v))}e.extend(af,h);m();if(h.handles!=null){aB.remove();aB=e([]);P=h.handles?h.handles=="corners"?4:8:0;while(P--){aB=aB.add(f())}aB.addClass(af.classPrefix+"-handle").css({position:"absolute",fontSize:0,zIndex:g+1||1});if(!parseInt(aB.css("width"))>=0){aB.width(5).height(5)}if(O=af.borderWidth){aB.css({borderWidth:O,borderStyle:"solid"})}H(aB,{borderColor1:"border-color",borderColor2:"background-color",borderOpacity:"opacity"})}ad=af.imageWidth/T||1;ac=af.imageHeight/aD||1;if(h.x1!=null){au(h.x1,h.y1,h.x2,h.y2);h.show=!h.hide}if(h.keys){af.keys=e.extend({shift:1,ctrl:"resize"},h.keys)}v.addClass(af.classPrefix+"-outer");F.addClass(af.classPrefix+"-selection");for(P=0;P++<4;){e(at[P-1]).addClass(af.classPrefix+"-border"+P)}H(F,{selectionColor:"background-color",selectionOpacity:"opacity"});H(at,{borderOpacity:"opacity",borderWidth:"border-width"});H(v,{outerColor:"background-color",outerOpacity:"opacity"});if(O=af.borderColor1){e(at[0]).css({borderStyle:"solid",borderColor:O})}if(O=af.borderColor2){e(at[1]).css({borderStyle:"dashed",borderColor:O})}B.append(F.add(at).add(am)).append(aB);if(aj){if(O=(v.css("filter")||"").match(/opacity=(\d+)/)){v.css("opacity",O[1]/100)}if(O=(at.css("filter")||"").match(/opacity=(\d+)/)){at.css("opacity",O[1]/100)}}if(h.hide){ai(B.add(v))}else{if(h.show&&u){ak=true;B.add(v).fadeIn(af.fadeSpeed||0);y()}}aH=(S=(af.aspectRatio||"").split(/:/))[0]/S[1];N.add(v).unbind("mousedown",aG);if(af.disable||af.enable===false){B.unbind("mousemove",I).unbind("mousedown",aA);e(window).unbind("resize",al)}else{if(af.enable||af.disable===false){if(af.resizable||af.movable){B.mousemove(I).mousedown(aA)}e(window).resize(al)}if(!af.persistent){N.add(v).mousedown(aG)}}af.enable=af.disable=undefined}this.remove=function(){ah({disable:true});B.add(v).remove()};this.getOptions=function(){return af};this.setOptions=ah;this.getSelection=aw;this.setSelection=au;this.cancelSelection=Y;this.update=y;var aj=(/msie ([\w.]+)/i.exec(V)||[])[1],av=/opera/i.test(V),C=/webkit/i.test(V)&&!/chrome/i.test(V);ab=N;while(ab.length){g=a(g,!isNaN(ab.css("z-index"))?ab.css("z-index"):g);if(ab.css("position")=="fixed"){an="fixed"}ab=ab.parent(":not(body)")}g=af.zIndex||g;if(aj){N.attr("unselectable","on")}e.imgAreaSelect.keyPress=aj||C?"keydown":"keypress";if(av){am=f().css({width:"100%",height:"100%",position:"absolute",zIndex:g+2||2})}B.add(v).css({visibility:"hidden",position:an,overflow:"hidden",zIndex:g||"0"});B.css({zIndex:g+2||2});F.add(at).css({position:"absolute",fontSize:0});R.complete||R.readyState=="complete"||!N.is("img")?s():N.one("load",s);if(!u&&aj&&aj>=7){R.src=R.src}};e.fn.imgAreaSelect=function(g){g=g||{};this.each(function(){if(e(this).data("imgAreaSelect")){if(g.remove){e(this).data("imgAreaSelect").remove();e(this).removeData("imgAreaSelect")}else{e(this).data("imgAreaSelect").setOptions(g)}}else{if(!g.remove){if(g.enable===undefined&&g.disable===undefined){g.enable=true}e(this).data("imgAreaSelect",new e.imgAreaSelect(this,g))}}});if(g.instance){return e(this).data("imgAreaSelect")}return this}})(jQuery);
+/*
+ * imgAreaSelect jQuery plugin
+ * version 0.9.10
+ *
+ * Copyright (c) 2008-2013 Michal Wojciechowski (odyniec.net)
+ *
+ * Dual licensed under the MIT (MIT-LICENSE.txt)
+ * and GPL (GPL-LICENSE.txt) licenses.
+ *
+ * http://odyniec.net/projects/imgareaselect/
+ *
+ */
+
+(function($) {
+
+var abs = Math.abs,
+    max = Math.max,
+    min = Math.min,
+    round = Math.round;
+
+function div() {
+    return $('<div/>');
+}
+
+$.imgAreaSelect = function (img, options) {
+    var
+
+        $img = $(img),
+
+        imgLoaded,
+
+        $box = div(),
+        $area = div(),
+        $border = div().add(div()).add(div()).add(div()),
+        $outer = div().add(div()).add(div()).add(div()),
+        $handles = $([]),
+
+        $areaOpera,
+
+        left, top,
+
+        imgOfs = { left: 0, top: 0 },
+
+        imgWidth, imgHeight,
+
+        $parent,
+
+        parOfs = { left: 0, top: 0 },
+
+        zIndex = 0,
+
+        position = 'absolute',
+
+        startX, startY,
+
+        scaleX, scaleY,
+
+        resize,
+
+        minWidth, minHeight, maxWidth, maxHeight,
+
+        aspectRatio,
+
+        shown,
+
+        x1, y1, x2, y2,
+
+        selection = { x1: 0, y1: 0, x2: 0, y2: 0, width: 0, height: 0 },
+
+        docElem = document.documentElement,
+
+        ua = navigator.userAgent,
+
+        $p, d, i, o, w, h, adjusted;
+
+    function viewX(x) {
+        return x + imgOfs.left - parOfs.left;
+    }
+
+    function viewY(y) {
+        return y + imgOfs.top - parOfs.top;
+    }
+
+    function selX(x) {
+        return x - imgOfs.left + parOfs.left;
+    }
+
+    function selY(y) {
+        return y - imgOfs.top + parOfs.top;
+    }
+
+    function evX(event) {
+        return event.pageX - parOfs.left;
+    }
+
+    function evY(event) {
+        return event.pageY - parOfs.top;
+    }
+
+    function getSelection(noScale) {
+        var sx = noScale || scaleX, sy = noScale || scaleY;
+
+        return { x1: round(selection.x1 * sx),
+            y1: round(selection.y1 * sy),
+            x2: round(selection.x2 * sx),
+            y2: round(selection.y2 * sy),
+            width: round(selection.x2 * sx) - round(selection.x1 * sx),
+            height: round(selection.y2 * sy) - round(selection.y1 * sy) };
+    }
+
+    function setSelection(x1, y1, x2, y2, noScale) {
+        var sx = noScale || scaleX, sy = noScale || scaleY;
+
+        selection = {
+            x1: round(x1 / sx || 0),
+            y1: round(y1 / sy || 0),
+            x2: round(x2 / sx || 0),
+            y2: round(y2 / sy || 0)
+        };
+
+        selection.width = selection.x2 - selection.x1;
+        selection.height = selection.y2 - selection.y1;
+    }
+
+    function adjust() {
+        if (!imgLoaded || !$img.width())
+            return;
+
+        imgOfs = { left: round($img.offset().left), top: round($img.offset().top) };
+
+        imgWidth = $img.innerWidth();
+        imgHeight = $img.innerHeight();
+
+        imgOfs.top += ($img.outerHeight() - imgHeight) >> 1;
+        imgOfs.left += ($img.outerWidth() - imgWidth) >> 1;
+
+        minWidth = round(options.minWidth / scaleX) || 0;
+        minHeight = round(options.minHeight / scaleY) || 0;
+        maxWidth = round(min(options.maxWidth / scaleX || 1<<24, imgWidth));
+        maxHeight = round(min(options.maxHeight / scaleY || 1<<24, imgHeight));
+
+        if ($().jquery == '1.3.2' && position == 'fixed' &&
+            !docElem['getBoundingClientRect'])
+        {
+            imgOfs.top += max(document.body.scrollTop, docElem.scrollTop);
+            imgOfs.left += max(document.body.scrollLeft, docElem.scrollLeft);
+        }
+
+        parOfs = /absolute|relative/.test($parent.css('position')) ?
+            { left: round($parent.offset().left) - $parent.scrollLeft(),
+                top: round($parent.offset().top) - $parent.scrollTop() } :
+            position == 'fixed' ?
+                { left: $(document).scrollLeft(), top: $(document).scrollTop() } :
+                { left: 0, top: 0 };
+
+        left = viewX(0);
+        top = viewY(0);
+
+        if (selection.x2 > imgWidth || selection.y2 > imgHeight)
+            doResize();
+    }
+
+    function update(resetKeyPress) {
+        if (!shown) return;
+
+        $box.css({ left: viewX(selection.x1), top: viewY(selection.y1) })
+            .add($area).width(w = selection.width).height(h = selection.height);
+
+        $area.add($border).add($handles).css({ left: 0, top: 0 });
+
+        $border
+            .width(max(w - $border.outerWidth() + $border.innerWidth(), 0))
+            .height(max(h - $border.outerHeight() + $border.innerHeight(), 0));
+
+        $($outer[0]).css({ left: left, top: top,
+            width: selection.x1, height: imgHeight });
+        $($outer[1]).css({ left: left + selection.x1, top: top,
+            width: w, height: selection.y1 });
+        $($outer[2]).css({ left: left + selection.x2, top: top,
+            width: imgWidth - selection.x2, height: imgHeight });
+        $($outer[3]).css({ left: left + selection.x1, top: top + selection.y2,
+            width: w, height: imgHeight - selection.y2 });
+
+        w -= $handles.outerWidth();
+        h -= $handles.outerHeight();
+
+        switch ($handles.length) {
+        case 8:
+            $($handles[4]).css({ left: w >> 1 });
+            $($handles[5]).css({ left: w, top: h >> 1 });
+            $($handles[6]).css({ left: w >> 1, top: h });
+            $($handles[7]).css({ top: h >> 1 });
+        case 4:
+            $handles.slice(1,3).css({ left: w });
+            $handles.slice(2,4).css({ top: h });
+        }
+
+        if (resetKeyPress !== false) {
+            if ($.imgAreaSelect.onKeyPress != docKeyPress)
+                $(document).unbind($.imgAreaSelect.keyPress,
+                    $.imgAreaSelect.onKeyPress);
+
+            if (options.keys)
+                $(document)[$.imgAreaSelect.keyPress](
+                    $.imgAreaSelect.onKeyPress = docKeyPress);
+        }
+
+        if (msie && $border.outerWidth() - $border.innerWidth() == 2) {
+            $border.css('margin', 0);
+            setTimeout(function () { $border.css('margin', 'auto'); }, 0);
+        }
+    }
+
+    function doUpdate(resetKeyPress) {
+        adjust();
+        update(resetKeyPress);
+        x1 = viewX(selection.x1); y1 = viewY(selection.y1);
+        x2 = viewX(selection.x2); y2 = viewY(selection.y2);
+    }
+
+    function hide($elem, fn) {
+        options.fadeSpeed ? $elem.fadeOut(options.fadeSpeed, fn) : $elem.hide();
+
+    }
+
+    function areaMouseMove(event) {
+        var x = selX(evX(event)) - selection.x1,
+            y = selY(evY(event)) - selection.y1;
+
+        if (!adjusted) {
+            adjust();
+            adjusted = true;
+
+            $box.one('mouseout', function () { adjusted = false; });
+        }
+
+        resize = '';
+
+        if (options.resizable) {
+            if (y <= options.resizeMargin)
+                resize = 'n';
+            else if (y >= selection.height - options.resizeMargin)
+                resize = 's';
+            if (x <= options.resizeMargin)
+                resize += 'w';
+            else if (x >= selection.width - options.resizeMargin)
+                resize += 'e';
+        }
+
+        $box.css('cursor', resize ? resize + '-resize' :
+            options.movable ? 'move' : '');
+        if ($areaOpera)
+            $areaOpera.toggle();
+    }
+
+    function docMouseUp(event) {
+        $('body').css('cursor', '');
+        if (options.autoHide || selection.width * selection.height == 0)
+            hide($box.add($outer), function () { $(this).hide(); });
+
+        $(document).unbind('mousemove', selectingMouseMove);
+        $box.mousemove(areaMouseMove);
+
+        options.onSelectEnd(img, getSelection());
+    }
+
+    function areaMouseDown(event) {
+        if (event.which != 1) return false;
+
+        adjust();
+
+        if (resize) {
+            $('body').css('cursor', resize + '-resize');
+
+            x1 = viewX(selection[/w/.test(resize) ? 'x2' : 'x1']);
+            y1 = viewY(selection[/n/.test(resize) ? 'y2' : 'y1']);
+
+            $(document).mousemove(selectingMouseMove)
+                .one('mouseup', docMouseUp);
+            $box.unbind('mousemove', areaMouseMove);
+        }
+        else if (options.movable) {
+            startX = left + selection.x1 - evX(event);
+            startY = top + selection.y1 - evY(event);
+
+            $box.unbind('mousemove', areaMouseMove);
+
+            $(document).mousemove(movingMouseMove)
+                .one('mouseup', function () {
+                    options.onSelectEnd(img, getSelection());
+
+                    $(document).unbind('mousemove', movingMouseMove);
+                    $box.mousemove(areaMouseMove);
+                });
+        }
+        else
+            $img.mousedown(event);
+
+        return false;
+    }
+
+    function fixAspectRatio(xFirst) {
+        if (aspectRatio)
+            if (xFirst) {
+                x2 = max(left, min(left + imgWidth,
+                    x1 + abs(y2 - y1) * aspectRatio * (x2 > x1 || -1)));
+
+                y2 = round(max(top, min(top + imgHeight,
+                    y1 + abs(x2 - x1) / aspectRatio * (y2 > y1 || -1))));
+                x2 = round(x2);
+            }
+            else {
+                y2 = max(top, min(top + imgHeight,
+                    y1 + abs(x2 - x1) / aspectRatio * (y2 > y1 || -1)));
+                x2 = round(max(left, min(left + imgWidth,
+                    x1 + abs(y2 - y1) * aspectRatio * (x2 > x1 || -1))));
+                y2 = round(y2);
+            }
+    }
+
+    function doResize() {
+        x1 = min(x1, left + imgWidth);
+        y1 = min(y1, top + imgHeight);
+
+        if (abs(x2 - x1) < minWidth) {
+            x2 = x1 - minWidth * (x2 < x1 || -1);
+
+            if (x2 < left)
+                x1 = left + minWidth;
+            else if (x2 > left + imgWidth)
+                x1 = left + imgWidth - minWidth;
+        }
+
+        if (abs(y2 - y1) < minHeight) {
+            y2 = y1 - minHeight * (y2 < y1 || -1);
+
+            if (y2 < top)
+                y1 = top + minHeight;
+            else if (y2 > top + imgHeight)
+                y1 = top + imgHeight - minHeight;
+        }
+
+        x2 = max(left, min(x2, left + imgWidth));
+        y2 = max(top, min(y2, top + imgHeight));
+
+        fixAspectRatio(abs(x2 - x1) < abs(y2 - y1) * aspectRatio);
+
+        if (abs(x2 - x1) > maxWidth) {
+            x2 = x1 - maxWidth * (x2 < x1 || -1);
+            fixAspectRatio();
+        }
+
+        if (abs(y2 - y1) > maxHeight) {
+            y2 = y1 - maxHeight * (y2 < y1 || -1);
+            fixAspectRatio(true);
+        }
+
+        selection = { x1: selX(min(x1, x2)), x2: selX(max(x1, x2)),
+            y1: selY(min(y1, y2)), y2: selY(max(y1, y2)),
+            width: abs(x2 - x1), height: abs(y2 - y1) };
+
+        update();
+
+        options.onSelectChange(img, getSelection());
+    }
+
+    function selectingMouseMove(event) {
+        x2 = /w|e|^$/.test(resize) || aspectRatio ? evX(event) : viewX(selection.x2);
+        y2 = /n|s|^$/.test(resize) || aspectRatio ? evY(event) : viewY(selection.y2);
+
+        doResize();
+
+        return false;
+
+    }
+
+    function doMove(newX1, newY1) {
+        x2 = (x1 = newX1) + selection.width;
+        y2 = (y1 = newY1) + selection.height;
+
+        $.extend(selection, { x1: selX(x1), y1: selY(y1), x2: selX(x2),
+            y2: selY(y2) });
+
+        update();
+
+        options.onSelectChange(img, getSelection());
+    }
+
+    function movingMouseMove(event) {
+        x1 = max(left, min(startX + evX(event), left + imgWidth - selection.width));
+        y1 = max(top, min(startY + evY(event), top + imgHeight - selection.height));
+
+        doMove(x1, y1);
+
+        event.preventDefault();
+
+        return false;
+    }
+
+    function startSelection() {
+        $(document).unbind('mousemove', startSelection);
+        adjust();
+
+        x2 = x1;
+        y2 = y1;
+
+        doResize();
+
+        resize = '';
+
+        if (!$outer.is(':visible'))
+            $box.add($outer).hide().fadeIn(options.fadeSpeed||0);
+
+        shown = true;
+
+        $(document).unbind('mouseup', cancelSelection)
+            .mousemove(selectingMouseMove).one('mouseup', docMouseUp);
+        $box.unbind('mousemove', areaMouseMove);
+
+        options.onSelectStart(img, getSelection());
+    }
+
+    function cancelSelection() {
+        $(document).unbind('mousemove', startSelection)
+            .unbind('mouseup', cancelSelection);
+        hide($box.add($outer));
+
+        setSelection(selX(x1), selY(y1), selX(x1), selY(y1));
+
+        if (!(this instanceof $.imgAreaSelect)) {
+            options.onSelectChange(img, getSelection());
+            options.onSelectEnd(img, getSelection());
+        }
+    }
+
+    function imgMouseDown(event) {
+        if (event.which != 1 || $outer.is(':animated')) return false;
+
+        adjust();
+        startX = x1 = evX(event);
+        startY = y1 = evY(event);
+
+        $(document).mousemove(startSelection).mouseup(cancelSelection);
+
+        return false;
+    }
+
+    function windowResize() {
+        doUpdate(false);
+    }
+
+    function imgLoad() {
+        imgLoaded = true;
+
+        setOptions(options = $.extend({
+            classPrefix: 'imgareaselect',
+            movable: true,
+            parent: 'body',
+            resizable: true,
+            resizeMargin: 10,
+            onInit: function () {},
+            onSelectStart: function () {},
+            onSelectChange: function () {},
+            onSelectEnd: function () {}
+        }, options));
+
+        $box.add($outer).css({ visibility: '' });
+
+        if (options.show) {
+            shown = true;
+            adjust();
+            update();
+            $box.add($outer).hide().fadeIn(options.fadeSpeed||0);
+        }
+
+        setTimeout(function () { options.onInit(img, getSelection()); }, 0);
+    }
+
+    var docKeyPress = function(event) {
+        var k = options.keys, d, t, key = event.keyCode;
+
+        d = !isNaN(k.alt) && (event.altKey || event.originalEvent.altKey) ? k.alt :
+            !isNaN(k.ctrl) && event.ctrlKey ? k.ctrl :
+            !isNaN(k.shift) && event.shiftKey ? k.shift :
+            !isNaN(k.arrows) ? k.arrows : 10;
+
+        if (k.arrows == 'resize' || (k.shift == 'resize' && event.shiftKey) ||
+            (k.ctrl == 'resize' && event.ctrlKey) ||
+            (k.alt == 'resize' && (event.altKey || event.originalEvent.altKey)))
+        {
+            switch (key) {
+            case 37:
+                d = -d;
+            case 39:
+                t = max(x1, x2);
+                x1 = min(x1, x2);
+                x2 = max(t + d, x1);
+                fixAspectRatio();
+                break;
+            case 38:
+                d = -d;
+            case 40:
+                t = max(y1, y2);
+                y1 = min(y1, y2);
+                y2 = max(t + d, y1);
+                fixAspectRatio(true);
+                break;
+            default:
+                return;
+            }
+
+            doResize();
+        }
+        else {
+            x1 = min(x1, x2);
+            y1 = min(y1, y2);
+
+            switch (key) {
+            case 37:
+                doMove(max(x1 - d, left), y1);
+                break;
+            case 38:
+                doMove(x1, max(y1 - d, top));
+                break;
+            case 39:
+                doMove(x1 + min(d, imgWidth - selX(x2)), y1);
+                break;
+            case 40:
+                doMove(x1, y1 + min(d, imgHeight - selY(y2)));
+                break;
+            default:
+                return;
+            }
+        }
+
+        return false;
+    };
+
+    function styleOptions($elem, props) {
+        for (var option in props)
+            if (options[option] !== undefined)
+                $elem.css(props[option], options[option]);
+    }
+
+    function setOptions(newOptions) {
+        if (newOptions.parent)
+            ($parent = $(newOptions.parent)).append($box.add($outer));
+
+        $.extend(options, newOptions);
+
+        adjust();
+
+        if (newOptions.handles != null) {
+            $handles.remove();
+            $handles = $([]);
+
+            i = newOptions.handles ? newOptions.handles == 'corners' ? 4 : 8 : 0;
+
+            while (i--)
+                $handles = $handles.add(div());
+
+            $handles.addClass(options.classPrefix + '-handle').css({
+                position: 'absolute',
+                fontSize: 0,
+                zIndex: zIndex + 1 || 1
+            });
+
+            if (!parseInt($handles.css('width')) >= 0)
+                $handles.width(5).height(5);
+
+            if (o = options.borderWidth)
+                $handles.css({ borderWidth: o, borderStyle: 'solid' });
+
+            styleOptions($handles, { borderColor1: 'border-color',
+                borderColor2: 'background-color',
+                borderOpacity: 'opacity' });
+        }
+
+        scaleX = options.imageWidth / imgWidth || 1;
+        scaleY = options.imageHeight / imgHeight || 1;
+
+        if (newOptions.x1 != null) {
+            setSelection(newOptions.x1, newOptions.y1, newOptions.x2,
+                newOptions.y2);
+            newOptions.show = !newOptions.hide;
+        }
+
+        if (newOptions.keys)
+            options.keys = $.extend({ shift: 1, ctrl: 'resize' },
+                newOptions.keys);
+
+        $outer.addClass(options.classPrefix + '-outer');
+        $area.addClass(options.classPrefix + '-selection');
+        for (i = 0; i++ < 4;)
+            $($border[i-1]).addClass(options.classPrefix + '-border' + i);
+
+        styleOptions($area, { selectionColor: 'background-color',
+            selectionOpacity: 'opacity' });
+        styleOptions($border, { borderOpacity: 'opacity',
+            borderWidth: 'border-width' });
+        styleOptions($outer, { outerColor: 'background-color',
+            outerOpacity: 'opacity' });
+        if (o = options.borderColor1)
+            $($border[0]).css({ borderStyle: 'solid', borderColor: o });
+        if (o = options.borderColor2)
+            $($border[1]).css({ borderStyle: 'dashed', borderColor: o });
+
+        $box.append($area.add($border).add($areaOpera)).append($handles);
+
+        if (msie) {
+            if (o = ($outer.css('filter')||'').match(/opacity=(\d+)/))
+                $outer.css('opacity', o[1]/100);
+            if (o = ($border.css('filter')||'').match(/opacity=(\d+)/))
+                $border.css('opacity', o[1]/100);
+        }
+
+        if (newOptions.hide)
+            hide($box.add($outer));
+        else if (newOptions.show && imgLoaded) {
+            shown = true;
+            $box.add($outer).fadeIn(options.fadeSpeed||0);
+            doUpdate();
+        }
+
+        aspectRatio = (d = (options.aspectRatio || '').split(/:/))[0] / d[1];
+
+        $img.add($outer).unbind('mousedown', imgMouseDown);
+
+        if (options.disable || options.enable === false) {
+            $box.unbind('mousemove', areaMouseMove).unbind('mousedown', areaMouseDown);
+            $(window).unbind('resize', windowResize);
+        }
+        else {
+            if (options.enable || options.disable === false) {
+                if (options.resizable || options.movable)
+                    $box.mousemove(areaMouseMove).mousedown(areaMouseDown);
+
+                $(window).resize(windowResize);
+            }
+
+            if (!options.persistent)
+                $img.add($outer).mousedown(imgMouseDown);
+        }
+
+        options.enable = options.disable = undefined;
+    }
+
+    this.remove = function () {
+        setOptions({ disable: true });
+        $box.add($outer).remove();
+    };
+
+    this.getOptions = function () { return options; };
+
+    this.setOptions = setOptions;
+
+    this.getSelection = getSelection;
+
+    this.setSelection = setSelection;
+
+    this.cancelSelection = cancelSelection;
+
+    this.update = doUpdate;
+
+    var msie = (/msie ([\w.]+)/i.exec(ua)||[])[1],
+        opera = /opera/i.test(ua),
+        safari = /webkit/i.test(ua) && !/chrome/i.test(ua);
+
+    $p = $img;
+
+    while ($p.length) {
+        zIndex = max(zIndex,
+            !isNaN($p.css('z-index')) ? $p.css('z-index') : zIndex);
+        if ($p.css('position') == 'fixed')
+            position = 'fixed';
+
+        $p = $p.parent(':not(body)');
+    }
+
+    zIndex = options.zIndex || zIndex;
+
+    if (msie)
+        $img.attr('unselectable', 'on');
+
+    $.imgAreaSelect.keyPress = msie || safari ? 'keydown' : 'keypress';
+
+    if (opera)
+
+        $areaOpera = div().css({ width: '100%', height: '100%',
+            position: 'absolute', zIndex: zIndex + 2 || 2 });
+
+    $box.add($outer).css({ visibility: 'hidden', position: position,
+        overflow: 'hidden', zIndex: zIndex || '0' });
+    $box.css({ zIndex: zIndex + 2 || 2 });
+    $area.add($border).css({ position: 'absolute', fontSize: 0 });
+
+    img.complete || img.readyState == 'complete' || !$img.is('img') ?
+        imgLoad() : $img.one('load', imgLoad);
+
+    if (!imgLoaded && msie && msie >= 7)
+        img.src = img.src;
+};
+
+$.fn.imgAreaSelect = function (options) {
+    options = options || {};
+
+    this.each(function () {
+        if ($(this).data('imgAreaSelect')) {
+            if (options.remove) {
+                $(this).data('imgAreaSelect').remove();
+                $(this).removeData('imgAreaSelect');
+            }
+            else
+                $(this).data('imgAreaSelect').setOptions(options);
+        }
+        else if (!options.remove) {
+            if (options.enable === undefined && options.disable === undefined)
+                options.enable = true;
+
+            $(this).data('imgAreaSelect', new $.imgAreaSelect(this, options));
+        }
+    });
+
+    if (options.instance)
+        return $(this).data('imgAreaSelect');
+
+    return this;
+};
+
+})(jQuery);

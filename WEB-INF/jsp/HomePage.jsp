@@ -31,7 +31,7 @@
 									<div class="content_user_li">
 										<strong class="logTitle">《<s:property value="logName" />》</strong>
 										<br>
-										<div><s:property value="noHtmlLog.substring(0,noHtmlLog.length()>350 ? 350 : noHtmlLog.length())"/></div>
+										<div><s:property value="noHtmlLog.substring(0,noHtmlLog.length()>350 ? 350 : noHtmlLog.length())" /></div>
 									</div>
 								</a>
 							</s:else>	

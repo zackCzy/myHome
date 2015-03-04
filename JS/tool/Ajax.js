@@ -1,1 +1,92 @@
-function getRequest(){if(window.XMLHttpRequest){return new XMLHttpRequest()}else{if(window.ActiveXObject){var a=["MSXML2.XMLHttp6.0","MSXML2.XMLHttp3.0","MSXML2.XMLHttp","Msxml2.XMLHTTP","Microsoft.XMLHTTP"];for(var b=0;b<a.length;b++){try{return new ActiveXObject(a[b])}catch(c){}}}}}function stateAjax(f){var g=getRequest();var e="";var d=null;if(f.message){(function(){for(var h in f.message){e+=("&"+h+"="+f.message[h])}})()}if(f.method=="get"){if(f.url.indexOf("?")==-1&&f.message){f.url+="?"}f.url+=e}else{if(f.method=="post"){d=e.substring(1,e.length)}}function a(){if(g.readyState==4){if(g.status==200){f.run(g.responseText)}else{if(f.success){f.success("错误编号："+g.status+"---- 错误信息："+g.statusText)}}}}if(f.async===true){g.onreadystatechange=function(){a()}}g.open(f.method,f.url,f.async);if(d){g.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8")}if(f.head){var b=f.head;for(var c in b){g.setRequestHeader(c,b[c])}}g.send(d);if(f.async===false){a()}e=null};
+/**
+ * stateAjax({
+		url:地址,
+		method : 'get||post',
+		async : true, 是否同步
+		message : {userId:this.getAttribute("title")}, 提交信息
+		run:function(text){
+			<!-- 回调信息 -->
+		}
+	});	
+ */
+//------------------------------------------------------------------------------------------------------------------
+function getRequest() {
+
+	if (window.XMLHttpRequest) {
+		return new XMLHttpRequest();
+	} else if (window.ActiveXObject) {
+		var version = [ "MSXML2.XMLHttp6.0", "MSXML2.XMLHttp3.0",
+				"MSXML2.XMLHttp","Msxml2.XMLHTTP","Microsoft.XMLHTTP"];
+		for ( var i = 0; i < version.length; i++) {
+			try {		
+				return new ActiveXObject(version[i]);
+			} catch (e) {
+				// //跳过
+			}
+		}
+		
+	}
+}
+function stateAjax(obj) {
+	var requset = getRequest();
+	var data = '';
+	var messageData = null;
+
+	// 转换提交的数据
+	if (obj.message) {
+		(function() {
+			for ( var i in obj.message) {
+				data += ('&' + i + '=' + obj.message[i]);
+			}
+		})();
+	}
+	// 判断提交方式
+
+	if (obj.method == 'get') {
+		if (obj.url.indexOf('?') == -1&&obj.message)
+			obj.url += "?";
+		obj.url += data;
+	} else if (obj.method == 'post') {
+		messageData = data.substring(1, data.length);
+	}
+	// 获取数据方法
+	function getData() {
+		if (requset.readyState == 4) {
+			if (requset.status == 200) {
+				// alert(ajax.responseText);
+				obj.run(requset.responseText);
+			} else {
+				// alert(ajax.responseText+"-----"+ajax.status+"----"+ajax.statusText);
+				if (obj.success)
+					obj.success('错误编号：' + requset.status + '---- 错误信息：'
+							+ requset.statusText);
+			}
+		}
+	}
+	// 判断是否同步
+
+	if (obj.async === true) {
+		requset.onreadystatechange = function() {
+			getData();
+		};
+	}
+
+	// 发送提交请求
+	requset.open(obj.method, obj.url, obj.async);
+	if (messageData)
+		requset.setRequestHeader('Content-Type',
+				'application/x-www-form-urlencoded;charset=UTF-8');
+	if (obj.head) {
+		var head=obj.head;
+		for ( var h in head) {
+			requset.setRequestHeader(h, head[h]);
+		}
+	}
+	requset.send(messageData);
+	// 判断是否同步
+
+	if (obj.async === false) {
+		getData();
+	}
+	data = null;
+}

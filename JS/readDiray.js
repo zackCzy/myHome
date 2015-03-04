@@ -1,1 +1,216 @@
-$(load);function load(){try{}catch(a){}$(".smallCom .remove_com").on("click",function(){var b=this;send(BASE_PATH+"/user/comment_remove",{id:this.getAttribute("rel")},"remove is ok","删除成功","删除失败",function(){$(b.parentNode.parentNode).slideUp(350,function(){this.remove();$("#count").html(parseInt(this.innerHTML)-1)})})});$("#sendComment").on("click",sendClick);$(".replyHyperlink").click(sendReply)}function sendReply(a){var b=$("span",this);$("#commentArea").html("").html("<b>@"+this.getAttribute("rel")+":</b>&nbsp;<br/>").attr("alt",b.attr("rel"));var c=this.parentNode.parentNode;window.reply={commentID:b.attr("alt"),userId:b.attr("rel"),parentDom:c.className=="smallCom"?c:c.parentNode}}function sendClick(){var c=this;var d=$("#commentArea");var a=new Date();if(d.attr("alt")=="1"){var b=d.text().isEmpty().replace(/^@(.*?):/,"");b=b.replace(/$<br\/>/,"");if(b.length<=0){d.css({border:"1px solid #ff4700"}).shake(function(){$(this).css({border:"1px solid #DEDEDE"})},1);return}$.ajax({url:BASE_PATH+"/user/comment_saveReviewewComment",type:"post",contentType:"application/x-www-form-urlencoded;charset=UTF-8",data:{"rc.content":b,commentID:window.reply.commentID,userId:window.reply.userId},success:function(g){if(g=="you login has expired"){$("#headLogin").trigger("click");return}d.attr("alt","2").text("");if(window.reply.dom==undefined){window.reply.dom=$("<div class='reply'><span class='userPhoto'><img ></span><a href='' target='_blank' class='user_name'></a><div></div><strong><span class='reply_date'></span><a href='#comment' class='replyHyperlink' rel=''><span  class='replyicon' title='回复' alt='' rel=''></span></a></strong></div>")}var e=JSON.parse(g);var f=window.reply.dom.clone(true);f.find("img").attr("src",BASE_PATH+"/load/download_getSmallPhoto?id="+e.comUserID).end().find(".user_name").attr("href",BASE_PATH+"/user/space/"+e.account+"/>").text(e.userName+"回复："+e.replyName).end().find("div").text(b).end().find(".reply_date").text(a.getFullYear()+"-"+(a.getMonth()+1)+"-"+a.getDate()+"  "+a.getHours()+":"+a.getMinutes()).end().find(".replyHyperlink").attr("rel",e.userName).click(sendReply).find("span").attr("alt",e.commentId).attr("rel",e.comUserID);f.appendTo(window.reply.parentDom)}})}else{if(d.text().isEmpty().length<=0){d.css({border:"1px solid #ff4700"}).shake(function(){$(this).css({border:"1px solid #DEDEDE"})},1);return}$.ajax({url:BASE_PATH+"/user/comment_save",method:"post",data:{"c.content":$(c).prev().text(),id:$(c).attr("alt")},success:function(r){if(r=="you login has expired"){$("#headLogin").trigger("click");return false}try{var s=JSON.parse(r);var h=document.createElement("div");h.setAttribute("class","smallCom");var m=document.createElement("span");var i=document.createElement("img");i.src=BASE_PATH+"/load/download_getSmallPhoto?id="+s.id;m.appendChild(i);h.appendChild(m);var f=document.createElement("a");f.innerHTML=s.spaceName+":";f.setAttribute("target","blank");f.setAttribute("href",BASE_PATH+"/user/space/"+s.name+"/");h.appendChild(f);var o=document.createElement("div");o.innerHTML=$(c).prev().text();h.appendChild(o);var p=document.createElement("strong");var q=$("<span class='reply_date'>"+a.getFullYear()+"-"+(a.getMonth()+1)+"-"+a.getDate()+"&nbsp"+a.getHours()+":"+a.getMinutes()+"</span>");var g=$("<a href='#comment' class='replyHyperlink'><span class='replyicon' title='回复' alt="+s.commentId+" rel="+s.id+">1</span></a>").attr("rel",s.spaceName).click(sendReply);$(p).append(q).append(g);if(s.commentId!=undefined){var j=document.createElement("a");j.setAttribute("alt",s.commentId);j.className="remove_com";j.innerHTML="删除";$(j).click(removeClick);p.appendChild(j)}h.appendChild(p);var l=$(c).next().get(0);$.notice("viki提醒您！","评论成功!");l.insertBefore(h,l.firstChild);var n=$(".userAction a:eq(1) span");n.text(parseInt(n.text())+1)}catch(k){console.log(k);$.notice("viki提醒您！","评论失败!")}}})}}function send(a,d,c,f,e,b){$.ajax({url:a,type:"post",head:{"Accept-Charset":"UTF-8"},data:d,success:function(g){if(g=="you login has expired"){$.notice("viki提醒您！","登录过期")}else{if(g.isEmpty()==c){if(b){b()}$.notice("viki提醒您！",f)}else{$.notice("viki提醒您！",e)}}}})}function removeClick(){var a=this;$.ajax({url:BASE_PATH+"/user/comment_remove",type:"get",data:{id:a.getAttribute("alt")},success:function(b){if(b=="remove is ok"){$.notice("viki提醒您！","删除评论成功!");$(a.parentNode.parentNode).slideUp(350,function(){var c=$(".userAction a:eq(1) span");c.text(parseInt(c.text())-1);this.remove()})}else{$.notice("viki提醒您！","删除评论失败!")}}})}function removeLog(b,a){$.ajax({url:BASE_PATH+"/user/function_removeDiary",type:"get",data:{userId:a.getAttribute("rel")},success:function(c){if(c=="removeDiary is ok"){$.notice("viki提醒您！","删除日记成功，即将跳转！!",300,function(){window.location.href=BASE_PATH+"/user/space/"+b+"/diary"})}else{$.notice("viki提醒您！","删除日记失败!")}}})};
+/**
+ * 
+ */
+$(load);
+function load(){
+	try {
+			
+	} catch (e) {}
+	$(".smallCom .remove_com").on("click", function(){
+		var that=this;
+		send(BASE_PATH+"/user/comment_remove",{
+			'id':this.getAttribute("rel")
+		},'remove is ok',"删除成功","删除失败",function(){			
+			$(that.parentNode.parentNode).slideUp(350,function(){
+				this.remove();
+				$("#count").html(parseInt(this.innerHTML)-1);
+			});
+		});
+	});
+	$("#sendComment").on("click",sendClick);
+	$(".replyHyperlink").click(sendReply);
+}
+function sendReply(flag){
+	var $infomation=$("span",this);
+	$("#commentArea").html("").html("<b>@"+this.getAttribute("rel")+":</b>&nbsp;<br/>").attr("alt",$infomation.attr("rel"));
+	
+	var parentTemp=this.parentNode.parentNode;
+	window.reply={
+		commentID:$infomation.attr("alt"),
+		userId: $infomation.attr("rel"),
+		parentDom:parentTemp.className=="smallCom" ? parentTemp:parentTemp.parentNode
+	};
+}
+function sendClick(){
+	var that=this;
+	var _input=$("#commentArea");
+	var date=new Date();
+	if(_input.attr("alt")=="1"){
+		var content=_input.text().isEmpty().replace(/^@(.*?):/,"");
+		content=content.replace(/$<br\/>/,"");
+		if(content.length<=0){
+			_input.css({"border":"1px solid #ff4700"}).shake(function(){
+				$(this).css({"border":"1px solid #DEDEDE"});
+			},1);
+			return;
+		}	
+		$.ajax({
+			url: BASE_PATH+"/user/comment_saveReviewewComment",
+			type: 'post',
+			contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+			data: {
+				'rc.content': content,
+				'commentID': window.reply.commentID,
+				'userId': window.reply.userId
+			},
+			success: function(meg) {
+				if (meg == "you login has expired") {
+					$("#headLogin").trigger("click");
+					return;
+				}
+				_input.attr("alt","2").text("");
+				if(window.reply.dom==undefined){
+					window.reply.dom=$("<div class='reply'>"+
+						"<span class='userPhoto'>"+
+							"<img >"+
+						"</span>"+
+						"<a href='' target='_blank' class='user_name'></a>"+
+						"<div></div>"+
+						"<strong>"+
+							"<span class='reply_date'></span>"+
+							"<a href='#comment' class='replyHyperlink' rel=''>"+
+								"<span  class='replyicon' title='回复' alt='' rel=''></span>"+
+							"</a>"+
+						"</strong>"+
+					"</div>");
+				}
+				var msgJson=JSON.parse(meg);
+				var $reply=window.reply.dom.clone(true);
+				$reply.find("img").attr("src",BASE_PATH+"/load/download_getSmallPhoto?id="+msgJson.comUserID).end()
+				.find(".user_name").attr("href",BASE_PATH+"/user/space/"+msgJson.account+"/>")
+				.text(msgJson.userName+"回复："+msgJson.replyName).end().find("div").text(content).end()
+				.find(".reply_date").text(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '  ' + date.getHours() + ':' + date.getMinutes()).end()
+				.find(".replyHyperlink").attr("rel",msgJson.userName).click(sendReply)
+				.find("span").attr("alt",msgJson.commentId)
+				.attr("rel",msgJson.comUserID);
+				$reply.appendTo(window.reply.parentDom);
+			}
+		});
+	}else{
+		if(_input.text().isEmpty().length<=0){
+			_input.css({"border":"1px solid #ff4700"}).shake(function(){
+				$(this).css({"border":"1px solid #DEDEDE"});
+			},1);
+			return;
+		}	
+		$.ajax({
+			url:BASE_PATH+"/user/comment_save",
+			method : 'post',
+			data : {
+				'c.content':$(that).prev().text(),
+				'id':$(that).attr("alt")
+			},
+			success:function(text){
+				if(text=="you login has expired"){
+					$("#headLogin").trigger("click");
+					return false;
+				}
+				try {
+					var json=JSON.parse(text);	
+					var element=document.createElement('div');
+					element.setAttribute("class", 'smallCom');
+					var span=document.createElement('span');
+					var img=document.createElement('img');
+					img.src=BASE_PATH+"/load/download_getSmallPhoto?id="+json.id;
+					span.appendChild(img);
+					element.appendChild(span);
+					var bo=document.createElement('a');			
+					bo.innerHTML=json.spaceName+":";
+					bo.setAttribute("target","blank");
+					bo.setAttribute("href",BASE_PATH+"/user/space/"+json.name+"/");
+					element.appendChild(bo);
+					var divo=document.createElement('div');
+					divo.innerHTML=$(that).prev().text();
+					element.appendChild(divo);
+					
+					var small_strong=document.createElement('strong');
+					var $small_strong_date=$("<span class='reply_date'>"+date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+'&nbsp'+date.getHours()+':'+date.getMinutes()+"</span>");
+					
+					var $replyIcon=$("<a href='#comment' class='replyHyperlink'>" +
+						"<span class='replyicon' title='回复' alt="+json.commentId+" rel="+json.id+">1</span>" +
+					"</a>").attr("rel",json.spaceName).click(sendReply);
+					
+					$(small_strong).append($small_strong_date).append($replyIcon);
+					if(json.commentId!=undefined){
+						var small_remove=document.createElement("a");
+						small_remove.setAttribute("alt",json.commentId);
+						small_remove.className="remove_com";
+						small_remove.innerHTML="删除";
+						$(small_remove).click(removeClick);
+						small_strong.appendChild(small_remove);
+					}
+					
+					element.appendChild(small_strong);
+	
+					var parent=$(that).next().get(0);
+					$.notice("viki提醒您！","评论成功!");
+					parent.insertBefore(element,parent.firstChild);
+					var $cont=$(".userAction a:eq(1) span");
+					$cont.text(parseInt($cont.text())+1);
+				} catch (e) {
+					console.log(e)
+					$.notice("viki提醒您！","评论失败!");
+				}
+				
+			}
+		});	
+	}	
+}
+function send(url,obj,cond,isok,iserror,fn){
+	$.ajax({
+		url:url,
+		type : 'post',
+		head:{"Accept-Charset":"UTF-8"},
+		data : obj,
+		success:function(text){
+			if(text=="you login has expired"){
+				$.notice("viki提醒您！","登录过期");
+			}else if(text.isEmpty()==cond){	
+				if(fn)fn();
+				$.notice("viki提醒您！",isok);
+			}else{
+				$.notice("viki提醒您！",iserror);
+			}
+		}
+	});	
+}
+function removeClick(){
+	var that=this;
+	$.ajax({
+		url:BASE_PATH+"/user/comment_remove",
+		type : 'get',
+		data : {
+			'id':that.getAttribute("alt")
+		},
+		success:function(text){
+			if(text=="remove is ok"){
+				$.notice("viki提醒您！","删除评论成功!");
+				$(that.parentNode.parentNode).slideUp(350,function(){
+					var $cont=$(".userAction a:eq(1) span");
+					$cont.text(parseInt($cont.text())-1);
+					this.remove();
+				});
+			}else{
+				$.notice("viki提醒您！","删除评论失败!");
+			}
+		}
+	});
+}
+function removeLog(acc,evt){
+	$.ajax({
+		url:BASE_PATH+"/user/function_removeDiary",
+		type : 'get',
+		data : {
+			'userId':evt.getAttribute("rel")
+		},
+		success:function(text){
+			if(text=="removeDiary is ok"){
+				$.notice("viki提醒您！","删除日记成功，即将跳转！!",300,function(){
+					window.location.href=BASE_PATH+"/user/space/"+acc+"/diary";
+				});			
+			}else{
+				$.notice("viki提醒您！","删除日记失败!");
+			}
+		}
+	});
+}

@@ -38,7 +38,7 @@
 		</div>
 		<label class="btn-choose-file" style="margin: 20px 50px 0 0px;">
 			选择照片
-			<input id="myFile" type="file" name="myFile"
+			<input id="upfile" type="file" name="upfile"
 				style="width: 0px; height: 0px;" onchange="box(this);"
 				change="box(this);" />
 		</label>
@@ -108,7 +108,7 @@
          $.ajaxFileUpload( {
           url:'<%=path%>/load/upload_uploadUserPhoto',            //需要链接到服务器地址
           secureuri:false,
-          fileElementId:'myFile',                        //文件选择框的id属性       
+          fileElementId:'upfile',                        //文件选择框的id属性       
           dataType: 'json',
           success: function (data, status)            //相当于java中try语句块的用法
           {

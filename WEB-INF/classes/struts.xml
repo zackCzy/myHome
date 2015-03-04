@@ -25,7 +25,7 @@
 	<constant name="struts.configuration.xml.reload" value="true" />
 	<!-- <constant name="struts.ognl.allowStaticMethodAccess" value="true" />静态方法调用 
 		<constant name="struts.action.extension" value="a"></constant>设置部署名 -->
-
+	
 	<package name="test" namespace="/test" extends="struts-default">
 		<action name="test" class="cn.mini.struts2.action.RegisterUserAction" >
 			<result >/text.jsp</result>
@@ -154,8 +154,8 @@
 			<interceptor-ref name="miniAccountStack" />
 			<result name="readDiary">/WEB-INF/jsp/readDiary.jsp</result>
 			<result name="noDiary">/WEB-INF/cueJsp/noDiary.jsp</result>	
-			<result name="cteateDiary">/WEB-INF/jsp/MessageBoard.jsp</result>
-			<result name="modifyDiary">/WEB-INF/jsp/MessageBoard.jsp</result>
+			<result name="cteateDiary">/WEB-INF/jsp/uedit.jsp</result>
+			<result name="modifyDiary">/WEB-INF/jsp/uedit.jsp</result>
 			<!-- 
 			<result name="removeDiary" type="redirectAction">
 				<param name="actionName">user_space</param>

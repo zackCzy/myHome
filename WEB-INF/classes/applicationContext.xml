@@ -16,7 +16,9 @@
 	<context:component-scan base-package="cn.mini.dao.impl"></context:component-scan>
 	<context:component-scan base-package="cn.mini.service.impl"></context:component-scan>
 	<context:component-scan base-package="cn.mini.struts2.action"></context:component-scan>
-	
+
+
+
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" /><!-- org.gjt.mm.mysql.Driver -->
@@ -37,6 +39,7 @@
 		<!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
 		<property name="idleConnectionTestPeriod" value="60" />
 	</bean>
+	
 	
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
