@@ -116,7 +116,20 @@
 						<p>VIKI provides a set of blog, micro blog one of personal space system for you, in this you can share feelings with friends, friends, writing diary interaction.</p>
 					</div>
 				</li>
-				<li class="unselect" style="overflow:hidden; width:100%;height:100%;background: url('<%=path %>/images/miniMusic/p1756682152-2.jpg') no-repeat fixed 50% 0 rgb(255, 255,255);">		
+				<li class="unselect" style="overflow:hidden; width:100%;height:100%;background: url('<%=path %>/images/miniMusic/p1756682152-2.jpg') no-repeat fixed 50% 0 rgb(255, 255,255);">	
+					<div class="space-display-box">
+						<h2>热门空间</h2>
+						<p>
+							<a href="user/space/a66210453/" title="Zack的空间" rel="Zack的空间" target="_blank"><span>1</span><strong>Zack的空间</strong></a>
+						</p>
+						<p>
+							<a href="user/space/a66210453/" title="Zack的空间" rel="Zack的空间" target="_blank"><span>2</span><strong>Zack的空间</strong></a>
+						</p>
+						<p>
+							<a href="user/space/a66210453/" title="Zack的空间" rel="Zack的空间" target="_blank"><span>3</span><strong>Zack的空间</strong></a>
+						</p>						
+					</div>
+				</li>	
 					
 			</ul>
 

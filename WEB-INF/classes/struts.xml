@@ -43,7 +43,7 @@
 		<action name="*" class="cn.mini.struts2.action.MainAction"
 			method="{1}">
 			<interceptor-ref name="IminiHomeStack"></interceptor-ref>
-			<result name="home">/WEB-INF/jsp/home.jsp</result>
+			<result name="">/WEB-INF/jsp/index.jsp</result>
 			<result name="translator">/WEB-INF/jsp/translator.jsp</result>
 			<result name="application">/WEB-INF/jsp/Register.jsp</result>
 			<result name="music">/WEB-INF/jsp/MiniMusicHome.jsp</result>

@@ -314,3 +314,53 @@ font-weight: bold;
 .divice-fea-left-grid p {
     line-height: 1.5em;
 }
+.space-display-box{
+	width:95%;
+	margin:35px auto;
+	height: auto;
+	background:rgba(0,0,0,0.6);
+	padding:35px 50px;
+	box-sizing:border-box;
+	box-shadow: 0 6px 4px rgba(0, 0, 0, 0.05), 0 7px 5px rgba(0, 0, 0, 0.3);
+}
+.space-display-box > h2{
+	color:#fffafa;
+	border-bottom:3px solid #ECECEC;
+	margin-bottom:15px;
+	text-shadow: 0 6px 4px rgba(255, 33, 125, 0.05), 0 7px 5px rgba(255, 33, 125, 0.3);
+	padding-bottom:11px;
+}
+.space-display-box > P{
+	width:49.8%;
+	box-sizing:border-box;
+	display: inline-block;
+	border: 1px solid #fff;
+	margin:8px 0;
+}
+.space-display-box > P > a,.space-display-box > P > a:VISITED,.space-display-box > P > a:LINK,.space-display-box > P > a:ACTIVE{
+	color:#fafafa;
+	padding:10px 0;
+	display: inline-block;
+	text-decoration: none;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.space-display-box > P > a:HOVER {
+	text-decoration: underline;
+	color:#AED65A;
+}
+.space-display-box > P > a > span{
+	width:20px;
+	height:20px;
+	border-radius:50%;
+	border:1px solid #ececec;
+	display: inline-block;
+	text-align: center;
+	line-height:20px;
+	margin:0 10px 0 6px;
+}
+.space-display-box > P > a > strong{
+	display: inline-block;
+}

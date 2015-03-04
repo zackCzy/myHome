@@ -16,14 +16,14 @@
 			BASE_PATH="<%=path %>";
 			UEDITOR_HOME_URL = "/ueditor/";//从项目的根目录开始
 		</script>
-		<script type="text/javascript" src="<%=path %>/JS/tool/span.js"></script>
-		<script type="text/javascript" src="<%=path %>/scripts/jquery-1.10.1.js"></script>
-		<script type="text/javascript" src="<%=path %>/JS/tool/JQ_plugs.js"></script>
-		<script type="text/javascript" src="<%=path %>/JS/plugObject/notice.js"></script>
+		<script type="text/javascript" charset="utf-8" src="<%=path %>/JS/tool/span.js"></script>
+		<script type="text/javascript" charset="utf-8" src="<%=path %>/scripts/jquery-1.10.1.js"></script>
+		<script type="text/javascript" charset="utf-8" src="<%=path %>/JS/tool/JQ_plugs.js"></script>
+		<script type="text/javascript" charset="utf-8" src="<%=path %>/JS/plugObject/notice.js"></script>
 		<script type="text/javascript" charset="utf-8" src="<%=path %>/JS/uedit/umeditor.config.js"></script>
 	    <script type="text/javascript" charset="utf-8" src="<%=path %>/JS/uedit/umeditor.min.js"> </script>
 	    <script type="text/javascript" charset="utf-8" src="<%=path %>/JS/uedit/lang/zh-cn/zh-cn.js"></script>
-		<script type="text/javascript" src="<%=path %>/JS/board.js"></script>	
+		<script type="text/javascript" charset="utf-8" src="<%=path %>/JS/board.js"></script>	
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/jsp/head.jsp"%>
@@ -32,7 +32,6 @@
 		</div>
 		<form action="#" name="createText" >
 			<div id="context" style="width:100%;display: block;">
-				
 				<div class="wordContent">
 					<input type="text"  type="text" spellcheck="false"
 						autocomplete="off" name="title" placeholder="输入标题" tabindex="10"
