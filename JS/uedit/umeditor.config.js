@@ -164,10 +164,8 @@
         //,theme:'default'
         //,themePath:URL +"themes/"
 
-
-
         //针对getAllHtml方法，会在对应的head标签中增加该编码设置。
-        //,charset:"utf-8"
+        ,charset:"utf-8"
 
         //常用配置项目
         //,isShow : true    //默认显示编辑器
@@ -181,15 +179,15 @@
 
         //,textarea:'editorValue' // 提交表单时，服务器获取编辑器提交内容的所用的参数，多实例时可以给容器name属性，会将name给定的值最为每个实例的键值，不用每次实例化的时候都设置这个值
 
-        //,focus:false //初始化时，是否让编辑器获得焦点true或false
+        ,focus:true //初始化时，是否让编辑器获得焦点true或false
 
-        //,autoClearEmptyNode : true //getContent时，是否删除空的inlineElement节点（包括嵌套的情况）
+        ,autoClearEmptyNode : true //getContent时，是否删除空的inlineElement节点（包括嵌套的情况）
 
         //,fullscreen : false //是否开启初始化时即全屏，默认关闭
 
         //,readonly : false //编辑器初始化结束后,编辑区域是否是只读的，默认是false
 
-        //,zIndex : 900     //编辑器层级的基数,默认是900
+        ,zIndex : 9999     //编辑器层级的基数,默认是900
 
         //如果自定义，最好给p标签如下的行高，要不输入中文时，会有跳动感
         //注意这里添加的样式，最好放在.edui-editor-body .edui-body-container这两个的下边，防止跟页面上css冲突
@@ -223,15 +221,15 @@
 
         //imageScaleEnabled
         // 是否允许点击文件拖拽改变大小,默认true
-        //,imageScaleEnabled:true
+        ,imageScaleEnabled:true
 
         //dropFileEnabled
         // 是否允许拖放图片到编辑区域，上传并插入,默认true
-        //,dropFileEnabled:true
+        ,dropFileEnabled:true
 
         //pasteImageEnabled
         // 是否允许粘贴QQ截屏，上传并插入,默认true
-        //,pasteImageEnabled:true
+        ,pasteImageEnabled:true
 
         //autoHeightEnabled
         // 是否自动长高,默认true
