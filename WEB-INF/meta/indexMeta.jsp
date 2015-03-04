@@ -1,4 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	if(request.getServerName().indexOf("vikimicro")==-1){
+		response.setStatus(301);
+		response.setHeader( "Location", "http://vikimicro.com/"+request.getContextPath());
+		response.setHeader( "Connection", "close" );
+	}
+ %>
 <meta name="pragma" content="cache">
 <meta name="cache-control" content="cache">
 <meta name="Content-Type" content="text/html; charset=UTF-8">
