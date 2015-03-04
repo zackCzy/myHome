@@ -1,8 +1,14 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
-	if(request.getServerName().indexOf("vikimicro")==-1){
+	if(request.getServerName().indexOf("vikimicro")==-1||request.getServerName().indexOf("myHome")!=-1){
 		response.setStatus(301);
-		response.setHeader( "Location", "http://vikimicro.com/"+request.getContextPath());
+		String url="http://www.vikimicro.com"+request.getRequestURI();
+		String param=null;
+		param=request.getQueryString();
+		if(param!=null){
+			url+="?"+param;
+		}
+		response.setHeader( "Location",url );
 		response.setHeader( "Connection", "close" );
 	}
  %>
