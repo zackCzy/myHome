@@ -68,11 +68,15 @@
 	
 	<package name="user" namespace="/user" extends="struts-default">
 		<interceptors>	
-			<interceptor name="VikiRedirectInterceptor" class="cn.mini.struts2.interceptor.RedirectInterceptor"/>	
+			<interceptor name="VikiRedirectInterceptor" class="cn.mini.struts2.interceptor.Redirectinterceptor"/>	
 			<interceptor name="AutoLoginInterceptor" class="cn.mini.struts2.interceptor.AutoLoginInterceptor" />
 			<interceptor name="CheckLoginInterceptor" class="cn.mini.struts2.interceptor.CheckLoginInterceptor" />
 			<interceptor name="AjaxLoginInterceptor" class="cn.mini.struts2.interceptor.AjaxCheckLoginInterceptor" />
 			<interceptor name="RefererUrl" class="cn.mini.struts2.interceptor.RefererUrIInterceptor" />
+			<interceptor-stack name="VikiRedirectStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="VikiRedirectInterceptor" />
+			</interceptor-stack>
 			<interceptor-stack name="AutoLoginStack">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="VikiRedirectInterceptor" />
@@ -100,8 +104,6 @@
 			<result name="my404">/WEB-INF/html/404.xhtml</result>
 			<result name="activeAccount">/WEB-INF/jsp/CheckAccount.jsp</result>
 		</global-results>
-		
-		
 		<action name="user_*" class="cn.mini.struts2.action.UserAction"
 			method="{1}">
 			<interceptor-ref name="miniAccountStack" />
@@ -115,6 +117,7 @@
 			<result name="UserFriends">/WEB-INF/jsp/UserFriends.jsp</result>
 			<result name="Home">/WEB-INF/jsp/HomePage.jsp</result>
 		</action>
+		
 		<action name="space/*/*" class="cn.mini.struts2.action.SpaceAction" method="{2}">
 			<interceptor-ref name="AutoLoginStack" />
 			<result name="success">/WEB-INF/jsp/HomePage.jsp</result>
