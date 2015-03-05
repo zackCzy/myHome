@@ -73,7 +73,7 @@
 						ViKi微空间简介
 						</h3>
 						<p>VIKI 微空间 是一个为用户提供一个自我自主空间的网站。我们希望能够为每一位用户提供一个能够自我学习，自主交流、媒体娱乐、网络社交的综合性个人主页。</p>
-						<img src="<%=path %>/images/home/slide-1.png" style="float: right;">
+						<img src="<%=path %>/images/home/slide-1.png" style="float: right;" alt="Viki空间" title="Viki空间">
 					</div>
 					<div class="divice-fea-left-grid" style="height:150px;">
 						<h3>
