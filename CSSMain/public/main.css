@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+body,ul,ol,li,div input,iframe,img,form,input,textarea,span,a,p,h3,h1,h2{
+	margin: 0;
+	border: 0 none;
+	padding: 0;
+}
+.clearFix:after {
+	clear: both;
+	display: block;
+	visibility: hidden;
+	height: 0;
+	line-height: 0;
+	content: "";
+}
+.clearFix {
+	zoom:1;
+}

@@ -1,0 +1,247 @@
+@CHARSET "UTF-8";
+
+body {
+	background: #1F160D url("/myHome/image/body_bg.jpg") repeat-x;
+	 -moz-user-select: none;
+}
+dl,dd,dt{
+	margin:0;
+	padding:0;
+	border:0 none;
+}
+dl{
+	line-height: 22px;
+    margin: 0 20px;
+    padding: 15px 0 0;
+     display: block;
+     font-size:14px;
+     font: 12px/1.125 Arial,Helvetica,sans-serif;
+}
+dt{
+	 float: left;
+    text-align: right;
+    width: 33px;
+    line-height: 22px;
+	color: #808080;
+}
+dd{
+	height:20px;
+}
+.follw_box {
+	width: 1000px;
+	height: 800px;
+	margin: 30px auto 80px;
+	background: #FAFAFA;
+	border: 1px solid #FF4341;
+}
+
+
+.friends_nav {
+	width: 150px;
+	height: 800px;
+	background: url("/myHome/image/repeat_bg_y_i.png");
+	float: left;
+}
+
+.friends_nav ul {
+	list-style: none outside none;
+	width: 150px;
+	height: 200px;
+	text-align: center;
+	line-height: 50px;
+}
+
+.S_line2 {
+    border-color: #e6e6e6;
+    margin-left: 1px;
+    padding: 3px 0 0 14px;
+}
+fieldset {
+    border-style: solid;
+    border-width: 1px 0 0;
+    display: block;
+    padding: 0 0 0 20px;
+}
+fieldset legend {
+    font-weight: bold;
+    padding: 0 5px;
+    color: #423009;
+    text-decoration: none;
+}
+.friends_nav ul li {
+	height: 50px;
+	width: 150px;
+	display: block;
+	color: #3fa7cb;
+	white-space: nowrap;
+	font-size: 13px;
+	font-family: Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial,
+		STHeiti;
+	cursor: pointer;
+	
+}
+
+
+
+.friends_nav span {
+	margin:20px 0 0;
+	color: #423009;
+	width: 150px;
+	height: 50px;
+	font-size: 15px;
+	font-weight: bold;
+	display: block;
+	text-align: center;
+	line-height: 57px;
+	border-bottom: 1px solid #DCDCDC;
+	background: #FAFAFA;
+}
+
+.friends_nav li:hover {
+	background: #D5B799;
+}
+
+
+
+.user_point {
+	width: 650px;
+	height: 800px;
+	float: left;
+}
+
+.user_point ul span {
+	width: 51px;
+	height: 51px;
+	margin: 18px 10px 0;
+	display: block;
+	float: left;
+	border: 1px solid #DCDCDC;
+}
+.user_point ul {
+	list-style: none outside none;
+	width: 150px;
+	height: 200px;
+}
+
+.user_point ul li {
+	height: 80px;
+	width: 560px;
+	display: block;
+	color: #3fa7cb;
+	white-space: nowrap;
+	font-size: 13px;
+	font-family: Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial,
+		STHeiti;
+	cursor: pointer;
+	border-bottom: 1px solid #dcdcdc;
+}
+.user_point ul li:hover{
+border-bottom: 1px solid #5094DB;
+}
+.user_point em {
+	float: right;
+	font-style: normal;
+	line-height: 48px;
+	height: 43px;
+	color: #808080;
+	margin-right: 16px;
+}
+.flans_message {
+	width: 360px; white-space : nowrap;
+	word-break: break-all;
+	word-wrap: break-word;
+	text-align: left !important;
+	font-size: 15px;
+	font-weight: bold;
+	display: block;
+	float: left;
+	height: 80px;
+	line-height: 80px;
+	margin-left: 10px;
+	white-space: nowrap
+}
+.read_comment{
+ text-decoration: none;
+ color:#6C6C6C;
+}
+.point_title {
+	display: inline-block;
+	width: 360px;
+	white-space: nowrap;
+	word-break: break-all;
+	word-wrap: break-word;
+	text-align: left !important;
+	vertical-align: bottom;
+	color: #423009;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 53px;
+	height: 43px;
+}
+
+.point_content,.point_title {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	padding: 0 15px;
+}
+
+.point_content {
+	line-height: 23px;
+	width: 450px;
+	height: 20px;
+	font-size: 14px;
+}
+
+.flans_follws_bt {
+	width: 80px;
+	height: 20px;
+	background: #FF4700;
+	border-radius: 8px;
+	float: left;
+	margin: 33px 10px 0;
+	cursor: pointer;
+}
+
+.flans_follws_bt:hover {
+	background: #FF7700;
+}
+.Home_page_nav {
+	width: 1000px;
+	height: 50px;
+	background: #48525E;
+	border-bottom: 4px solid #E1E1E1;
+	margin-top: 30px;
+	color: #dcdcdc;
+	font-size: 15px;
+	line-height: 50px;
+	font-weight: bold;
+}
+
+.Home_page_nav ul {
+	list-style: none;
+	width: 1000px;
+}
+
+.Home_page_nav li {
+	float: left;
+	display: block;
+	width: 70px;
+	height: 50px;
+	border-bottom: 4px solid #E1E1E1;
+	text-align: center;
+	line-height: 50px;
+	margin-right: 18px;
+	cursor: pointer;
+}
+.Home_page_nav li a,.Home_page_nav li a:VISITED,.Home_page_nav li a:LINK{
+	display: block;
+	width: 70px;
+	height: 50px;
+	cursor: pointer;
+	text-decoration:none;
+	color: #dcdcdc;
+}
+.Home_page_nav li:hover {
+	border-bottom: 4px solid #DC3C00;
+}

@@ -21,7 +21,7 @@
 <struts>
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.i18n.encodeing" value="UTF-8" />
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="false" />
 	<constant name="struts.configuration.xml.reload" value="true" />
 	<!-- <constant name="struts.ognl.allowStaticMethodAccess" value="true" />静态方法调用 
 		<constant name="struts.action.extension" value="a"></constant>设置部署名 -->
