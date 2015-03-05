@@ -318,7 +318,7 @@ body {
 .divice-fea-left-grid p {
 	color: #5e5e5e;
 	*color:#787878;
-	*color:#787878\0;
+	color:#787878\0;
 	font-size: .95em;
 	line-height: 1.7em;
 	margin: .5em 0 1.1em;
@@ -348,6 +348,8 @@ body {
 	*color:#787878;
 	color:#787878\0;
 	border-bottom: 3px solid #ececec;
+	*border-bottom: 3px solid #787878;
+	border-bottom: 3px solid #787878\0;
 	margin-bottom: 15px;
 	text-shadow: 0 6px 4px rgba(255, 33, 125, 0.05), 0 7px 5px
 		rgba(255, 33, 125, 0.3);
@@ -359,6 +361,8 @@ body {
 	box-sizing: border-box;
 	display: inline-block;
 	border: 1px solid #fff;
+	*border: 1px solid #787878;
+	border: 1px solid #787878\0;
 	margin: 8px 0
 }
 
