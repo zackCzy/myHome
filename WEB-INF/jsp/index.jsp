@@ -1,7 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-	String basePath = request.getContextPath();
-	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath; 
+<% 
+	if(request.getServerName().indexOf("vikimicro")==-1){
+		response.setStatus(301);
+		String url="http://www.vikimicro.com"  ;
+		response.setHeader( "Location",url );
+		response.setHeader( "Connection", "close" );
+	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

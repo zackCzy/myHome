@@ -33,10 +33,12 @@
 	</package>
 
 	<package name="home" namespace="/" extends="struts-default">
-		<interceptors>	
-			<interceptor name="AutoLoginInterceptor" class="cn.mini.struts2.interceptor.AutoLoginInterceptor" />
+		<interceptors>
+			<interceptor name="VikiRedirectInterceptor"  class="cn.mini.struts2.interceptor.Redirectinterceptor"/>	
+			<interceptor name="AutoLoginInterceptor"     class="cn.mini.struts2.interceptor.AutoLoginInterceptor" />
 			<interceptor-stack name="IminiHomeStack">
 				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="VikiRedirectInterceptor" />
 				<interceptor-ref name="AutoLoginInterceptor" />
 			</interceptor-stack>
 		</interceptors>
@@ -66,12 +68,19 @@
 	
 	<package name="user" namespace="/user" extends="struts-default">
 		<interceptors>	
+			<interceptor name="VikiRedirectInterceptor" class="cn.mini.struts2.interceptor.RedirectInterceptor"/>	
 			<interceptor name="AutoLoginInterceptor" class="cn.mini.struts2.interceptor.AutoLoginInterceptor" />
 			<interceptor name="CheckLoginInterceptor" class="cn.mini.struts2.interceptor.CheckLoginInterceptor" />
 			<interceptor name="AjaxLoginInterceptor" class="cn.mini.struts2.interceptor.AjaxCheckLoginInterceptor" />
 			<interceptor name="RefererUrl" class="cn.mini.struts2.interceptor.RefererUrIInterceptor" />
+			<interceptor-stack name="AutoLoginStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="VikiRedirectInterceptor" />
+				<interceptor-ref name="AutoLoginInterceptor" />
+			</interceptor-stack>
 			<interceptor-stack name="miniAccountStack">
 				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="VikiRedirectInterceptor" />
 				<interceptor-ref name="AutoLoginInterceptor" />
 				<interceptor-ref name="CheckLoginInterceptor" />
 			</interceptor-stack>
@@ -107,24 +116,29 @@
 			<result name="Home">/WEB-INF/jsp/HomePage.jsp</result>
 		</action>
 		<action name="space/*/*" class="cn.mini.struts2.action.SpaceAction" method="{2}">
+			<interceptor-ref name="AutoLoginStack" />
 			<result name="success">/WEB-INF/jsp/HomePage.jsp</result>
 			<result name="diary">/WEB-INF/jsp/HomePageDiary.jsp</result>
 			<result name="authority">/WEB-INF/jsp/SpaceAuthority.jsp</result>
 		</action>
 		<action name="diary" class="cn.mini.struts2.action.SpaceAction" method="diary">
+			<interceptor-ref name="AutoLoginStack" />
 			<result name="success">/WEB-INF/jsp/HomePageDiary.jsp</result>
 			<result name="authority">/WEB-INF/jsp/SpaceAuthority.jsp</result>
 		</action>
 		<action name="datum" class="cn.mini.struts2.action.SpaceAction" method="datum">
+			<interceptor-ref name="AutoLoginStack" />
 			<result name="success">/WEB-INF/jsp/HomePageDatum.jsp</result>
 			<result name="authority">/WEB-INF/jsp/SpaceAuthority.jsp</result>
 		</action>
 		<action name="smallSpeak" class="cn.mini.struts2.action.SpaceAction" method="smallSpeak">
+			<interceptor-ref name="AutoLoginStack" />
 			<result name="success">/WEB-INF/jsp/HomePageSmallSpeak.jsp</result>
 			<result name="authority">/WEB-INF/jsp/SpaceAuthority.jsp</result>
 		</action>
 		
 		<action name="spaceChackAuthority" class="cn.mini.struts2.action.SpaceAction" method="spaceChackAuthority">
+			<interceptor-ref name="AutoLoginStack" />
 			<result name="success" type="redirectAction">
 				<param name="actionName">space/%{#user.name}/</param>				
 			</result>
@@ -140,6 +154,7 @@
 
 		<action name="function_r_*" class="cn.mini.struts2.action.UserFunctionAction"
 			method="{1}">
+			<interceptor-ref name="AutoLoginStack" />
 			<result name="readDiary">/WEB-INF/jsp/readDiary.jsp</result>
 			<result name="noDiary">/WEB-INF/cueJsp/noDiary.jsp</result>	
 			<!-- 
