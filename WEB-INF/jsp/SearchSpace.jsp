@@ -45,7 +45,7 @@
 							</Span>
 						</p>			 
 						<p>
-							<a href="<%=path%>/user/space/<s:property value="user.name"/>/" target="_blank">${USER_PATH}user/space/<s:property value="user.name"/>/</a>
+							<a href="<%=path%>/user/space/<s:property value="user.name"/>/" target="_blank">${USER_PATH}/user/space/<s:property value="user.name"/>/</a>
 						</p>
 						<p>
 							<font color="#FF4700"  >关注:</font>
