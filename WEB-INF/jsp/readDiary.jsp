@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<%@include file="../meta/indexMeta.jsp"%>
-		<link rel="stylesheet" type="text/css" href="<%=path%>/CSS/public/main.css">
+		<link href="<%=path %>/CSS/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="<%=path%>/CSS/readDiray.css">
 		<script type="text/javascript">
 			BASE_PATH="<%=path %>";
