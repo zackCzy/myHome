@@ -2,7 +2,8 @@
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%
 	String basePath = request.getContextPath();
-	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath; 
+	//String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+basePath; 
+	String path=request.getScheme()+"://"+request.getServerName()+basePath; 
  %>
 <meta name="pragma" content="cache">
 <meta name="cache-control" content="no-cache">

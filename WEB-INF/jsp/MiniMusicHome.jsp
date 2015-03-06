@@ -5,7 +5,6 @@
 	<head>
 		<%@include file="../meta/indexMeta.jsp"%>
 		<meta http-equiv="Cache-Control" content="max-age=7200"/>
-		<link type="text/css" rel="stylesheet" href="<%=path %>/CSS/public/main.css">
 		<link type="text/css" rel="stylesheet" href="<%=path %>/CSS/MiniMusicHome.css">	
 		<script type="text/javascript">
 			BASE_PATH="<%=path %>";
@@ -17,7 +16,7 @@
 		<script type="text/javascript" src="<%=path %>/JS/plugObject/notice.js"></script>
 		<script type="text/javascript" src="<%=path %>/JS/tool/JQ_plugs.js"></script>
 		<script type="text/javascript" src="<%=path %>/JS/MiniMusicHome.js" ></script>
-		<title>Mini 音乐</title>
+		<title>Viki 音乐</title>
 	</head>
 	<body>
 		<%@include file="../memberJsp/login.html" %>
@@ -60,7 +59,7 @@
 		</div>
 		<div class="minimusic_nav">
 			<a href="<%=path %>">
-			 	<img alt="viki" src="<%=path %>/image/vikilogo.png" style="float: left;"/>
+			 	<img alt="viki音乐" title="viki音乐" src="<%=path %>/image/vikilogo.png"  style="float: left;"/>
 			</a>
 			<div class="minimusic_search">
 				 <input type="text" stash-placeholder="Mini搜索" placeholder="Mini搜索" id="searchText">
@@ -75,25 +74,25 @@
 			</div>
 			<div class="user_message_area">
 				<s:if test="#session.sgin==null">			
-					<a id="headLogin" class="anav">登陆</a>|
-					<a href="<%=path %>/application" class="anav">注册</a>|
-					<a href="/" class="anav">Viki首页</a>	
+					<a id="headLogin" class="anav" title="登录" rel="登录">登陆</a>|
+					<a href="<%=path %>/application" class="anav" title="注册" rel="注册">注册</a>|
+					<a href="/" class="anav" title="viki微站" rel="viki微站">Viki首页</a>	
 				</s:if>
 				<s:else>
 					<div class="user_message_left">
-						<img width=25px height=25px  src="<%=path %>/load/download_getSmallPhoto?id=${id}">
+						<img title="歌手照片" alt="viki音乐" width=25px height=25px  src="<%=path %>/load/download_getSmallPhoto?id=${id}">
 						<strong>${sgin}</strong>
 						<ul>
-							<li><a href="<%=path %>/user/space/${sgin}/" target="_blank">空间</a></li>
+							<li><a href="<%=path %>/user/space/${sgin}/" target="_blank" title="viki空间" rel="viki空间">空间</a></li>
 							<li id="exit_login">退出</li>
 						</ul>	
 					</div>
-					<a id="miniindex" href="<%=path %>" class="anav">Viki首页</a>	
+					<a id="miniindex" href="<%=path %>" class="anav" title="viki微站" rel="viki微站">Viki首页</a>	
 				</s:else>
 			</div>
 		</div>
 		<div class="mini_music_bg">
-			<img src="<%=path %>/images/miniMusic/016.jpg" id="music_img_bg"/>
+			<img src="<%=path %>/images/miniMusic/016.jpg" id="music_img_bg" title="viki音乐" alt="viki音乐"/>
 		</div>
 		<div class="mini_music_component">
 			<div class="mini_music_playArea">
@@ -148,35 +147,35 @@
 						<ul>
 							<li><span class="singer_li_hover"></span>
 								<span class="singer_name_n">陈奕迅</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=%25E9%2599%2588%25E5%25A5%2595%25E8%25BF%2585"  alt="陈奕迅"  width=100% height=100% >
+								<img alt="陈奕迅" title="陈奕迅" src="<%=path %>/load/download_singerPhoto?singerName=%25E9%2599%2588%25E5%25A5%2595%25E8%25BF%2585"  alt="陈奕迅"  width=100% height=100% >
 							</li>
 							<li><span class="singer_li_hover"></span>
 								<span class="singer_name_n">阿弟仔</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=%25E9%2598%25BF%25E5%25BC%259F%25E4%25BB%2594"  alt="阿弟仔"  width=100% height=100% >
+								<img alt="阿弟仔" title="阿弟仔" src="<%=path %>/load/download_singerPhoto?singerName=%25E9%2598%25BF%25E5%25BC%259F%25E4%25BB%2594"  alt="阿弟仔"  width=100% height=100% >
 							</li>
 							<li><span class="singer_li_hover"></span>
 								<span class="singer_name_n">罗志祥</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=%25E7%25BD%2597%25E5%25BF%2597%25E7%25A5%25A5"  alt="罗志祥"  width=100% height=100% >
+								<img  alt="罗志祥" title="罗志祥" src="<%=path %>/load/download_singerPhoto?singerName=%25E7%25BD%2597%25E5%25BF%2597%25E7%25A5%25A5"  alt="罗志祥"  width=100% height=100% >
 							</li>
 							<li><span class="singer_li_hover"></span>
 								<span class="singer_name_n">李玖哲</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=%25E6%259D%258E%25E7%258E%2596%25E5%2593%25B2"  alt="李玖哲"  width=100% height=100% >
+								<img  alt="李玖哲" title="李玖哲"  src="<%=path %>/load/download_singerPhoto?singerName=%25E6%259D%258E%25E7%258E%2596%25E5%2593%25B2"  alt="李玖哲"  width=100% height=100% >
 							</li>
 							<li><span class="singer_li_hover"></span>
 								<span class="singer_name_n">柯有伦</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=%25E6%259F%25AF%25E6%259C%2589%25E4%25BC%25A6"  alt="柯有伦"  width=100% height=100% >
+								<img  alt="柯有伦" title="柯有伦" src="<%=path %>/load/download_singerPhoto?singerName=%25E6%259F%25AF%25E6%259C%2589%25E4%25BC%25A6"  alt="柯有伦"  width=100% height=100% >
 							</li>
 							<li><span class="singer_li_hover"></span>
 								<span class="singer_name_n">林俊杰</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=%25E6%259E%2597%25E4%25BF%258A%25E6%259D%25B0"  alt="林俊杰"  width=100% height=100% >
+								<img  alt="林俊杰" title="林俊杰" src="<%=path %>/load/download_singerPhoto?singerName=%25E6%259E%2597%25E4%25BF%258A%25E6%259D%25B0"  alt="林俊杰"  width=100% height=100% >
 							</li>
 							<li><span class="singer_li_hover"></span>
 								<span class="singer_name_n">光良</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=%25E5%2585%2589%25E8%2589%25AF"  alt="光良"  width=100% height=100% >
+								<img  alt="光良" title="光良" src="<%=path %>/load/download_singerPhoto?singerName=%25E5%2585%2589%25E8%2589%25AF"  alt="光良"  width=100% height=100% >
 							</li>
 							<li><span class="singer_li_hover"></span>
 								<span class="singer_name_n">潘玮柏</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=%25E6%25BD%2598%25E7%258E%25AE%25E6%259F%258F"  alt="潘玮柏"  width=100% height=100% >
+								<img  alt="潘玮柏" title="潘玮柏" src="<%=path %>/load/download_singerPhoto?singerName=%25E6%25BD%2598%25E7%258E%25AE%25E6%259F%258F"  alt="潘玮柏"  width=100% height=100% >
 							</li>
 						</ul>
 					</div>
@@ -186,42 +185,42 @@
 							<li>
 								<span class="singer_li_hover"></span>
 								<span class="singer_name_n">金莎</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="金莎" src="" width=100% height=100% >
+								<img  alt="金莎" title="金莎" src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="金莎" src="" width=100% height=100% >
 							</li>
 							<li>
 								<span class="singer_li_hover"></span>
 								<span class="singer_name_n">梁静茹</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="梁静茹" src="" width=100% height=100% >
+								<img  alt="梁静茹" title="梁静茹" src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="梁静茹" src="" width=100% height=100% >
 							</li>
 							<li>
 								<span class="singer_li_hover"></span>
 								<span class="singer_name_n">张惠妹</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="张惠妹" src="" width=100% height=100% >
+								<img  alt="张惠妹" title="张惠妹" src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="张惠妹" src="" width=100% height=100% >
 							</li>
 							<li>
 								<span class="singer_li_hover"></span>
 								<span class="singer_name_n">孙燕姿</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="孙燕姿" src="" width=100% height=100% >
+								<img  alt="孙燕姿" title="孙燕姿" src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="孙燕姿" src="" width=100% height=100% >
 							</li>
 							<li>
 								<span class="singer_li_hover"></span>
 								<span class="singer_name_n">张靓颖</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="张靓颖" src="" width=100% height=100% >
+								<img  alt="张靓颖" title="张靓颖" src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="张靓颖" src="" width=100% height=100% >
 							</li>
 							<li>
 								<span class="singer_li_hover"></span>
 								<span class="singer_name_n">王菲</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="王菲" src="" width=100% height=100% >
+								<img  alt="王菲" title="王菲" src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="王菲" src="" width=100% height=100% >
 							</li>
 							<li>
 								<span class="singer_li_hover"></span>
 								<span class="singer_name_n">蔡依林</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="蔡依林" src="" width=100% height=100% >
+								<img  alt="蔡依林" title="蔡依林" src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="蔡依林" src="" width=100% height=100% >
 							</li>
 							<li>
 								<span class="singer_li_hover"></span>
 								<span class="singer_name_n">范玮琪</span>
-								<img src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="范玮琪" src="" width=100% height=100% >
+								<img  alt="范玮琪" title="范玮琪" src="<%=path %>/load/download_singerPhoto?singerName=周杰伦"  alt="范玮琪" src="" width=100% height=100% >
 							</li>
 						</ul>
 					</div>
