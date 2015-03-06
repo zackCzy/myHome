@@ -366,13 +366,10 @@ function sendReplyCom(b) {
 						p.appendChild(r);
 						p.appendChild(i);
 						try {
-							$(p)
-									.insertBefore(
-											$(
-													".small_reply_area",
-													(b == 1 ? c.parentNode.parentNode.parentNode
-															: c.parentNode.parentNode))
-													.eq(-1));
+							$(p).insertBefore(
+								$(".small_reply_area",
+								(b == 1 ? c.parentNode.parentNode.parentNode
+								: c.parentNode.parentNode)).eq(-1));
 						} catch (h) {
 						}
 						$(c.parentNode).hide(300);
@@ -651,7 +648,7 @@ function createUserCon(y, d) {
 		x.appendChild(i);
 		if (y[t]["smallSpeak"] == "false") {
 			x.setAttribute("href", BASE_PATH
-					+ "/user/function_r_readDiary?userId=" + y[t].id);
+					+ "/user/function_r_readDiary?logId=" + y[t].id);
 		}
 		x.setAttribute("target", "_blank");
 		q = f.createElement("div");
@@ -668,7 +665,7 @@ function createUserCon(y, d) {
 				$(p).text("编辑");
 				p.setAttribute("target", "_blank");
 				p.setAttribute("href", BASE_PATH
-						+ "/user/function_modifyDiary?userId=" + y[t].id);
+						+ "/user/function_modifyDiary?logId=" + y[t].id);
 				w.appendChild(p);
 				q.appendChild(w);
 			}

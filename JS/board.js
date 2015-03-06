@@ -104,5 +104,5 @@ $(function() {
 		this.style.border = "1px solid #02ABE3"
 	}, function() {
 		this.style.border = "1px solid #CCCCCC"
-	})
+	});
 });
