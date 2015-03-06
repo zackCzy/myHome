@@ -189,7 +189,7 @@ h4 {
 	line-height: 55px;
 	color: #fff;
 	text-overflow: ellipsis;
-	overflow: hidden;
+	overflow: hidden
 }
 
 .user_message img,.user_message strong {
@@ -641,45 +641,38 @@ h4 {
 	-o-animation: photoRotate .5s
 }
 
-@
--webkit-keyframes photoRotate {
-	from {transform: rotate(0deg)
+@-webkit-keyframes photoRotate {
+	from {
+		transform: rotate(0deg)
+    }	
+	to {
+		transform: rotate(360deg)
+	}
 }
-
-to {
-	transform: rotate(360deg)
-}
-
-}
-@
--moz-keyframes photoRotate {
-	from {transform: rotate(0deg)
-}
-
-to {
-	transform: rotate(360deg)
-}
+@-moz-keyframes photoRotate {
+	from {
+		transform: rotate(0deg)
+	}
+	to {
+		transform: rotate(360deg)
+	}
 
 }
-@
--o-keyframes photoRotate {
-	from {transform: rotate(0deg)
+@-o-keyframes photoRotate {
+	from {
+		transform: rotate(0deg)
+	}
+	to {
+		transform: rotate(360deg)
+	}
 }
-
-to {
-	transform: rotate(360deg)
-}
-
-}
-@
-keyframes photoRotate {
-	from {transform: rotate(0deg)
-}
-
-to {
-	transform: rotate(360deg)
-}
-
+@keyframes photoRotate {
+	from {
+		transform: rotate(0deg)
+	}
+	to {
+		transform: rotate(360deg)
+	}
 }
 .point_load_status {
 	line-height: 50px;

@@ -829,133 +829,49 @@ body {
 	animation: gogogo 35s infinite linear
 }
 
-@
--webkit-keyframes gogogo { 0%{
-	-webkit-transform: rotate(0deg)
+@-webkit-keyframes gogogo { 
+	0%{
+		-webkit-transform: rotate(0deg)
+	}
+	50%{
+		-webkit-transform:rotate(180deg)
+	}
+	100%{
+		-webkit-transform:rotate(360deg)
+	}
 }
-
-50%{
--webkit-transform
-
-
-:rotate
-
-
-(180
-deg
-)
-
-
+@-moz-keyframes gogogo { 
+	0%{
+		-moz-transform: rotate(0deg)
+	}
+	50%{
+		-moz-transform:rotate(180deg)
+	}
+	100%{
+		-moz-transform:rotate(360deg)
+	}
 }
-100%{
--webkit-transform
-
-
-:rotate
-
-
-(360
-deg
-)
-
-
+@-o-keyframes gogogo { 
+	0%{
+		-o-transform: rotate(0deg)
+	}
+	50%{
+		-o-transform:rotate(180deg)
+	}
+	100%{
+		-o-transform:rotate(360deg)
+	}
 }
-}
-@
--moz-keyframes gogogo { 0%{
-	-moz-transform: rotate(0deg)
-}
-
-50%{
--moz-transform
-
-
-:rotate
-
-
-(180
-deg
-)
-
-
-}
-100%{
--moz-transform
-
-
-:rotate
-
-
-(360
-deg
-)
-
-
-}
-}
-@
--o-keyframes gogogo { 0%{
-	-o-transform: rotate(0deg)
-}
-
-50%{
--o-transform
-
-
-:rotate
-
-
-(180
-deg
-)
-
-
-}
-100%{
--o-transform
-
-
-:rotate
-
-
-(360
-deg
-)
-
-
-}
-}
-@
-keyframes gogogo { 0%{
-	transform: rotate(0deg)
-}
-
-50%{
-transform
-
-
-:rotate
-
-
-(180
-deg
-)
-
-
-}
-100%{
-transform
-
-
-:rotate
-
-
-(360
-deg
-)
-
-
-}
+@keyframes gogogo { 
+	0%{
+		transform: rotate(0deg)
+	}
+	50%{
+		transform:rotate(180deg)
+	}
+	100%{
+		transform:rotate(360deg)
+	}
 }
 .singer_photo img {
 	border-radius: 180px;
