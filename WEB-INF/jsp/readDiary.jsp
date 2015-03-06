@@ -4,6 +4,7 @@
 <html>
 	<head>
 		<%@include file="../meta/indexMeta.jsp"%>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="<%=path%>/CSS/readDiray.css">
 		<script type="text/javascript">
 			BASE_PATH="<%=path %>";
@@ -17,13 +18,16 @@
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/jsp/head.jsp"%> 
-		<h1 class="space_name"><a title="返回<s:property value="#logUser.userBaseDatum.name"/>的空间" href="<%=path%>/user/space/<s:property value="#logUser.name"/>/"><s:property value="#logUser.userBaseDatum.name"/>的空间</a></h1>
+		<h2 class="space_name"><a title="返回<s:property value="#logUser.userBaseDatum.name"/>的空间" href="<%=path%>/user/space/<s:property value="#logUser.name"/>/"><s:property value="#logUser.userBaseDatum.name"/>的空间</a></h2>
 		<div class="readArea" >
-			<h2 style=" font-size: 20px;color: #454545;word-break: break-all;word-wrap: break-word;margin-bottom: 5px;height:30px;">
-			<s:property value="#log.logName"/>
-			<span id="modificationTime">
-			<s:property value="#log.modifyDate"/>
-			</span></h2>
+			<div class="articleTitle">
+				<h1>
+					<s:property value="#log.logName"/>
+				</h1>
+				<span id="modificationTime">
+					<s:property value="#log.modifyDate"/>
+				</span>
+			</div>
 			<s:property value="#log.logContent" escapeHtml="false"/>
 			
 			<div class="userAction">
@@ -42,6 +46,7 @@
 					<a rel="<s:property value="userId" />"  onclick="removeLog('<s:property value="#logUser.name"/>',this)" >删除</a>
 				</s:if>
 			</div>
+			<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 		</div>	
 		<s:if test="#visitors.size()>0">
 			<div id="visitor_display" >
@@ -110,5 +115,4 @@
 			</div>
 		</div>
 	</body>
-	<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 </html>
