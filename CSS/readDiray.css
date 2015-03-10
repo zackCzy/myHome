@@ -383,10 +383,14 @@ div.small_reply_area {
 	cursor: pointer
 }
 
-@media (max-width:800px){
+@media (max-width:816px){
 	.readArea{
 		width:100%;
-		box-sizing:border-box;
+		box-sizing:border-box!important;
+		min-width:100%readArea;
+	}
+	.space_name{
+		margin-top:95px;
 	}
 	div.comment{
 	 	width:100%;

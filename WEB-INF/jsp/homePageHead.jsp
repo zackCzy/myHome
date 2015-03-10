@@ -29,22 +29,22 @@
 			<div class="Home_page_nav">
 				<div class="head-nav">
 					<div class="pageLogo">
-						<img src="<%=path%>/image/vikilogo.png"/>
+						<img src="<%=path%>/image/vikilogo.png" alt="viki空间" title="viki空间"/>
 					</div>
 					<span class="nav-box"></span>
 					<ul>
-						<li><a href="<%=path%>" >首页</a> </li>
+						<li><a href="<%=path%>" title="viki微站" rel="viki微站">首页</a> </li>
 						<s:if test="#authority==1">
-							<li style="<s:property value="#type==2? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path%>/user/space/<s:property value="#user.name"/>/">动态</a></li>
-							<li style="<s:property value="#type==1? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path%>/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
-							<li style="<s:property value="#type==4? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path%>/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
+							<li style="<s:property value="#type==2? 'border-bottom: 4px solid #DC3C00;':''"/>"><a title="最新动态" rel="最新动态" href="<%=path%>/user/space/<s:property value="#user.name"/>/">动态</a></li>
+							<li style="<s:property value="#type==1? 'border-bottom: 4px solid #DC3C00;':''"/>"><a title="个人日记" rel="个人日记" href="<%=path%>/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
+							<li style="<s:property value="#type==4? 'border-bottom: 4px solid #DC3C00;':''"/>"><a title="个人微说" rel="个人微说" href="<%=path%>/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
 							<li><a>关系</a></li>
 							<li><a href="<%=path%>/user/user_SysMessage">消息</a></li>
 						</s:if>
 						<s:else>
-							<li style="<s:property value="#type==1? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path %>/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
-							<li style="<s:property value="#type==4? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path %>/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
-							<li style="<s:property value="#type==3? 'border-bottom: 4px solid #DC3C00;':''"/>"><a href="<%=path %>/user/space/<s:property value="#user.name"/>/datum">资料</a></li>
+							<li style="<s:property value="#type==1? 'border-bottom: 4px solid #DC3C00;':''"/>"><a title="个人日记" rel="个人日记" href="<%=path %>/user/space/<s:property value="#user.name"/>/diary">日记</a></li>
+							<li style="<s:property value="#type==4? 'border-bottom: 4px solid #DC3C00;':''"/>"><a title="个人微说" rel="个人微说" href="<%=path %>/user/space/<s:property value="#user.name"/>/smallSpeak">微说</a></li>
+							<li style="<s:property value="#type==3? 'border-bottom: 4px solid #DC3C00;':''"/>"><a title="个人资料" rel="个人资料" href="<%=path %>/user/space/<s:property value="#user.name"/>/datum">资料</a></li>
 						</s:else>
 					</ul>
 				</div>
@@ -56,12 +56,12 @@
 					<div class="user_message">
 						<s:if test="#session.sgin==null">
 							<div class="login_area">
-								<a id="headLogin">登录</a>&nbsp;|
-								<a href="<%=path%>/application" target="_blank" >注册</a>
+								<a id="headLogin" title="viki登录 " rel="viki登录">登录</a>&nbsp;|
+								<a href="<%=path%>/application" target="_blank" title="viki注册 " rel="viki注册">注册</a>
 							</div>
 						</s:if>
 						<s:else>
-							<img src="<%=path%>/load/download_getSmallPhoto?id=${id}" >				
+							<img src="<%=path%>/load/download_getSmallPhoto?id=${id}" title="V说头像" alt="V说头像">				
 							<strong><a  href="<%=path%>/user/space/${sgin}/">${sgin}</a></strong>			
 						</s:else>		
 					</div>
@@ -70,7 +70,7 @@
 			</div>
 			
 			<div class="mypage_img">
-					<img width=100% height=300px; alt="bg" src="<%=path%>/image/1.jpg">
+					<img width=100% height=300px; alt="bg" src="<%=path%>/image/1.jpg" title="Viki空间" alt="Viki空间">
 			</div>
 			<div class="my_Info_display">
 				<div class="user_page_photo">
